@@ -3,10 +3,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.jgrapht.Graph;
-import org.jgrapht.alg.color.GreedyColoring;
-import org.jgrapht.alg.interfaces.VertexColoringAlgorithm.Coloring;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
+import org.jgrapht.alg.color.GreedyColoring;
+import org.jgrapht.alg.interfaces.VertexColoringAlgorithm.Coloring;
 
 import src.Course.Discipline;
 import src.Course.Lecture;
