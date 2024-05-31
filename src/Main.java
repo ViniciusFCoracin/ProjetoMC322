@@ -16,7 +16,6 @@ import src.Spaces.Classrooms.BasicRoom;
 import src.Schedule.ClassSchedule;
 import src.Schedule.WeekDay;
 
-
 public class Main {
 
     public static Map<Lecture, String> allocatingSpaces(Lecture... lectures) {
