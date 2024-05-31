@@ -1,5 +1,5 @@
-package Spaces.Classrooms;
-import Spaces.Space;
+package src.Spaces.Classrooms;
+import src.Spaces.Space;
 
 /**
  * Abstract class that represents a Classrooom

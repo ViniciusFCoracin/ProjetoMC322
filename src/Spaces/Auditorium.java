@@ -1,17 +1,17 @@
-package Spaces.Classrooms;
+package src.Spaces;
 
 /**
- * Class that represents a basic classroom 
+ * A class that represents an auditorium
  */
-public class BasicRoom extends Classroom{
+public class Auditorium extends Space{
     /**
-     * Public constructor for the BasicRoom class
+     * Public constructor for the Auditorium class
      * 
      * @param spaceName: the name of the space
      * @param spaceId: the id of the space
      * @param maxCapacity: the capacity of people int the space
      */
-    public BasicRoom(String spaceName, int spaceId, int maxCapacity){
+    public Auditorium(String spaceName, int spaceId, int maxCapacity){
         super(spaceName, spaceId, maxCapacity);
     }
 }

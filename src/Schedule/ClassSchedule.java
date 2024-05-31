@@ -1,4 +1,4 @@
-package Schedule;
+package src.Schedule;
 
 /**
  * Class that represents a schedule of a class,

@@ -1,4 +1,4 @@
-package Spaces.Classrooms;
+package src.Spaces.Classrooms;
 
 /**
  * Class that represents a classroom with a slide projector
