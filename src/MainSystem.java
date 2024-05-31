@@ -5,15 +5,14 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.jgrapht.Graph;
 import org.jgrapht.alg.color.GreedyColoring;
 import org.jgrapht.alg.interfaces.VertexColoringAlgorithm.Coloring;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
-
 import src.Course.Lecture;
 import src.Spaces.Space;
+
 /*This class may be refactored to a Singleton later */
 public class MainSystem {
 
@@ -33,7 +32,7 @@ public class MainSystem {
         return this.spaceList;
     }
 
-    public static Map<Lecture, String> allocatingSpaces(List<Space> availableSpaces,Lecture... lectures) {
+    public static Map<Lecture, String> allocatingSpaces(List<Space> availableSpaces, Lecture... lectures) {
         // Creating the graph
         Graph<Lecture, DefaultEdge> graph = new SimpleGraph<>(DefaultEdge.class);
 
