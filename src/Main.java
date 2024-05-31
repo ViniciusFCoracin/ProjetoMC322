@@ -73,19 +73,5 @@ public class Main {
         Lecture newLecture2 = new Lecture(newRoom1, newDiscipline2, newSchedule1, "Rezende");
 
         System.out.println(Main.allocatingSpaces(newLecture1, newLecture2));
-        /**Graph<String, DefaultEdge> graph = new SimpleGraph<>(DefaultEdge.class);
-
-        graph.addVertex("A");
-        graph.addVertex("B");
-        graph.addVertex("C");
-        graph.addVertex("D");
-
-        graph.addEdge("A", "B");
-        graph.addEdge("A", "C");
-        graph.addEdge("B", "D");
-
-        GreedyColoring<String, DefaultEdge> coloring = new GreedyColoring<>(graph);
-        System.out.println("Vertex Colors: " + coloring.getColoring());**/
     }
 }
-// merge test
