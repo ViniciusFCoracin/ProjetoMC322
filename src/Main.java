@@ -41,6 +41,3 @@ public class Main {
         }
     }
 }
-        System.out.println(Main.allocatingSpaces(newLecture1, newLecture2));
-    }
-}
