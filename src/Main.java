@@ -9,7 +9,8 @@ import org.jgrapht.graph.SimpleGraph;
 import src.Course.Lecture;
 
 import org.jgrapht.alg.color.GreedyColoring;
-import org.jgrapht.alg.color.Coloring;
+import org.jgrapht.alg.interfaces.VertexColoringAlgorithm.Coloring;
+
 
 public class Main {
 
