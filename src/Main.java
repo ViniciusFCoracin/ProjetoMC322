@@ -72,4 +72,3 @@ public class Main {
         System.out.println("Vertex Colors: " + coloring.getColoring());
     }
 }
-//teste
