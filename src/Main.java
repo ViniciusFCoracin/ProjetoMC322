@@ -12,7 +12,6 @@ import src.Spaces.Classrooms.BasicRoom;
 
 public class Main {
 
-    /* somente teste */
     public static void main(String[] args) {
 
         BasicRoom newRoom1 = new BasicRoom("Classroom 1", 1, 40);
@@ -40,5 +39,8 @@ public class Main {
             lecture.getLectureSchedule().getStartHour() + ", End: " + lecture.getLectureSchedule().getEndHour() +
             ", Allocated Space: " + space);
         }
+    }
+}
+        System.out.println(Main.allocatingSpaces(newLecture1, newLecture2));
     }
 }
