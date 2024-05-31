@@ -5,12 +5,16 @@ import java.util.Map;
 import org.jgrapht.Graph;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
-
-import src.Course.Lecture;
-
 import org.jgrapht.alg.color.GreedyColoring;
 import org.jgrapht.alg.interfaces.VertexColoringAlgorithm.Coloring;
 
+import src.Course.Discipline;
+import src.Course.Lecture;
+import src.Schedule.ClassSchedule;
+import src.Spaces.Space;
+import src.Spaces.Classrooms.BasicRoom;
+import src.Schedule.ClassSchedule;
+import src.Schedule.WeekDay;
 
 public class Main {
 
@@ -58,7 +62,18 @@ public class Main {
     }
     /* somente teste */
     public static void main(String[] args) {
-        Graph<String, DefaultEdge> graph = new SimpleGraph<>(DefaultEdge.class);
+
+        BasicRoom newRoom1 = new BasicRoom("Classroom 1", 1, 40);
+        Discipline newDiscipline1 = new Discipline("MC202", 202, 6);
+        ClassSchedule newSchedule1 = new ClassSchedule(WeekDay.MONDAY, 19, 21);
+
+        Discipline newDiscipline2 = new Discipline("MC358", 358, 4);
+
+        Lecture newLecture1 = new Lecture(newRoom1, newDiscipline1, newSchedule1, "GPT");
+        Lecture newLecture2 = new Lecture(newRoom1, newDiscipline2, newSchedule1, "Rezende");
+
+        System.out.println(Main.allocatingSpaces(newLecture1, newLecture2));
+        /**Graph<String, DefaultEdge> graph = new SimpleGraph<>(DefaultEdge.class);
 
         graph.addVertex("A");
         graph.addVertex("B");
@@ -70,6 +85,7 @@ public class Main {
         graph.addEdge("B", "D");
 
         GreedyColoring<String, DefaultEdge> coloring = new GreedyColoring<>(graph);
-        System.out.println("Vertex Colors: " + coloring.getColoring());
+        System.out.println("Vertex Colors: " + coloring.getColoring());**/
     }
 }
+// merge test
