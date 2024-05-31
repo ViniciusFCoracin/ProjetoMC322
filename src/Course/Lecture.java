@@ -1,6 +1,6 @@
-package Course;
-import Schedule.ClassSchedule;
-import Spaces.*;
+package src.Course;
+import src.Schedule.ClassSchedule;
+import src.Spaces.*;
 
 /**
  * Class that represents a lecture

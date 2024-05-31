@@ -1,4 +1,4 @@
-package Course;
+package src.Course;
 
 /**
  * Class that represents a university discipline

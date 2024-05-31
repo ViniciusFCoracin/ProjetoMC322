@@ -1,4 +1,4 @@
-package Spaces;
+package src.Spaces;
 
 /**
  * Abstract class that represents a space in a university

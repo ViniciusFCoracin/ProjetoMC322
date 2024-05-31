@@ -1,4 +1,4 @@
-package Schedule;
+package src.Schedule;
 
 /**
  * Enum that represents days of the week

@@ -1,4 +1,4 @@
-package Course;
+package src.Course;
 import java.util.List;
 
 /**
