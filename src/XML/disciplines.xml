@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE disciplines SYSTEM "disciplines.dtd">
+<disciplines>
+    <discipline>
+        <disciplineName> Cálculo I </disciplineName>
+        <disciplineId> MA111 </disciplineId>
+        <professors> 
+            <professor> Leithold Louis Alrazo Alvarez </professor>
+            <professor> Joerg Dietrich Wilhelm Schleicher </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Física Geral I </disciplineName>
+        <disciplineId> F 128 </disciplineId>
+        <professors>
+            <professor> José Antônio Brum </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Geometria Analítica e Vetores </disciplineName>
+        <disciplineId> MA141 </disciplineId>
+        <professors>
+            <professor> Eder de Moraes Correa </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Algoritmos e Programação de Computadores </disciplineName>
+        <disciplineId> MC102 </disciplineId>
+        <professors>
+            <professor> Rafael Saliba Schouery </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Estrutura de Dados </disciplineName>
+        <disciplineId> MC202 </disciplineId>
+        <professors>
+            <professor> Guilherme Pimentel Telles </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Álgebra Linear </disciplineName>
+        <disciplineId> MA327 </disciplineId>
+        <professors>
+            <professor> Eder de Moraes Correa </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Cálculo II </disciplineName>
+        <disciplineId> MA211 </disciplineId>
+        <professors>
+            <professor> Joachim Weber </professor>
+            <professor> Claudemir Fideles Bezerra Junior </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Física Experimental I </disciplineName>
+        <disciplineId> F 129 </disciplineId>
+        <professors>
+            <professor> Luiz Filipe Campos Faria </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Computação e Sociedade </disciplineName>
+        <disciplineId> MC009 </disciplineId>
+        <professors>
+            <professor> Claudia Maria Bauzer Medeiros </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Cálculo III </disciplineName>
+        <disciplineId> MA311 </disciplineId>
+        <professors>
+            <professor> Lucas Catão de Freitas Ferreira </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Fundamentos Matemáticos da Computação </disciplineName>
+        <disciplineId> MC358 </disciplineId>
+        <professors>
+            <professor> Pedro Jussieu de Rezende </professor>
+        </professors>
+    </discipline>
+</disciplines>

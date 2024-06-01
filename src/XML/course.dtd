@@ -1,0 +1,8 @@
+<!ELEMENT courses (course+)>
+<!ELEMENT course (courseName,courseId,semesters)>
+<!ELEMENT courseName (#PCDATA)>
+<!ELEMENT courseId (#PCDATA)>
+<!ELEMENT semesters (semester+)>
+<!ELEMENT semester (disciplineId*)>
+<!ELEMENT disciplineId (#PCDATA)>
+<!ATTLIST semester period CDATA #REQUIRED>
