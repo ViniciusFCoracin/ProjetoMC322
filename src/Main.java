@@ -15,13 +15,13 @@ public class Main {
     public static void main(String[] args) {
 
         BasicRoom newRoom1 = new BasicRoom("Classroom 1", 1, 40);
-        Discipline newDiscipline1 = new Discipline("MC202", 202, 6);
+        Discipline newDiscipline1 = new Discipline("MC202", "202", 6);
         ClassSchedule newSchedule1 = new ClassSchedule(WeekDay.MONDAY, 19, 21);
 
         BasicRoom newRoom2 = new BasicRoom("Classroom 2", 2, 40);
-        Discipline newDiscipline2 = new Discipline("MC358", 358, 4);
+        Discipline newDiscipline2 = new Discipline("MC358", "358", 4);
 
-        Discipline newDiscipline3 = new Discipline("MA211", 211, 6);
+        Discipline newDiscipline3 = new Discipline("MA211", "211", 6);
         ClassSchedule newSchedule3 = new ClassSchedule(WeekDay.FRIDAY, 21, 23);
         
         Lecture newLecture1 = new Lecture(newRoom1, newDiscipline1, newSchedule1, "GPT");

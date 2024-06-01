@@ -5,7 +5,7 @@ package src.Course;
  */
 public class Discipline {
     private String disciplineName;
-    private int disciplineId;
+    private String disciplineId;
     private int disciplineCredits;
 
     /**
@@ -15,7 +15,7 @@ public class Discipline {
      * @param id: the id of the discipline
      * @param credits: the nummber of credits of the discipline
      */
-    public Discipline(String disciplineName, int id, int credits){
+    public Discipline(String disciplineName, String id, int credits){
         this.disciplineName = disciplineName;
         this.disciplineId = id;
         this.disciplineCredits = credits;
@@ -25,7 +25,7 @@ public class Discipline {
         return this.disciplineName;
     }
 
-    public int getDisciplineId(){
+    public String getDisciplineId(){
         return this.disciplineId;
     }
 
