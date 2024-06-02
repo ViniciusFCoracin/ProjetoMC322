@@ -35,7 +35,7 @@
                 <disciplineId> MA141 </disciplineId>
                 <disciplineId> F 128 </disciplineId>
                 <disciplineId> MC102 </disciplineId>
-                <disciplineId> F 159 </disciplineId>
+                <disciplineId> F 129 </disciplineId>
                 <disciplineId> HZ291 </disciplineId>
                 <disciplineId> QG101 </disciplineId>
             </semester>
@@ -44,7 +44,7 @@
                 <disciplineId> MA327 </disciplineId>
                 <disciplineId> F 228 </disciplineId>
                 <disciplineId> MC202 </disciplineId>
-                <disciplineId> F 259 </disciplineId>
+                <disciplineId> F 229 </disciplineId>
                 <disciplineId> LA122 </disciplineId>
             </semester>
             <semester period="3">
@@ -52,7 +52,7 @@
                 <disciplineId> F315 </disciplineId>
                 <disciplineId> F 328 </disciplineId>
                 <disciplineId> MC322 </disciplineId>
-                <disciplineId> F 359 </disciplineId>
+                <disciplineId> F 329 </disciplineId>
                 <disciplineId> MA311 </disciplineId>
             </semester>
         </semesters>

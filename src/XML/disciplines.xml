@@ -80,4 +80,74 @@
             <professor> Pedro Jussieu de Rezende </professor>
         </professors>
     </discipline>
+    <discipline>
+        <disciplineName> Programação Orientada a Objetos </disciplineName>
+        <disciplineId> MC322 </disciplineId>
+        <professors>
+            <professor> Marcos Medeiros Raimundo </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Introdução aos Modelos Probabilísticos </disciplineName>
+        <disciplineId> ME323 </disciplineId>
+        <professors>
+            <professor> Felipe Augusto Fernandes </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Tópicos Especiais de Humanidades I </disciplineName>
+        <disciplineId> HZ291 </disciplineId>
+        <professors>
+            <professor> Pedro Peixoto Ferreira </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Química I </disciplineName>
+        <disciplineId> QG101 </disciplineId>
+        <professors>
+            <professor> Fabio Augusto </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Física Geral II </disciplineName>
+        <disciplineId> F 228 </disciplineId>
+        <professors>
+            <professor> Diego Muraca </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Física Experimental II </disciplineName>
+        <disciplineId> F 229 </disciplineId>
+        <professors>
+            <professor> Natalia De Faria Coutinho </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Inglês Experimental I </disciplineName>
+        <disciplineId> LA122 </disciplineId>
+        <professors>
+            <professor> Joacyr Tupinambas De Oliveira </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Mecânica Geral I </disciplineName>
+        <disciplineId> F 315 </disciplineId>
+        <professors>
+            <professor> Andre Alexandre De Thomaz </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Física Experimental III </disciplineName>
+        <disciplineId> F 359 </disciplineId>
+        <professors>
+            <professor> Francisco Paulo Marques Rouxinol </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Circuitos Elétricos </disciplineName>
+        <disciplineId> EA513 </disciplineId>
+        <professors>
+            <professor> Christiano Lyra Filho </professor>
+        </professors>
+    </discipline>
 </disciplines>

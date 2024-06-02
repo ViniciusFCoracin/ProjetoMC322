@@ -36,10 +36,14 @@ public class CourseReader implements XMLNodeReader {
                 else if ("courseId".equals(node.getNodeName())){
                     courseId = Integer.parseInt(node.getTextContent().trim());
                 }
-                else if ("semester".equals(node.getNodeName())){
+                else if ("semesters".equals(node.getNodeName())){
+                    NodeList semesterList = node.getChildNodes();
                     SemesterReader reader = SemesterReader.getInstance();
-                    Semester semester = reader.readNode(node);
-                    semesters.add(semester);
+                    for (int j = 0; j < semesterList.getLength(); j++){
+                        Node semesterNode = semesterList.item(j);
+                        Semester semester = reader.readNode(semesterNode);
+                        semesters.add(semester);
+                    }
                 }
                 else{
                     throw new Error("Invalid atribute");
