@@ -1,10 +1,13 @@
 package src;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import src.Course.Course;
 import src.Course.Discipline;
 import src.Course.Lecture;
+import src.Course.Semester;
 import src.Schedule.ClassSchedule;
 import src.Schedule.WeekDay;
 import src.Spaces.Space;
@@ -12,7 +15,7 @@ import src.Spaces.Classrooms.BasicRoom;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         BasicRoom newRoom1 = new BasicRoom("Classroom 1", 1, 40);
         Discipline newDiscipline1 = new Discipline("MC202", 202, 6);
@@ -28,8 +31,14 @@ public class Main {
         Lecture newLecture2 = new Lecture(newRoom1, newDiscipline2, newSchedule1, "Rezende");
         Lecture newLecture3 = new Lecture(newRoom1, newDiscipline3, newSchedule3, "Weber");
 
+        List<Discipline> mainDisciplineList = Arrays.asList(newDiscipline1, newDiscipline2, newDiscipline3);
+        Semester newSemester1 = new Semester(2, mainDisciplineList);
+        List<Semester> mainSemesterList = Arrays.asList(newSemester1);
+        Course computer_science = new Course("Computer Science", 42, mainSemesterList);
+
         List<Space> mainSpaceList = Arrays.asList(newRoom1, newRoom2);
-        Map<Lecture, String> allocatedSpaces = MainSystem.allocatingSpaces(mainSpaceList, newLecture1, newLecture2, newLecture3);
+        List<Course> mainCourseList = Arrays.asList(computer_science);
+        Map<Lecture, String> allocatedSpaces = MainSystem.allocatingSpaces(mainSpaceList, mainCourseList, newLecture1, newLecture2, newLecture3);
         
         for (Map.Entry<Lecture, String> entry : allocatedSpaces.entrySet()) {
             Lecture lecture = entry.getKey();
