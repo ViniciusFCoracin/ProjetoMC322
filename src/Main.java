@@ -19,25 +19,10 @@ public class Main {
         Discipline newDiscipline2 = new Discipline("MC358", "358", 4, "Rezende", "Chris");
         Discipline newDiscipline3 = new Discipline("MA211", "211", 6, "Weber", "Renato");
         Discipline newDiscipline4 = new Discipline("QO321", "321", 6, "Rosana", "Rogério");
-        Discipline newDiscipline5 = new Discipline("QG108", "211", 6, "Amanda", "Carlos")
+        Discipline newDiscipline5 = new Discipline("QG108", "211", 6, "Amanda", "Carlos");
           
         BasicRoom newRoom1 = new BasicRoom("Classroom 1", 1, 40);
-        List<String> professors1 = List.of("GPT");
-        Discipline newDiscipline1 = new Discipline("MC202", "202", 6, professors1);
-        ClassSchedule newSchedule1 = new ClassSchedule(WeekDay.MONDAY, 19, 21);
-
-        BasicRoom newRoom1 = new BasicRoom("Classroom 1", 1, 40);
         BasicRoom newRoom2 = new BasicRoom("Classroom 2", 2, 40);
-        List<String> professors2 = List.of("Rezende");
-        Discipline newDiscipline2 = new Discipline("MC358", "358", 4, professors2);
-
-        List<String> professors3 = List.of("Weber");
-        Discipline newDiscipline3 = new Discipline("MA211", "211", 6, professors3);
-        ClassSchedule newSchedule3 = new ClassSchedule(WeekDay.FRIDAY, 21, 23);
-        
-        Lecture newLecture1 = new Lecture(newRoom1, newDiscipline1, newSchedule1, "GPT");
-        Lecture newLecture2 = new Lecture(newRoom1, newDiscipline2, newSchedule1, "Rezende");
-        Lecture newLecture3 = new Lecture(newRoom1, newDiscipline3, newSchedule3, "Weber");
 
         List<Discipline> mainDisciplineList = Arrays.asList(newDiscipline1, newDiscipline2, newDiscipline3);
         Semester newSemester1 = new Semester(2, mainDisciplineList);
