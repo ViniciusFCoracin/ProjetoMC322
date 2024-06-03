@@ -1,42 +1,48 @@
-package src.Readers.DisciplineRelatedReaders;
+package src.Readers.SpaceRelatedReaders;
 
 import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import java.util.ArrayList;
 import java.util.List;
 
-import src.Course.Discipline;
+import src.Spaces.*;
 import src.Readers.XMLFileReader;
 
-/**
- * Singleton class that reads a discipline XML file
- */
-public class DisciplinesFileReader implements XMLFileReader {
-    private static DisciplinesFileReader instance;
 
-    private DisciplinesFileReader(){
+/**
+ * Singleton class that reads a XML file of spaces
+ */
+public class SpacesFileReader implements XMLFileReader {
+    private static SpacesFileReader instance;
+
+    private SpacesFileReader(){
         // does nothing, but we need this to be private
     }
 
-    public List<Discipline> readFile(String path){
-        List<Discipline> disciplines = new ArrayList<>();
+    @Override
+    public List<Space> readFile(String path){
+        List<Space> spaces = new ArrayList<>();
         try{
             File file = new File(path);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(file);
             doc.getDocumentElement().normalize();
-            NodeList nodeList = doc.getElementsByTagName("discipline");
+            NodeList nodeList = doc.getChildNodes();
 
             for (int i = 0; i < nodeList.getLength(); i++){
-                Node disciplineNode = nodeList.item(i);
-                DisciplineReader reader = DisciplineReader.getInstance();
-                Discipline discipline = reader.readNode(disciplineNode);
-                disciplines.add(discipline);
+                Node spaceNode = nodeList.item(i);
+                if (spaceNode.getNodeType() != Node.ELEMENT_NODE)
+                    continue;
+                else{
+                    SpaceReader reader = SpaceReader.getInstance();
+                    Space space = reader.readNode(spaceNode);
+                    spaces.add(space);
+                }   
             }
         }
         catch (Exception e){
@@ -44,12 +50,12 @@ public class DisciplinesFileReader implements XMLFileReader {
             e.printStackTrace();
         }
 
-        return disciplines;
+        return spaces;
     }
 
-    public static DisciplinesFileReader getInstance(){
+    public static SpacesFileReader getInstance(){
         if (instance == null)
-            instance = new DisciplinesFileReader();
+            instance = new SpacesFileReader();
         return instance;
     }
 }

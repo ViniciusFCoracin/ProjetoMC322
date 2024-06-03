@@ -1,44 +1,76 @@
 package src.Readers.SpaceRelatedReaders;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.NodeList;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import java.io.File;
-import java.util.List;
-import java.util.ArrayList;
+import org.w3c.dom.Node;
 
-import src.Readers.XMLFileReader;
 import src.Spaces.*;
+import src.Spaces.Classrooms.*;
+import src.Readers.XMLNodeReader;
 
-public class SpaceReader implements XMLFileReader {
-    @Override
-    public List<Space> readFile(String path){
-        List<Space> spaces = new ArrayList<>();
+/**
+ * Singleton class that reads a course node and returns a Course object
+ */
+public class SpaceReader implements XMLNodeReader {
+    private static SpaceReader instance;
 
+    private SpaceReader(){
+        // does nothing, but we need this to be private
+    }
+
+    public Space readNode(Node spaceNode){
+        Space space = null;
         try{
-            File file = new File(path);
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(file);
-            doc.getDocumentElement().normalize();
-            NodeList nodeList = doc.getElementsByTagName("space");
-
-            for (int i = 0; i < nodeList.getLength(); i++){
-                Element spaceElement = (Element) nodeList.item(i);
-                String name = spaceElement.getElementsByTagName("name").item(0).getTextContent().trim();
-                int id = Integer.parseInt(spaceElement.getElementsByTagName("id").item(0).getTextContent().trim());
-                int capacity = Integer.parseInt(spaceElement.getElementsByTagName("capacity").item(0).getTextContent().trim());
-                Space space = null;
-                spaces.add(space);
+            NodeList childNodes = spaceNode.getChildNodes();
+            for (int i = 0; i < childNodes.getLength(); i++){
+                Node node = childNodes.item(i);
+                if (node.getNodeType() != Node.ELEMENT_NODE)
+                    continue;
+                else if ("basicRoom".equals(node.getNodeName())){
+                    BasicRoomReader reader = BasicRoomReader.getInstance();
+                    BasicRoom room = reader.readNode(spaceNode);
+                    return room;
+                }
+                else if ("computerRoom".equals(node.getNodeName())){
+                    ComputerRoomReader reader = ComputerRoomReader.getInstance();
+                    ComputerRoom room = reader.readNode(spaceNode);
+                    return room;
+                }
+                else if ("slidesRoom".equals(node.getNodeName())){
+                    SlidesRoomReader reader = SlidesRoomReader.getInstance();
+                    SlidesRoom room = reader.readNode(spaceNode);
+                    return room;
+                }
+                else if ("auditorium".equals(node.getNodeName())){
+                    AuditoriumReader reader = AuditoriumReader.getInstance();
+                    Auditorium room = reader.readNode(spaceNode);
+                    return room;
+                }
+                else if ("laboratory".equals(node.getNodeName())){
+                    LaboratoryReader reader = LaboratoryReader.getInstance();
+                    Laboratory room = reader.readNode(spaceNode);
+                    return room;
+                }
+                else if ("court".equals(node.getNodeName())){
+                    CourtReader reader = CourtReader.getInstance();
+                    Court room = reader.readNode(spaceNode);
+                    return room;
+                }
+                else{
+                    throw new Error("Invalid atribute");
+                }
             }
-        } catch (Exception e){
-            System.err.println("Erro ao ler o arquivo: " + e.getMessage());
+        }
+        catch (Exception e){
+            System.err.println("Error reading file: " + e.getMessage());
             e.printStackTrace();
         }
 
-        return spaces;
+        return space;
     }
 
+    public static SpaceReader getInstance(){
+        if (instance == null)
+            instance = new SpaceReader();
+        return instance;
+    }
 }
