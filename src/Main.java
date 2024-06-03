@@ -15,11 +15,11 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        Discipline newDiscipline1 = new Discipline("MC202", "202", 6, "GPT");
-        Discipline newDiscipline2 = new Discipline("MC358", "358", 4, "Rezende", "Chris");
-        Discipline newDiscipline3 = new Discipline("MA211", "211", 6, "Weber", "Renato");
-        Discipline newDiscipline4 = new Discipline("QO321", "321", 6, "Rosana", "Rogério");
-        Discipline newDiscipline5 = new Discipline("QG108", "211", 6, "Amanda", "Carlos");
+        Discipline newDiscipline1 = new Discipline("MC202", "MC202", 6, "GPT");
+        Discipline newDiscipline2 = new Discipline("MC358", "MC358", 4, "Rezende", "Chris");
+        Discipline newDiscipline3 = new Discipline("MA211", "MA211", 6, "Weber", "Renato");
+        Discipline newDiscipline4 = new Discipline("QO321", "QO321", 6, "Rosana", "Rogério");
+        Discipline newDiscipline5 = new Discipline("QG108", "QG108", 6, "Amanda", "Carlos");
           
         BasicRoom newRoom1 = new BasicRoom("Classroom 1", 1, 40);
         BasicRoom newRoom2 = new BasicRoom("Classroom 2", 2, 40);
@@ -31,7 +31,6 @@ public class Main {
         List<Semester> mainSemesterList = Arrays.asList(newSemester1);
         Course computer_science = new Course("Computer Science", 42, mainSemesterList);
 
-        List<Discipline> secDisciplineList = Arrays.asList(newDiscipline4, newDiscipline5);
         List<String> disciplineIds2 = Arrays.asList("QO321", "QG108");
         Semester newSemester2 = new Semester(2, disciplineIds2);
         List<Semester> secSemesterList = Arrays.asList(newSemester2);

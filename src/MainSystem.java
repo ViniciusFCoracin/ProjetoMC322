@@ -51,8 +51,8 @@ public class MainSystem {
         // Adding disciplines (vertices)
         for (Course course : courses) {
             for (Semester semester : course.getCourseSemesters()) {
-                for (String discipline : semester.getDisciplines()) {
-                    graph.addVertex(discipline);
+                for (String disciplineId : semester.getDisciplines()) {
+                    graph.addVertex(disciplineId);
                 }
             }
         }
@@ -60,10 +60,10 @@ public class MainSystem {
         // Adding edges (possible conflicts)
         for (Course course : courses) {
             for (Semester semester : course.getCourseSemesters()) {
-                List<String> disciplines = semester.getDisciplines();
-                for (int i = 0; i < disciplines.size(); i++) {
-                    for (int j = i + 1; j < disciplines.size(); j++) {
-                        graph.addEdge(disciplines.get(i), disciplines.get(j));
+                List<String> disciplineIds = semester.getDisciplines();
+                for (int i = 0; i < disciplineIds.size(); i++) {
+                    for (int j = i + 1; j < disciplineIds.size(); j++) {
+                        graph.addEdge(disciplineIds.get(i), disciplineIds.get(j));
                     }
                 }
             }
@@ -76,15 +76,20 @@ public class MainSystem {
         // Creating lectures with allocated schedules
         List<Lecture> lectures = new ArrayList<>();
         for (Map.Entry<String, Integer> entry : coloringResult.getColors().entrySet()) {
-            String discipline = entry.getKey();
+            String disciplineId = entry.getKey();
             Integer color = entry.getValue();
             ClassSchedule schedule = new ClassSchedule(WeekDay.values()[color % WeekDay.values().length], 8 + color * 2, 8 + color * 2 + 1); // Simplified schedule
+            
+            Discipline discipline = disciplineList.stream().filter(d -> d.getDisciplineId().equals(disciplineId))
+            .findFirst().orElseThrow(() -> new IllegalArgumentException("Disciplina não encontrada: " + disciplineId));
+            
             List<String> instructors = discipline.getProfessors();
-            // This part of the code may be an issue. It appears to be only considering the first professor of the list
             int instructorIndex = 0;
             String instructor = instructors.get(instructorIndex % instructors.size());
             instructorIndex++;
-            lectures.add(new Lecture(null, discipline, schedule, instructor));
+
+            
+            lectures.add(new Lecture(null, disciplineId, schedule, instructor));
         }
 
         return lectures;
