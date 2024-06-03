@@ -15,13 +15,16 @@ public class Main {
     public static void main(String[] args) {
 
         BasicRoom newRoom1 = new BasicRoom("Classroom 1", 1, 40);
-        Discipline newDiscipline1 = new Discipline("MC202", "202", 6);
+        List<String> professors1 = List.of("GPT");
+        Discipline newDiscipline1 = new Discipline("MC202", "202", 6, professors1);
         ClassSchedule newSchedule1 = new ClassSchedule(WeekDay.MONDAY, 19, 21);
 
         BasicRoom newRoom2 = new BasicRoom("Classroom 2", 2, 40);
-        Discipline newDiscipline2 = new Discipline("MC358", "358", 4);
+        List<String> professors2 = List.of("Rezende");
+        Discipline newDiscipline2 = new Discipline("MC358", "358", 4, professors2);
 
-        Discipline newDiscipline3 = new Discipline("MA211", "211", 6);
+        List<String> professors3 = List.of("Weber");
+        Discipline newDiscipline3 = new Discipline("MA211", "211", 6, professors3);
         ClassSchedule newSchedule3 = new ClassSchedule(WeekDay.FRIDAY, 21, 23);
         
         Lecture newLecture1 = new Lecture(newRoom1, newDiscipline1, newSchedule1, "GPT");
