@@ -1,6 +1,7 @@
 <!ELEMENT disciplines (discipline+)>
-<!ELEMENT discipline (disciplineName,disciplineId,professors)>
+<!ELEMENT discipline (disciplineName,disciplineId,credits,professors)>
 <!ELEMENT disciplineName (#PCDATA)>
 <!ELEMENT disciplineId (#PCDATA)>
+<!ELEMENT credits (#PCDATA)>
 <!ELEMENT professors (professor+)>
 <!ELEMENT professor (#PCDATA)>

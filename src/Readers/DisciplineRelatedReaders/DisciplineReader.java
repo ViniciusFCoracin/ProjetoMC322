@@ -36,7 +36,7 @@ public class DisciplineReader implements XMLNodeReader {
                 else if ("disciplineId".equals(node.getNodeName())){
                     disciplineId = node.getTextContent().trim();
                 }
-                else if ("disciplineCredits".equals(node.getNodeName())){
+                else if ("credits".equals(node.getNodeName())){
                     credits = Integer.parseInt(node.getTextContent().trim());
                 }
                 else if ("professors".equals(node.getNodeName())){
