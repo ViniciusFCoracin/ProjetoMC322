@@ -29,6 +29,10 @@ public class Lecture {
         return this.lectureSpace;
     }
 
+    public void setLectureSpace(Space newSpace){
+        this.lectureSpace = newSpace;
+    }
+
     public Discipline getLectureDiscipline(){
         return this.lectureDiscipline;
     }
