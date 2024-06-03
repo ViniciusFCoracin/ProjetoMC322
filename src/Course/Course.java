@@ -35,18 +35,20 @@ public class Course {
     }
     
     public boolean containsDiscipline(String discipline) {
-      for(String discipline : semester.getDisciplines()){
-        if (discipline.equals(lecture.getLectureDisciplineId())) {
-          return semester.getSemesterPeriod();
-         }
+        for (Semester semester : courseSemesters){
+            if (semester.getDisciplines().contains(discipline))
+                return true;
         }
+        return false;
+    }
         
 
     public int getSemesterOfLecture(Lecture lecture) {
-      for (Semester semester : courseSemesters) {
-        for (String disciplineId : semester.getDisciplines(){
-          if (disciplineId.equals(lecture.getLectureDisciplineId()))
-            return semester.getPeriod();
+        for (Semester semester : courseSemesters) {
+            for (String disciplineId : semester.getDisciplines()){
+                if (disciplineId.equals(lecture.getLectureDisciplineId()))
+                    return semester.getSemesterPeriod();
+            }
         }
         throw new IllegalArgumentException("Lecture not found in this course");
     }
