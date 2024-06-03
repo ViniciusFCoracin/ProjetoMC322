@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class Semester {
     private int semesterPeriod;
-    private List<String> disciplineIds;
+    private List<Discipline> disciplines;
 
     /**
      * Public constructor for the Semester class
@@ -15,16 +15,16 @@ public class Semester {
      * @param semesterPeriod: the number of the semester in the course
      * @param disciplines: the list of disciplines in the semester
      */
-    public Semester(int semesterPeriod, List<String> disciplineIds){
+    public Semester(int semesterPeriod, List<Discipline> disciplines){
         this.semesterPeriod = semesterPeriod;
-        this.disciplineIds = disciplineIds;
+        this.disciplines = disciplines;
     }
 
     public int getSemesterPeriod(){
         return this.semesterPeriod;
     }
 
-    public List<String> getDisciplines(){
-        return this.disciplineIds;
+    public List<Discipline> getDisciplines(){
+        return this.disciplines;
     }
 }
