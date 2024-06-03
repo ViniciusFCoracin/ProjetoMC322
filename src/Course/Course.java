@@ -34,19 +34,22 @@ public class Course {
         return this.courseSemesters;
     }
     
-    public boolean containsDiscipline(Discipline discipline) {
+    public boolean containsDiscipline(String thisDisciplineId) {
         for (Semester semester : courseSemesters) {
-            if (semester.getDisciplines().contains(discipline)) {
-                return true;
+            for (String thatDisciplineId : semester.getDisciplines()){
+                if (thisDisciplineId.equals(thatDisciplineId))
+                    return true;
             }
         }
         return false;
     }
 
     public int getSemesterOfLecture(Lecture lecture) {
+        String thisDisciplineId = lecture.getLectureDiscipline().getDisciplineId();
         for (Semester semester : courseSemesters) {
-            if (semester.getDisciplines().contains(lecture.getLectureDiscipline())) {
-                return semester.getSemesterPeriod();
+            for (String thatDisciplineId : semester.getDisciplines()){
+                if (thisDisciplineId.equals(thatDisciplineId))
+                    return semester.getSemesterPeriod();
             }
         }
         throw new IllegalArgumentException("Lecture not found in this course");

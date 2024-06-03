@@ -4,6 +4,7 @@
     <discipline>
         <disciplineName> Cálculo I </disciplineName>
         <disciplineId> MA111 </disciplineId>
+        <credits> 6 </credits>
         <professors> 
             <professor> Leithold Louis Alrazo Alvarez </professor>
             <professor> Joerg Dietrich Wilhelm Schleicher </professor>
@@ -12,6 +13,7 @@
     <discipline>
         <disciplineName> Física Geral I </disciplineName>
         <disciplineId> F 128 </disciplineId>
+        <credits> 4 </credits>
         <professors>
             <professor> José Antônio Brum </professor>
         </professors>
@@ -19,6 +21,7 @@
     <discipline>
         <disciplineName> Geometria Analítica e Vetores </disciplineName>
         <disciplineId> MA141 </disciplineId>
+        <credits> 4 </credits>
         <professors>
             <professor> Eder de Moraes Correa </professor>
         </professors>
@@ -26,6 +29,7 @@
     <discipline>
         <disciplineName> Algoritmos e Programação de Computadores </disciplineName>
         <disciplineId> MC102 </disciplineId>
+        <credits> 6 </credits>
         <professors>
             <professor> Rafael Saliba Schouery </professor>
         </professors>
@@ -33,6 +37,7 @@
     <discipline>
         <disciplineName> Estrutura de Dados </disciplineName>
         <disciplineId> MC202 </disciplineId>
+        <credits> 6 </credits>
         <professors>
             <professor> Guilherme Pimentel Telles </professor>
         </professors>
@@ -40,6 +45,7 @@
     <discipline>
         <disciplineName> Álgebra Linear </disciplineName>
         <disciplineId> MA327 </disciplineId>
+        <credits> 4 </credits>
         <professors>
             <professor> Eder de Moraes Correa </professor>
         </professors>
@@ -47,6 +53,7 @@
     <discipline>
         <disciplineName> Cálculo II </disciplineName>
         <disciplineId> MA211 </disciplineId>
+        <credits> 6 </credits>
         <professors>
             <professor> Joachim Weber </professor>
             <professor> Claudemir Fideles Bezerra Junior </professor>
@@ -55,6 +62,7 @@
     <discipline>
         <disciplineName> Física Experimental I </disciplineName>
         <disciplineId> F 129 </disciplineId>
+        <credits> 2 </credits>
         <professors>
             <professor> Luiz Filipe Campos Faria </professor>
         </professors>
@@ -62,6 +70,7 @@
     <discipline>
         <disciplineName> Computação e Sociedade </disciplineName>
         <disciplineId> MC009 </disciplineId>
+        <credits> 2 </credits>
         <professors>
             <professor> Claudia Maria Bauzer Medeiros </professor>
         </professors>
@@ -69,6 +78,7 @@
     <discipline>
         <disciplineName> Cálculo III </disciplineName>
         <disciplineId> MA311 </disciplineId>
+        <credits> 6 </credits>
         <professors>
             <professor> Lucas Catão de Freitas Ferreira </professor>
         </professors>
@@ -76,6 +86,7 @@
     <discipline>
         <disciplineName> Fundamentos Matemáticos da Computação </disciplineName>
         <disciplineId> MC358 </disciplineId>
+        <credits> 4 </credits>
         <professors>
             <professor> Pedro Jussieu de Rezende </professor>
         </professors>
@@ -83,6 +94,7 @@
     <discipline>
         <disciplineName> Programação Orientada a Objetos </disciplineName>
         <disciplineId> MC322 </disciplineId>
+        <credits> 4 </credits>
         <professors>
             <professor> Marcos Medeiros Raimundo </professor>
         </professors>
@@ -90,6 +102,7 @@
     <discipline>
         <disciplineName> Introdução aos Modelos Probabilísticos </disciplineName>
         <disciplineId> ME323 </disciplineId>
+        <credits> 4 </credits>
         <professors>
             <professor> Felipe Augusto Fernandes </professor>
         </professors>
@@ -97,6 +110,7 @@
     <discipline>
         <disciplineName> Tópicos Especiais de Humanidades I </disciplineName>
         <disciplineId> HZ291 </disciplineId>
+        <credits> 2 </credits>
         <professors>
             <professor> Pedro Peixoto Ferreira </professor>
         </professors>
@@ -104,6 +118,7 @@
     <discipline>
         <disciplineName> Química I </disciplineName>
         <disciplineId> QG101 </disciplineId>
+        <credits> 4 </credits>
         <professors>
             <professor> Fabio Augusto </professor>
         </professors>
@@ -111,6 +126,7 @@
     <discipline>
         <disciplineName> Física Geral II </disciplineName>
         <disciplineId> F 228 </disciplineId>
+        <credits> 4 </credits>
         <professors>
             <professor> Diego Muraca </professor>
         </professors>
@@ -118,6 +134,7 @@
     <discipline>
         <disciplineName> Física Experimental II </disciplineName>
         <disciplineId> F 229 </disciplineId>
+        <credits> 2 </credits>
         <professors>
             <professor> Natalia De Faria Coutinho </professor>
         </professors>
@@ -125,6 +142,7 @@
     <discipline>
         <disciplineName> Inglês Experimental I </disciplineName>
         <disciplineId> LA122 </disciplineId>
+        <credits> 4 </credits>
         <professors>
             <professor> Joacyr Tupinambas De Oliveira </professor>
         </professors>
@@ -132,6 +150,7 @@
     <discipline>
         <disciplineName> Mecânica Geral I </disciplineName>
         <disciplineId> F 315 </disciplineId>
+        <credits> 4 </credits>
         <professors>
             <professor> Andre Alexandre De Thomaz </professor>
         </professors>
@@ -139,6 +158,7 @@
     <discipline>
         <disciplineName> Física Experimental III </disciplineName>
         <disciplineId> F 359 </disciplineId>
+        <credits> 2 </credits>
         <professors>
             <professor> Francisco Paulo Marques Rouxinol </professor>
         </professors>
@@ -146,6 +166,7 @@
     <discipline>
         <disciplineName> Circuitos Elétricos </disciplineName>
         <disciplineId> EA513 </disciplineId>
+        <credits> 4 </credits>
         <professors>
             <professor> Christiano Lyra Filho </professor>
         </professors>
