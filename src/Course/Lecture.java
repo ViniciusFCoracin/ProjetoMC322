@@ -7,20 +7,20 @@ import src.Spaces.Space;
  */
 public class Lecture {
     private Space lectureSpace;
-    private Discipline lectureDiscipline;
+    private String lectureDisciplineId;
     private ClassSchedule lectureSchedule;
     private String professor;
     /**
      * Public constructor for the Lecture class
      * 
      * @param space: where the lecture occurs
-     * @param discipline: the discipline of the lecture
+     * @param disciplineId: the discipline of the lecture
      * @param schedule: day and hour of the lecture
      * @param professor: teacher of the lecture
      */
-    public Lecture(Space space, Discipline discipline, ClassSchedule schedule, String professor){
+    public Lecture(Space space, String disciplineId, ClassSchedule schedule, String professor){
         this.lectureSpace = space;
-        this.lectureDiscipline = discipline;
+        this.lectureDisciplineId = disciplineId;
         this.lectureSchedule = schedule;
         this.professor = professor;
     }
@@ -33,8 +33,8 @@ public class Lecture {
         this.lectureSpace = newSpace;
     }
 
-    public Discipline getLectureDiscipline(){
-        return this.lectureDiscipline;
+    public String getLectureDisciplineId(){
+        return this.lectureDisciplineId;
     }
 
     public ClassSchedule getLectureSchedule(){

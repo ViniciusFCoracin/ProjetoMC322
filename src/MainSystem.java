@@ -84,7 +84,7 @@ public class MainSystem {
             int instructorIndex = 0;
             String instructor = instructors.get(instructorIndex % instructors.size());
             instructorIndex++;
-            lectures.add(new Lecture(null, discipline, schedule, instructor));
+            lectures.add(new Lecture(null, discipline.getDisciplineId(), schedule, instructor));
         }
 
         return lectures;

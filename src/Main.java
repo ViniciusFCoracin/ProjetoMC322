@@ -8,8 +8,6 @@ import src.Course.Course;
 import src.Course.Discipline;
 import src.Course.Lecture;
 import src.Course.Semester;
-import src.Schedule.ClassSchedule;
-import src.Schedule.WeekDay;
 import src.Spaces.Space;
 import src.Spaces.Classrooms.BasicRoom;
 
@@ -43,7 +41,7 @@ public class Main {
         
         for (Map.Entry<Lecture, String> entry : allocatedSpaces.entrySet()) {
             Lecture lecture = entry.getKey();
-            System.out.println("Lecture: " + lecture.getLectureDiscipline().getDisciplineName() + ", Professor: " 
+            System.out.println("Lecture: " + lecture.getLectureDisciplineId() + ", Professor: " 
             + lecture.getProfessor()  + " Day: " + lecture.getLectureSchedule().getDay() + ", Start: " + 
             lecture.getLectureSchedule().getStartHour() + ", End: " + lecture.getLectureSchedule().getEndHour() +
             ", Allocated Space: " + lecture.getLectureSpace().getSpaceName());

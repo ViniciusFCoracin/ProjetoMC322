@@ -45,7 +45,8 @@ public class Course {
 
     public int getSemesterOfLecture(Lecture lecture) {
         for (Semester semester : courseSemesters) {
-            if (semester.getDisciplines().contains(lecture.getLectureDiscipline())) {
+            for(Discipline discipline : semester.getDisciplines())
+            if (discipline.getDisciplineId().equals(lecture.getLectureDisciplineId())) {
                 return semester.getSemesterPeriod();
             }
         }
