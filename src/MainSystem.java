@@ -45,13 +45,13 @@ public class MainSystem {
      * @param courses: the list of the courses that the university will have as avaiable
      * @return: returns a list of lectures with a discipline, professor, schedule and a non-initialized space
      */
-    public static List<Lecture> setSchedule(List<Course> courses) {
-        Graph<Discipline, DefaultEdge> graph = new SimpleGraph<>(DefaultEdge.class);
+    public static List<Lecture> setSchedule(List<Course> courses, List<Discipline> disciplineList) {
+        Graph<String, DefaultEdge> graph = new SimpleGraph<>(DefaultEdge.class);
 
         // Adding disciplines (vertices)
         for (Course course : courses) {
             for (Semester semester : course.getCourseSemesters()) {
-                for (Discipline discipline : semester.getDisciplines()) {
+                for (String discipline : semester.getDisciplines()) {
                     graph.addVertex(discipline);
                 }
             }
@@ -60,7 +60,7 @@ public class MainSystem {
         // Adding edges (possible conflicts)
         for (Course course : courses) {
             for (Semester semester : course.getCourseSemesters()) {
-                List<Discipline> disciplines = semester.getDisciplines();
+                List<String> disciplines = semester.getDisciplines();
                 for (int i = 0; i < disciplines.size(); i++) {
                     for (int j = i + 1; j < disciplines.size(); j++) {
                         graph.addEdge(disciplines.get(i), disciplines.get(j));
@@ -70,13 +70,13 @@ public class MainSystem {
         }
 
         // Coloring graphs
-        GreedyColoring<Discipline, DefaultEdge> coloring = new GreedyColoring<>(graph);
-        Coloring<Discipline> coloringResult = coloring.getColoring();
+        GreedyColoring<String, DefaultEdge> coloring = new GreedyColoring<>(graph);
+        Coloring<String> coloringResult = coloring.getColoring();
 
         // Creating lectures with allocated schedules
         List<Lecture> lectures = new ArrayList<>();
-        for (Map.Entry<Discipline, Integer> entry : coloringResult.getColors().entrySet()) {
-            Discipline discipline = entry.getKey();
+        for (Map.Entry<String, Integer> entry : coloringResult.getColors().entrySet()) {
+            String discipline = entry.getKey();
             Integer color = entry.getValue();
             ClassSchedule schedule = new ClassSchedule(WeekDay.values()[color % WeekDay.values().length], 8 + color * 2, 8 + color * 2 + 1); // Simplified schedule
             List<String> instructors = discipline.getProfessors();
@@ -84,7 +84,7 @@ public class MainSystem {
             int instructorIndex = 0;
             String instructor = instructors.get(instructorIndex % instructors.size());
             instructorIndex++;
-            lectures.add(new Lecture(null, discipline.getDisciplineId(), schedule, instructor));
+            lectures.add(new Lecture(null, discipline, schedule, instructor));
         }
 
         return lectures;
@@ -96,9 +96,9 @@ public class MainSystem {
      * @param courses: a list of courses that the university has as avaible
      * @return: returns a Map<Lecture, String> in which we can access the lecture and all it's information (that now shall be initialized)
      */
-    public static Map<Lecture, String> allocatingSpaces(List<Space> availableSpaces, List<Course> courses){
+    public static Map<Lecture, String> allocatingSpaces(List<Space> availableSpaces, List<Course> courses, List<Discipline> disciplineList){
         // Calls the setSchedule method to create a list of lectures
-        List<Lecture> lectures = MainSystem.setSchedule(courses);
+        List<Lecture> lectures = MainSystem.setSchedule(courses, disciplineList);
         
         // Creating the graph
         Graph<Lecture, DefaultEdge> graph = new SimpleGraph<>(DefaultEdge.class);

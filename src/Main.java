@@ -24,19 +24,22 @@ public class Main {
         BasicRoom newRoom1 = new BasicRoom("Classroom 1", 1, 40);
         BasicRoom newRoom2 = new BasicRoom("Classroom 2", 2, 40);
 
-        List<Discipline> mainDisciplineList = Arrays.asList(newDiscipline1, newDiscipline2, newDiscipline3);
-        Semester newSemester1 = new Semester(2, mainDisciplineList);
+        List<Discipline> mainDisciplineList = Arrays.asList(newDiscipline1, newDiscipline2, newDiscipline3,
+                                                            newDiscipline4, newDiscipline5);
+        List<String> disciplineIds1 = Arrays.asList("MC202", "MC358", "MA211");
+        Semester newSemester1 = new Semester(2, disciplineIds1);
         List<Semester> mainSemesterList = Arrays.asList(newSemester1);
         Course computer_science = new Course("Computer Science", 42, mainSemesterList);
 
         List<Discipline> secDisciplineList = Arrays.asList(newDiscipline4, newDiscipline5);
-        Semester newSemester2 = new Semester(2, secDisciplineList);
+        List<String> disciplineIds2 = Arrays.asList("QO321", "QG108");
+        Semester newSemester2 = new Semester(2, disciplineIds2);
         List<Semester> secSemesterList = Arrays.asList(newSemester2);
         Course chem_eng = new Course("Chemical Engineering", 33, secSemesterList);
 
         List<Space> mainSpaceList = Arrays.asList(newRoom1, newRoom2);
         List<Course> mainCourseList = Arrays.asList(computer_science, chem_eng);
-        Map<Lecture, String> allocatedSpaces = MainSystem.allocatingSpaces(mainSpaceList, mainCourseList);
+        Map<Lecture, String> allocatedSpaces = MainSystem.allocatingSpaces(mainSpaceList, mainCourseList, mainDisciplineList);
         
         for (Map.Entry<Lecture, String> entry : allocatedSpaces.entrySet()) {
             Lecture lecture = entry.getKey();

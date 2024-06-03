@@ -34,7 +34,7 @@ public class Course {
         return this.courseSemesters;
     }
     
-    public boolean containsDiscipline(Discipline discipline) {
+    public boolean containsDiscipline(String discipline) {
         for (Semester semester : courseSemesters) {
             if (semester.getDisciplines().contains(discipline)) {
                 return true;
@@ -45,9 +45,9 @@ public class Course {
 
     public int getSemesterOfLecture(Lecture lecture) {
         for (Semester semester : courseSemesters) {
-            for(Discipline discipline : semester.getDisciplines())
+            for(String discipline : semester.getDisciplines())
             {
-                if (discipline.getDisciplineId().equals(lecture.getLectureDisciplineId())) {
+                if (discipline.equals(lecture.getLectureDisciplineId())) {
                     return semester.getSemesterPeriod();
                }
             }
