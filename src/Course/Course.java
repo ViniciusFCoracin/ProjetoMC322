@@ -46,8 +46,10 @@ public class Course {
     public int getSemesterOfLecture(Lecture lecture) {
         for (Semester semester : courseSemesters) {
             for(Discipline discipline : semester.getDisciplines())
-            if (discipline.getDisciplineId().equals(lecture.getLectureDisciplineId())) {
-                return semester.getSemesterPeriod();
+            {
+                if (discipline.getDisciplineId().equals(lecture.getLectureDisciplineId())) {
+                    return semester.getSemesterPeriod();
+               }
             }
         }
         throw new IllegalArgumentException("Lecture not found in this course");
