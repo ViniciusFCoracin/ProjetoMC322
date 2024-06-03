@@ -33,4 +33,22 @@ public class Course {
     public List<Semester> getCourseSemesters(){
         return this.courseSemesters;
     }
+    
+    public boolean containsDiscipline(Discipline discipline) {
+        for (Semester semester : courseSemesters) {
+            if (semester.getDisciplines().contains(discipline)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int getSemesterOfLecture(Lecture lecture) {
+        for (Semester semester : courseSemesters) {
+            if (semester.getDisciplines().contains(lecture.getLectureDiscipline())) {
+                return semester.getSemesterPeriod();
+            }
+        }
+        throw new IllegalArgumentException("Lecture not found in this course");
+    }
 }

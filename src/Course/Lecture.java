@@ -1,6 +1,6 @@
 package src.Course;
 import src.Schedule.ClassSchedule;
-import src.Spaces.*;
+import src.Spaces.Space;
 
 /**
  * Class that represents a lecture
@@ -10,7 +10,6 @@ public class Lecture {
     private Discipline lectureDiscipline;
     private ClassSchedule lectureSchedule;
     private String professor;
-
     /**
      * Public constructor for the Lecture class
      * 

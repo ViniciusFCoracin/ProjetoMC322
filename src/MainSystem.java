@@ -10,6 +10,8 @@ import org.jgrapht.alg.color.GreedyColoring;
 import org.jgrapht.alg.interfaces.VertexColoringAlgorithm.Coloring;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
+
+import src.Course.Course;
 import src.Course.Lecture;
 import src.Spaces.Space;
 
@@ -32,7 +34,41 @@ public class MainSystem {
         return this.spaceList;
     }
 
-    public static Map<Lecture, String> allocatingSpaces(List<Space> availableSpaces, Lecture... lectures) {
+    private static boolean checkCourseCompatibility(List<Course> courses,Lecture... lectures){
+        // Creating the graph
+        Graph<Lecture, DefaultEdge> graph = new SimpleGraph<>(DefaultEdge.class);
+        // Adding lectures (vertexes)
+        for (Lecture lecture : lectures) {
+            graph.addVertex(lecture);
+        }
+
+        // Adding edges (possible conflicts)
+        for (int i = 0; i < lectures.length; i++) {
+            for (int j = i + 1; j < lectures.length; j++) {
+                Lecture lecture1 = lectures[i];
+                Lecture lecture2 = lectures[j];
+
+                // Check if the lectures have the same schedule
+                if (lecture1.getLectureSchedule().equals(lecture2.getLectureSchedule())) {
+                    // Check if they are from the same course and semester
+                    for (Course course : courses) {
+                        if (course.containsDiscipline(lecture1.getLectureDiscipline()) 
+                        && course.containsDiscipline(lecture2.getLectureDiscipline())) {
+                            if (course.getSemesterOfLecture(lecture1) == course.getSemesterOfLecture(lecture2)) {
+                                // If two disciplines have the same schedule, course and semester, you have a serious conflict
+                                graph.addEdge(lecture1, lecture2);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // If there are any edges, it means there is a conflict
+        return graph.edgeSet().isEmpty();
+    }
+
+    public static Map<Lecture, String> allocatingSpaces(List<Space> availableSpaces, List<Course> courses, Lecture... lectures) throws Exception{
         // Creating the graph
         Graph<Lecture, DefaultEdge> graph = new SimpleGraph<>(DefaultEdge.class);
 
@@ -44,10 +80,15 @@ public class MainSystem {
         // Adding edges (possible conflicts)
         for (int i = 0; i < lectures.length; i++) {
             for (int j = i + 1; j < lectures.length; j++) {
-                if (lectures[i].getLectureSchedule().equals(lectures[j].getLectureSchedule())
-                    /** || (lectures[i].course.equals(lectures[j].course) && 
-                     * lectures[i].semester.equals(lectures[j].semester)**/) {
+                boolean checkCompatibility = MainSystem.checkCourseCompatibility(courses ,lectures[i], lectures[j]);
+                if (lectures[i].getLectureSchedule().equals(lectures[j].getLectureSchedule()) &&
+                    checkCompatibility) {
+                    /* If two lectures have the same schedule, but different courses or semesters, we just have to allocate
+                       different spaces */
                     graph.addEdge(lectures[i], lectures[j]);
+                } else if(!checkCompatibility){
+                    // If two disciplines have the same schedule, course and semester, throw an error
+                    throw new IllegalArgumentException("Error! Two lectures of the same course and semester have the same schedule.");
                 }
             }
         }
