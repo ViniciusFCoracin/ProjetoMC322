@@ -43,6 +43,7 @@ public class MainSystem {
      * This method is responsible for setting the schedule of the disciplines avoiding the conflict in which two lectures of different disciplines,
      * but same course and semester happen at the same time. Note that it's an issue, because the student can't be in the two classes simulteneaously.
      * @param courses: the list of the courses that the university will have as avaiable
+     * @param disciplineList: the list of the disciplines that will be availble at the University
      * @return: returns a list of lectures with a discipline, professor, schedule and a non-initialized space
      */
     public static List<Lecture> setSchedule(List<Course> courses, List<Discipline> disciplineList) {
@@ -75,18 +76,24 @@ public class MainSystem {
 
         // Creating lectures with allocated schedules
         List<Lecture> lectures = new ArrayList<>();
+        Map<String, Integer> professorIndexMap = new HashMap<>();
+
+        
         for (Map.Entry<String, Integer> entry : coloringResult.getColors().entrySet()) {
             String disciplineId = entry.getKey();
             Integer color = entry.getValue();
             ClassSchedule schedule = new ClassSchedule(WeekDay.values()[color % WeekDay.values().length], 8 + color * 2, 8 + color * 2 + 1); // Simplified schedule
             
             Discipline discipline = disciplineList.stream().filter(d -> d.getDisciplineId().equals(disciplineId))
-            .findFirst().orElseThrow(() -> new IllegalArgumentException("Disciplina não encontrada: " + disciplineId));
+            .findFirst().orElseThrow(() -> new IllegalArgumentException("Discipline not found " + disciplineId));
             
+            // Selecting a professor of the professor list of the discipline
             List<String> instructors = discipline.getProfessors();
-            int instructorIndex = 0;
+            int instructorIndex = professorIndexMap.getOrDefault(disciplineId, 0);
             String instructor = instructors.get(instructorIndex % instructors.size());
-            instructorIndex++;
+            
+            // Updating the index to be accessed of the professor list of the discipline
+            professorIndexMap.put(disciplineId, (instructorIndex + 1) % instructors.size());
 
             
             lectures.add(new Lecture(null, disciplineId, schedule, instructor));
@@ -99,6 +106,7 @@ public class MainSystem {
      * This method is responsible for setting the lectures their space. The possible issue is that two lectures cannot have the same room, if the have the same schedule.
      * @param availableSpaces: a list of avaible spaces for the lectures
      * @param courses: a list of courses that the university has as avaible
+     * @param disciplineList: the list of the disciplines that will be availble at the University
      * @return: returns a Map<Lecture, String> in which we can access the lecture and all it's information (that now shall be initialized)
      */
     public static Map<Lecture, String> allocatingSpaces(List<Space> availableSpaces, List<Course> courses, List<Discipline> disciplineList){
