@@ -1,0 +1,11 @@
+<!ELEMENT spaces (basicRoom|computerRoom|slidesRoom|auditorium|court|laboratory)*>
+<!ELEMENT basicRoom (name,id,capacity)>
+<!ELEMENT computerRoom (name,id,capacity,numComputers)>
+<!ELEMENT slidesRoom (name,id,capacity)>
+<!ELEMENT auditorium (name,id,capacity)>
+<!ELEMENT court (name,id,capacity)>
+<!ELEMENT laboratory (name,id,capacity)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT capacity (#PCDATA)>
+<!ELEMENT numComputers (#PCDATA)>
