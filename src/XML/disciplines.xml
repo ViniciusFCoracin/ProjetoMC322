@@ -157,7 +157,7 @@
     </discipline>
     <discipline>
         <disciplineName> Física Experimental III </disciplineName>
-        <disciplineId> F 359 </disciplineId>
+        <disciplineId> F 329 </disciplineId>
         <credits> 2 </credits>
         <professors>
             <professor> Francisco Paulo Marques Rouxinol </professor>
@@ -169,6 +169,14 @@
         <credits> 4 </credits>
         <professors>
             <professor> Christiano Lyra Filho </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Física Geral III </disciplineName>
+        <disciplineId> F 328 </disciplineId>
+        <credits> 4 </credits>
+        <professors>
+            <professor> Andre Monteiro Paschoal</professor>
         </professors>
     </discipline>
 </disciplines>

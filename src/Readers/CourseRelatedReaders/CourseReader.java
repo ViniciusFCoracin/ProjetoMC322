@@ -42,6 +42,8 @@ public class CourseReader implements XMLNodeReader {
                     SemesterReader reader = SemesterReader.getInstance();
                     for (int j = 0; j < semesterList.getLength(); j++){
                         Node semesterNode = semesterList.item(j);
+                        if (semesterNode.getNodeType() != Node.ELEMENT_NODE)
+                            continue;
                         Semester semester = reader.readNode(semesterNode);
                         semesters.add(semester);
                     }

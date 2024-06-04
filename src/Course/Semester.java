@@ -30,7 +30,7 @@ public class Semester {
 
     @Override
     public String toString(){
-        return ("Semester " + this.semesterPeriod + "\n" +
-                "List of disciplines: " + String.join(", ", this.disciplines) + "\n");
+        return ("Semester " + this.semesterPeriod + " list of disciplines: "
+                 + String.join(", ", this.disciplines) + "\n");
     }
 }

@@ -35,6 +35,6 @@ public abstract class Space {
 
     @Override
     public String toString(){
-        return (spaceName + ", with capacity of " + maxCapacity + " people.");
+        return spaceName;
     }
 }
