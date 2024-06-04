@@ -43,6 +43,8 @@ public class DisciplineReader implements XMLNodeReader {
                     NodeList professorsList = node.getChildNodes();
                     for (int j = 0; j < professorsList.getLength(); j++){
                         Node professorNode = professorsList.item(j);
+                        if (professorNode.getNodeType() != Node.ELEMENT_NODE)
+                            continue;
                         String professorStr = professorNode.getTextContent().trim();
                         professors.add(professorStr);
                     }

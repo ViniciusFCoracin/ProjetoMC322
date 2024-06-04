@@ -56,4 +56,11 @@ public class Discipline {
     public List<String> getProfessors(){
         return this.professors;
     }
+
+    @Override
+    public String toString(){
+        return (this.disciplineName + " (" + this.disciplineId + ").\n" +
+                "Credits: " + this.disciplineCredits + "\n" +
+                "Professors: " + String.join(", ", this.professors) + "\n");
+    }
 }

@@ -16,10 +16,10 @@ public class BasicRoomReader implements XMLNodeReader {
         // does nothing, but we need this to be private
     }
 
-    public BasicRoom readNode(Node courseNode){
+    public BasicRoom readNode(Node spaceNode){
         BasicRoom basicRoom = null;
         try{
-            NodeList childNodes = courseNode.getChildNodes();
+            NodeList childNodes = spaceNode.getChildNodes();
             String name = null;
             int id = 0;
             int capacity = 0;

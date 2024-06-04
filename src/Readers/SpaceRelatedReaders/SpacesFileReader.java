@@ -32,7 +32,7 @@ public class SpacesFileReader implements XMLFileReader {
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(file);
             doc.getDocumentElement().normalize();
-            NodeList nodeList = doc.getChildNodes();
+            NodeList nodeList = doc.getDocumentElement().getChildNodes();
 
             for (int i = 0; i < nodeList.getLength(); i++){
                 Node spaceNode = nodeList.item(i);
