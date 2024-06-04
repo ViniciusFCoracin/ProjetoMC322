@@ -27,4 +27,10 @@ public class Semester {
     public List<String> getDisciplines(){
         return this.disciplines;
     }
+
+    @Override
+    public String toString(){
+        return ("Semester " + this.semesterPeriod + "\n" +
+                "List of disciplines: " + String.join(", ", this.disciplines) + "\n");
+    }
 }

@@ -20,10 +20,10 @@ public class Main {
     public static void main(String[] args) throws Exception {
         List<Discipline> allDisciplines = DisciplinesFileReader.getInstance().readFile("src/XML/disciplines.xml");
         List<Space> allSpaces = SpacesFileReader.getInstance().readFile("src/XML/spaces.xml");
-        
-        //List<Course> allCursos = CoursesFileReader.getInstance().readFile("src/XML/courses.xml");
-        //for (Course course : allCursos)
-            //System.out.println(course);
+
+        List<Course> allCursos = CoursesFileReader.getInstance().readFile("src/XML/courses.xml");
+        for (Course course : allCursos)
+            System.out.println(course);
 
 
       /*Discipline newDiscipline1 = new Discipline("MC202", "MC202", 6, "GPT");

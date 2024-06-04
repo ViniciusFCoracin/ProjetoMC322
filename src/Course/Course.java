@@ -52,4 +52,12 @@ public class Course {
         }
         throw new IllegalArgumentException("Lecture not found in this course");
     }
+
+    @Override
+    public String toString(){
+        String str = courseName + " (" + courseId + ")\n";
+        for (Semester semester : this.courseSemesters)
+            str += semester.toString();
+        return str;
+    }
 }
