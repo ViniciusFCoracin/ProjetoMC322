@@ -9,6 +9,7 @@ import src.Course.Course;
 import src.Course.Semester;
 import src.Readers.XMLNodeReader;
 
+
 /**
  * Singleton class that reads a course node and returns a Course object
  */

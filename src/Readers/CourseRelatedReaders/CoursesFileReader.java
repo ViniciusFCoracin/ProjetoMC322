@@ -36,6 +36,8 @@ public class CoursesFileReader implements XMLFileReader {
 
             for (int i = 0; i < nodeList.getLength(); i++){
                 Node courseNode = nodeList.item(i);
+                if (courseNode.getNodeType() != Node.ELEMENT_NODE)
+                    continue;
                 CourseReader reader = CourseReader.getInstance();
                 Course course = reader.readNode(courseNode);
                 courses.add(course);
