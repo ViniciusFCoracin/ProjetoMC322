@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import src.Course.Course;
 import src.Course.Semester;
+import src.Course.Shift;
 import src.Readers.XMLNodeReader;
 
 
@@ -26,6 +27,7 @@ public class CourseReader implements XMLNodeReader {
             NodeList childNodes = courseNode.getChildNodes();
             String courseName = null;
             int courseId = 0;
+            Shift courseShift = null;
             List<Semester> semesters = new ArrayList<>();
             for (int i = 0; i < childNodes.getLength(); i++){
                 Node node = childNodes.item(i);
@@ -36,6 +38,9 @@ public class CourseReader implements XMLNodeReader {
                 }
                 else if ("courseId".equals(node.getNodeName())){
                     courseId = Integer.parseInt(node.getTextContent().trim());
+                }
+                else if ("courseShift".equals(node.getNodeName())){
+                    courseShift = Shift.valueOf(node.getTextContent().trim());
                 }
                 else if ("semesters".equals(node.getNodeName())){
                     NodeList semesterList = node.getChildNodes();
@@ -52,8 +57,8 @@ public class CourseReader implements XMLNodeReader {
                     throw new Error("Invalid atribute");
                 }
             }
-            if (courseId != 0 && courseName != null && semesters.size() != 0)
-                course = new Course(courseName, courseId, semesters);
+            if (courseId != 0 && courseName != null && semesters.size() != 0 && courseShift != null)
+                course = new Course(courseName, courseId, courseShift, semesters);
             else
                 throw new Error("Atribute missing");
         }

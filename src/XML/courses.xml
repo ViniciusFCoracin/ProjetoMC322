@@ -4,6 +4,7 @@
     <course>
         <courseName> Ciência da Computação </courseName>
         <courseId> 42 </courseId>
+        <courseShift> NIGHT_SHIFT </courseShift>
         <semesters>
             <semester period="1">
                 <disciplineId> MA111 </disciplineId>
@@ -29,6 +30,7 @@
     <course>
         <courseName> Engenharia da Computação </courseName>
         <courseId> 34 </courseId>
+        <courseShift> FULL_TIME </courseShift>
         <semesters>
             <semester period="1">
                 <disciplineId> MA111 </disciplineId>

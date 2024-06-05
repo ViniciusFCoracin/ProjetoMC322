@@ -1,7 +1,8 @@
 <!ELEMENT courses (course+)>
-<!ELEMENT course (courseName,courseId,semesters)>
+<!ELEMENT course (courseName,courseId,courseShift,semesters)>
 <!ELEMENT courseName (#PCDATA)>
 <!ELEMENT courseId (#PCDATA)>
+<!ELEMENT courseShift (#PCDATA)>
 <!ELEMENT semesters (semester+)>
 <!ELEMENT semester (disciplineId*)>
 <!ELEMENT disciplineId (#PCDATA)>
