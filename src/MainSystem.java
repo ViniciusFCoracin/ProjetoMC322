@@ -77,31 +77,51 @@ public class MainSystem {
         // Creating lectures with allocated schedules
         List<Lecture> lectures = new ArrayList<>();
         Map<String, Integer> professorIndexMap = new HashMap<>();
+        char groupChar = 'A';
 
         
         for (Map.Entry<String, Integer> entry : coloringResult.getColors().entrySet()) {
             String disciplineId = entry.getKey();
             Integer color = entry.getValue();
-            ClassSchedule schedule = new ClassSchedule(WeekDay.values()[color % WeekDay.values().length], 8 + color * 2, 8 + color * 2 + 1); // Simplified schedule
-            
+
             Discipline discipline = disciplineList.stream().filter(d -> d.getDisciplineId().equals(disciplineId))
-            .findFirst().orElseThrow(() -> new IllegalArgumentException("Discipline not found " + disciplineId));
-            
+                .findFirst().orElseThrow(() -> new IllegalArgumentException("Discipline not found " + disciplineId));
+
+            // Calculating the total number of lectures of given discipline
+            int totalCredits = discipline.getDisciplineCredits();
+            int lectureHours = 2;
+            int numberOfLectures = totalCredits / lectureHours;
+
             // Selecting a professor of the professor list of the discipline
             List<String> instructors = discipline.getProfessors();
+
+            String group = String.valueOf(groupChar);
+            groupChar++;
+
+            if (instructors.isEmpty()) {
+                throw new IllegalArgumentException("The discipline " + discipline.getDisciplineName() + " doesn't have a professor.");
+            }
+
             int instructorIndex = professorIndexMap.getOrDefault(disciplineId, 0);
             String instructor = instructors.get(instructorIndex % instructors.size());
-            
             // Updating the index to be accessed of the professor list of the discipline
-            professorIndexMap.put(disciplineId, (instructorIndex + 1) % instructors.size());
+            professorIndexMap.put(disciplineId, (instructorIndex + 1) % instructors.size());         
 
-            
-            lectures.add(new Lecture(null, disciplineId, schedule, instructor));
+            // Allocating lectures according to the number of lectures necessary
+            for (int i = 0; i < numberOfLectures; i++) {
+                int weekDayIndex = (color + i) % WeekDay.values().length;
+                int startHour = 8 + (color + i) * 2;
+                int endHour = startHour + 2;
+
+                ClassSchedule schedule = new ClassSchedule(WeekDay.values()[weekDayIndex], startHour, endHour);
+    
+                lectures.add(new Lecture(null, disciplineId, schedule, instructor, group));
+            }
         }
-
+    
         return lectures;
     }
-
+    
     /**
      * This method is responsible for setting the lectures their space. The possible issue is that two lectures cannot have the same room, if the have the same schedule.
      * @param availableSpaces: a list of avaible spaces for the lectures

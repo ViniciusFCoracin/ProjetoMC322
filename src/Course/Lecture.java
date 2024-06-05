@@ -10,6 +10,7 @@ public class Lecture {
     private String lectureDisciplineId;
     private ClassSchedule lectureSchedule;
     private String professor;
+    private String group;
     /**
      * Public constructor for the Lecture class
      * 
@@ -17,12 +18,14 @@ public class Lecture {
      * @param disciplineId: the discipline of the lecture
      * @param schedule: day and hour of the lecture
      * @param professor: teacher of the lecture
+     * @param group: lecture group
      */
-    public Lecture(Space space, String disciplineId, ClassSchedule schedule, String professor){
+    public Lecture(Space space, String disciplineId, ClassSchedule schedule, String professor, String group){
         this.lectureSpace = space;
         this.lectureDisciplineId = disciplineId;
         this.lectureSchedule = schedule;
         this.professor = professor;
+        this.group = group;
     }
 
     public Space getLectureSpace(){
@@ -43,5 +46,9 @@ public class Lecture {
 
     public String getProfessor(){
         return this.professor;
+    }
+
+    public String getLectureGroup(){
+        return this.group;
     }
 }
