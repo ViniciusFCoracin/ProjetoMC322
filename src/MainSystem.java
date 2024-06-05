@@ -22,19 +22,6 @@ import src.Spaces.Space;
 /* This class may be refactored to a Singleton later */
 public class MainSystem {
     /**
-     * This method is responsible for setting the schedule of the disciplines avoiding the conflict in which two lectures of different disciplines,
-     * but same course and semester happen at the same time. Note that it's an issue, because the student can't be in the two classes simulteneaously.
-     * @param courses: the list of the courses that the university will have as avaiable
-     * @param disciplineList: the list of the disciplines that will be availble at the University
-     * @return: returns a list of lectures with a discipline, professor, schedule and a non-initialized space
-     */
-    private static List<Lecture> assignSchedules(List<Course> courses, List<Discipline> disciplineList){
-        Graph<String, DefaultEdge> disciplinesGraph = createDisciplinesGraph(courses, disciplineList);
-        Coloring<String> coloring = coloringDisciplinesGraph(disciplinesGraph);
-        return createLectures(disciplineList, disciplinesGraph, coloring);
-    }
-
-    /**
      * This method is responsible for setting the lectures their space. The possible issue is that two lectures cannot have the same room, if the have the same schedule.
      * @param availableSpaces: a list of avaible spaces for the lectures
      * @param courses: a list of courses that the university has as avaible
@@ -46,6 +33,19 @@ public class MainSystem {
         Graph<Lecture, DefaultEdge> lecturesGraph = createLectureGraph(lectures);
         Coloring<Lecture> coloring = coloringLecturesGraph(lecturesGraph);
         return createPlaces(availableSpaces, coloring);
+    }
+
+    /**
+     * This method is responsible for setting the schedule of the disciplines avoiding the conflict in which two lectures of different disciplines,
+     * but same course and semester happen at the same time. Note that it's an issue, because the student can't be in the two classes simulteneaously.
+     * @param courses: the list of the courses that the university will have as avaiable
+     * @param disciplineList: the list of the disciplines that will be availble at the University
+     * @return: returns a list of lectures with a discipline, professor, schedule and a non-initialized space
+     */
+    private static List<Lecture> assignSchedules(List<Course> courses, List<Discipline> disciplineList){
+        Graph<String, DefaultEdge> disciplinesGraph = createDisciplinesGraph(courses, disciplineList);
+        Coloring<String> coloring = coloringDisciplinesGraph(disciplinesGraph);
+        return createLectures(disciplineList, disciplinesGraph, coloring);
     }
 
     private static Graph<String, DefaultEdge> createDisciplinesGraph(List<Course> courses, List<Discipline> disciplineList){
@@ -75,9 +75,27 @@ public class MainSystem {
         return graph;
     }
 
-    private static Coloring<String> coloringDisciplinesGraph(Graph<String, DefaultEdge> graph){
-        GreedyColoring<String, DefaultEdge> coloring = new GreedyColoring<>(graph);
-        return coloring.getColoring();
+    private static Graph<Lecture, DefaultEdge> createLectureGraph(List<Lecture> lectures){
+        Graph<Lecture, DefaultEdge> graph = new SimpleGraph<>(DefaultEdge.class);
+
+        // Adding lectures (vertexes)
+        for (Lecture lecture : lectures) {
+            graph.addVertex(lecture);
+        }
+
+        // Adding edges (possible conflicts)
+        for (int i = 0; i < lectures.size(); i++) {
+            for (int j = i + 1; j < lectures.size(); j++) {
+                if (lectures.get(i).getLectureSchedule().equals(lectures.get(j).getLectureSchedule())) {
+                    /* If two lectures have the same schedule, but different courses or semesters, we just have to allocate
+                       different spaces */
+                    graph.addEdge(lectures.get(i), lectures.get(j));
+                }
+                // We may have to implement exceptions here so the code throws an error if there isn't a non-conflicting distribution of spaces and schedules
+            }
+        }
+
+        return graph;
     }
 
     private static List<Lecture> createLectures(List<Discipline> disciplines, Graph<String, DefaultEdge> graph, Coloring<String> coloring){
@@ -127,34 +145,6 @@ public class MainSystem {
         return lectures;
     }
 
-    private static Graph<Lecture, DefaultEdge> createLectureGraph(List<Lecture> lectures){
-        Graph<Lecture, DefaultEdge> graph = new SimpleGraph<>(DefaultEdge.class);
-
-        // Adding lectures (vertexes)
-        for (Lecture lecture : lectures) {
-            graph.addVertex(lecture);
-        }
-
-        // Adding edges (possible conflicts)
-        for (int i = 0; i < lectures.size(); i++) {
-            for (int j = i + 1; j < lectures.size(); j++) {
-                if (lectures.get(i).getLectureSchedule().equals(lectures.get(j).getLectureSchedule())) {
-                    /* If two lectures have the same schedule, but different courses or semesters, we just have to allocate
-                       different spaces */
-                    graph.addEdge(lectures.get(i), lectures.get(j));
-                }
-                // We may have to implement exceptions here so the code throws an error if there isn't a non-conflicting distribution of spaces and schedules
-            }
-        }
-
-        return graph;
-    }
-
-    private static Coloring<Lecture> coloringLecturesGraph(Graph<Lecture, DefaultEdge> graph){
-        GreedyColoring<Lecture, DefaultEdge> coloring = new GreedyColoring<>(graph);
-        return coloring.getColoring();
-    }
-
     private static Map<Lecture, String> createPlaces(List<Space> availableSpaces, Coloring<Lecture> coloring){
         // Mapping space colors (Rooms, labs, etc)
         Map<Integer, Space> spaceColor = new HashMap<>();
@@ -173,5 +163,15 @@ public class MainSystem {
         }
 
         return lectureSpace;
+    }
+
+    private static Coloring<Lecture> coloringLecturesGraph(Graph<Lecture, DefaultEdge> graph){
+        GreedyColoring<Lecture, DefaultEdge> coloring = new GreedyColoring<>(graph);
+        return coloring.getColoring();
+    }
+
+    private static Coloring<String> coloringDisciplinesGraph(Graph<String, DefaultEdge> graph){
+        GreedyColoring<String, DefaultEdge> coloring = new GreedyColoring<>(graph);
+        return coloring.getColoring();
     }
 }
