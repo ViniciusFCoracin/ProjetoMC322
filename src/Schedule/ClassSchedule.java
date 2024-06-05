@@ -8,8 +8,7 @@ import java.util.Objects;
  */
 public class ClassSchedule {
     private WeekDay day;
-    private int startHour;
-    private int endHour;
+    private HourOfClass hourOfClass;
 
     /**
      * Public constructor for ClassSchedule class
@@ -18,22 +17,17 @@ public class ClassSchedule {
      * @param startHour: the hour the class starts
      * @param endHour: the hour the class ends
      */
-    public ClassSchedule(WeekDay day, int startHour, int endHour){
+    public ClassSchedule(WeekDay day, HourOfClass hourOfClass){
         this.day = day;
-        this.startHour = startHour;
-        this.endHour = endHour;
+        this.hourOfClass = hourOfClass;
     }
 
     public WeekDay getDay(){
         return this.day;
     }
 
-    public int getStartHour(){
-        return this.startHour;
-    }
-
-    public int getEndHour(){
-        return this.endHour;
+    public HourOfClass getHourOfClass(){
+        return hourOfClass;
     }
 
     /**
@@ -44,7 +38,7 @@ public class ClassSchedule {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ClassSchedule that = (ClassSchedule) o;
-        return startHour == that.startHour && endHour == that.endHour && day == that.day;
+        return this.hourOfClass == that.hourOfClass && this.day == that.day;
     }
 
     /**
@@ -52,6 +46,6 @@ public class ClassSchedule {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(day, startHour, endHour);
+        return Objects.hash(day, hourOfClass);
     }
 }

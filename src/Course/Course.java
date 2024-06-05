@@ -7,6 +7,7 @@ import java.util.List;
 public class Course {
     public String courseName;
     public int courseId;
+    public Shift shift;
     public List<Semester> courseSemesters;
 
     /**
