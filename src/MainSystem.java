@@ -28,16 +28,16 @@ public class MainSystem {
      * @param disciplineList: the list of the disciplines that will be availble at the University
      * @return: returns a Map<Lecture, String> in which we can access the lecture and all it's information (that now shall be initialized)
      */
-    public static Map<Lecture, String> assignPlaces(List<Space> availableSpaces, List<Course> courses, List<Discipline> disciplineList){
+    public static Map<Lecture, String> assignSchedulesAndPlaces(List<Space> availableSpaces, List<Course> courses, List<Discipline> disciplineList){
         List<Lecture> lectures = MainSystem.assignSchedules(courses, disciplineList);
         Graph<Lecture, DefaultEdge> lecturesGraph = createLectureGraph(lectures);
         Coloring<Lecture> coloring = coloringLecturesGraph(lecturesGraph);
-        return createPlaces(availableSpaces, coloring);
+        return assignPlaces(availableSpaces, coloring);
     }
 
     /**
      * This method is responsible for setting the schedule of the disciplines avoiding the conflict in which two lectures of different disciplines,
-     * but same course and semester happen at the same time. Note that it's an issue, because the student can't be in the two classes simulteneaously.
+     * but same course and semester happen at the same time. Note that it's an issue, because the student can't be in the two classes simultaneously.
      * @param courses: the list of the courses that the university will have as avaiable
      * @param disciplineList: the list of the disciplines that will be availble at the University
      * @return: returns a list of lectures with a discipline, professor, schedule and a non-initialized space
@@ -145,7 +145,7 @@ public class MainSystem {
         return lectures;
     }
 
-    private static Map<Lecture, String> createPlaces(List<Space> availableSpaces, Coloring<Lecture> coloring){
+    private static Map<Lecture, String> assignPlaces(List<Space> availableSpaces, Coloring<Lecture> coloring){
         // Mapping space colors (Rooms, labs, etc)
         Map<Integer, Space> spaceColor = new HashMap<>();
         for (int i = 0; i < availableSpaces.size(); i++) {
@@ -165,11 +165,21 @@ public class MainSystem {
         return lectureSpace;
     }
 
+    /**
+     * This method calls GreedyColoring to color the Lectures graph
+     * @param graph: a Graph<Lecture, DefaultEdge> to be colored
+     * @return: returns the colored graph
+     */
     private static Coloring<Lecture> coloringLecturesGraph(Graph<Lecture, DefaultEdge> graph){
         GreedyColoring<Lecture, DefaultEdge> coloring = new GreedyColoring<>(graph);
         return coloring.getColoring();
     }
 
+    /**
+     * This method calls GreedyColoring to color the Disciplines graph
+     * @param graph: a Graph<String, DefaultEdge> to be colored
+     * @return: returns the colored graph
+     */
     private static Coloring<String> coloringDisciplinesGraph(Graph<String, DefaultEdge> graph){
         GreedyColoring<String, DefaultEdge> coloring = new GreedyColoring<>(graph);
         return coloring.getColoring();
