@@ -154,7 +154,7 @@ public class MainSystem {
                             HourOfClass hourOfClass = possibleHours[(color + i) % possibleHours.length];
 
                             ClassSchedule schedule = new ClassSchedule(WeekDay.values()[weekDayIndex], hourOfClass);
-                            lectures.add(new Lecture(null, disciplineId, schedule, instructor, group));
+                            lectures.add(new Lecture(null, disciplineId, schedule, instructor, group, course.getCourseName()));
                         }
                 }
             }
