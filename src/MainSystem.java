@@ -15,7 +15,9 @@ import src.Course.Course;
 import src.Course.Discipline;
 import src.Course.Lecture;
 import src.Course.Semester;
+import src.Course.Shift;
 import src.Schedule.ClassSchedule;
+import src.Schedule.HourOfClass;
 import src.Schedule.WeekDay;
 import src.Spaces.Space;
 
@@ -45,7 +47,7 @@ public class MainSystem {
     private static List<Lecture> assignSchedules(List<Course> courses, List<Discipline> disciplineList){
         Graph<String, DefaultEdge> disciplinesGraph = createDisciplinesGraph(courses, disciplineList);
         Coloring<String> coloring = coloringDisciplinesGraph(disciplinesGraph);
-        return createLectures(disciplineList, disciplinesGraph, coloring);
+        return createLectures(courses, disciplineList, disciplinesGraph, coloring);
     }
 
     private static Graph<String, DefaultEdge> createDisciplinesGraph(List<Course> courses, List<Discipline> disciplineList){
@@ -98,7 +100,7 @@ public class MainSystem {
         return graph;
     }
 
-    private static List<Lecture> createLectures(List<Discipline> disciplines, Graph<String, DefaultEdge> graph, Coloring<String> coloring){
+    private static List<Lecture> createLectures(List<Course> courses, List<Discipline> disciplines, Graph<String, DefaultEdge> graph, Coloring<String> coloring){
         List<Lecture> lectures = new ArrayList<>();
         Map<String, Integer> professorIndexMap = new HashMap<>();
         char groupChar = 'A';
@@ -109,11 +111,6 @@ public class MainSystem {
 
             Discipline discipline = disciplines.stream().filter(d -> d.getDisciplineId().equals(disciplineId))
                 .findFirst().orElseThrow(() -> new IllegalArgumentException("Discipline not found " + disciplineId));
-
-            // Calculating the total number of lectures of given discipline
-            int totalCredits = discipline.getDisciplineCredits();
-            int lectureHours = 2;
-            int numberOfLectures = totalCredits / lectureHours;
 
             // Selecting a professor of the professor list of the discipline
             List<String> instructors = discipline.getProfessors();
@@ -128,21 +125,43 @@ public class MainSystem {
             int instructorIndex = professorIndexMap.getOrDefault(disciplineId, 0);
             String instructor = instructors.get(instructorIndex % instructors.size());
             // Updating the index to be accessed of the professor list of the discipline
-            professorIndexMap.put(disciplineId, (instructorIndex + 1) % instructors.size());         
+            professorIndexMap.put(disciplineId, (instructorIndex + 1) % instructors.size());
+            
+            for (Course course : courses){
+                for (Semester semester : course.getCourseSemesters()){
+                    if (semester.getDisciplines().contains(disciplineId)) {
+                        int totalCredits = discipline.getDisciplineCredits();
+                        int lectureHours = 2;
+                        int numberOfLectures = totalCredits / lectureHours;
 
-            // Allocating lectures according to the number of lectures necessary
-            for (int i = 0; i < numberOfLectures; i++) {
-                int weekDayIndex = (color + i) % WeekDay.values().length;
-                int startHour = 8 + (color + i) * 2;
-                int endHour = startHour + 2;
+                        // Allocating lectures according to the number of lectures necessary
+                        HourOfClass[] possibleHours;
+                        if (course.getCourseShift() == Shift.FULL_TIME) {
+                            possibleHours = new HourOfClass[]{
+                                HourOfClass.EigthAM_TenAM,
+                                HourOfClass.TenAM_Midday,
+                                HourOfClass.TwoPM_FourPM,
+                                HourOfClass.FourPM_SixPM };
+                            } else {
+                                possibleHours = new HourOfClass[]{
+                                    HourOfClass.SevenPM_NinePM,
+                                    HourOfClass.NinePM_ElevenPM
+                                };
+                        }
+                        
+                        for(int i = 0; i < numberOfLectures; i++){
+                            int weekDayIndex = (color + i) % WeekDay.values().length;
+                            HourOfClass hourOfClass = possibleHours[(color + i) % possibleHours.length];
 
-                ClassSchedule schedule = new ClassSchedule(WeekDay.values()[weekDayIndex], startHour, endHour);
-    
-                lectures.add(new Lecture(null, disciplineId, schedule, instructor, group));
+                            ClassSchedule schedule = new ClassSchedule(WeekDay.values()[weekDayIndex], hourOfClass);
+                            lectures.add(new Lecture(null, disciplineId, schedule, instructor, group));
+                        }
+                }
             }
         }
-    
-        return lectures;
+
+    }
+    return lectures;
     }
 
     private static Map<Lecture, String> assignPlaces(List<Space> availableSpaces, Coloring<Lecture> coloring){

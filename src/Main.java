@@ -6,10 +6,10 @@ import java.util.Map;
 import src.Course.Course;
 import src.Course.Discipline;
 import src.Course.Lecture;
-import src.Spaces.Space;
 import src.Readers.CourseRelatedReaders.CoursesFileReader;
 import src.Readers.DisciplineRelatedReaders.DisciplinesFileReader;
 import src.Readers.SpaceRelatedReaders.SpacesFileReader;
+import src.Spaces.Space;
 
 public class Main {
 
@@ -23,7 +23,7 @@ public class Main {
         for (Map.Entry<Lecture, String> entry : allocatedSpaces.entrySet()) {
             Lecture lecture = entry.getKey();
             String output = ("Lecture: " + lecture.getLectureDisciplineId() + ", Professor " + lecture.getProfessor() + "\n" +
-                             "Day: " + lecture.getLectureSchedule().getDay() + ", " + lecture.getLectureSchedule().getStartHour() + "h - " + lecture.getLectureSchedule().getEndHour() + "h\n" +
+                             "Day: " + lecture.getLectureSchedule().getDay() + ", " + lecture.getLectureSchedule().getHourOfClass() + "\n" +
                              "Place: " + lecture.getLectureSpace() + "\n" + "Group: " + lecture.getLectureGroup() +"\n");
            System.out.println(output);
         }
