@@ -33,7 +33,7 @@ public class Course {
     }
 
     public Shift getCourseShift(){
-        return this.shift;
+        return this.courseShift;
     }
 
     public List<Semester> getCourseSemesters(){
