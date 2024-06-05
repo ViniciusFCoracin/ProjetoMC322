@@ -18,7 +18,7 @@ public class Main {
         List<Space> allSpaces = SpacesFileReader.getInstance().readFile("src/XML/spaces.xml");
         List<Course> allCourses = CoursesFileReader.getInstance().readFile("src/XML/courses.xml");
 
-        Map<Lecture, String> allocatedSpaces = MainSystem.allocatingSpaces(allSpaces, allCourses, allDisciplines);
+        Map<Lecture, String> allocatedSpaces = MainSystem.assignPlaces(allSpaces, allCourses, allDisciplines);
 
         for (Map.Entry<Lecture, String> entry : allocatedSpaces.entrySet()) {
             Lecture lecture = entry.getKey();
