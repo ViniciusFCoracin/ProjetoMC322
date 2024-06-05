@@ -35,6 +35,10 @@ public class Course {
     public List<Semester> getCourseSemesters(){
         return this.courseSemesters;
     }
+
+    public Shift getCourseShift(){
+        return this.courseShift;
+    }
     
     public boolean containsDiscipline(String discipline) {
         for (Semester semester : courseSemesters){

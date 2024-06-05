@@ -11,10 +11,7 @@ import org.jgrapht.alg.interfaces.VertexColoringAlgorithm.Coloring;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
 
-import src.Course.Course;
-import src.Course.Discipline;
-import src.Course.Lecture;
-import src.Course.Semester;
+import src.Course.*;
 import src.Schedule.ClassSchedule;
 import src.Schedule.WeekDay;
 import src.Spaces.Space;
@@ -29,6 +26,7 @@ public class MainSystem {
      * @return: returns a Map<Lecture, String> in which we can access the lecture and all it's information (that now shall be initialized)
      */
     public static Map<Lecture, String> assignSchedulesAndPlaces(List<Space> availableSpaces, List<Course> courses, List<Discipline> disciplineList){
+        List<Course> nightTimeCourse = getNightTimeCourses(courses);
         List<Lecture> lectures = MainSystem.assignSchedules(courses, disciplineList);
         Graph<Lecture, DefaultEdge> lecturesGraph = createLectureGraph(lectures);
         Coloring<Lecture> coloring = coloringLecturesGraph(lecturesGraph);
@@ -183,5 +181,23 @@ public class MainSystem {
     private static Coloring<String> coloringDisciplinesGraph(Graph<String, DefaultEdge> graph){
         GreedyColoring<String, DefaultEdge> coloring = new GreedyColoring<>(graph);
         return coloring.getColoring();
+    }
+
+    private static List<Course> getFullTimeCourses(List<Course> allCourses){
+        List<Course> fullTimeCourses = new ArrayList<>();
+        for (Course course : allCourses){
+            if (course.getCourseShift() == Shift.FULL_TIME)
+                fullTimeCourses.add(course);
+        }
+        return fullTimeCourses;
+    }
+
+    private static List<Course> getNightTimeCourses(List<Course> allCourses){
+        List<Course> nightTimeCourses = new ArrayList<>();
+        for (Course course : allCourses){
+            if (course.getCourseShift() == Shift.NIGHT_SHIFT)
+                nightTimeCourses.add(course);
+        }
+        return nightTimeCourses;
     }
 }
