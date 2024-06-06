@@ -45,6 +45,10 @@ public class SpaceAllocator {
     }
 
     private static Map<Lecture, String> assignPlaces(List<Space> availableSpaces, Coloring<Lecture> coloring) {
+        if (availableSpaces.isEmpty()) {
+            throw new IllegalArgumentException("No available spaces to allocate.");
+        }
+
         Map<Integer, Space> spaceColor = new HashMap<>();
         for (int i = 0; i < availableSpaces.size(); i++) {
             spaceColor.put(i, availableSpaces.get(i));

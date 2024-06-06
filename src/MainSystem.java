@@ -19,13 +19,30 @@ public class MainSystem {
 
         Map<Lecture, String> lectureSpace = new HashMap<>();
 
+        List<Lecture> allLectures = ClassScheduler.assignSchedules(courses, disciplineList);
+
         for (Map.Entry<SpaceType, List<Discipline>> entry : separatedDisciplines.entrySet()) {
             SpaceType spaceType = entry.getKey();
-            List<Discipline> disciplines = entry.getValue();
             List<Space> spaces = separatedSpaces.getOrDefault(spaceType, new ArrayList<>());
 
-            List<Lecture> lectures = ClassScheduler.assignSchedules(courses, disciplines);
-            lectureSpace.putAll(SpaceAllocator.assignPlaces(spaces, lectures));
+            if (spaces.isEmpty()) {
+                System.err.println("No available spaces for type: " + spaceType);
+                continue;
+            }
+
+            List<Lecture> filteredLectures = new ArrayList<>();
+            for (Lecture lecture : allLectures) {
+                Discipline discipline = disciplineList.stream()
+                    .filter(d -> d.getDisciplineId().equals(lecture.getLectureDisciplineId()))
+                    .findFirst()
+                    .orElseThrow(() -> new IllegalArgumentException("Discipline not found " + lecture.getLectureDisciplineId()));
+
+                if (discipline.getRequiredSpaceType() == spaceType) {
+                    filteredLectures.add(lecture);
+                }
+            }
+
+            lectureSpace.putAll(SpaceAllocator.assignPlaces(spaces, filteredLectures));
         }
 
         return lectureSpace;

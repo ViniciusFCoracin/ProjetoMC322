@@ -4,7 +4,7 @@ package src.Spaces;
  * A class that represents an auditorium
  */
 public class Auditorium extends Space{
-    SpaceType spaceType = SpaceType.AUDITORIUM;
+    private SpaceType spaceType = SpaceType.AUDITORIUM;
 
     /**
      * Public constructor for the Auditorium class
@@ -15,5 +15,10 @@ public class Auditorium extends Space{
      */
     public Auditorium(String spaceName, int spaceId, int maxCapacity){
         super(spaceName, spaceId, maxCapacity);
+    }
+
+    @Override
+    public SpaceType getSpaceType() {
+        return spaceType;
     }
 }

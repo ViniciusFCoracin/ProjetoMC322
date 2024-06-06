@@ -7,7 +7,7 @@ import src.Spaces.SpaceType;
  */
 public class ComputerRoom extends Classroom {
     private int numComputers;
-    SpaceType spaceType = SpaceType.COMPUTER_ROOM;
+    private SpaceType spaceType = SpaceType.COMPUTER_ROOM;
 
     /**
      * Public constructor for the ComputerRoom class
@@ -24,5 +24,10 @@ public class ComputerRoom extends Classroom {
 
     public int getNumComputers(){
         return this.numComputers;
+    }
+
+    @Override
+    public SpaceType getSpaceType() {
+        return spaceType;
     }
 }

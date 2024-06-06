@@ -6,7 +6,7 @@ import src.Spaces.SpaceType;
  * Class that represents a basic classroom 
  */
 public class BasicRoom extends Classroom{
-    SpaceType spaceType = SpaceType.BASIC_ROOM;
+    private SpaceType spaceType = SpaceType.BASIC_ROOM;
 
     /**
      * Public constructor for the BasicRoom class
@@ -17,5 +17,10 @@ public class BasicRoom extends Classroom{
      */
     public BasicRoom(String spaceName, int spaceId, int maxCapacity){
         super(spaceName, spaceId, maxCapacity);
+    }
+
+    @Override
+    public SpaceType getSpaceType() {
+        return spaceType;
     }
 }
