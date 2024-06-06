@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import src.Course.Course;
 import src.Course.Discipline;
 import src.Course.Lecture;
+import src.GraphicInterface.Views.SelectionView;
 import src.Spaces.Space;
 import src.Readers.CourseRelatedReaders.CoursesFileReader;
 import src.Readers.DisciplineRelatedReaders.DisciplinesFileReader;
@@ -24,9 +25,6 @@ public class Main extends Application{
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("/src/FXML/selection.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+		new SelectionView(stage);
 	}
 }
