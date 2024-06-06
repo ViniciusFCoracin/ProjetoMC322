@@ -3,7 +3,9 @@ package src.Spaces;
 /**
  * Public class that represents a laboratory
  */
-public class Laboratory extends Space{
+public class PhysicLaboratory extends Space{
+    SpaceType type = SpaceType.PHYSIC_LABORATORY;
+
     /**
      * Public constructor for the Laboratory class
      * 
@@ -11,7 +13,7 @@ public class Laboratory extends Space{
      * @param spaceId: the id of the space
      * @param maxCapacity: the capacity of people int the space
      */
-    public Laboratory(String spaceName, int spaceId, int maxCapacity){
+    public PhysicLaboratory(String spaceName, int spaceId, int maxCapacity){
         super(spaceName, spaceId, maxCapacity);
     }
 }

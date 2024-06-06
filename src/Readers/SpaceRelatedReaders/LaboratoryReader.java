@@ -3,7 +3,7 @@ package src.Readers.SpaceRelatedReaders;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 
-import src.Spaces.Laboratory;
+import src.Spaces.PhysicLaboratory;
 import src.Readers.XMLNodeReader;
 
 /**
@@ -16,8 +16,8 @@ public class LaboratoryReader implements XMLNodeReader {
         // does nothing, but we need this to be private
     }
 
-    public Laboratory readNode(Node courseNode){
-        Laboratory laboratory = null;
+    public PhysicLaboratory readNode(Node courseNode){
+        PhysicLaboratory laboratory = null;
         try{
             NodeList childNodes = courseNode.getChildNodes();
             String name = null;
@@ -41,7 +41,7 @@ public class LaboratoryReader implements XMLNodeReader {
                 }
             }
             if (name != null && id != 0 && capacity != 0)
-                laboratory = new Laboratory(name, id, capacity);
+                laboratory = new PhysicLaboratory(name, id, capacity);
             else
                 throw new Error("Atribute missing");
         }

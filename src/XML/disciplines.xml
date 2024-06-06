@@ -5,6 +5,7 @@
         <disciplineName> Cálculo I </disciplineName>
         <disciplineId> MA111 </disciplineId>
         <credits> 6 </credits>
+        <requiredSpace> BasicRoom </requiredSpace>
         <professors> 
             <professor> Leithold Louis Alrazo Alvarez </professor>
             <professor> Joerg Dietrich Wilhelm Schleicher </professor>
@@ -14,6 +15,7 @@
         <disciplineName> Física Geral I </disciplineName>
         <disciplineId> F 128 </disciplineId>
         <credits> 4 </credits>
+        <requiredSpace> SlidesRoom </requiredSpace>
         <professors>
             <professor> José Antônio Brum </professor>
         </professors>
@@ -22,6 +24,7 @@
         <disciplineName> Geometria Analítica e Vetores </disciplineName>
         <disciplineId> MA141 </disciplineId>
         <credits> 4 </credits>
+        <requiredSpace> BasicRoom </requiredSpace>
         <professors>
             <professor> Eder de Moraes Correa </professor>
         </professors>
@@ -30,6 +33,7 @@
         <disciplineName> Algoritmos e Programação de Computadores </disciplineName>
         <disciplineId> MC102 </disciplineId>
         <credits> 6 </credits>
+        <requiredSpace> ComputerRoom </requiredSpace>
         <professors>
             <professor> Rafael Saliba Schouery </professor>
         </professors>
@@ -38,6 +42,7 @@
         <disciplineName> Estrutura de Dados </disciplineName>
         <disciplineId> MC202 </disciplineId>
         <credits> 6 </credits>
+        <requiredSpace> ComputerRoom </requiredSpace>
         <professors>
             <professor> Guilherme Pimentel Telles </professor>
         </professors>
@@ -46,6 +51,7 @@
         <disciplineName> Álgebra Linear </disciplineName>
         <disciplineId> MA327 </disciplineId>
         <credits> 4 </credits>
+        <requiredSpace> BasicRoom </requiredSpace>
         <professors>
             <professor> Eder de Moraes Correa </professor>
         </professors>
@@ -54,6 +60,7 @@
         <disciplineName> Cálculo II </disciplineName>
         <disciplineId> MA211 </disciplineId>
         <credits> 6 </credits>
+        <requiredSpace> BasicRoom </requiredSpace>
         <professors>
             <professor> Joachim Weber </professor>
             <professor> Claudemir Fideles Bezerra Junior </professor>
@@ -63,6 +70,7 @@
         <disciplineName> Física Experimental I </disciplineName>
         <disciplineId> F 129 </disciplineId>
         <credits> 2 </credits>
+        <requiredSpace> PhysicLaboratory </requiredSpace>
         <professors>
             <professor> Luiz Filipe Campos Faria </professor>
         </professors>
@@ -71,6 +79,7 @@
         <disciplineName> Computação e Sociedade </disciplineName>
         <disciplineId> MC009 </disciplineId>
         <credits> 2 </credits>
+        <requiredSpace> Auditorium </requiredSpace>
         <professors>
             <professor> Claudia Maria Bauzer Medeiros </professor>
         </professors>
@@ -79,6 +88,7 @@
         <disciplineName> Cálculo III </disciplineName>
         <disciplineId> MA311 </disciplineId>
         <credits> 6 </credits>
+        <requiredSpace> BasicRoom </requiredSpace>
         <professors>
             <professor> Lucas Catão de Freitas Ferreira </professor>
         </professors>
@@ -87,6 +97,7 @@
         <disciplineName> Fundamentos Matemáticos da Computação </disciplineName>
         <disciplineId> MC358 </disciplineId>
         <credits> 4 </credits>
+        <requiredSpace> SlidesRoom </requiredSpace>
         <professors>
             <professor> Pedro Jussieu de Rezende </professor>
         </professors>
@@ -95,6 +106,7 @@
         <disciplineName> Programação Orientada a Objetos </disciplineName>
         <disciplineId> MC322 </disciplineId>
         <credits> 4 </credits>
+        <requiredSpace> ComputerRoom </requiredSpace>
         <professors>
             <professor> Marcos Medeiros Raimundo </professor>
         </professors>
@@ -103,6 +115,7 @@
         <disciplineName> Introdução aos Modelos Probabilísticos </disciplineName>
         <disciplineId> ME323 </disciplineId>
         <credits> 4 </credits>
+        <requiredSpace> SlidesRoom </requiredSpace>
         <professors>
             <professor> Felipe Augusto Fernandes </professor>
         </professors>
@@ -111,6 +124,7 @@
         <disciplineName> Tópicos Especiais de Humanidades I </disciplineName>
         <disciplineId> HZ291 </disciplineId>
         <credits> 2 </credits>
+        <requiredSpace> SlidesRoom </requiredSpace>
         <professors>
             <professor> Pedro Peixoto Ferreira </professor>
         </professors>
@@ -119,6 +133,7 @@
         <disciplineName> Química I </disciplineName>
         <disciplineId> QG101 </disciplineId>
         <credits> 4 </credits>
+        <requiredSpace> SlidesRoom </requiredSpace>
         <professors>
             <professor> Fabio Augusto </professor>
         </professors>
@@ -127,6 +142,7 @@
         <disciplineName> Física Geral II </disciplineName>
         <disciplineId> F 228 </disciplineId>
         <credits> 4 </credits>
+        <requiredSpace> SlidesRoom </requiredSpace>
         <professors>
             <professor> Diego Muraca </professor>
         </professors>
@@ -135,6 +151,7 @@
         <disciplineName> Física Experimental II </disciplineName>
         <disciplineId> F 229 </disciplineId>
         <credits> 2 </credits>
+        <requiredSpace> PhysicLaboratory </requiredSpace>
         <professors>
             <professor> Natalia De Faria Coutinho </professor>
         </professors>
@@ -143,6 +160,7 @@
         <disciplineName> Inglês Experimental I </disciplineName>
         <disciplineId> LA122 </disciplineId>
         <credits> 4 </credits>
+        <requiredSpace> BasicRoom </requiredSpace>
         <professors>
             <professor> Joacyr Tupinambas De Oliveira </professor>
         </professors>
@@ -151,6 +169,7 @@
         <disciplineName> Mecânica Geral I </disciplineName>
         <disciplineId> F 315 </disciplineId>
         <credits> 4 </credits>
+        <requiredSpace> SlidesRoom </requiredSpace>
         <professors>
             <professor> Andre Alexandre De Thomaz </professor>
         </professors>
@@ -159,6 +178,7 @@
         <disciplineName> Física Experimental III </disciplineName>
         <disciplineId> F 329 </disciplineId>
         <credits> 2 </credits>
+        <requiredSpace> PhysicLaboratory </requiredSpace>
         <professors>
             <professor> Francisco Paulo Marques Rouxinol </professor>
         </professors>
@@ -167,6 +187,7 @@
         <disciplineName> Circuitos Elétricos </disciplineName>
         <disciplineId> EA513 </disciplineId>
         <credits> 4 </credits>
+        <requiredSpace> SlidesRoom </requiredSpace>
         <professors>
             <professor> Christiano Lyra Filho </professor>
         </professors>
@@ -175,6 +196,7 @@
         <disciplineName> Física Geral III </disciplineName>
         <disciplineId> F 328 </disciplineId>
         <credits> 4 </credits>
+        <requiredSpace> SlidesRoom </requiredSpace>
         <professors>
             <professor> Andre Monteiro Paschoal</professor>
         </professors>

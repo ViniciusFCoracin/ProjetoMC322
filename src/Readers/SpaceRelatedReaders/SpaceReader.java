@@ -41,7 +41,7 @@ public class SpaceReader implements XMLNodeReader {
             }
             else if ("laboratory".equals(spaceNode.getNodeName())){
                 LaboratoryReader reader = LaboratoryReader.getInstance();
-                Laboratory room = reader.readNode(spaceNode);
+                PhysicLaboratory room = reader.readNode(spaceNode);
                 return room;
             }
             else if ("court".equals(spaceNode.getNodeName())){

@@ -2,6 +2,7 @@ package src.Course;
 
 import java.util.Arrays;
 import java.util.List;
+import src.Spaces.*;
 
 /**
  * Class that represents a university discipline
@@ -10,6 +11,7 @@ public class Discipline {
     private String disciplineName;
     private String disciplineId;
     private int disciplineCredits;
+    private SpaceType requiredSpace;
     private List<String> professors;
 
     /**
@@ -20,7 +22,7 @@ public class Discipline {
      * @param credits: the nummber of credits of the discipline
      * @param professors: the professors of the discipline
      */
-    public Discipline(String disciplineName, String id, int credits, String... professors){
+    public Discipline(String disciplineName, String id, int credits, SpaceType requiredSpace, String... professors){
         this.disciplineName = disciplineName;
         this.disciplineId = id;
         this.disciplineCredits = credits;
@@ -35,11 +37,13 @@ public class Discipline {
      * @param credits: the number of credits of the discipline
      * @param professors: the professors of the discipline
      */
-    public Discipline(String disciplineName, String id, int credits, List<String> professors){
+    public Discipline(String disciplineName, String id, int credits, SpaceType type, List<String> professors){
         this.disciplineName = disciplineName;
         this.disciplineId = id;
         this.disciplineCredits = credits;
-        this.professors = professors;    }
+        this.requiredSpace = type;
+        this.professors = professors;
+    }
 
     public String getDisciplineName(){
         return this.disciplineName;
@@ -55,6 +59,10 @@ public class Discipline {
 
     public List<String> getProfessors(){
         return this.professors;
+    }
+
+    public SpaceType getRequiredSpace(){
+        return this.requiredSpace;
     }
 
     @Override

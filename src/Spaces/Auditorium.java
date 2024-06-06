@@ -4,6 +4,8 @@ package src.Spaces;
  * A class that represents an auditorium
  */
 public class Auditorium extends Space{
+    SpaceType type = SpaceType.AUDITORIUM;
+
     /**
      * Public constructor for the Auditorium class
      * 
