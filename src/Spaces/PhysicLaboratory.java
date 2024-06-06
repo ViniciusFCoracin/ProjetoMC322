@@ -4,8 +4,6 @@ package src.Spaces;
  * Public class that represents a laboratory
  */
 public class PhysicLaboratory extends Space{
-    SpaceType type = SpaceType.PHYSIC_LABORATORY;
-
     /**
      * Public constructor for the Laboratory class
      * 
