@@ -1,4 +1,4 @@
-package src;
+package src.System;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -69,8 +69,10 @@ public class ClassScheduler {
             String disciplineId = entry.getKey();
             Integer color = entry.getValue();
 
-            Discipline discipline = disciplines.stream().filter(d -> d.getDisciplineId().equals(disciplineId))
-                .findFirst().orElseThrow(() -> new IllegalArgumentException("Discipline not found " + disciplineId));
+            Discipline discipline = disciplines.stream()
+                                    .filter(d -> d.getDisciplineId().equals(disciplineId))
+                                    .findFirst()
+                                    .orElseThrow(() -> new IllegalArgumentException("Discipline not found " + disciplineId));
 
             // Selecting a professor of the professor list of the discipline
             List<String> instructors = discipline.getProfessors();
