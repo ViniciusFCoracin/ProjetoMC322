@@ -1,9 +1,13 @@
 package src.Spaces.Classrooms;
 
+import src.Spaces.SpaceType;
+
 /**
  * Class that represents a basic classroom 
  */
 public class BasicRoom extends Classroom{
+    SpaceType spaceType = SpaceType.BASIC_ROOM;
+
     /**
      * Public constructor for the BasicRoom class
      * 

@@ -7,6 +7,7 @@ public abstract class Space {
     private String spaceName;
     private int spaceId;
     private int maxCapacity;
+    private SpaceType spaceType;
 
     /**
      * Public class for the Space class
@@ -36,5 +37,9 @@ public abstract class Space {
     @Override
     public String toString(){
         return spaceName;
+    }    
+
+    public SpaceType getSpaceType(){
+        return this.spaceType;
     }
 }
