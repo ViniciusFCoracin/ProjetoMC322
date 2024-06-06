@@ -3,6 +3,11 @@ package src;
 import java.util.List;
 import java.util.Map;
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import src.Course.Course;
 import src.Course.Discipline;
 import src.Course.Lecture;
@@ -11,21 +16,17 @@ import src.Readers.CourseRelatedReaders.CoursesFileReader;
 import src.Readers.DisciplineRelatedReaders.DisciplinesFileReader;
 import src.Readers.SpaceRelatedReaders.SpacesFileReader;
 
-public class Main {
+public class Main extends Application{
 
     public static void main(String[] args) throws Exception {
-        List<Discipline> allDisciplines = DisciplinesFileReader.getInstance().readFile("src/XML/disciplines.xml");
-        List<Space> allSpaces = SpacesFileReader.getInstance().readFile("src/XML/spaces.xml");
-        List<Course> allCourses = CoursesFileReader.getInstance().readFile("src/XML/courses.xml");
-
-        Map<Lecture, String> allocatedSpaces = MainSystem.assignSchedulesAndPlaces(allSpaces, allCourses, allDisciplines);
-
-        for (Map.Entry<Lecture, String> entry : allocatedSpaces.entrySet()) {
-            Lecture lecture = entry.getKey();
-            String output = ("Lecture: " + lecture.getLectureDisciplineId() + ", Professor " + lecture.getProfessor() + "\n" +
-                             "Day: " + lecture.getLectureSchedule().getDay() + ", " + lecture.getLectureSchedule().getStartHour() + "h - " + lecture.getLectureSchedule().getEndHour() + "h\n" +
-                             "Place: " + lecture.getLectureSpace() + "\n" + "Group: " + lecture.getLectureGroup() +"\n");
-           System.out.println(output);
-        }
+    	Application.launch(args);
     }
+
+	@Override
+	public void start(Stage stage) throws Exception {
+		Parent root = FXMLLoader.load(getClass().getResource("/src/FXML/selection.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+	}
 }
