@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import src.Course.Discipline;
 import src.Readers.XMLNodeReader;
+import src.Spaces.SpaceType;
 
 /**
  * Singleton class that reads a course node and returns a Course object
@@ -25,6 +26,7 @@ public class DisciplineReader implements XMLNodeReader {
             String disciplineName = null;
             String disciplineId = null;
             int credits = 0;
+            SpaceType type = null;
             List<String> professors = new ArrayList<>();
             for (int i = 0; i < childNodes.getLength(); i++){
                 Node node = childNodes.item(i);
@@ -38,6 +40,25 @@ public class DisciplineReader implements XMLNodeReader {
                 }
                 else if ("credits".equals(node.getNodeName())){
                     credits = Integer.parseInt(node.getTextContent().trim());
+                }
+                else if ("requiredSpace".equals(node.getNodeName())){
+                    String text = node.getTextContent().trim();
+                    if (text.equals("BasicRoom"))
+                        type = SpaceType.BASIC_ROOM;
+                    else if (text.equals("SlidesRoom"))
+                        type = SpaceType.SLIDES_ROOM;
+                    else if (text.equals("ComputerRoom"))
+                        type = SpaceType.COMPUTER_ROOM;
+                    else if (text.equals("Auditorium"))
+                        type = SpaceType.AUDITORIUM;
+                    else if (text.equals("Court"))
+                        type = SpaceType.COURT;
+                    else if (text.equals("PhysicLaboratory"))
+                        type = SpaceType.PHYSICS_LABORATORY;
+                    else if (text.equals("Chemistry Laboratory"))
+                        type = SpaceType.CHEMISTRY_LABORATORY;
+                    else
+                        throw new Error("Invalid space type");
                 }
                 else if ("professors".equals(node.getNodeName())){
                     NodeList professorsList = node.getChildNodes();
@@ -53,8 +74,8 @@ public class DisciplineReader implements XMLNodeReader {
                     throw new Error("Invalid atribute");
                 }
             }
-            if (disciplineName != null && disciplineId != null && credits != 0)
-                discipline = new Discipline(disciplineName, disciplineId, credits, professors);
+            if (disciplineName != null && disciplineId != null && type != null && credits != 0)
+                discipline = new Discipline(disciplineName, disciplineId, credits, type, professors);
             else
                 throw new Error("Atribute missing");
         }
