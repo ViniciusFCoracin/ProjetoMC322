@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="644.0" prefWidth="775.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.GraphicInterface.Scene1Controller">
+<AnchorPane prefHeight="644.0" prefWidth="775.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.GraphicInterface.SelectionController">
    <children>
       <GridPane alignment="TOP_CENTER" gridLinesVisible="true" layoutX="-3.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="821.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
