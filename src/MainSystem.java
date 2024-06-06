@@ -2,6 +2,7 @@ package src;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -11,10 +12,18 @@ import org.jgrapht.alg.interfaces.VertexColoringAlgorithm.Coloring;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import src.Course.Course;
 import src.Course.Discipline;
 import src.Course.Lecture;
 import src.Course.Semester;
+import src.GraphicInterface.SelectionController;
+import src.Readers.CourseRelatedReaders.CoursesFileReader;
+import src.Readers.DisciplineRelatedReaders.DisciplinesFileReader;
+import src.Readers.SpaceRelatedReaders.SpacesFileReader;
 import src.Schedule.ClassSchedule;
 import src.Schedule.WeekDay;
 import src.Spaces.Space;
@@ -23,9 +32,9 @@ import src.Spaces.Space;
 public class MainSystem {
     /**
      * This method is responsible for setting the lectures their space. The possible issue is that two lectures cannot have the same room, if the have the same schedule.
-     * @param availableSpaces: a list of avaible spaces for the lectures
-     * @param courses: a list of courses that the university has as avaible
-     * @param disciplineList: the list of the disciplines that will be availble at the University
+     * @param availableSpaces: a list of available spaces for the lectures
+     * @param courses: a list of courses that the university has as available
+     * @param disciplineList: the list of the disciplines that will be available at the University
      * @return: returns a Map<Lecture, String> in which we can access the lecture and all it's information (that now shall be initialized)
      */
     public static Map<Lecture, String> assignSchedulesAndPlaces(List<Space> availableSpaces, List<Course> courses, List<Discipline> disciplineList){
@@ -38,8 +47,8 @@ public class MainSystem {
     /**
      * This method is responsible for setting the schedule of the disciplines avoiding the conflict in which two lectures of different disciplines,
      * but same course and semester happen at the same time. Note that it's an issue, because the student can't be in the two classes simultaneously.
-     * @param courses: the list of the courses that the university will have as avaiable
-     * @param disciplineList: the list of the disciplines that will be availble at the University
+     * @param courses: the list of the courses that the university will have as available
+     * @param disciplineList: the list of the disciplines that will be available at the University
      * @return: returns a list of lectures with a discipline, professor, schedule and a non-initialized space
      */
     private static List<Lecture> assignSchedules(List<Course> courses, List<Discipline> disciplineList){
@@ -183,5 +192,41 @@ public class MainSystem {
     private static Coloring<String> coloringDisciplinesGraph(Graph<String, DefaultEdge> graph){
         GreedyColoring<String, DefaultEdge> coloring = new GreedyColoring<>(graph);
         return coloring.getColoring();
+    }
+    
+    private static List<Space> removeSelectedSpaces(List<Space> allSpaces, List<String> selectedSpaces) {
+    	 Iterator<Space> iterator = allSpaces.iterator();
+         while (iterator.hasNext()) {
+             Space space = iterator.next();
+             if (selectedSpaces.contains(space.getSpaceName())) {
+                 iterator.remove();
+             }
+         }
+         return allSpaces;
+	}
+    
+    public static void startDistribution() {
+        List<Discipline> allDisciplines = DisciplinesFileReader.getInstance().readFile("src/XML/disciplines.xml");
+        
+        List<Space> allSpaces = SpacesFileReader.getInstance().readFile("src/XML/spaces.xml");
+        System.out.println("Available spaces before selection");
+        System.out.println(allSpaces);
+        System.out.println("==============================================================================");
+        allSpaces = removeSelectedSpaces(allSpaces, SelectionController.getRemovedAreas());
+        System.out.println("Available spaces after selection");
+        System.out.println(allSpaces);
+        
+        
+        List<Course> allCourses = CoursesFileReader.getInstance().readFile("src/XML/courses.xml");
+
+        Map<Lecture, String> allocatedSpaces = MainSystem.assignSchedulesAndPlaces(allSpaces, allCourses, allDisciplines);
+        
+        for (Map.Entry<Lecture, String> entry : allocatedSpaces.entrySet()) {
+            Lecture lecture = entry.getKey();
+            String output = ("Lecture: " + lecture.getLectureDisciplineId() + ", Professor " + lecture.getProfessor() + "\n" +
+                             "Day: " + lecture.getLectureSchedule().getDay() + ", " + lecture.getLectureSchedule().getStartHour() + "h - " + lecture.getLectureSchedule().getEndHour() + "h\n" +
+                             "Place: " + lecture.getLectureSpace() + "\n" + "Group: " + lecture.getLectureGroup() +"\n");
+           //System.out.println(output);
+        }
     }
 }
