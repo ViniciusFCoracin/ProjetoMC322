@@ -20,7 +20,7 @@ import src.Course.Course;
 import src.Course.Discipline;
 import src.Course.Lecture;
 import src.Course.Semester;
-import src.GraphicInterface.SelectionController;
+import src.GraphicInterface.Controllers.SelectionController;
 import src.Readers.CourseRelatedReaders.CoursesFileReader;
 import src.Readers.DisciplineRelatedReaders.DisciplinesFileReader;
 import src.Readers.SpaceRelatedReaders.SpacesFileReader;
@@ -209,11 +209,11 @@ public class MainSystem {
         List<Discipline> allDisciplines = DisciplinesFileReader.getInstance().readFile("src/XML/disciplines.xml");
         
         List<Space> allSpaces = SpacesFileReader.getInstance().readFile("src/XML/spaces.xml");
-        System.out.println("Available spaces before selection");
+        System.out.println("Available spaces before selection:");
         System.out.println(allSpaces);
         System.out.println("==============================================================================");
-        allSpaces = removeSelectedSpaces(allSpaces, SelectionController.getRemovedAreas());
-        System.out.println("Available spaces after selection");
+        allSpaces = removeSelectedSpaces(allSpaces, SelectionController.getRemovedSpaces());
+        System.out.println("Available spaces after selection:");
         System.out.println(allSpaces);
         
         
@@ -226,7 +226,7 @@ public class MainSystem {
             String output = ("Lecture: " + lecture.getLectureDisciplineId() + ", Professor " + lecture.getProfessor() + "\n" +
                              "Day: " + lecture.getLectureSchedule().getDay() + ", " + lecture.getLectureSchedule().getStartHour() + "h - " + lecture.getLectureSchedule().getEndHour() + "h\n" +
                              "Place: " + lecture.getLectureSpace() + "\n" + "Group: " + lecture.getLectureGroup() +"\n");
-           //System.out.println(output);
+            //System.out.println(output);
         }
     }
 }
