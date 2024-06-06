@@ -4,6 +4,8 @@ package src.Spaces;
  * A class that represents a court
  */
 public class Court extends Space {
+    SpaceType spaceType = SpaceType.COURT;
+
     /**
      * Public constructor for the Court class
      * 

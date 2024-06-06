@@ -1,10 +1,13 @@
 package src.Spaces.Classrooms;
 
+import src.Spaces.SpaceType;
+
 /**
  * Class that represents a computer room
  */
 public class ComputerRoom extends Classroom {
     private int numComputers;
+    SpaceType spaceType = SpaceType.COMPUTER_ROOM;
 
     /**
      * Public constructor for the ComputerRoom class

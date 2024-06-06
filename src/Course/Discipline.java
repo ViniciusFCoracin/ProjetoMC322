@@ -3,6 +3,8 @@ package src.Course;
 import java.util.Arrays;
 import java.util.List;
 
+import src.Spaces.SpaceType;
+
 /**
  * Class that represents a university discipline
  */
@@ -10,6 +12,7 @@ public class Discipline {
     private String disciplineName;
     private String disciplineId;
     private int disciplineCredits;
+    private SpaceType requiredSpace;
     private List<String> professors;
 
     /**
@@ -55,6 +58,10 @@ public class Discipline {
 
     public List<String> getProfessors(){
         return this.professors;
+    }
+
+    public SpaceType getRequiredSpaceType(){
+        return this.requiredSpace;
     }
 
     @Override

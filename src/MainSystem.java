@@ -20,6 +20,7 @@ import src.Schedule.ClassSchedule;
 import src.Schedule.HourOfClass;
 import src.Schedule.WeekDay;
 import src.Spaces.Space;
+import src.Spaces.SpaceType;
 
 /* This class may be refactored to a Singleton later */
 public class MainSystem {
@@ -31,10 +32,32 @@ public class MainSystem {
      * @return: returns a Map<Lecture, String> in which we can access the lecture and all it's information (that now shall be initialized)
      */
     public static Map<Lecture, String> assignSchedulesAndPlaces(List<Space> availableSpaces, List<Course> courses, List<Discipline> disciplineList){
-        List<Lecture> lectures = MainSystem.assignSchedules(courses, disciplineList);
-        Graph<Lecture, DefaultEdge> lecturesGraph = createLectureGraph(lectures);
-        Coloring<Lecture> coloring = coloringLecturesGraph(lecturesGraph);
-        return assignPlaces(availableSpaces, coloring);
+        
+        // Separating disciplines according to the required space
+        Map<SpaceType, List<Discipline>> separatedDisciplines = separateDisciplinesBySpaceRequirement(disciplineList);
+
+        // Separating space by type
+        Map<SpaceType, List<Space>> separatedSpaces = separateSpacesByType(availableSpaces);
+        
+        Map<Lecture, String> lectureSpace = new HashMap<>();
+
+        // Allocating spaces for every type of discipline and space
+        for (Map.Entry<SpaceType, List<Discipline>> entry : separatedDisciplines.entrySet()) {
+            SpaceType spaceType = entry.getKey();
+            List<Discipline> disciplines = entry.getValue();
+            List<Space> spaces = separatedSpaces.getOrDefault(spaceType, new ArrayList<>());
+
+            // Creating a list of lectures based on the space type specified
+            List<Lecture> lectures = assignSchedules(courses, disciplines);
+
+            Graph<Lecture, DefaultEdge> graph = createLectureGraph(lectures);
+            Coloring<Lecture> coloring = coloringLecturesGraph(graph);
+
+            // Assigning spaces based on the coloring 
+            lectureSpace.putAll(assignPlaces(spaces, coloring));
+        }
+
+        return lectureSpace;
     }
 
     /**
@@ -202,5 +225,29 @@ public class MainSystem {
     private static Coloring<String> coloringDisciplinesGraph(Graph<String, DefaultEdge> graph){
         GreedyColoring<String, DefaultEdge> coloring = new GreedyColoring<>(graph);
         return coloring.getColoring();
+    }
+
+    /**
+     * Separates disciplines into different lists based on their space requirements.
+     */
+    public static Map<SpaceType, List<Discipline>> separateDisciplinesBySpaceRequirement(List<Discipline> disciplineList) {
+        Map<SpaceType, List<Discipline>> separatedDisciplines = new HashMap<>();
+        for (Discipline discipline : disciplineList) {
+            SpaceType requiredSpaceType = discipline.getRequiredSpaceType();
+            separatedDisciplines.computeIfAbsent(requiredSpaceType, k -> new ArrayList<>()).add(discipline);
+        }
+        return separatedDisciplines;
+    }
+
+    /**
+     * Separates spaces into different lists based on their type.
+     */
+    public static Map<SpaceType, List<Space>> separateSpacesByType(List<Space> spaceList) {
+        Map<SpaceType, List<Space>> separatedSpaces = new HashMap<>();
+        for (Space space : spaceList) {
+            SpaceType spaceType = space.getSpaceType();
+            separatedSpaces.computeIfAbsent(spaceType, k -> new ArrayList<>()).add(space);
+        }
+        return separatedSpaces;
     }
 }
