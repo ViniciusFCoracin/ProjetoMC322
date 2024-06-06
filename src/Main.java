@@ -25,6 +25,6 @@ public class Main extends Application{
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		new SelectionView(stage);
+		SelectionView.getInstance(stage).openStage();;
 	}
 }
