@@ -7,12 +7,13 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="642.0" prefWidth="874.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.GraphicInterface.Controllers.SelectionController">
+<AnchorPane prefHeight="652.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.GraphicInterface.Controllers.SelectionController">
    <children>
-      <GridPane alignment="TOP_CENTER" gridLinesVisible="true" layoutX="-3.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="821.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
+      <GridPane alignment="TOP_CENTER" gridLinesVisible="true" layoutX="-7.0" prefHeight="519.0" prefWidth="882.0" AnchorPane.leftAnchor="-7.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -28,19 +29,19 @@
                   <Font name="Liberation Serif" size="40.0" />
                </font>
             </Label>
-            <FlowPane hgap="10.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" vgap="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <FlowPane fx:id="spacesFlowPane" hgap="10.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" vgap="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="PB13" />
-                  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB5" />
-                  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB1" />
-                  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB4" />
-                  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="PB15" />
-                  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB3" />
-                  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB12" />
-                  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB16" />
-                  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CC300" />
-                  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="LF10" />
-                  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="Auditório do IC" />
+                  <Button fx:id="buttonCB1" mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB1" />
+                  <Button fx:id="buttonCB3" mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB3" />
+                  <Button fx:id="buttonCB4" mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB4" />
+                  <Button fx:id="buttonCB5" mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB5" />
+                  <Button fx:id="buttonCB12" mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB12" />
+                  <Button fx:id="buttonCB16" mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB16" />
+                  <Button fx:id="buttonPB13" mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="PB13" />
+                  <Button fx:id="buttonPB15" mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="PB15" />
+                  <Button fx:id="buttonCC300" mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CC300" />
+                  <Button fx:id="buttonLF10" mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="LF10" />
+                  <Button fx:id="buttonICAuditorium" mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="Auditório do IC" />
                   <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="Quadra" />
                </children>
                <padding>
@@ -49,6 +50,10 @@
             </FlowPane>
          </children>
       </GridPane>
-      <Button layoutX="407.0" layoutY="560.0" mnemonicParsing="false" onAction="#submit" text="Submit" />
+      <Pane layoutX="373.0" layoutY="560.0" AnchorPane.bottomAnchor="66.0" AnchorPane.leftAnchor="373.0" AnchorPane.rightAnchor="379.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#submit" text="Submit" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
