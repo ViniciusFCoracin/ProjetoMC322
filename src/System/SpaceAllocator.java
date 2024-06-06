@@ -1,9 +1,9 @@
-package src;
+package src.System;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.jgrapht.Graph;
 import org.jgrapht.alg.color.GreedyColoring;
 import org.jgrapht.alg.interfaces.VertexColoringAlgorithm.Coloring;
@@ -13,9 +13,18 @@ import org.jgrapht.graph.SimpleGraph;
 import src.Course.Lecture;
 import src.Spaces.Space;
 
+/**
+ * Class responsible for allocating spaces for the lectures
+ */
 public class SpaceAllocator {
-
-    public static Map<Lecture, String> assignPlaces(List<Space> availableSpaces, List<Lecture> lectures) {
+    /**
+     * Method responsible for assigning places to the lectures
+     * 
+     * @param availableSpaces: a list of available spaces
+     * @param lectures: a list of lectures without a place assigned
+     * @return: a list of lectures with places assigned
+     */
+    public static List<Lecture> assignPlaces(List<Space> availableSpaces, List<Lecture> lectures) {
         Graph<Lecture, DefaultEdge> lecturesGraph = createLectureGraph(lectures);
         Coloring<Lecture> coloring = coloringLecturesGraph(lecturesGraph);
         return assignPlaces(availableSpaces, coloring);
@@ -44,7 +53,7 @@ public class SpaceAllocator {
         return coloring.getColoring();
     }
 
-    private static Map<Lecture, String> assignPlaces(List<Space> availableSpaces, Coloring<Lecture> coloring) {
+    private static List<Lecture> assignPlaces(List<Space> availableSpaces, Coloring<Lecture> coloring) {
         if (availableSpaces.isEmpty()) {
             throw new IllegalArgumentException("No available spaces to allocate.");
         }
@@ -63,6 +72,7 @@ public class SpaceAllocator {
             lectureSpace.put(lecture, space.getSpaceName());
         }
 
-        return lectureSpace;
+        List<Lecture> allLectures = new ArrayList<>(lectureSpace.keySet());
+        return allLectures;
     }
 }

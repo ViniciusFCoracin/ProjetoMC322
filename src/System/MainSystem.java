@@ -1,4 +1,4 @@
-package src;
+package src.System;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,23 +11,21 @@ import src.Course.Lecture;
 import src.Spaces.Space;
 import src.Spaces.SpaceType;
 
-public class MainSystem {
 
-    public static Map<Lecture, String> assignSchedulesAndPlaces(List<Space> availableSpaces, List<Course> courses, List<Discipline> disciplineList) {
+public class MainSystem {
+    public static List<Lecture> assignSchedulesAndPlaces(List<Space> availableSpaces, List<Course> courses, List<Discipline> disciplineList) {
         Map<SpaceType, List<Discipline>> separatedDisciplines = separateDisciplinesBySpaceRequirement(disciplineList);
         Map<SpaceType, List<Space>> separatedSpaces = separateSpacesByType(availableSpaces);
 
-        Map<Lecture, String> lectureSpace = new HashMap<>();
-
+        List<Lecture> lectures = new ArrayList<>();
         List<Lecture> allLectures = ClassScheduler.assignSchedules(courses, disciplineList);
 
         for (Map.Entry<SpaceType, List<Discipline>> entry : separatedDisciplines.entrySet()) {
             SpaceType spaceType = entry.getKey();
-            List<Space> spaces = separatedSpaces.getOrDefault(spaceType, new ArrayList<>());
+            List<Space> spaces = separatedSpaces.get(spaceType);
 
-            if (spaces.isEmpty()) {
-                System.err.println("No available spaces for type: " + spaceType);
-                continue;
+            if (spaces == null) {
+                throw new Error("No available spaces for type: " + spaceType);
             }
 
             List<Lecture> filteredLectures = new ArrayList<>();
@@ -42,10 +40,10 @@ public class MainSystem {
                 }
             }
 
-            lectureSpace.putAll(SpaceAllocator.assignPlaces(spaces, filteredLectures));
+            lectures.addAll(SpaceAllocator.assignPlaces(spaces, filteredLectures));
         }
 
-        return lectureSpace;
+        return lectures;
     }
 
     private static Map<SpaceType, List<Discipline>> separateDisciplinesBySpaceRequirement(List<Discipline> disciplineList) {
