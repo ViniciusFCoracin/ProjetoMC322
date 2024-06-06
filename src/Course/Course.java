@@ -7,6 +7,7 @@ import java.util.List;
 public class Course {
     public String courseName;
     public int courseId;
+    public Shift courseShift;
     public List<Semester> courseSemesters;
 
     /**
@@ -16,9 +17,10 @@ public class Course {
      * @param courseId: the id of the course
      * @param semesters: list of the course semesters
      */
-    public Course(String courseName, int courseId, List<Semester> semesters){
+    public Course(String courseName, int courseId, Shift courseShift, List<Semester> semesters){
         this.courseName = courseName;
         this.courseId = courseId;
+        this.courseShift = courseShift;
         this.courseSemesters = semesters;
     }
 
@@ -28,6 +30,10 @@ public class Course {
 
     public int getCourseId(){
         return this.courseId;
+    }
+
+    public Shift getCourseShift(){
+        return this.courseShift;
     }
 
     public List<Semester> getCourseSemesters(){

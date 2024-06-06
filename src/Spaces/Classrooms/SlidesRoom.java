@@ -1,9 +1,13 @@
 package src.Spaces.Classrooms;
 
+import src.Spaces.SpaceType;
+
 /**
  * Class that represents a classroom with a slide projector
  */
 public class SlidesRoom extends Classroom{
+    private SpaceType spaceType = SpaceType.SLIDES_ROOM;
+
     /**
      * Public constructor for the SlidesRoom class
      * 
@@ -13,5 +17,10 @@ public class SlidesRoom extends Classroom{
      */
     public SlidesRoom(String spaceName, int spaceId, int maxCapacity){
         super(spaceName, spaceId, maxCapacity);
+    }
+
+    @Override
+    public SpaceType getSpaceType() {
+        return spaceType;
     }
 }

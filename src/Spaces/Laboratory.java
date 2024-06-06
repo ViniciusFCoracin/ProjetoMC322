@@ -4,6 +4,8 @@ package src.Spaces;
  * Public class that represents a laboratory
  */
 public class Laboratory extends Space{
+    private SpaceType spaceType = SpaceType.PHYSICS_LABORATORY;
+
     /**
      * Public constructor for the Laboratory class
      * 
@@ -13,5 +15,10 @@ public class Laboratory extends Space{
      */
     public Laboratory(String spaceName, int spaceId, int maxCapacity){
         super(spaceName, spaceId, maxCapacity);
+    }
+
+    @Override
+    public SpaceType getSpaceType() {
+        return spaceType;
     }
 }
