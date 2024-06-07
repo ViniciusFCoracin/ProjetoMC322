@@ -1,20 +1,26 @@
 package src.GraphicInterface.Controllers;
 
+import java.awt.Container;
 import java.util.ArrayList;
 import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 import src.GraphicInterface.Views.SelectionView;
 import src.System.LectureSelector;
 
 public class SelectionController {
 	
     @FXML
-    private FlowPane coursesFlowPane, spacesFlowPane;
+    private FlowPane spacesFlowPane;
+    
+    @FXML
+    private VBox coursesVBox;
     
     private static List<String> removedCourses = new ArrayList<String>();
 	private static List<String> removedSpaces= new ArrayList<String>();
@@ -29,8 +35,8 @@ public class SelectionController {
 	
 	@FXML
     public void initialize() {
-		inicializeFlowPane(coursesFlowPane);
-        inicializeFlowPane(spacesFlowPane);
+		initializeContainer(coursesVBox);
+        initializeContainer(spacesFlowPane);
     }
 	
 	public void removeSpace(ActionEvent e) {
@@ -58,8 +64,9 @@ public class SelectionController {
 		return list;
 	}
 	
-	private void inicializeFlowPane(FlowPane flowPane) {
-		for (Node node : flowPane.getChildren()) {
+	
+	private void initializeContainer(Parent container) {
+		for (Node node : container.getChildrenUnmodifiable()) {
             Button button = (Button) node;
             button.setUserData(false);
             button.setStyle("-fx-background-color: white");
