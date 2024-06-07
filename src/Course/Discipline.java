@@ -9,6 +9,8 @@ import src.Spaces.SpaceType;
  * Class that represents a university discipline
  */
 public class Discipline {
+    private int countProfessors = 0;
+    private int countGroups = 0;
     private String disciplineName;
     private String disciplineId;
     private int disciplineCredits;
@@ -65,6 +67,25 @@ public class Discipline {
 
     public SpaceType getRequiredSpaceType(){
         return this.requiredSpace;
+    }
+
+    public String selectProfessor(){
+        if (countProfessors >= professors.size())
+            countProfessors = 0;
+        return professors.get(countProfessors++);
+    }
+
+    public char selectGroup(){
+        return (char) ('A' + countGroups++);
+    }
+
+    /**
+     * Calculate the discipline number of lectures in a week
+     * 
+     * @return: the number of lectures in a week
+     */
+    public int numberOfLectures(){
+        return this.disciplineCredits / 2;
     }
 
     @Override

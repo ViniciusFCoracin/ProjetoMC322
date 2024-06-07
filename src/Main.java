@@ -9,19 +9,20 @@ import src.Readers.CourseRelatedReaders.CoursesFileReader;
 import src.Readers.DisciplineRelatedReaders.DisciplinesFileReader;
 import src.Readers.SpaceRelatedReaders.SpacesFileReader;
 import src.Spaces.Space;
-import src.System.MainSystem;
+import src.System.ClassScheduler;
+import src.System.SpaceAllocator;
 
 public class Main {
-
     public static void main(String[] args) throws Exception {
         List<Discipline> allDisciplines = DisciplinesFileReader.getInstance().readFile("src/XML/disciplines.xml");
         List<Space> allSpaces = SpacesFileReader.getInstance().readFile("src/XML/spaces.xml");
         List<Course> allCourses = CoursesFileReader.getInstance().readFile("src/XML/courses.xml");
 
-        List<Lecture> allLectures = MainSystem.assignSchedulesAndPlaces(allSpaces, allCourses, allDisciplines);
+        List<Lecture> allLectures = ClassScheduler.createLecturesWithSchedules(allCourses, allDisciplines);
+        allLectures = SpaceAllocator.assignPlaces(allSpaces, allLectures, allDisciplines);
 
         for (Lecture lecture : allLectures) {
-            String output = ("Lecture: " + lecture.getLectureDisciplineId() + ", Professor " + lecture.getProfessor() + "\n" +
+            String output = ("Lecture: " + lecture.getLectureDiscipline().getDisciplineId() + ", Professor " + lecture.getProfessor() + "\n" +
                              "Day: " + lecture.getLectureSchedule().getDay() + ", " + lecture.getLectureSchedule().getHourOfClass() + "\n" +
                              "Place: " + lecture.getLectureSpace() + "\n" + "Group: " 
                              + lecture.getLectureGroup() +"\n" + lecture.getCourseName() + "\n");

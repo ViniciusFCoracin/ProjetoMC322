@@ -1,14 +1,15 @@
 package src.Course;
+
 import java.util.List;
 
 /**
  * A class that represents an university course
  */
 public class Course {
-    public String courseName;
-    public int courseId;
-    public Shift courseShift;
-    public List<Semester> courseSemesters;
+    private String courseName;
+    private int courseId;
+    private Shift courseShift;
+    private List<Semester> courseSemesters;
 
     /**
      * Public constructor for Course class
@@ -38,25 +39,6 @@ public class Course {
 
     public List<Semester> getCourseSemesters(){
         return this.courseSemesters;
-    }
-    
-    public boolean containsDiscipline(String discipline) {
-        for (Semester semester : courseSemesters){
-            if (semester.getDisciplines().contains(discipline))
-                return true;
-        }
-        return false;
-    }
-        
-
-    public int getSemesterOfLecture(Lecture lecture) {
-        for (Semester semester : courseSemesters) {
-            for (String disciplineId : semester.getDisciplines()){
-                if (disciplineId.equals(lecture.getLectureDisciplineId()))
-                    return semester.getSemesterPeriod();
-            }
-        }
-        throw new IllegalArgumentException("Lecture not found in this course");
     }
 
     @Override
