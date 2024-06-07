@@ -16,9 +16,6 @@ public class SelectionController {
     @FXML
     private FlowPane coursesFlowPane, spacesFlowPane;
     
-    private List<Button> courseButtons = new ArrayList<Button>();
-    private List<Button> spacesButtons = new ArrayList<Button>();
-    
     private static List<String> removedCourses = new ArrayList<String>();
 	private static List<String> removedSpaces= new ArrayList<String>();
 	
@@ -66,7 +63,6 @@ public class SelectionController {
             Button button = (Button) node;
             button.setUserData(false);
             button.setStyle("-fx-background-color: white");
-            courseButtons.add(button);
         }
 	}
 	
