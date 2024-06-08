@@ -34,12 +34,12 @@ public abstract class Space {
         return this.maxCapacity;
     }
 
+    public SpaceType getSpaceType(){
+        return this.spaceType;
+    }
+
     @Override
     public String toString(){
         return spaceName;
     }    
-
-    public SpaceType getSpaceType(){
-        return this.spaceType;
-    }
 }

@@ -1,11 +1,13 @@
 package src.System;
 
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
 import src.Course.Course;
 import src.Course.Discipline;
 import src.Course.Lecture;
+import src.Course.LectureComparator;
 import src.GraphicInterface.Controllers.SelectionController;
 import src.Readers.CourseRelatedReaders.CoursesFileReader;
 import src.Readers.DisciplineRelatedReaders.DisciplinesFileReader;
@@ -17,24 +19,21 @@ public class LectureSelector {
 	private static List<Space> removeSelectedSpaces(List<Space> allSpaces, List<String> selectedSpaces) {	
 		Iterator<Space> iterator = allSpaces.iterator();
 		while (iterator.hasNext()) {
-        Space space = iterator.next();
-        if (selectedSpaces.contains(space.getSpaceName())) {
-            iterator.remove();
+            Space space = iterator.next();
+            if (selectedSpaces.contains(space.getSpaceName()))
+                iterator.remove();
         }
-    }
-	        return allSpaces;
+	    return allSpaces;
 	}
 	    
     private static List<Course> removeSelectedCourses(List<Course> allCourses, List<String> selectedCourses) {
-      	 Iterator<Course> iterator = allCourses.iterator();
-           while (iterator.hasNext()) {
-               Course course = iterator.next();
-               if (selectedCourses.contains(course.getCourseName())) {
-                   iterator.remove();
-               }
-           }
-           return allCourses;
-        
+      	Iterator<Course> iterator = allCourses.iterator();
+        while (iterator.hasNext()) {
+            Course course = iterator.next();
+            if (selectedCourses.contains(course.getCourseName()))
+                iterator.remove();
+        }
+        return allCourses;
    	}
     
     public static void startDistribution() {
@@ -58,17 +57,29 @@ public class LectureSelector {
         System.out.println("\nAvailable courses after selection:");
         for(Course course : allCourses) {
         	System.out.print(course.getCourseName()+ ", ");
-        }     
+        }
 
-        List<Lecture> allLectures = MainSystem.assignSchedulesAndPlaces(allSpaces, allCourses, allDisciplines);
-        
+        List<Lecture> allLectures = null;
+        while (allLectures == null){
+            try {
+                allLectures = ScheduleAllocator.createLecturesWithSchedules(allCourses, allDisciplines);
+                SpaceAllocator.assignPlaces(allSpaces, allLectures, allDisciplines);
+            }
+            catch (Error e){
+                allLectures = null;
+                for (Discipline discipline : allDisciplines)
+                    discipline.resetGroup();
+            }
+        }
+
+        Collections.sort(allLectures, new LectureComparator());
+
         for (Lecture lecture : allLectures) {
-        	
-    		String output = ("Lecture: " + lecture.getLectureDisciplineId() + ", Professor " + lecture.getProfessor() + "\n" +
-                     "Day: " + lecture.getLectureSchedule().getDay() + ", " + lecture.getLectureSchedule().getHourOfClass() + "\n" +
-                     "Place: " + lecture.getLectureSpace() + "\n" + "Group: " 
-                     + lecture.getLectureGroup() +"\n" + lecture.getCourseName() + "\n");
-    		//System.out.println(output);  		
+            String output = ("Lecture: " + lecture.getLectureDiscipline().getDisciplineId() + ", Professor " + lecture.getProfessor() + "\n" +
+                             "Day: " + lecture.getLectureSchedule().getDay() + ", " + lecture.getLectureSchedule().getHourOfClass() + "\n" +
+                             "Place: " + lecture.getLectureSpace() + "\n" + "Group: " 
+                             + lecture.getLectureGroup() +"\n" + lecture.getCourse().getCourseName() + ", " + lecture.getCourse().getDisciplineSemester(lecture.getLectureDiscipline()) + " semester\n");
+           System.out.println(output);
         }
     }
 
