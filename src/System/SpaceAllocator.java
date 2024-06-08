@@ -19,7 +19,7 @@ import src.Spaces.SpaceType;
  * Class responsible for allocating spaces for the lectures
  */
 public class SpaceAllocator {
-    public static List<Lecture> assignPlaces(List<Space> allSpaces, List<Lecture> allLectures, List<Discipline> allDisciplines) {
+    public static void assignPlaces(List<Space> allSpaces, List<Lecture> allLectures, List<Discipline> allDisciplines) {
         Map<SpaceType, List<Discipline>> separatedDisciplines = separateDisciplinesBySpaceRequirement(allDisciplines);
         Map<SpaceType, List<Space>> separatedSpaces = separateSpacesByType(allSpaces);
 
@@ -37,10 +37,8 @@ public class SpaceAllocator {
                     filteredLectures.add(lecture);
             }
 
-            allLectures.addAll(SpaceAllocator.assignPlacesPerType(spacesOfType, filteredLectures));
+            SpaceAllocator.assignPlacesPerType(spacesOfType, filteredLectures);
         }
-
-        return allLectures;
     }
     
     private static List<Lecture> assignPlacesPerType(List<Space> spacesOfType, List<Lecture> filteredLectures) {

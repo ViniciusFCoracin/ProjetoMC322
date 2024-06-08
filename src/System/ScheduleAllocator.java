@@ -8,9 +8,9 @@ import src.Course.Course;
 import src.Course.Discipline;
 import src.Course.Lecture;
 import src.Course.Semester;
-import src.Schedule.ClassSchedule;
+import src.Schedule.LectureSchedule;
 
-public class ClassScheduler {
+public class ScheduleAllocator {
     public static List<Lecture> createLecturesWithSchedules(List<Course> allCourses, List<Discipline> disciplineList){
         return createLectures(allCourses, disciplineList);
     }
@@ -45,7 +45,7 @@ public class ClassScheduler {
         
         for (int i = 0; i < numberOfLectures; i++){
             Lecture lecture= new Lecture(null, discipline, null,
-                                         professor, group, course.getCourseName());
+                                         professor, group, course);
             disciplineLectures.add(lecture);
         }
         return disciplineLectures;
@@ -53,13 +53,13 @@ public class ClassScheduler {
 
     private static void assignSemesterSchedules(List<Lecture> semesterLectures, Course course){
         Collections.shuffle(semesterLectures);
-        ClassSchedule schedule = ClassSchedule.newSchedule(course);
+        LectureSchedule schedule = LectureSchedule.firstSchedule(course);
         
         for (int i = 0; i < semesterLectures.size(); i++){
             Lecture lecture = semesterLectures.get(i);
             lecture.setLectureSchedule(schedule);
             if (i < semesterLectures.size() - 1)
-                schedule = ClassSchedule.nextSchedule(schedule);
+                schedule = LectureSchedule.nextSchedule(schedule);
         }
     }
 

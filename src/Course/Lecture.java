@@ -1,17 +1,18 @@
 package src.Course;
-import src.Schedule.ClassSchedule;
+
+import src.Schedule.LectureSchedule;
 import src.Spaces.Space;
 
 /**
  * Class that represents a lecture
  */
-public class Lecture {
+public class Lecture{
     private Space lectureSpace;
     private Discipline lectureDiscipline;
-    private ClassSchedule lectureSchedule;
+    private LectureSchedule lectureSchedule;
     private String professor;
     private char group;
-    private String courseName;
+    private Course course;
     /**
      * Public constructor for the Lecture class
      * 
@@ -21,13 +22,13 @@ public class Lecture {
      * @param professor: teacher of the lecture
      * @param group: lecture group
      */
-    public Lecture(Space space, Discipline discipline, ClassSchedule schedule, String professor, char group, String courseName){
+    public Lecture(Space space, Discipline discipline, LectureSchedule schedule, String professor, char group, Course course){
         this.lectureSpace = space;
         this.lectureDiscipline = discipline;
         this.lectureSchedule = schedule;
         this.professor = professor;
         this.group = group;
-        this.courseName = courseName;
+        this.course = course;
     }
 
     public Space getLectureSpace(){
@@ -42,11 +43,11 @@ public class Lecture {
         return this.lectureDiscipline;
     }
 
-    public ClassSchedule getLectureSchedule(){
+    public LectureSchedule getLectureSchedule(){
         return this.lectureSchedule;
     }
 
-    public void setLectureSchedule(ClassSchedule schedule){
+    public void setLectureSchedule(LectureSchedule schedule){
         this.lectureSchedule = schedule;
     }
 
@@ -58,7 +59,7 @@ public class Lecture {
         return this.group;
     }
 
-    public String getCourseName(){
-        return this.courseName;
+    public Course getCourse(){
+        return this.course;
     }
 }
