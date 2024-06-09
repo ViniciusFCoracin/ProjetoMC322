@@ -12,26 +12,6 @@ import src.Readers.SpaceRelatedReaders.SpacesFileReader;
 import src.Spaces.Space;
 
 public class LectureSelector {
-	
-	private static List<Space> removeSelectedSpaces(List<Space> allSpaces, List<String> selectedSpaces) {	
-		Iterator<Space> iterator = allSpaces.iterator();
-		while (iterator.hasNext()) {
-            Space space = iterator.next();
-            if (selectedSpaces.contains(space.getSpaceName()))
-                iterator.remove();
-        }
-	    return allSpaces;
-	}
-	    
-    private static List<Course> removeSelectedCourses(List<Course> allCourses, List<String> selectedCourses) {
-      	Iterator<Course> iterator = allCourses.iterator();
-        while (iterator.hasNext()) {
-            Course course = iterator.next();
-            if (selectedCourses.contains(course.getCourseName()))
-                iterator.remove();
-        }
-        return allCourses;
-   	}
     
     public static void startDistribution() {
     	List<Course> allCourses = CoursesFileReader.getInstance().readFile("src/XML/courses.xml");
@@ -59,4 +39,24 @@ public class LectureSelector {
         AllocatorSystem system = new AllocatorSystem(allCourses, allDisciplines, allSpaces);
         system.allocateSchedulesAndSpaces();
     }
+
+    private static List<Space> removeSelectedSpaces(List<Space> allSpaces, List<String> selectedSpaces) {	
+		Iterator<Space> iterator = allSpaces.iterator();
+		while (iterator.hasNext()) {
+            Space space = iterator.next();
+            if (selectedSpaces.contains(space.getSpaceName()))
+                iterator.remove();
+        }
+	    return allSpaces;
+	}
+	    
+    private static List<Course> removeSelectedCourses(List<Course> allCourses, List<String> selectedCourses) {
+      	Iterator<Course> iterator = allCourses.iterator();
+        while (iterator.hasNext()) {
+            Course course = iterator.next();
+            if (selectedCourses.contains(course.getCourseName()))
+                iterator.remove();
+        }
+        return allCourses;
+   	}
 }
