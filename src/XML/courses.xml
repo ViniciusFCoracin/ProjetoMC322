@@ -27,4 +27,36 @@
             </semester>
         </semesters>
     </course>
+    <course>
+        <courseName> Engenharia da Computação </courseName>
+        <courseId> 34 </courseId>
+        <courseShift> FULL_TIME </courseShift>
+        <semesters>
+            <semester period="1">
+                <disciplineId> MA111 </disciplineId>
+                <disciplineId> MA141 </disciplineId>
+                <disciplineId> F 128 </disciplineId>
+                <disciplineId> MC102 </disciplineId>
+                <disciplineId> F 129 </disciplineId>
+                <disciplineId> HZ291 </disciplineId>
+                <disciplineId> QG101 </disciplineId>
+            </semester>
+            <semester period="2">
+                <disciplineId> MA211 </disciplineId>
+                <disciplineId> MA327 </disciplineId>
+                <disciplineId> F 228 </disciplineId>
+                <disciplineId> MC202 </disciplineId>
+                <disciplineId> F 229 </disciplineId>
+                <disciplineId> LA122 </disciplineId>
+            </semester>
+            <semester period="3">
+                <disciplineId> EA513 </disciplineId>
+                <disciplineId> F 315 </disciplineId>
+                <disciplineId> F 328 </disciplineId>
+                <disciplineId> MC322 </disciplineId>
+                <disciplineId> F 329 </disciplineId>
+                <disciplineId> MA311 </disciplineId>
+            </semester>
+        </semesters>
+    </course>
 </courses>
