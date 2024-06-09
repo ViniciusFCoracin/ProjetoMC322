@@ -5,7 +5,6 @@ import java.util.List;
 
 import src.Course.Course;
 import src.Course.Discipline;
-import src.Course.Lecture;
 import src.GraphicInterface.Controllers.SelectionController;
 import src.Readers.CourseRelatedReaders.CoursesFileReader;
 import src.Readers.DisciplineRelatedReaders.DisciplinesFileReader;
@@ -58,6 +57,6 @@ public class LectureSelector {
         }
 
         AllocatorSystem system = new AllocatorSystem(allCourses, allDisciplines, allSpaces);
-        List<Lecture> allLectures = system.allocateSchedulesAndSpaces();
+        system.allocateSchedulesAndSpaces();
     }
 }

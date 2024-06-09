@@ -43,20 +43,22 @@ public class AllocatorSystem {
                 mustContinue = false;
             }
             catch (InsuficientSpacesError e){
-                Pattern INSUFFICIENT_SPACES = Pattern.compile("Insufficient spaces of type (.+)");
+                Pattern INSUFFICIENT_SPACES = Pattern.compile("Insufficent spaces of type (.+)");
                 Matcher matcher1 = INSUFFICIENT_SPACES.matcher(e.getMessage());
                 if (matcher1.find()){
                     allLectures = null;
                     String spaceTypeString = matcher1.group(1);
                     SpaceType spaceType = SpaceType.valueOf(spaceTypeString);
                     mustContinue = continueTheLoop(spaceType);
+                    if (mustContinue == false)
+                        throw e;
                     for (Discipline discipline : allDisciplines)
                         discipline.resetGroup();
                 }
             }
             catch (NoSpacesAvailableError e){
                 mustContinue = false;
-                System.err.println(e.getMessage());
+                throw e;
             }
         }
 
@@ -74,8 +76,8 @@ public class AllocatorSystem {
     }
 
     private boolean continueTheLoop(SpaceType spaceType){
-        int errorsInThisType = errorsPerType.get(spaceType);
-        errorsPerType.put(spaceType, errorsInThisType++);
+        int errorsInThisType = this.errorsPerType.get(spaceType);
+        errorsPerType.put(spaceType, ++errorsInThisType);
 
         if (errorsInThisType >= 10)
             return false;
