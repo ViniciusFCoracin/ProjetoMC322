@@ -32,4 +32,8 @@ public enum WeekDay {
                 throw new Error("Indefinite week day");
         }
     }
+
+    public static WeekDay get(int index) {
+        return values()[index];
+    }
 }

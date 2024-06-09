@@ -201,4 +201,13 @@
             <professor> Andre Monteiro Paschoal</professor>
         </professors>
     </discipline>
+    <discipline>
+        <disciplineName> Alemão I </disciplineName>
+        <disciplineId> LA114 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpace> BasicRoom </requiredSpace>
+        <professors>
+            <professor> Norma Wucherpfennig </professor>
+        </professors>
+    </discipline>
 </disciplines>

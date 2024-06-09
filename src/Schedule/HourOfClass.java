@@ -35,4 +35,8 @@ public enum HourOfClass {
                 throw new Error("Indefinite hour of class");
         }
     }
+
+    public static HourOfClass get(int index) {
+        return values()[index];
+    }
 }
