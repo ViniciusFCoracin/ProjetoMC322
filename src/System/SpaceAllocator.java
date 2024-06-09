@@ -12,6 +12,7 @@ import org.jgrapht.graph.SimpleGraph;
 
 import src.Course.Discipline;
 import src.Course.Lecture;
+import src.Errors.*;
 import src.Spaces.Space;
 import src.Spaces.SpaceType;
 
@@ -19,16 +20,25 @@ import src.Spaces.SpaceType;
  * Class responsible for allocating spaces for the lectures
  */
 public class SpaceAllocator {
+
+    /**
+     * Assign places to the lectures. Two lectures in the same schedule cannot
+     * occur in the same place.
+     * 
+     * @param allSpaces: list of all spaces available
+     * @param allLectures: list of all lectures created, without places assigned
+     * @param allDisciplines: list of all disciplines
+     */
     public static void assignPlaces(List<Space> allSpaces, List<Lecture> allLectures, List<Discipline> allDisciplines) {
         Map<SpaceType, List<Discipline>> separatedDisciplines = separateDisciplinesBySpaceRequirement(allDisciplines);
         Map<SpaceType, List<Space>> separatedSpaces = separateSpacesByType(allSpaces);
 
-        for (Map.Entry<SpaceType, List<Discipline>> entry : separatedDisciplines.entrySet()) {
-            SpaceType spaceType = entry.getKey();
+        for (Map.Entry<SpaceType, List<Discipline>> typeDiscipline : separatedDisciplines.entrySet()) {
+            SpaceType spaceType = typeDiscipline.getKey();
             List<Space> spacesOfType = separatedSpaces.get(spaceType);
 
             if (spacesOfType == null)
-                throw new Error("No available spaces for type: " + spaceType);
+                throw new NoSpacesAvailableError("No spaces of type " + spaceType);
 
             List<Lecture> filteredLectures = new ArrayList<>();
             for (Lecture lecture : allLectures){
@@ -37,14 +47,14 @@ public class SpaceAllocator {
                     filteredLectures.add(lecture);
             }
 
-            SpaceAllocator.assignPlacesPerType(spacesOfType, filteredLectures);
+            SpaceAllocator.assignPlacesPerType(spacesOfType, filteredLectures, spaceType);
         }
     }
     
-    private static List<Lecture> assignPlacesPerType(List<Space> spacesOfType, List<Lecture> filteredLectures) {
+    private static List<Lecture> assignPlacesPerType(List<Space> spacesOfType, List<Lecture> filteredLectures, SpaceType type) {
         Graph<Lecture, DefaultEdge> lecturesGraph = createLecturesGraph(filteredLectures);
         Coloring<Lecture> coloring = coloringLecturesGraph(lecturesGraph);
-        return assignPlaces(spacesOfType, coloring);
+        return assignPlacesOfType(spacesOfType, coloring, type);
     }
 
     private static Graph<Lecture, DefaultEdge> createLecturesGraph(List<Lecture> filteredLectures){
@@ -68,9 +78,9 @@ public class SpaceAllocator {
         return coloring.getColoring();
     }
 
-    private static List<Lecture> assignPlaces(List<Space> spacesOfType, Coloring<Lecture> coloring) {
+    private static List<Lecture> assignPlacesOfType(List<Space> spacesOfType, Coloring<Lecture> coloring, SpaceType type) {
         if (spacesOfType.isEmpty())
-            throw new IllegalArgumentException("No available spaces to allocate.");
+            throw new NoSpacesAvailableError("No spaces of type " + type);
 
         Map<Integer, Space> spaceColor = new HashMap<>();
         for (int i = 0; i < spacesOfType.size(); i++)
@@ -82,7 +92,7 @@ public class SpaceAllocator {
             Integer color = entry.getValue();
 
             if (color >= spacesOfType.size())
-                throw new Error("Insuficent spaces of type " + spacesOfType.get(0).getSpaceName());
+                throw new InsuficientSpacesError("Insufficent spaces of type " + spacesOfType.get(0).getSpaceType());
 
             Space space = spaceColor.get(color);
             lecture.setLectureSpace(space);
