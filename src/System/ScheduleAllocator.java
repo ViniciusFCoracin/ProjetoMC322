@@ -71,7 +71,7 @@ public class ScheduleAllocator {
             
             for (int i = 0; i < numberOfLectures; i++){
                 Lecture lecture= new Lecture(null, discipline, null,
-                                             professor, group, null);
+                                            professor, group, null);
                 electiveLectures.add(lecture);
 
             }
