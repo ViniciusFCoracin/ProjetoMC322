@@ -210,4 +210,86 @@
             <professor> Norma Wucherpfennig </professor>
         </professors>
     </discipline>
+     <discipline>
+        <disciplineName> Futsal </disciplineName>
+        <disciplineId> EF543 </disciplineId>
+        <credits> 2 </credits>
+        <requiredSpace> Court </requiredSpace>
+        <professors>
+            <professor> Julia Barreira Augusto </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Projeto de Algoritmos III </disciplineName>
+        <disciplineId> MC658 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpace> SlidesRoom </requiredSpace>
+        <professors>
+            <professor> Flavio Keidi Miyazawa </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Teoria dos Jogos Algorítmica </disciplineName>
+        <disciplineId> MC758 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpace> SlidesRoom </requiredSpace>
+        <professors>
+            <professor> Rafael Saliba Schouery </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Introdução à Criptografia </disciplineName>
+        <disciplineId> MC889 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpace> SlidesRoom </requiredSpace>
+        <professors>
+            <professor> Julio Cesar Lopez Hernandez </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Geometria Computacional </disciplineName>
+        <disciplineId> MC948 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpace> ComputerRoom </requiredSpace>
+        <professors>
+            <professor> Pedro Jussieu de Rezende </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Latim I </disciplineName>
+        <disciplineId> HL143 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpace> BasicRoom </requiredSpace>
+        <professors>
+            <professor> Isabella Tardin Cardoso </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Grego Clássico I </disciplineName>
+        <disciplineId> HL144 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpace> BasicRoom </requiredSpace>
+        <professors>
+            <professor> Flavio Ribeiro De Oliveira </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Tênis de Mesa </disciplineName>
+        <disciplineId> CP043 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpace> Court </requiredSpace>
+        <professors>
+            <professor> Milton Shoiti Misuta </professor>
+        </professors>
+    </discipline>
+    <discipline>
+        <disciplineName> Luta </disciplineName>
+        <disciplineId> EF315 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpace> Court </requiredSpace>
+        <professors>
+            <professor> Luiz Gustavo Bonatto Rufino </professor>
+            <professor> Maria Luiza Tanure Alves </professor>
+        </professors>
+    </discipline>
 </disciplines>
