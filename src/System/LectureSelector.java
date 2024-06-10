@@ -2,13 +2,10 @@ package src.System;
 
 import java.util.Iterator;
 import java.util.List;
-
-import javafx.stage.Stage;
 import src.Course.Course;
 import src.Course.Discipline;
 import src.Course.Lecture;
 import src.GraphicInterface.Controllers.SelectionController;
-import src.GraphicInterface.Views.ScheduleView;
 import src.Readers.CourseRelatedReaders.CoursesFileReader;
 import src.Readers.DisciplineRelatedReaders.DisciplinesFileReader;
 import src.Readers.SpaceRelatedReaders.SpacesFileReader;
