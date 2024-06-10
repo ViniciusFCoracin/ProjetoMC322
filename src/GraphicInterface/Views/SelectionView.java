@@ -16,6 +16,10 @@ public class SelectionView {
 		this.stage = stage;
 	}
 	
+	public Stage getStage() {
+		return stage;
+	}
+	
 	public static SelectionView getInstance(Stage stage){
         if(instance == null) {
             instance= new SelectionView(stage);
