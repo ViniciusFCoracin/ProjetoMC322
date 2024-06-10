@@ -1,6 +1,5 @@
 package src.GraphicInterface.Controllers;
 
-import java.awt.Container;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +46,6 @@ public class SelectionController {
 		removedCourses = remove(e, removedCourses);
 	}
 	
-	
 	private List<String> remove(ActionEvent e, List<String> list) {
 		Button button = (Button) e.getSource();
 		System.out.println(button.getText());
@@ -63,7 +61,6 @@ public class SelectionController {
 		}
 		return list;
 	}
-	
 	
 	private void initializeContainer(Parent container) {
 		for (Node node : container.getChildrenUnmodifiable()) {
