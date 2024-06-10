@@ -52,6 +52,12 @@
         <capacity> 100 </capacity>
         <numComputers> 100 </numComputers>
     </computerRoom>
+    <computerRoom>
+        <name> CC304 </name>
+        <id> 10 </id>
+        <capacity> 100 </capacity>
+        <numComputers> 100 </numComputers>
+    </computerRoom>
     <laboratory>
         <name> LF10 </name>
         <id> 11 </id>
