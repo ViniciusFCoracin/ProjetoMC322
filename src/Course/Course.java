@@ -1,20 +1,22 @@
 package src.Course;
+
 import java.util.List;
 
 /**
  * A class that represents an university course
  */
 public class Course {
-    public String courseName;
-    public int courseId;
-    public Shift courseShift;
-    public List<Semester> courseSemesters;
+    private String courseName;
+    private int courseId;
+    private Shift courseShift;
+    private List<Semester> courseSemesters;
 
     /**
      * Public constructor for Course class
      * 
      * @param courseName: the name of the course
      * @param courseId: the id of the course
+     * @param courseShift: the shift of the course (FULL_TIME) or (NIGHT_SHIFT)
      * @param semesters: list of the course semesters
      */
     public Course(String courseName, int courseId, Shift courseShift, List<Semester> semesters){
@@ -39,24 +41,21 @@ public class Course {
     public List<Semester> getCourseSemesters(){
         return this.courseSemesters;
     }
-    
-    public boolean containsDiscipline(String discipline) {
-        for (Semester semester : courseSemesters){
-            if (semester.getDisciplines().contains(discipline))
-                return true;
-        }
-        return false;
-    }
-        
 
-    public int getSemesterOfLecture(Lecture lecture) {
-        for (Semester semester : courseSemesters) {
-            for (String disciplineId : semester.getDisciplines()){
-                if (disciplineId.equals(lecture.getLectureDisciplineId()))
+    public int getDisciplineSemester(Discipline discipline){
+        for (Semester semester : this.courseSemesters){
+            for (String disciplineID : semester.getDisciplineIDs()){
+                if (disciplineID.equals(discipline.getDisciplineId()))
                     return semester.getSemesterPeriod();
             }
         }
-        throw new IllegalArgumentException("Lecture not found in this course");
+        throw new Error("Discipline not found");
+    }
+
+    public static int compare(Course course1, Course course2){
+        int id1 = course1.getCourseId();
+        int id2 = course2.getCourseId();
+        return id1 - id2;
     }
 
     @Override

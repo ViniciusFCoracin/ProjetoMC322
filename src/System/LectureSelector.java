@@ -5,7 +5,6 @@ import java.util.List;
 
 import src.Course.Course;
 import src.Course.Discipline;
-import src.Course.Lecture;
 import src.GraphicInterface.Controllers.SelectionController;
 import src.Readers.CourseRelatedReaders.CoursesFileReader;
 import src.Readers.DisciplineRelatedReaders.DisciplinesFileReader;
@@ -17,24 +16,21 @@ public class LectureSelector {
 	private static List<Space> removeSelectedSpaces(List<Space> allSpaces, List<String> selectedSpaces) {	
 		Iterator<Space> iterator = allSpaces.iterator();
 		while (iterator.hasNext()) {
-        Space space = iterator.next();
-        if (selectedSpaces.contains(space.getSpaceName())) {
-            iterator.remove();
+            Space space = iterator.next();
+            if (selectedSpaces.contains(space.getSpaceName()))
+                iterator.remove();
         }
-    }
-	        return allSpaces;
+	    return allSpaces;
 	}
 	    
     private static List<Course> removeSelectedCourses(List<Course> allCourses, List<String> selectedCourses) {
-      	 Iterator<Course> iterator = allCourses.iterator();
-           while (iterator.hasNext()) {
-               Course course = iterator.next();
-               if (selectedCourses.contains(course.getCourseName())) {
-                   iterator.remove();
-               }
-           }
-           return allCourses;
-        
+      	Iterator<Course> iterator = allCourses.iterator();
+        while (iterator.hasNext()) {
+            Course course = iterator.next();
+            if (selectedCourses.contains(course.getCourseName()))
+                iterator.remove();
+        }
+        return allCourses;
    	}
     
     public static void startDistribution() {
@@ -58,18 +54,9 @@ public class LectureSelector {
         System.out.println("\nAvailable courses after selection:");
         for(Course course : allCourses) {
         	System.out.print(course.getCourseName()+ ", ");
-        }     
-
-        List<Lecture> allLectures = MainSystem.assignSchedulesAndPlaces(allSpaces, allCourses, allDisciplines);
-        
-        for (Lecture lecture : allLectures) {
-        	
-    		String output = ("Lecture: " + lecture.getLectureDisciplineId() + ", Professor " + lecture.getProfessor() + "\n" +
-                     "Day: " + lecture.getLectureSchedule().getDay() + ", " + lecture.getLectureSchedule().getHourOfClass() + "\n" +
-                     "Place: " + lecture.getLectureSpace() + "\n" + "Group: " 
-                     + lecture.getLectureGroup() +"\n" + lecture.getCourseName() + "\n");
-    		//System.out.println(output);  		
         }
-    }
 
+        AllocatorSystem system = new AllocatorSystem(allCourses, allDisciplines, allSpaces);
+        system.allocateSchedulesAndSpaces();
+    }
 }
