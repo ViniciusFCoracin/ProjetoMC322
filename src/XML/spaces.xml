@@ -41,25 +41,30 @@
         <id> 8 </id>
         <capacity> 50 </capacity>
     </slidesRoom>
+    <slidesRoom>
+        <name> CB7 </name>
+        <id> 9 </id>
+        <capacity> 50 </capacity>
+    </slidesRoom>
     <computerRoom>
         <name> CC300 </name>
-        <id> 9 </id>
+        <id> 10 </id>
         <capacity> 100 </capacity>
         <numComputers> 100 </numComputers>
     </computerRoom>
     <laboratory>
         <name> LF10 </name>
-        <id> 10 </id>
+        <id> 11 </id>
         <capacity> 60 </capacity>
     </laboratory>
     <auditorium>
         <name> Auditório do IC </name>
-        <id> 11 </id>
+        <id> 12 </id>
         <capacity> 100 </capacity>
     </auditorium>
     <court>
         <name> Quadra </name>
-        <id> 12 </id>
+        <id> 13 </id>
         <capacity> 50 </capacity>
     </court>
 </spaces>
