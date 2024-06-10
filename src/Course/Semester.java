@@ -24,7 +24,7 @@ public class Semester {
         return this.semesterPeriod;
     }
 
-    public List<String> getDisciplines(){
+    public List<String> getDisciplineIDs(){
         return this.disciplines;
     }
 

@@ -1,33 +1,34 @@
 package src.Course;
-import src.Schedule.ClassSchedule;
+
+import src.Schedule.LectureSchedule;
 import src.Spaces.Space;
 
 /**
  * Class that represents a lecture
  */
-public class Lecture {
+public class Lecture{
     private Space lectureSpace;
-    private String lectureDisciplineId;
-    private ClassSchedule lectureSchedule;
+    private Discipline lectureDiscipline;
+    private LectureSchedule lectureSchedule;
     private String professor;
-    private String group;
-    private String courseName;
+    private char group;
+    private Course course;
     /**
      * Public constructor for the Lecture class
      * 
      * @param space: where the lecture occurs
-     * @param disciplineId: the discipline of the lecture
+     * @param discipline: the discipline of the lecture
      * @param schedule: day and hour of the lecture
      * @param professor: teacher of the lecture
      * @param group: lecture group
      */
-    public Lecture(Space space, String disciplineId, ClassSchedule schedule, String professor, String group, String courseName){
+    public Lecture(Space space, Discipline discipline, LectureSchedule schedule, String professor, char group, Course course){
         this.lectureSpace = space;
-        this.lectureDisciplineId = disciplineId;
+        this.lectureDiscipline = discipline;
         this.lectureSchedule = schedule;
         this.professor = professor;
         this.group = group;
-        this.courseName = courseName;
+        this.course = course;
     }
 
     public Space getLectureSpace(){
@@ -38,23 +39,27 @@ public class Lecture {
         this.lectureSpace = newSpace;
     }
 
-    public String getLectureDisciplineId(){
-        return this.lectureDisciplineId;
+    public Discipline getLectureDiscipline(){
+        return this.lectureDiscipline;
     }
 
-    public ClassSchedule getLectureSchedule(){
+    public LectureSchedule getLectureSchedule(){
         return this.lectureSchedule;
+    }
+
+    public void setLectureSchedule(LectureSchedule schedule){
+        this.lectureSchedule = schedule;
     }
 
     public String getProfessor(){
         return this.professor;
     }
 
-    public String getLectureGroup(){
+    public char getLectureGroup(){
         return this.group;
     }
 
-    public String getCourseName(){
-        return this.courseName;
+    public Course getCourse(){
+        return this.course;
     }
 }
