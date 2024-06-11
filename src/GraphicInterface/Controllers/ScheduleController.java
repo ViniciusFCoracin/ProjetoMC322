@@ -68,7 +68,7 @@ public class ScheduleController {
 		for(Lecture lecture : LectureSelector.getInstance().getAllLectures()) {
 			if(lecture.getLectureDiscipline().getIsMandatory()) {
 				if(lecture.getCourse().getCourseName().equals(currentCourse) && lecture.getCourse().getDisciplineSemester(lecture.getLectureDiscipline()) == currentSemesterInt) {
-					designateLectureToGrid(lecture);
+					assignLectureToGrid(lecture);
 					String output = ("Lecture: " + lecture.getLectureDiscipline().getDisciplineId() + ", Professor " + lecture.getProfessor() + "\n" +
                             "Day: " + lecture.getLectureSchedule().getDay() + ", " + lecture.getLectureSchedule().getHourOfClass() + "\n" +
                             "Place: " + lecture.getLectureSpace() + "\n" + "Group: " 
@@ -79,7 +79,7 @@ public class ScheduleController {
 		}
 	}
 	
-	public void designateLectureToGrid(Lecture lecture) {
+	public void assignLectureToGrid(Lecture lecture) {
 		WeekDay day = lecture.getLectureSchedule().getDay();
 		HourOfClass hourOfClass = lecture.getLectureSchedule().getHourOfClass();
 		
