@@ -6,6 +6,10 @@
         <disciplineId> MA111 </disciplineId>
         <credits> 6 </credits>
         <requiredSpace> BasicRoom </requiredSpace>
+        <requiredInstitute>
+            <institute> PB </institute>
+            <institute> CB </institute>
+        </requiredInstitute>
         <professors>
             <professor> Leithold Louis Alrazo Alvarez </professor>
             <professor> Joerg Dietrich Wilhelm Schleicher </professor>
@@ -16,6 +20,10 @@
         <disciplineId> F 128 </disciplineId>
         <credits> 4 </credits>
         <requiredSpace> SlidesRoom </requiredSpace>
+        <requiredInstitute>
+            <institute> PB </institute>
+            <institute> CB </institute>
+        </requiredInstitute>
         <professors>
             <professor> José Antônio Brum </professor>
         </professors>
@@ -25,6 +33,10 @@
         <disciplineId> MA141 </disciplineId>
         <credits> 4 </credits>
         <requiredSpace> BasicRoom </requiredSpace>
+        <requiredInstitute>
+            <institute> PB </institute>
+            <institute> CB </institute>
+        </requiredInstitute>
         <professors>
             <professor> Eder de Moraes Correa </professor>
         </professors>
@@ -34,6 +46,11 @@
         <disciplineId> MC102 </disciplineId>
         <credits> 6 </credits>
         <requiredSpace> ComputerRoom </requiredSpace>
+        <requiredInstitute>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </requiredInstitute>
         <professors>
             <professor> Rafael Saliba Schouery </professor>
         </professors>
@@ -43,6 +60,11 @@
         <disciplineId> MC202 </disciplineId>
         <credits> 6 </credits>
         <requiredSpace> ComputerRoom </requiredSpace>
+        <requiredInstitute>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </requiredInstitute>
         <professors>
             <professor> Guilherme Pimentel Telles </professor>
         </professors>
@@ -52,6 +74,10 @@
         <disciplineId> MA327 </disciplineId>
         <credits> 4 </credits>
         <requiredSpace> BasicRoom </requiredSpace>
+        <requiredInstitute>
+            <institute> PB </institute>
+            <institute> CB </institute>
+        </requiredInstitute>
         <professors>
             <professor> Eder de Moraes Correa </professor>
         </professors>
@@ -61,6 +87,10 @@
         <disciplineId> MA211 </disciplineId>
         <credits> 6 </credits>
         <requiredSpace> BasicRoom </requiredSpace>
+        <requiredInstitute>
+            <institute> PB </institute>
+            <institute> CB </institute>
+        </requiredInstitute>
         <professors>
             <professor> Joachim Weber </professor>
             <professor> Claudemir Fideles Bezerra Junior </professor>
@@ -71,6 +101,9 @@
         <disciplineId> F 129 </disciplineId>
         <credits> 2 </credits>
         <requiredSpace> PhysicLaboratory </requiredSpace>
+        <requiredInstitute>
+            <institute> IFGW </institute>
+        </requiredInstitute>
         <professors>
             <professor> Luiz Filipe Campos Faria </professor>
         </professors>
@@ -80,6 +113,9 @@
         <disciplineId> MC009 </disciplineId>
         <credits> 2 </credits>
         <requiredSpace> Auditorium </requiredSpace>
+        <requiredInstitute>
+            <institute> IC </institute>
+        </requiredInstitute>
         <professors>
             <professor> Claudia Maria Bauzer Medeiros </professor>
         </professors>
@@ -89,6 +125,10 @@
         <disciplineId> MA311 </disciplineId>
         <credits> 6 </credits>
         <requiredSpace> BasicRoom </requiredSpace>
+        <requiredInstitute>
+            <institute> PB </institute>
+            <institute> CB </institute>
+        </requiredInstitute>
         <professors>
             <professor> Lucas Catão de Freitas Ferreira </professor>
         </professors>
@@ -98,6 +138,10 @@
         <disciplineId> MC358 </disciplineId>
         <credits> 4 </credits>
         <requiredSpace> SlidesRoom </requiredSpace>
+        <requiredInstitute>
+            <institute> PB </institute>
+            <institute> CB </institute>
+        </requiredInstitute>
         <professors>
             <professor> Pedro Jussieu de Rezende </professor>
         </professors>
@@ -107,6 +151,11 @@
         <disciplineId> MC322 </disciplineId>
         <credits> 4 </credits>
         <requiredSpace> ComputerRoom </requiredSpace>
+        <requiredInstitute>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </requiredInstitute>
         <professors>
             <professor> Marcos Medeiros Raimundo </professor>
         </professors>
@@ -116,6 +165,10 @@
         <disciplineId> ME323 </disciplineId>
         <credits> 4 </credits>
         <requiredSpace> SlidesRoom </requiredSpace>
+        <requiredInstitute>
+            <institute> PB </institute>
+            <institute> CB </institute>
+        </requiredInstitute>
         <professors>
             <professor> Felipe Augusto Fernandes </professor>
         </professors>
@@ -125,6 +178,10 @@
         <disciplineId> HZ291 </disciplineId>
         <credits> 2 </credits>
         <requiredSpace> SlidesRoom </requiredSpace>
+        <requiredInstitute>
+            <institute> PB </institute>
+            <institute> CB </institute>
+        </requiredInstitute>
         <professors>
             <professor> Pedro Peixoto Ferreira </professor>
         </professors>
@@ -134,6 +191,10 @@
         <disciplineId> QG101 </disciplineId>
         <credits> 4 </credits>
         <requiredSpace> SlidesRoom </requiredSpace>
+        <requiredInstitute>
+            <institute> PB </institute>
+            <institute> CB </institute>
+        </requiredInstitute>
         <professors>
             <professor> Fabio Augusto </professor>
         </professors>
@@ -143,6 +204,10 @@
         <disciplineId> F 228 </disciplineId>
         <credits> 4 </credits>
         <requiredSpace> SlidesRoom </requiredSpace>
+        <requiredInstitute>
+            <institute> PB </institute>
+            <institute> CB </institute>
+        </requiredInstitute>
         <professors>
             <professor> Diego Muraca </professor>
         </professors>
@@ -152,6 +217,9 @@
         <disciplineId> F 229 </disciplineId>
         <credits> 2 </credits>
         <requiredSpace> PhysicLaboratory </requiredSpace>
+        <requiredInstitute>
+            <institute> IFGW </institute>
+        </requiredInstitute>
         <professors>
             <professor> Natalia De Faria Coutinho </professor>
         </professors>
@@ -161,6 +229,10 @@
         <disciplineId> LA122 </disciplineId>
         <credits> 4 </credits>
         <requiredSpace> BasicRoom </requiredSpace>
+        <requiredInstitute>
+            <institute> PB </institute>
+            <institute> CB </institute>
+        </requiredInstitute>
         <professors>
             <professor> Joacyr Tupinambas De Oliveira </professor>
         </professors>
@@ -170,6 +242,11 @@
         <disciplineId> F 315 </disciplineId>
         <credits> 4 </credits>
         <requiredSpace> SlidesRoom </requiredSpace>
+        <requiredInstitute>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IFGW </institute>
+        </requiredInstitute>
         <professors>
             <professor> Andre Alexandre De Thomaz </professor>
         </professors>
@@ -179,6 +256,9 @@
         <disciplineId> F 329 </disciplineId>
         <credits> 2 </credits>
         <requiredSpace> PhysicLaboratory </requiredSpace>
+        <requiredInstitute>
+            <institute> IFGW </institute>
+        </requiredInstitute>
         <professors>
             <professor> Francisco Paulo Marques Rouxinol </professor>
         </professors>
@@ -188,6 +268,11 @@
         <disciplineId> EA513 </disciplineId>
         <credits> 4 </credits>
         <requiredSpace> SlidesRoom </requiredSpace>
+        <requiredInstitute>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IFGW </institute>
+        </requiredInstitute>
         <professors>
             <professor> Christiano Lyra Filho </professor>
         </professors>
@@ -197,6 +282,10 @@
         <disciplineId> F 328 </disciplineId>
         <credits> 4 </credits>
         <requiredSpace> SlidesRoom </requiredSpace>
+        <requiredInstitute>
+            <institute> PB </institute>
+            <institute> CB </institute>
+        </requiredInstitute>
         <professors>
             <professor> Andre Monteiro Paschoal</professor>
         </professors>
@@ -206,6 +295,11 @@
         <disciplineId> LA114 </disciplineId>
         <credits> 4 </credits>
         <requiredSpace> BasicRoom </requiredSpace>
+        <requiredInstitute>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IEL </institute>
+        </requiredInstitute>
         <professors>
             <professor> Norma Wucherpfennig </professor>
         </professors>
@@ -215,6 +309,9 @@
         <disciplineId> EF543 </disciplineId>
         <credits> 2 </credits>
         <requiredSpace> Court </requiredSpace>
+        <requiredInstitute>
+            <institute> FEF </institute>
+        </requiredInstitute>
         <professors>
             <professor> Julia Barreira Augusto </professor>
         </professors>
@@ -224,6 +321,9 @@
         <disciplineId> MC658 </disciplineId>
         <credits> 4 </credits>
         <requiredSpace> SlidesRoom </requiredSpace>
+        <requiredInstitute>
+            <institute> IC </institute>
+        </requiredInstitute>
         <professors>
             <professor> Flavio Keidi Miyazawa </professor>
         </professors>
@@ -233,6 +333,9 @@
         <disciplineId> MC758 </disciplineId>
         <credits> 4 </credits>
         <requiredSpace> SlidesRoom </requiredSpace>
+        <requiredInstitute>
+            <institute> IC </institute>
+        </requiredInstitute>
         <professors>
             <professor> Rafael Saliba Schouery </professor>
         </professors>
@@ -242,6 +345,9 @@
         <disciplineId> MC889 </disciplineId>
         <credits> 4 </credits>
         <requiredSpace> SlidesRoom </requiredSpace>
+        <requiredInstitute>
+            <institute> IC </institute>
+        </requiredInstitute>
         <professors>
             <professor> Julio Cesar Lopez Hernandez </professor>
         </professors>
@@ -251,6 +357,9 @@
         <disciplineId> MC948 </disciplineId>
         <credits> 4 </credits>
         <requiredSpace> ComputerRoom </requiredSpace>
+        <requiredInstitute>
+            <institute> IC </institute>
+        </requiredInstitute>
         <professors>
             <professor> Pedro Jussieu de Rezende </professor>
         </professors>
@@ -260,6 +369,11 @@
         <disciplineId> HL143 </disciplineId>
         <credits> 4 </credits>
         <requiredSpace> BasicRoom </requiredSpace>
+        <requiredInstitute>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IEL </institute>
+        </requiredInstitute>
         <professors>
             <professor> Isabella Tardin Cardoso </professor>
         </professors>
@@ -269,6 +383,11 @@
         <disciplineId> HL144 </disciplineId>
         <credits> 4 </credits>
         <requiredSpace> BasicRoom </requiredSpace>
+        <requiredInstitute>
+            <institute> CB </institute>
+            <institute> PB </institute>
+            <institute> IEL </institute>
+        </requiredInstitute>
         <professors>
             <professor> Flavio Ribeiro De Oliveira </professor>
         </professors>
@@ -278,6 +397,9 @@
         <disciplineId> CP043 </disciplineId>
         <credits> 4 </credits>
         <requiredSpace> Court </requiredSpace>
+        <requiredInstitute>
+            <institute> FEF </institute>
+        </requiredInstitute>
         <professors>
             <professor> Milton Shoiti Misuta </professor>
         </professors>
@@ -287,6 +409,9 @@
         <disciplineId> EF315 </disciplineId>
         <credits> 4 </credits>
         <requiredSpace> Court </requiredSpace>
+        <requiredInstitute>
+            <institute> FEF </institute>
+        </requiredInstitute>
         <professors>
             <professor> Luiz Gustavo Bonatto Rufino </professor>
             <professor> Maria Luiza Tanure Alves </professor>

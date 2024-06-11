@@ -5,72 +5,86 @@
         <name> PB15 </name>
         <id> 1 </id>
         <capacity> 80 </capacity>
+        <institute> PB </institute>
     </basicRoom>
     <basicRoom>
         <name> PB13 </name>
         <id> 2 </id>
         <capacity> 60 </capacity>
+        <institute> PB </institute>
     </basicRoom>
     <basicRoom>
         <name> CB5 </name>
         <id> 3 </id>
         <capacity> 70 </capacity>
+        <institute> CB </institute>
     </basicRoom>
     <basicRoom>
         <name> CB1 </name>
         <id> 4 </id>
         <capacity> 100 </capacity>
+        <institute> CB </institute>
     </basicRoom>
     <basicRoom>
         <name> CB4 </name>
         <id> 5 </id>
         <capacity> 60 </capacity>
+        <institute> CB </institute>
     </basicRoom>
     <basicRoom>
         <name> CB3 </name>
         <id> 6 </id>
         <capacity> 60 </capacity>
+        <institute> CB </institute>
     </basicRoom>
     <slidesRoom>
         <name> CB12 </name>
         <id> 7 </id>
         <capacity> 50 </capacity>
+        <institute> CB </institute>
     </slidesRoom>
     <slidesRoom>
         <name> CB16 </name>
         <id> 8 </id>
         <capacity> 50 </capacity>
+        <institute> CB </institute>
     </slidesRoom>
     <slidesRoom>
         <name> CB7 </name>
         <id> 9 </id>
         <capacity> 50 </capacity>
+        <institute> CB </institute>
     </slidesRoom>
     <computerRoom>
         <name> CC300 </name>
         <id> 10 </id>
         <capacity> 100 </capacity>
         <numComputers> 100 </numComputers>
+        <institute> IC </institute>
     </computerRoom>
     <computerRoom>
         <name> CC304 </name>
-        <id> 10 </id>
+        <id> 11 </id>
         <capacity> 100 </capacity>
         <numComputers> 100 </numComputers>
+        <institute> IC </institute>
     </computerRoom>
     <laboratory>
         <name> LF10 </name>
         <id> 11 </id>
         <capacity> 60 </capacity>
+        <institute> IFGW </institute>
     </laboratory>
     <auditorium>
         <name> Auditório do IC </name>
         <id> 12 </id>
         <capacity> 100 </capacity>
+        <institute> IC </institute>
     </auditorium>
     <court>
         <name> Quadra </name>
         <id> 13 </id>
         <capacity> 50 </capacity>
+        <institute> FEF </institute>
     </court>
 </spaces>

@@ -6,6 +6,9 @@ import src.GraphicInterface.Views.SelectionView;
 
 import src.System.*;
 
+/**
+ * Main class of the system
+ */
 public class Main extends Application {
 
     public static void main(String[] args) throws Exception {
@@ -15,6 +18,6 @@ public class Main extends Application {
 
     @Override
 	public void start(Stage stage) throws Exception {
-		SelectionView.getInstance(stage).openStage();;
+		SelectionView.getInstance(stage).openStage();
 	}
 }
