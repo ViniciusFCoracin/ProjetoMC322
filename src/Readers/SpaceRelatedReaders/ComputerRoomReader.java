@@ -5,6 +5,7 @@ import org.w3c.dom.Node;
 
 import src.Spaces.Classrooms.ComputerRoom;
 import src.Readers.XMLNodeReader;
+import src.Spaces.InstituteAbbr;
 
 /**
  * Singleton class that reads a computerRoom node and creates a ComputerRoom object
@@ -24,6 +25,7 @@ public class ComputerRoomReader implements XMLNodeReader {
             int id = 0;
             int capacity = 0;
             int numComputers = 0;
+            InstituteAbbr institute = null;
             for (int i = 0; i < childNodes.getLength(); i++){
                 Node node = childNodes.item(i);
                 if (node.getNodeType() != Node.ELEMENT_NODE)
@@ -40,12 +42,33 @@ public class ComputerRoomReader implements XMLNodeReader {
                 else if ("numComputers".equals(node.getNodeName())){
                     numComputers = Integer.parseInt(node.getTextContent().trim());
                 }
+                else if ("institute".equals(node.getNodeName())){
+                    String text = node.getTextContent().trim();
+                    if (text.equals("CB"))
+                        institute = InstituteAbbr.CB;
+                    else if (text.equals("PB"))
+                        institute = InstituteAbbr.PB;
+                    else if (text.equals("IC"))
+                        institute = InstituteAbbr.IC;
+                    else if (text.equals("FEEC"))
+                        institute = InstituteAbbr.FEEC;
+                    else if (text.equals("IMECC"))
+                        institute = InstituteAbbr.IMECC;
+                    else if (text.equals("IFGW"))
+                        institute = InstituteAbbr.IFGW;
+                    else if (text.equals("IEL"))
+                        institute = InstituteAbbr.IEL;
+                    else if (text.equals("FEF"))
+                        institute = InstituteAbbr.FEF;
+                    else
+                        throw new Error("Invalid institute");
+                }
                 else{
                     throw new Error("Invalid atribute");
                 }
             }
-            if (name != null && id != 0 && capacity != 0)
-                computerRoom = new ComputerRoom(name, id, capacity, numComputers);
+            if (name != null && id != 0 && capacity != 0 && institute != null)
+                computerRoom = new ComputerRoom(name, id, capacity, numComputers, institute);
             else
                 throw new Error("Atribute missing");
         }

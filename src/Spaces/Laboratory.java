@@ -13,8 +13,8 @@ public class Laboratory extends Space{
      * @param spaceId: the id of the space
      * @param maxCapacity: the capacity of people int the space
      */
-    public Laboratory(String spaceName, int spaceId, int maxCapacity){
-        super(spaceName, spaceId, maxCapacity);
+    public Laboratory(String spaceName, int spaceId, int maxCapacity, InstituteAbbr institute){
+        super(spaceName, spaceId, maxCapacity, institute);
     }
 
     @Override

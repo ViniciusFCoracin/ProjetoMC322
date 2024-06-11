@@ -1,5 +1,6 @@
 package src.Spaces.Classrooms;
 
+import src.Spaces.InstituteAbbr;
 import src.Spaces.SpaceType;
 
 /**
@@ -15,8 +16,8 @@ public class SlidesRoom extends Classroom{
      * @param spaceId: the id of the space
      * @param maxCapacity: the capacity of people int the space
      */
-    public SlidesRoom(String spaceName, int spaceId, int maxCapacity){
-        super(spaceName, spaceId, maxCapacity);
+    public SlidesRoom(String spaceName, int spaceId, int maxCapacity, InstituteAbbr institute){
+        super(spaceName, spaceId, maxCapacity, institute);
     }
 
     @Override

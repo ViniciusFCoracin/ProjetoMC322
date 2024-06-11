@@ -1,5 +1,6 @@
 package src.Spaces.Classrooms;
 
+import src.Spaces.InstituteAbbr;
 import src.Spaces.SpaceType;
 
 /**
@@ -17,8 +18,8 @@ public class ComputerRoom extends Classroom {
      * @param maxCapacity: the capacity of people int the space
      * @param numComputers: the number of computers in the room
      */
-    public ComputerRoom(String spaceName, int spaceId, int maxCapacity, int numComputers){
-        super(spaceName, spaceId, maxCapacity);
+    public ComputerRoom(String spaceName, int spaceId, int maxCapacity, int numComputers, InstituteAbbr institute){
+        super(spaceName, spaceId, maxCapacity, institute);
         this.numComputers = numComputers;
     }
 
