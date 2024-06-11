@@ -17,13 +17,13 @@ import src.System.LectureSelector;
 
 public class SelectionController {
 	
-    @FXML
-    private FlowPane spacesFlowPane;
-    
-    @FXML
-    private VBox coursesVBox;
-    
-    private static List<String> removedCourses = new ArrayList<String>();
+	@FXML
+	private FlowPane spacesFlowPane;
+	
+	@FXML
+	private VBox coursesVBox;
+	
+	private static List<String> removedCourses = new ArrayList<String>();
 	private static List<String> removedSpaces= new ArrayList<String>();
 	
 	public static List<String> getRemovedCourses() {
@@ -35,10 +35,10 @@ public class SelectionController {
 	}
 	
 	@FXML
-    public void initialize() {
+	public void initialize() {
 		initializeContainer(coursesVBox);
-        initializeContainer(spacesFlowPane);
-    }
+		initializeContainer(spacesFlowPane);
+	}
 	
 	public void removeSpace(ActionEvent e) {
 		removedSpaces = remove(e, removedSpaces);
@@ -65,11 +65,11 @@ public class SelectionController {
 	}
 	
 	private void initializeContainer(Parent container) {
-		for (Node node : container.getChildrenUnmodifiable()) {
-            Button button = (Button) node;
-            button.setUserData(false);
-            button.setStyle("-fx-background-color: white");
-        }
+		for (Node node : container.getChildrenUnmodifiable()) {			
+			Button button = (Button) node;
+			button.setUserData(false);
+			button.setStyle("-fx-background-color: white");
+		}
 	}
 	
 	public void submit(ActionEvent e) throws IOException {
