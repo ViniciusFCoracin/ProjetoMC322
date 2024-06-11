@@ -1,5 +1,6 @@
 package src.GraphicInterface.Controllers;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
+import src.GraphicInterface.Views.ScheduleView;
 import src.GraphicInterface.Views.SelectionView;
 import src.System.LectureSelector;
 
@@ -70,8 +72,9 @@ public class SelectionController {
         }
 	}
 	
-	public void submit(ActionEvent e) {
-		LectureSelector.startDistribution();
+	public void submit(ActionEvent e) throws IOException {
+		LectureSelector.getInstance().startDistribution();;
 		SelectionView.getInstance(null).closeStage();
+		ScheduleView.getInstance(SelectionView.getInstance(null).getStage()).openStage();;
 	}
 }
