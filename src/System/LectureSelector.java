@@ -63,24 +63,9 @@ public class LectureSelector {
     	allCourses = CoursesFileReader.getInstance().readFile("src/XML/courses.xml");
     	allSpaces = SpacesFileReader.getInstance().readFile("src/XML/spaces.xml");
     	allDisciplines = DisciplinesFileReader.getInstance().readFile("src/XML/disciplines.xml");
-
-        System.out.println("Available spaces before selection:");
-        System.out.println(allSpaces);
+    	
         allSpaces = removeSelectedSpaces(allSpaces, SelectionController.getRemovedSpaces());
-        System.out.println("Available spaces after selection:");
-        System.out.println(allSpaces);        
-        
-        System.out.println("");
-        
-        System.out.println("Available courses before selection:");
-        for(Course course : allCourses) {
-        	System.out.print(course.getCourseName()+ ", ");
-        }
         allCourses= removeSelectedCourses(allCourses, SelectionController.getRemovedCourses());
-        System.out.println("\nAvailable courses after selection:");
-        for(Course course : allCourses) {
-        	System.out.print(course.getCourseName()+ ", ");
-        }
 
         AllocatorSystem system = new AllocatorSystem(allCourses, allDisciplines, allSpaces);
         allLectures = system.allocateSchedulesAndSpaces();
