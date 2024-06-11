@@ -1,4 +1,5 @@
 package src.Spaces.Classrooms;
+import src.Spaces.InstituteAbbr;
 import src.Spaces.Space;
 
 /**
@@ -12,7 +13,7 @@ public abstract class Classroom extends Space {
      * @param spaceId: the id of the space
      * @param maxCapacity: the capacity of people int the space
      */
-    public Classroom(String spaceName, int spaceId, int maxCapacity){
-        super(spaceName, spaceId, maxCapacity);
+    public Classroom(String spaceName, int spaceId, int maxCapacity, InstituteAbbr institute){
+        super(spaceName, spaceId, maxCapacity, institute);
     }
 }

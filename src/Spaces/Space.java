@@ -8,6 +8,7 @@ public abstract class Space {
     private int spaceId;
     private int maxCapacity;
     private SpaceType spaceType;
+    private InstituteAbbr institute;
 
     /**
      * Public class for the Space class
@@ -16,10 +17,11 @@ public abstract class Space {
      * @param spaceId: the id of the space
      * @param maxCapacity: the capacity of people int the space
      */
-    public Space(String spaceName, int spaceId, int maxCapacity){
+    public Space(String spaceName, int spaceId, int maxCapacity, InstituteAbbr institute){
         this.spaceName = spaceName;
         this.spaceId = spaceId;
         this.maxCapacity = maxCapacity;
+        this.institute = institute;
     }
 
     public String getSpaceName(){
@@ -36,6 +38,10 @@ public abstract class Space {
 
     public SpaceType getSpaceType(){
         return this.spaceType;
+    }
+
+    public InstituteAbbr getInstitute(){
+        return this.institute;
     }
 
     @Override

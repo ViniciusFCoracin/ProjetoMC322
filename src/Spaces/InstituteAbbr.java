@@ -1,12 +1,12 @@
 package src.Spaces;
 
 public enum InstituteAbbr {
+    CB,
+    PB,
     IC,
     FEEC,
     IMECC,
     IFGW,
-    CB,
-    PB,
     FEF,
     IEL
 }

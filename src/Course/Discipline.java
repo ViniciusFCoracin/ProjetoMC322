@@ -28,12 +28,13 @@ public class Discipline {
      * @param requiredSpace: the required type of space
      * @param professors: list of the discipline professors
      */
-    public Discipline(String disciplineName, String id, int credits, SpaceType requiredSpace, List<String> professors){
+    public Discipline(String disciplineName, String id, int credits, SpaceType requiredSpace, List<String> professors, List<InstituteAbbr> institutes){
         this.disciplineName = disciplineName;
         this.disciplineId = id;
         this.disciplineCredits = credits;
         this.requiredSpace = requiredSpace;
         this.professors = professors;
+        this.possibleInstitutes = institutes;
         this.isMandatory = false;
     }
 
@@ -70,6 +71,17 @@ public class Discipline {
     }
 
     /**
+     * Calculates the discipline number of lectures in a week. Here,
+     * we supose that every discipline has an even number of credits,
+     * and each lecture has 2 hours of duration.
+     * 
+     * @return: the number of lectures in a week
+     */
+    public int numberOfLectures(){
+        return this.disciplineCredits / 2;
+    }
+
+    /**
      * Method that selects a professor in the professor's list. Each time this
      * method is called, the next professor in the list is selected. When the list
      * runs out of professors, the first one is selected again.
@@ -92,19 +104,11 @@ public class Discipline {
         return (char) ('A' + this.counterGroups++);
     }
 
+    /**
+     * Method that resets the counterGroups to zero
+     */
     public void resetGroup(){
         this.counterGroups = 0;
-    }
-
-    /**
-     * Calculates the discipline number of lectures in a week. Here,
-     * we supose that every discipline has an even number of credits,
-     * and each lecture has 2 hours of duration.
-     * 
-     * @return: the number of lectures in a week
-     */
-    public int numberOfLectures(){
-        return this.disciplineCredits / 2;
     }
 
     @Override

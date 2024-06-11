@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import src.Course.Discipline;
 import src.Readers.XMLNodeReader;
 import src.Spaces.SpaceType;
+import src.Spaces.InstituteAbbr;
 
 /**
  * Singleton class that reads a course node and returns a Course object
@@ -27,6 +28,7 @@ public class DisciplineReader implements XMLNodeReader {
             String disciplineId = null;
             int credits = 0;
             SpaceType type = null;
+            List<InstituteAbbr> institutes = new ArrayList<>();
             List<String> professors = new ArrayList<>();
             for (int i = 0; i < childNodes.getLength(); i++){
                 Node node = childNodes.item(i);
@@ -60,6 +62,33 @@ public class DisciplineReader implements XMLNodeReader {
                     else
                         throw new Error("Invalid space type");
                 }
+                else if ("requiredInstitute".equals(node.getNodeName())){
+                    NodeList institutesList = node.getChildNodes();
+                    for (int j = 0; j < institutesList.getLength(); j++){
+                        Node instituteNode = institutesList.item(j);
+                        if (instituteNode.getNodeType() != Node.ELEMENT_NODE)
+                            continue;
+                        String text = instituteNode.getTextContent().trim();
+                        if (text.equals("CB"))
+                            institutes.add(InstituteAbbr.CB);
+                        else if (text.equals("PB"))
+                            institutes.add(InstituteAbbr.PB);
+                        else if (text.equals("IC"))
+                            institutes.add(InstituteAbbr.IC);
+                        else if (text.equals("FEEC"))
+                            institutes.add(InstituteAbbr.FEEC);
+                        else if (text.equals("IMECC"))
+                            institutes.add(InstituteAbbr.IMECC);
+                        else if (text.equals("IFGW"))
+                            institutes.add(InstituteAbbr.IFGW);
+                        else if (text.equals("IEL"))
+                            institutes.add(InstituteAbbr.IEL);
+                        else if (text.equals("FEF"))
+                            institutes.add(InstituteAbbr.FEF);
+                        else
+                            throw new Error("Invalid institute");
+                    }
+                }
                 else if ("professors".equals(node.getNodeName())){
                     NodeList professorsList = node.getChildNodes();
                     for (int j = 0; j < professorsList.getLength(); j++){
@@ -74,8 +103,8 @@ public class DisciplineReader implements XMLNodeReader {
                     throw new Error("Invalid atribute");
                 }
             }
-            if (disciplineName != null && disciplineId != null && type != null && credits != 0)
-                discipline = new Discipline(disciplineName, disciplineId, credits, type, professors);
+            if (disciplineName != null && disciplineId != null && type != null && institutes.size() != 0 && credits != 0)
+                discipline = new Discipline(disciplineName, disciplineId, credits, type, professors, institutes);
             else
                 throw new Error("Atribute missing");
         }
