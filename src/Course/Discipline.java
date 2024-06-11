@@ -2,6 +2,7 @@ package src.Course;
 
 import java.util.List;
 
+import src.Spaces.InstituteAbbr;
 import src.Spaces.SpaceType;
 
 /**
@@ -15,6 +16,8 @@ public class Discipline {
     private int disciplineCredits;
     private SpaceType requiredSpace;
     private List<String> professors;
+    private boolean isMandatory;
+    private List<InstituteAbbr> possibleInstitutes; 
 
     /**
      * Public constructor for Discipline class
@@ -31,6 +34,7 @@ public class Discipline {
         this.disciplineCredits = credits;
         this.requiredSpace = requiredSpace;
         this.professors = professors;
+        this.isMandatory = false;
     }
 
     public String getDisciplineName(){
@@ -51,6 +55,18 @@ public class Discipline {
 
     public SpaceType getRequiredSpaceType(){
         return this.requiredSpace;
+    }
+
+    public boolean getIsMandatory(){
+        return this.isMandatory;
+    }
+
+    public void setIsMandatory(boolean newObligation){
+        this.isMandatory = newObligation;
+    }
+
+    public List<InstituteAbbr> getPossibleInstitutes(){
+        return this.possibleInstitutes;
     }
 
     /**

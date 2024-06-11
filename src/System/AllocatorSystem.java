@@ -22,7 +22,7 @@ public class AllocatorSystem {
     private List<Discipline> allDisciplines;
     private List<Space> allSpaces;
     private HashMap<SpaceType, Integer> errorsPerType;
-    private final int MAX_NUMBER_OF_TRIES = 10;
+    private final int MAX_NUMBER_OF_TRIES = 100;
 
 
     /**
@@ -108,11 +108,19 @@ public class AllocatorSystem {
 
         Collections.sort(allLectures, new LectureComparator());
         for (Lecture lecture : allLectures) {
-            String output = ("Lecture: " + lecture.getLectureDiscipline().getDisciplineId() + ", Professor " + lecture.getProfessor() + "\n" +
+            if(lecture.getLectureDiscipline().getIsMandatory()){
+                String output = ("Lecture: " + lecture.getLectureDiscipline().getDisciplineId() + ", Professor " + lecture.getProfessor() + "\n" +
+                                 "Day: " + lecture.getLectureSchedule().getDay() + ", " + lecture.getLectureSchedule().getHourOfClass() + "\n" +
+                                 "Place: " + lecture.getLectureSpace() + "\n" + "Group: " 
+                                 + lecture.getLectureGroup() + "\n" + lecture.getCourse().getCourseName() + ", " + lecture.getCourse().getDisciplineSemester(lecture.getLectureDiscipline()) + " semester\n");
+                System.out.println(output);
+            } else {
+                String output = ("Lecture: " + lecture.getLectureDiscipline().getDisciplineId() + ", Professor " + lecture.getProfessor() + "\n" +
                              "Day: " + lecture.getLectureSchedule().getDay() + ", " + lecture.getLectureSchedule().getHourOfClass() + "\n" +
                              "Place: " + lecture.getLectureSpace() + "\n" + "Group: " 
-                             + lecture.getLectureGroup() +"\n" + lecture.getCourse().getCourseName() + ", " + lecture.getCourse().getDisciplineSemester(lecture.getLectureDiscipline()) + " semester\n");
-           System.out.println(output);
+                             + lecture.getLectureGroup() +"\n");
+                System.out.println(output);
+            }
         }
     }
 }
