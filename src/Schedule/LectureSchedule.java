@@ -1,6 +1,7 @@
 package src.Schedule;
 
 import java.util.Objects;
+
 import src.Course.Course;
 import src.Course.Shift;
 
