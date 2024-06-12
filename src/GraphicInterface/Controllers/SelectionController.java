@@ -77,6 +77,6 @@ public class SelectionController {
 		SelectionView.getInstance(null).hideStage();;
 		
 		Stage stage =  new Stage();
-		ScheduleView.getInstance(stage).openStage();;
+		ScheduleView.getInstance(stage).openStage("schedule");
 	}
 }
