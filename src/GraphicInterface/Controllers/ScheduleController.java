@@ -88,7 +88,7 @@ public class ScheduleController {
 		
 		Label labelDisciplineId = new Label(lecture.getLectureDiscipline().getDisciplineId());
 		Label labelProfessor = new Label(lecture.getProfessor());
-		Label labelSpace = new Label(lecture.getLectureSpace().getSpaceName());
+		Label labelSpace = new Label(lecture.getLectureSpace().getSpaceID());
 		Label labelGroup = new Label(Character.toString(lecture.getLectureGroup()));
 		
 		VBox vBox = (VBox) getNodeByRowColumnIndex(row, column);

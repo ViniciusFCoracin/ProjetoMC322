@@ -11,7 +11,7 @@ import src.Spaces.SpaceType;
 import src.Spaces.InstituteAbbr;
 
 /**
- * Singleton class that reads a course node and returns a Course object
+ * Singleton class that reads a discipline node and returns a Discipline object
  */
 public class DisciplineReader implements XMLNodeReader {
     private static DisciplineReader instance;
@@ -27,7 +27,7 @@ public class DisciplineReader implements XMLNodeReader {
             String disciplineName = null;
             String disciplineId = null;
             int credits = 0;
-            SpaceType type = null;
+            List<SpaceType> types = new ArrayList<>();
             List<InstituteAbbr> institutes = new ArrayList<>();
             List<String> professors = new ArrayList<>();
             for (int i = 0; i < childNodes.getLength(); i++){
@@ -43,26 +43,32 @@ public class DisciplineReader implements XMLNodeReader {
                 else if ("credits".equals(node.getNodeName())){
                     credits = Integer.parseInt(node.getTextContent().trim());
                 }
-                else if ("requiredSpace".equals(node.getNodeName())){
-                    String text = node.getTextContent().trim();
-                    if (text.equals("BasicRoom"))
-                        type = SpaceType.BASIC_ROOM;
-                    else if (text.equals("SlidesRoom"))
-                        type = SpaceType.SLIDES_ROOM;
-                    else if (text.equals("ComputerRoom"))
-                        type = SpaceType.COMPUTER_ROOM;
-                    else if (text.equals("Auditorium"))
-                        type = SpaceType.AUDITORIUM;
-                    else if (text.equals("Court"))
-                        type = SpaceType.COURT;
-                    else if (text.equals("PhysicLaboratory"))
-                        type = SpaceType.PHYSICS_LABORATORY;
-                    else if (text.equals("Chemistry Laboratory"))
-                        type = SpaceType.CHEMISTRY_LABORATORY;
-                    else
-                        throw new Error("Invalid space type");
+                else if ("requiredSpaces".equals(node.getNodeName())){
+                    NodeList spaceList = node.getChildNodes();
+                    for (int j = 0; j < spaceList.getLength(); j++){
+                        Node spaceNode = spaceList.item(j);
+                        if (spaceNode.getNodeType() != Node.ELEMENT_NODE)
+                            continue;
+                        String text = spaceNode.getTextContent().trim();
+                        if (text.equals("BasicRoom"))
+                            types.add(SpaceType.BASIC_ROOM);
+                        else if (text.equals("SlidesRoom"))
+                            types.add(SpaceType.SLIDES_ROOM);
+                        else if (text.equals("ComputerRoom"))
+                            types.add(SpaceType.COMPUTER_ROOM);
+                        else if (text.equals("Auditorium"))
+                            types.add(SpaceType.AUDITORIUM);
+                        else if (text.equals("Court"))
+                            types.add(SpaceType.COURT);
+                        else if (text.equals("PhysicsLaboratory"))
+                            types.add(SpaceType.PHYSICS_LABORATORY);
+                        else if (text.equals("ChemistryLaboratory"))
+                            types.add(SpaceType.CHEMISTRY_LABORATORY);
+                        else
+                            throw new Error("Invalid space type");
+                    }
                 }
-                else if ("requiredInstitute".equals(node.getNodeName())){
+                else if ("possibleInstitutes".equals(node.getNodeName())){
                     NodeList institutesList = node.getChildNodes();
                     for (int j = 0; j < institutesList.getLength(); j++){
                         Node instituteNode = institutesList.item(j);
@@ -103,8 +109,9 @@ public class DisciplineReader implements XMLNodeReader {
                     throw new Error("Invalid atribute");
                 }
             }
-            if (disciplineName != null && disciplineId != null && type != null && institutes.size() != 0 && credits != 0)
-                discipline = new Discipline(disciplineName, disciplineId, credits, type, professors, institutes);
+            if (disciplineName != null && disciplineId != null && credits != 0 && 
+                types.size() != 0 && institutes.size() != 0 && professors.size() != 0)
+                discipline = new Discipline(disciplineName, disciplineId, credits, types, institutes, professors);
             else
                 throw new Error("Atribute missing");
         }

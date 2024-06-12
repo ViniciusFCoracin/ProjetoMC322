@@ -13,6 +13,7 @@ public class Lecture{
     private String professor;
     private char group;
     private Course course;
+    
     /**
      * Public constructor for the Lecture class
      * 
