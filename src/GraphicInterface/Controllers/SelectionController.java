@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import src.GraphicInterface.Views.ScheduleView;
 import src.GraphicInterface.Views.SelectionView;
 import src.System.LectureSelector;
@@ -50,7 +51,6 @@ public class SelectionController {
 	
 	private List<String> remove(ActionEvent e, List<String> list) {
 		Button button = (Button) e.getSource();
-		System.out.println(button.getText());
 		
 		if((Boolean)button.getUserData() == false) {
 			list.add(button.getText());
@@ -74,7 +74,9 @@ public class SelectionController {
 	
 	public void submit(ActionEvent e) throws IOException {
 		LectureSelector.getInstance().startDistribution();;
-		SelectionView.getInstance(null).closeStage();
-		ScheduleView.getInstance(SelectionView.getInstance(null).getStage()).openStage();;
+		SelectionView.getInstance(null).hideStage();;
+		
+		Stage stage =  new Stage();
+		ScheduleView.getInstance(stage).openStage();;
 	}
 }
