@@ -51,7 +51,7 @@ public class LectureSelector {
 	        allLectures = system.allocateSchedulesAndSpaces();
 	    }
 
-    private static List<Space> removeSelectedSpaces(List<Space> allSpaces, List<String> selectedSpaces) {	
+    private List<Space> removeSelectedSpaces(List<Space> allSpaces, List<String> selectedSpaces) {	
 		Iterator<Space> iterator = allSpaces.iterator();
 		while (iterator.hasNext()) {
             Space space = iterator.next();
@@ -61,7 +61,7 @@ public class LectureSelector {
 	    return allSpaces;
 	}
 	    
-    private static List<Course> removeSelectedCourses(List<Course> allCourses, List<String> selectedCourses) {
+    private List<Course> removeSelectedCourses(List<Course> allCourses, List<String> selectedCourses) {
       	Iterator<Course> iterator = allCourses.iterator();
         while (iterator.hasNext()) {
             Course course = iterator.next();
