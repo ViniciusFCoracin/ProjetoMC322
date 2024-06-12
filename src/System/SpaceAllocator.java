@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
 import org.jgrapht.Graph;
 import org.jgrapht.alg.color.GreedyColoring;
 import org.jgrapht.alg.interfaces.VertexColoringAlgorithm.Coloring;
@@ -12,7 +14,9 @@ import org.jgrapht.graph.SimpleGraph;
 
 import src.Course.Discipline;
 import src.Course.Lecture;
-import src.Errors.*;
+import src.Errors.InsuficientSpacesError;
+import src.Errors.NoSpacesAvailableError;
+import src.Spaces.InstituteAbbr;
 import src.Spaces.Space;
 import src.Spaces.SpaceType;
 
@@ -47,7 +51,19 @@ public class SpaceAllocator {
                     filteredLectures.add(lecture);
             }
 
-            SpaceAllocator.assignPlacesPerType(spacesOfType, filteredLectures, spaceType);
+            Map<InstituteAbbr, List<Space>> spacesByInstitute = separateSpacesByInstitute(spacesOfType);
+
+            for (Lecture lecture : filteredLectures) {
+                Discipline discipline = lecture.getLectureDiscipline();
+                List<Space> possibleSpaces = discipline.getPossibleInstitutes().stream()
+                        .flatMap(inst -> spacesByInstitute.getOrDefault(inst, new ArrayList<>()).stream())
+                        .collect(Collectors.toList());
+
+                if (possibleSpaces.isEmpty())
+                    throw new NoSpacesAvailableError("No spaces available for discipline " + discipline.getDisciplineName() + " in the required institutes");
+
+                assignPlacesPerType(possibleSpaces, filteredLectures, spaceType);
+            }
         }
     }
     
@@ -120,4 +136,14 @@ public class SpaceAllocator {
         }
         return separatedSpaces;
     }
+
+    private static Map<InstituteAbbr, List<Space>> separateSpacesByInstitute(List<Space> spaceList) {
+        Map<InstituteAbbr, List<Space>> separatedSpaces = new HashMap<>();
+        for (Space space : spaceList) {
+            InstituteAbbr institute = space.getInstitute();
+            separatedSpaces.computeIfAbsent(institute, k -> new ArrayList<>()).add(space);
+        }
+        return separatedSpaces;
+    }
+
 }

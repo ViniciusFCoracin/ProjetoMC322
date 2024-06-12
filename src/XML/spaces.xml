@@ -55,6 +55,18 @@
         <capacity> 50 </capacity>
         <institute> CB </institute>
     </slidesRoom>
+    <slidesRoom>
+        <name> CC353 </name>
+        <id> 9 </id>
+        <capacity> 50 </capacity>
+        <institute> IC </institute>
+    </slidesRoom>
+    <slidesRoom>
+        <name> CC352 </name>
+        <id> 9 </id>
+        <capacity> 50 </capacity>
+        <institute> IC </institute>
+    </slidesRoom>
     <computerRoom>
         <name> CC300 </name>
         <id> 10 </id>

@@ -7,28 +7,23 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class SelectionView {
-	
+public class ScheduleView {
 	private Stage stage;
-	private static SelectionView instance;
+	private static ScheduleView instance;
 	
-	private SelectionView(Stage stage){
+	private ScheduleView(Stage stage){
 		this.stage = stage;
 	}
 	
-	public Stage getStage() {
-		return stage;
-	}
-	
-	public static SelectionView getInstance(Stage stage){
+	public static ScheduleView getInstance(Stage stage){
         if(instance == null) {
-            instance= new SelectionView(stage);
+            instance= new ScheduleView(stage);
         }
         return instance;
     }
 	
 	public void openStage() throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("/src/FXML/selection.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/src/FXML/schedule.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
