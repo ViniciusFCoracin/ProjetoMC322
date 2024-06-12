@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import src.GraphicInterface.Views.SelectionView;
 
-import src.System.*;
 
 /**
  * Main class of the system

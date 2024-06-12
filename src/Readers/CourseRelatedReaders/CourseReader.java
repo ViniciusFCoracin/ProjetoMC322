@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 import src.Course.Course;
 import src.Course.Semester;
-import src.Course.Shift;
 import src.Readers.XMLNodeReader;
+import src.Schedule.Shift;
 
 
 /**
