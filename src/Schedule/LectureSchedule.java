@@ -1,7 +1,6 @@
 package src.Schedule;
 
 import java.util.Objects;
-import src.Course.Course;
 
 /**
  * Class that represents a schedule of a lecture,

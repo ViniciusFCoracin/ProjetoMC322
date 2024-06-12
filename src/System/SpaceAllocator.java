@@ -33,23 +33,17 @@ public class SpaceAllocator {
      * @param allLectures: list of all lectures created, without places assigned
      * @param allDisciplines: list of all disciplines
      */
-    public static void assignPlaces(List<Space> allSpaces, List<Lecture> allLectures, List<Discipline> allDisciplines) {
-        Map<SpaceType, List<Discipline>> separatedDisciplines = separateDisciplinesBySpaceRequirement(allDisciplines);
+    public static void assignPlaces(List<Space> allSpaces, List<Lecture> allLectures) {
+        Map<SpaceType, List<Lecture>> separatedLectures = separateLecturesBySpaceRequirement(allLectures);
         Map<SpaceType, List<Space>> separatedSpaces = separateSpacesByType(allSpaces);
 
-        for (Map.Entry<SpaceType, List<Discipline>> typeDiscipline : separatedDisciplines.entrySet()) {
-            SpaceType spaceType = typeDiscipline.getKey();
+        for (Map.Entry<SpaceType, List<Lecture>> mapTypeLecture : separatedLectures.entrySet()) {
+            SpaceType spaceType = mapTypeLecture.getKey();
+            List<Lecture> filteredLectures = mapTypeLecture.getValue();
             List<Space> spacesOfType = separatedSpaces.get(spaceType);
 
             if (spacesOfType == null)
                 throw new NoSpacesAvailableError("No spaces of type " + spaceType);
-
-            List<Lecture> filteredLectures = new ArrayList<>();
-            for (Lecture lecture : allLectures){
-                Discipline discipline = lecture.getLectureDiscipline();
-                if (discipline.getRequiredSpaceType() == spaceType)
-                    filteredLectures.add(lecture);
-            }
 
             Map<InstituteAbbr, List<Space>> spacesByInstitute = separateSpacesByInstitute(spacesOfType);
 
@@ -60,7 +54,7 @@ public class SpaceAllocator {
                         .collect(Collectors.toList());
 
                 if (possibleSpaces.isEmpty())
-                    throw new NoSpacesAvailableError("No spaces available for discipline " + discipline.getDisciplineName() + " in the required institutes");
+                    throw new NoSpacesAvailableError("No spaces available for discipline " + discipline.getDisciplineName() + " in the required institute");
 
                 assignPlacesPerType(possibleSpaces, filteredLectures, spaceType);
             }
@@ -98,11 +92,11 @@ public class SpaceAllocator {
         if (spacesOfType.isEmpty())
             throw new NoSpacesAvailableError("No spaces of type " + type);
 
-        Map<Integer, Space> spaceColor = new HashMap<>();
+        Map<Integer, Space> mapColorSpace = new HashMap<>();
         for (int i = 0; i < spacesOfType.size(); i++)
-            spaceColor.put(i, spacesOfType.get(i));
+            mapColorSpace.put(i, spacesOfType.get(i));
 
-        Map<Lecture, String> lectureSpace = new HashMap<>();
+        Map<Lecture, String> mapLectureColor = new HashMap<>();
         for (Map.Entry<Lecture, Integer> entry : coloring.getColors().entrySet()) {
             Lecture lecture = entry.getKey();
             Integer color = entry.getValue();
@@ -110,22 +104,22 @@ public class SpaceAllocator {
             if (color >= spacesOfType.size())
                 throw new InsuficientSpacesError("Insufficent spaces of type " + spacesOfType.get(0).getSpaceType());
 
-            Space space = spaceColor.get(color);
+            Space space = mapColorSpace.get(color);
             lecture.setLectureSpace(space);
-            lectureSpace.put(lecture, space.getSpaceName());
+            mapLectureColor.put(lecture, space.getSpaceID());
         }
 
-        List<Lecture> allLectures = new ArrayList<>(lectureSpace.keySet());
+        List<Lecture> allLectures = new ArrayList<>(mapLectureColor.keySet());
         return allLectures;
     }
 
-    private static Map<SpaceType, List<Discipline>> separateDisciplinesBySpaceRequirement(List<Discipline> disciplineList) {
-        Map<SpaceType, List<Discipline>> separatedDisciplines = new HashMap<>();
-        for (Discipline discipline : disciplineList) {
-            SpaceType requiredSpaceType = discipline.getRequiredSpaceType();
-            separatedDisciplines.computeIfAbsent(requiredSpaceType, k -> new ArrayList<>()).add(discipline);
+    private static Map<SpaceType, List<Lecture>> separateLecturesBySpaceRequirement(List<Lecture> allLectures) {
+        Map<SpaceType, List<Lecture>> separatedLectures = new HashMap<>();
+        for (Lecture lecture : allLectures) {
+            SpaceType requiredSpaceType = lecture.getLectureSpace().getSpaceType();
+            separatedLectures.computeIfAbsent(requiredSpaceType, k -> new ArrayList<>()).add(lecture);
         }
-        return separatedDisciplines;
+        return separatedLectures;
     }
 
     private static Map<SpaceType, List<Space>> separateSpacesByType(List<Space> spaceList) {

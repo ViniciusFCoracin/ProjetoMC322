@@ -55,7 +55,7 @@ public class LectureSelector {
 		Iterator<Space> iterator = allSpaces.iterator();
 		while (iterator.hasNext()) {
             Space space = iterator.next();
-            if (selectedSpaces.contains(space.getSpaceName()))
+            if (selectedSpaces.contains(space.getSpaceID()))
                 iterator.remove();
         }
 	    return allSpaces;
