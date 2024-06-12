@@ -1,9 +1,9 @@
 package src.System;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-import java.util.Collections;
 
 import src.Course.Course;
 import src.Course.Discipline;
@@ -120,28 +120,18 @@ public class ScheduleAllocator {
             int numberOfLectures = discipline.numberOfLectures();
             String professor = discipline.selectProfessor();
             char group = discipline.selectGroup();
+            List<Integer> daysIndexes = new ArrayList<>();
+            List<Integer> hoursIndexes = new ArrayList<>();
             
             for (int i = 0; i < numberOfLectures; i++){
-                Lecture lecture= new Lecture(null, discipline, null,
+                LectureSchedule schedule = electiveSchedule(daysIndexes, hoursIndexes);
+                Lecture lecture= new Lecture(null, discipline, schedule,
                                             professor, group, null);
                 electiveLectures.add(lecture);
 
             }
         }
-        assignElectiveSchedules(electiveLectures);
         return electiveLectures;
-    }
-
-    private static void assignElectiveSchedules(List<Lecture> electiveLectures){
-        Random random = new Random();
-        
-        for (int i = 0; i < electiveLectures.size(); i++){
-            Lecture lecture = electiveLectures.get(i);
-            WeekDay day = WeekDay.get(random.nextInt(WeekDay.values().length));
-            HourOfClass hour = HourOfClass.get(random.nextInt(HourOfClass.values().length));
-            LectureSchedule schedule = new LectureSchedule(day, hour);
-            lecture.setLectureSchedule(schedule);
-        }
     }
 
     /**
@@ -170,5 +160,37 @@ public class ScheduleAllocator {
         }
 
         return electiveDisciplines;
+    }
+
+    private static LectureSchedule electiveSchedule(List<Integer> dayIndexes, List<Integer> hourIndexes){
+        Random random = new Random();
+        int dayIndex = random.nextInt(5);
+        int hourIndex = random.nextInt(6);
+        boolean didAdd = false;
+
+        while(!didAdd){
+
+            if(!dayIndexes.contains(dayIndex) || !hourIndexes.contains(hourIndex)){
+
+                if(!dayIndexes.contains(dayIndex))
+                    dayIndexes.add(dayIndex);
+
+                if(!hourIndexes.contains(hourIndex))
+                    hourIndexes.add(hourIndex);
+
+                didAdd = true;
+
+            } else {
+
+                if(dayIndexes.contains(dayIndex))
+                    dayIndex = random.nextInt(5);
+
+                if(hourIndexes.contains(hourIndex))
+                    hourIndex = random.nextInt(6);
+
+            }
+        }
+        
+        return new LectureSchedule(WeekDay.get(dayIndex), HourOfClass.get(hourIndex));
     }
 }
