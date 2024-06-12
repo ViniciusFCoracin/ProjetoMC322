@@ -1,4 +1,4 @@
-package src.Course;
+package src.Schedule;
 
 /**
  * Enum that represents the shift of the course
