@@ -2,7 +2,6 @@ package src.Schedule;
 
 import java.util.Objects;
 import src.Course.Course;
-import src.Course.Shift;
 
 /**
  * Class that represents a schedule of a lecture,
@@ -39,8 +38,8 @@ public class LectureSchedule {
      * @param course: the course that will receive the schedule
      * @return: the first schedule of the week
      */
-    public static LectureSchedule firstSchedule(Course course){
-        if (course.getCourseShift() == Shift.FULL_TIME)
+    public static LectureSchedule firstSchedule(Shift courseShift){
+        if (courseShift == Shift.FULL_TIME)
             return new LectureSchedule(WeekDay.MONDAY, HourOfClass.EigthAM_TenAM);
         else 
             return new LectureSchedule(WeekDay.MONDAY, HourOfClass.SevenPM_NinePM);
