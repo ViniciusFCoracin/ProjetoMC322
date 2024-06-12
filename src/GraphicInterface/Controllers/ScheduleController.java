@@ -1,6 +1,7 @@
 package src.GraphicInterface.Controllers;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,8 +14,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import src.Course.Course;
 import src.Course.Lecture;
+import src.GraphicInterface.Views.ElectivesView;
+import src.GraphicInterface.Views.ScheduleView;
+import src.GraphicInterface.Views.SelectionView;
 import src.Schedule.HourOfClass;
 import src.Schedule.WeekDay;
 import src.System.LectureSelector;
@@ -43,7 +48,7 @@ public class ScheduleController {
 		loadSemestersComboBox();
 	}
 	
-	public void loadCoursesComboBox() {
+	private void loadCoursesComboBox() {
 		allCourses = new ArrayList<String>();
 		for(Course course : LectureSelector.getInstance().getAllCourses()) 
 			allCourses.add(course.getCourseName());
@@ -52,7 +57,7 @@ public class ScheduleController {
 		coursesComboBox.setItems(observableCoursesList);
 	}
 
-	public void loadSemestersComboBox() {
+	private void loadSemestersComboBox() {
 		allSemesters = new ArrayList<String>(Arrays.asList("1°", "2°", "3°", "4°"));
 		observableSemesterList = FXCollections.observableArrayList(allSemesters);
 		semesterComboBox.setItems(observableSemesterList);
@@ -62,9 +67,15 @@ public class ScheduleController {
 		cleanSchedule();
 		currentCourse = coursesComboBox.getValue();
 		currentSemester = semesterComboBox.getValue();
-		course.setText(currentCourse);
-		semester.setText(currentSemester);
-		int currentSemesterInt = convertSemesterToNumber(currentSemester);
+		
+		if(currentCourse == null || currentSemester == null) {
+			return;
+		} else {
+			course.setText(currentCourse);
+			semester.setText(currentSemester);
+		}
+
+		int currentSemesterInt = GridController.convertSemesterToNumber(currentSemester);
 		for(Lecture lecture : LectureSelector.getInstance().getAllLectures()) {
 			if(lecture.getLectureDiscipline().getIsMandatory()) {
 				if(lecture.getCourse().getCourseName().equals(currentCourse) && lecture.getCourse().getDisciplineSemester(lecture.getLectureDiscipline()) == currentSemesterInt) {
@@ -79,86 +90,38 @@ public class ScheduleController {
 		}
 	}
 	
-	public void assignLectureToGrid(Lecture lecture) {
+	private void assignLectureToGrid(Lecture lecture) {
 		WeekDay day = lecture.getLectureSchedule().getDay();
 		HourOfClass hourOfClass = lecture.getLectureSchedule().getHourOfClass();
 		
-		int column = getColumnFromWeekDay(day);
-		int row = getRowFromHourOfClass(hourOfClass);
+		int column = GridController.getColumnFromWeekDay(day);
+		int row = GridController.getRowFromHourOfClass(hourOfClass);
 		
 		Label labelDisciplineId = new Label(lecture.getLectureDiscipline().getDisciplineId());
 		Label labelProfessor = new Label(lecture.getProfessor());
 		Label labelSpace = new Label(lecture.getLectureSpace().getSpaceName());
 		Label labelGroup = new Label(Character.toString(lecture.getLectureGroup()));
 		
-		VBox vBox = (VBox) getNodeByRowColumnIndex(row, column);
+		VBox vBox = (VBox) GridController.getNodeByRowColumnIndex(scheduleGridPane, row, column);
 		vBox.getChildren().addAll(labelDisciplineId, labelGroup, labelProfessor, labelSpace);
 	}
 	
-	private int convertSemesterToNumber(String currentSemester) {
-		switch (currentSemester) {
-        case "1°": currentSemester = "1"; break;
-        case "2°": currentSemester = "2"; break;
-        case "3°": currentSemester = "3"; break;
-        case "4°": currentSemester = "4"; break;
-        default: break;
-		}
-		return Integer.parseInt(currentSemester);
-	}
-	
-	private int getColumnFromWeekDay(WeekDay day) {
-        switch (day) {
-            case MONDAY:
-                return 1;
-            case TUESDAY:
-                return 2;
-            case WEDNESDAY:
-                return 3;
-            case THURSDAY:
-                return 4;
-            case FRIDAY:
-                return 5;
-            default:
-                return 0;
-        }
-    }
-	
-	private int getRowFromHourOfClass(HourOfClass hourOfClass) {
-        switch (hourOfClass) {
-            case EigthAM_TenAM:
-                return 1;
-            case TenAM_Midday:
-                return 2;
-            case TwoPM_FourPM:
-                return 3;
-            case FourPM_SixPM:
-                return 4;
-            case SevenPM_NinePM:
-                return 5;
-            case NinePM_ElevenPM:
-                return 6;
-            default:
-                return 0;
-        }
-    }
-	
-	public Node getNodeByRowColumnIndex(int row, int column) {
-		for(Node node : scheduleGridPane.getChildren()) {
-	        Integer rowIndex = GridPane.getRowIndex(node);
-	        Integer colIndex = GridPane.getColumnIndex(node);
-	        if (rowIndex != null && colIndex != null && rowIndex.equals(row) && colIndex.equals(column)) {
-	            return node;
-	        }
-	    }
-	    return null;
-	}
-	
-	public void cleanSchedule() {
+	private void cleanSchedule() {
 	    for (int row = 1; row <= 6; row++) {
 	        for (int column = 1; column <= 5; column++) {
-	            VBox vBox = (VBox) getNodeByRowColumnIndex(row, column);
+	            VBox vBox = (VBox) GridController.getNodeByRowColumnIndex(scheduleGridPane, row, column);
 	            vBox.getChildren().clear();
 	        }
 	    }
+	}
+	
+	public void viewElectives() throws IOException {
+		Stage stage = new Stage();
+		ElectivesView.getInstance(stage).openStage();
+	}
+	
+	public void goBack() {
+		ScheduleView.getInstance(null).closeStage();;
+		SelectionView.getInstance(null).showStage();
 	}
 }
