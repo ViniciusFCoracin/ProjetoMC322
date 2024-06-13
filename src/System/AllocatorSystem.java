@@ -22,7 +22,7 @@ public class AllocatorSystem {
     private List<Discipline> allDisciplines;
     private List<Space> allSpaces;
     private HashMap<SpaceType, Integer> errorsPerType;
-    private final int MAX_NUMBER_OF_TRIES = 2000;
+    private final int MAX_NUMBER_OF_TRIES = 10000;
 
 
     /**

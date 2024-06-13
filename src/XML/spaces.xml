@@ -84,12 +84,22 @@
     <space>
         <type> slidesRoom </type>
         <institute> IC </institute>
-        <id> CC353 </id>
+        <id> CC350 </id>
+    </space>
+    <space>
+        <type> slidesRoom </type>
+        <institute> IC </institute>
+        <id> CC351 </id>
     </space>
     <space>
         <type> slidesRoom </type>
         <institute> IC </institute>
         <id> CC352 </id>
+    </space>
+    <space>
+        <type> slidesRoom </type>
+        <institute> IC </institute>
+        <id> CC353 </id>
     </space>
     <space>
         <type> computerRoom </type>

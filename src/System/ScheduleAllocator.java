@@ -105,13 +105,30 @@ public class ScheduleAllocator {
      * @param courseShift: the shift of the course
      */
     private static void assignMandatorySemesterSchedules(List<Lecture> semesterLectures, Shift courseShift){
-        Collections.shuffle(semesterLectures);
+        List<Lecture> lecturesCopy = new ArrayList<>(semesterLectures);
+
+        if (courseShift == Shift.FULL_TIME){
+            int numNull = 20 - semesterLectures.size();
+            for (int i = 0; i < numNull; i++)
+                lecturesCopy.add(null);
+        }
+        else if (courseShift == Shift.NIGHT_SHIFT){
+            int numNull = 10 - semesterLectures.size();
+            for (int i = 0; i < numNull; i++)
+                lecturesCopy.add(null);
+        }
+
+        Collections.shuffle(lecturesCopy);
         LectureSchedule schedule = LectureSchedule.firstSchedule(courseShift);
         
-        for (int i = 0; i < semesterLectures.size(); i++){
-            Lecture lecture = semesterLectures.get(i);
+        for (int i = 0; i < lecturesCopy.size(); i++){
+            Lecture lecture = lecturesCopy.get(i);
+            if (lecture == null && i < lecturesCopy.size() - 1){
+                schedule = LectureSchedule.nextSchedule(schedule);
+                continue;
+            }
             lecture.setLectureSchedule(schedule);
-            if (i < semesterLectures.size() - 1)
+            if (i < lecturesCopy.size() - 1)
                 schedule = LectureSchedule.nextSchedule(schedule);
         }
     }
