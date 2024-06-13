@@ -22,7 +22,7 @@ public class AllocatorSystem {
     private List<Discipline> allDisciplines;
     private List<Space> allSpaces;
     private HashMap<SpaceType, Integer> errorsPerType;
-    private final int MAX_NUMBER_OF_TRIES = 100;
+    private final int MAX_NUMBER_OF_TRIES = 10000;
 
 
     /**
@@ -56,7 +56,7 @@ public class AllocatorSystem {
         while (mustContinue) {
             try {
                 allLectures = ScheduleAllocator.createLecturesWithSchedules(allCourses, allDisciplines);
-                SpaceAllocator.assignPlaces(allSpaces, allLectures, allDisciplines);
+                SpaceAllocator.assignPlaces(allSpaces, allLectures);
                 mustContinue = false;
             }
             catch (InsuficientSpacesError e){

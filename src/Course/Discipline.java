@@ -9,15 +9,15 @@ import src.Spaces.SpaceType;
  * Class that represents a university discipline
  */
 public class Discipline {
-    private int counterProfessors = 0;
-    private int counterGroups = 0;
     private String disciplineName;
     private String disciplineId;
     private int disciplineCredits;
-    private SpaceType requiredSpace;
+    private List<SpaceType> requiredSpaces;
+    private List<InstituteAbbr> possibleInstitutes;
     private List<String> professors;
-    private boolean isMandatory;
-    private List<InstituteAbbr> possibleInstitutes; 
+    private boolean isMandatory = false;
+    private int counterGroups = 0;
+    private int counterProfessors = 0;
 
     /**
      * Public constructor for Discipline class
@@ -25,17 +25,18 @@ public class Discipline {
      * @param disciplineName: the name of the discipline
      * @param id: the id of the discipline
      * @param credits: the number of credits of the discipline
-     * @param requiredSpace: the required type of space
+     * @param requiredSpace: list of the required type of spaces
+     * @param institutes: list of the possible institutes for the discipline occur
      * @param professors: list of the discipline professors
      */
-    public Discipline(String disciplineName, String id, int credits, SpaceType requiredSpace, List<String> professors, List<InstituteAbbr> institutes){
+    public Discipline(String disciplineName, String id, int credits, List<SpaceType> requiredSpaces,
+                      List<InstituteAbbr> institutes, List<String> professors){
         this.disciplineName = disciplineName;
         this.disciplineId = id;
         this.disciplineCredits = credits;
-        this.requiredSpace = requiredSpace;
-        this.professors = professors;
+        this.requiredSpaces = requiredSpaces;
         this.possibleInstitutes = institutes;
-        this.isMandatory = false;
+        this.professors = professors;
     }
 
     public String getDisciplineName(){
@@ -50,12 +51,16 @@ public class Discipline {
         return this.disciplineCredits;
     }
 
-    public List<String> getProfessors(){
-        return this.professors;
+    public List<SpaceType> getRequiredSpaceType(){
+        return this.requiredSpaces;
     }
 
-    public SpaceType getRequiredSpaceType(){
-        return this.requiredSpace;
+    public List<InstituteAbbr> getPossibleInstitutes(){
+        return this.possibleInstitutes;
+    }
+
+    public List<String> getProfessors(){
+        return this.professors;
     }
 
     public boolean getIsMandatory(){
@@ -64,10 +69,6 @@ public class Discipline {
 
     public void setIsMandatory(boolean newObligation){
         this.isMandatory = newObligation;
-    }
-
-    public List<InstituteAbbr> getPossibleInstitutes(){
-        return this.possibleInstitutes;
     }
 
     /**

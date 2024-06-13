@@ -1,12 +1,5 @@
-<!ELEMENT spaces (basicRoom|computerRoom|slidesRoom|auditorium|court|laboratory)*>
-<!ELEMENT basicRoom (name,id,capacity,institute)>
-<!ELEMENT computerRoom (name,id,capacity,numComputers,institute)>
-<!ELEMENT slidesRoom (name,id,capacity,institute)>
-<!ELEMENT auditorium (name,id,capacity,institute)>
-<!ELEMENT court (name,id,capacity,institute)>
-<!ELEMENT laboratory (name,id,capacity,institute)>
-<!ELEMENT name (#PCDATA)>
-<!ELEMENT id (#PCDATA)>
-<!ELEMENT capacity (#PCDATA)>
-<!ELEMENT numComputers (#PCDATA)>
+<!ELEMENT spaces (space)*>
+<!ELEMENT space (type, institute, id)>
+<!ELEMENT type (#PCDATA)>
 <!ELEMENT institute (#PCDATA)>
+<!ELEMENT id (#PCDATA)>

@@ -1,417 +1,848 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE disciplines SYSTEM "disciplines.dtd">
+
 <disciplines>
     <discipline>
         <disciplineName> Cálculo I </disciplineName>
         <disciplineId> MA111 </disciplineId>
         <credits> 6 </credits>
-        <requiredSpace> BasicRoom </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> BasicRoom </space>
+            <space> BasicRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> PB </institute>
             <institute> CB </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Leithold Louis Alrazo Alvarez </professor>
             <professor> Joerg Dietrich Wilhelm Schleicher </professor>
         </professors>
     </discipline>
+
     <discipline>
         <disciplineName> Física Geral I </disciplineName>
         <disciplineId> F 128 </disciplineId>
         <credits> 4 </credits>
-        <requiredSpace> SlidesRoom </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> BasicRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> PB </institute>
             <institute> CB </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> José Antônio Brum </professor>
         </professors>
     </discipline>
-        <discipline>
+
+    <discipline>
         <disciplineName> Geometria Analítica e Vetores </disciplineName>
         <disciplineId> MA141 </disciplineId>
         <credits> 4 </credits>
-        <requiredSpace> BasicRoom </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> BasicRoom </space>
+            <space> BasicRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> PB </institute>
             <institute> CB </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Eder de Moraes Correa </professor>
         </professors>
     </discipline>
+
     <discipline>
         <disciplineName> Algoritmos e Programação de Computadores </disciplineName>
         <disciplineId> MC102 </disciplineId>
         <credits> 6 </credits>
-        <requiredSpace> ComputerRoom </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+            <space> ComputerRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> PB </institute>
             <institute> CB </institute>
             <institute> IC </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Rafael Saliba Schouery </professor>
         </professors>
     </discipline>
+
     <discipline>
         <disciplineName> Estrutura de Dados </disciplineName>
         <disciplineId> MC202 </disciplineId>
         <credits> 6 </credits>
-        <requiredSpace> ComputerRoom </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+            <space> ComputerRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> PB </institute>
             <institute> CB </institute>
             <institute> IC </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Guilherme Pimentel Telles </professor>
         </professors>
     </discipline>
+
     <discipline>
         <disciplineName> Álgebra Linear </disciplineName>
         <disciplineId> MA327 </disciplineId>
         <credits> 4 </credits>
-        <requiredSpace> BasicRoom </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> BasicRoom </space>
+            <space> BasicRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> PB </institute>
             <institute> CB </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Eder de Moraes Correa </professor>
         </professors>
     </discipline>
-        <discipline>
+
+    <discipline>
         <disciplineName> Cálculo II </disciplineName>
         <disciplineId> MA211 </disciplineId>
         <credits> 6 </credits>
-        <requiredSpace> BasicRoom </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> BasicRoom </space>
+            <space> BasicRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> PB </institute>
             <institute> CB </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Joachim Weber </professor>
             <professor> Claudemir Fideles Bezerra Junior </professor>
         </professors>
     </discipline>
+
     <discipline>
         <disciplineName> Física Experimental I </disciplineName>
         <disciplineId> F 129 </disciplineId>
         <credits> 2 </credits>
-        <requiredSpace> PhysicLaboratory </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> PhysicsLaboratory </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> IFGW </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Luiz Filipe Campos Faria </professor>
         </professors>
     </discipline>
+
     <discipline>
         <disciplineName> Computação e Sociedade </disciplineName>
         <disciplineId> MC009 </disciplineId>
         <credits> 2 </credits>
-        <requiredSpace> Auditorium </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> Auditorium </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> IC </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Claudia Maria Bauzer Medeiros </professor>
         </professors>
     </discipline>
-        <discipline>
+    
+    <discipline>
         <disciplineName> Cálculo III </disciplineName>
         <disciplineId> MA311 </disciplineId>
         <credits> 6 </credits>
-        <requiredSpace> BasicRoom </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> BasicRoom </space>
+            <space> BasicRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> PB </institute>
             <institute> CB </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Lucas Catão de Freitas Ferreira </professor>
         </professors>
     </discipline>
+
     <discipline>
         <disciplineName> Fundamentos Matemáticos da Computação </disciplineName>
         <disciplineId> MC358 </disciplineId>
         <credits> 4 </credits>
-        <requiredSpace> SlidesRoom </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> PB </institute>
             <institute> CB </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Pedro Jussieu de Rezende </professor>
         </professors>
         </discipline>
+
     <discipline>
         <disciplineName> Programação Orientada a Objetos </disciplineName>
         <disciplineId> MC322 </disciplineId>
         <credits> 4 </credits>
-        <requiredSpace> ComputerRoom </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> SlidesRoom </space>
+            <space> ComputerRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> PB </institute>
             <institute> CB </institute>
             <institute> IC </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Marcos Medeiros Raimundo </professor>
         </professors>
     </discipline>
+
     <discipline>
         <disciplineName> Introdução aos Modelos Probabilísticos </disciplineName>
         <disciplineId> ME323 </disciplineId>
         <credits> 4 </credits>
-        <requiredSpace> SlidesRoom </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> BasicRoom </space>
+            <space> BasicRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> PB </institute>
             <institute> CB </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Felipe Augusto Fernandes </professor>
         </professors>
     </discipline>
+
     <discipline>
         <disciplineName> Tópicos Especiais de Humanidades I </disciplineName>
         <disciplineId> HZ291 </disciplineId>
         <credits> 2 </credits>
-        <requiredSpace> SlidesRoom </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> PB </institute>
             <institute> CB </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Pedro Peixoto Ferreira </professor>
         </professors>
     </discipline>
+
     <discipline>
         <disciplineName> Química I </disciplineName>
         <disciplineId> QG101 </disciplineId>
         <credits> 4 </credits>
-        <requiredSpace> SlidesRoom </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> BasicRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> PB </institute>
             <institute> CB </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Fabio Augusto </professor>
         </professors>
     </discipline>
+    
     <discipline>
         <disciplineName> Física Geral II </disciplineName>
         <disciplineId> F 228 </disciplineId>
         <credits> 4 </credits>
-        <requiredSpace> SlidesRoom </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> BasicRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> PB </institute>
             <institute> CB </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Diego Muraca </professor>
         </professors>
     </discipline>
+
     <discipline>
         <disciplineName> Física Experimental II </disciplineName>
         <disciplineId> F 229 </disciplineId>
         <credits> 2 </credits>
-        <requiredSpace> PhysicLaboratory </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> PhysicsLaboratory </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> IFGW </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Natalia De Faria Coutinho </professor>
         </professors>
     </discipline>
+
     <discipline>
-        <disciplineName> Inglês Experimental I </disciplineName>
+        <disciplineName> Inglês Instrumental I </disciplineName>
         <disciplineId> LA122 </disciplineId>
         <credits> 4 </credits>
-        <requiredSpace> BasicRoom </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> PB </institute>
             <institute> CB </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Joacyr Tupinambas De Oliveira </professor>
         </professors>
     </discipline>
+
     <discipline>
         <disciplineName> Mecânica Geral I </disciplineName>
         <disciplineId> F 315 </disciplineId>
         <credits> 4 </credits>
-        <requiredSpace> SlidesRoom </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> BasicRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> PB </institute>
             <institute> CB </institute>
             <institute> IFGW </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Andre Alexandre De Thomaz </professor>
         </professors>
     </discipline>
+
     <discipline>
         <disciplineName> Física Experimental III </disciplineName>
         <disciplineId> F 329 </disciplineId>
         <credits> 2 </credits>
-        <requiredSpace> PhysicLaboratory </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> PhysicsLaboratory </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> IFGW </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Francisco Paulo Marques Rouxinol </professor>
         </professors>
     </discipline>
+
     <discipline>
         <disciplineName> Circuitos Elétricos </disciplineName>
         <disciplineId> EA513 </disciplineId>
         <credits> 4 </credits>
-        <requiredSpace> SlidesRoom </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> BasicRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> PB </institute>
             <institute> CB </institute>
             <institute> IFGW </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Christiano Lyra Filho </professor>
         </professors>
     </discipline>
+
     <discipline>
         <disciplineName> Física Geral III </disciplineName>
         <disciplineId> F 328 </disciplineId>
         <credits> 4 </credits>
-        <requiredSpace> SlidesRoom </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> BasicRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> PB </institute>
             <institute> CB </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Andre Monteiro Paschoal</professor>
         </professors>
     </discipline>
+
+    <discipline>
+        <disciplineName> Projeto e Análise de Algoritmos I </disciplineName>
+        <disciplineId> MC458 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Orlando Lee </professor>
+        </professors>
+    </discipline>
+    
+    <discipline>
+        <disciplineName> Banco de Dados: Teoria e Prática </disciplineName>
+        <disciplineId> MC536 </disciplineId>
+        <credits> 6 </credits>
+        <requiredSpaces>
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+            <space> ComputerRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Célio Cardoso Guimarães </professor>
+            <professor> Claudia Maria Bauzer Medeiros </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Circuitos Lógicos e Organização de Computadores </disciplineName>
+        <disciplineId> MC602 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Rodolfo Jardim De Azevedo </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Organização Básica de Computadores e Linhagem de Montagem </disciplineName>
+        <disciplineId> MC404 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Rodolfo Jardim De Azevedo </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Projeto e Análise de Algoritmos II </disciplineName>
+        <disciplineId> MC558 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Christiane Neme Campos </professor>
+            <professor> Flávio Keidi Miyazawa </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Engenharia de Software </disciplineName>
+        <disciplineId> MC656 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> SlidesRoom </space>
+            <space> ComputerRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Bruno Barbieri De Pontes Cafeo </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Sistemas Operacionais </disciplineName>
+        <disciplineId> MC504 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Gerberth Adin Ramirez Rivera </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Construções de Interfaces Homem-Computador </disciplineName>
+        <disciplineId> MC750 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Julio Cesar Dos Reis </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Cálculo Númerico </disciplineName>
+        <disciplineId> MS211 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IMECC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Laecio Carvalho de Barros </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Projeto de Sistemas Computacionais </disciplineName>
+        <disciplineId> MC732 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> SlidesRoom </space>
+            <space> ComputerRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Lucas Francisco Wanner </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Redes de Computadores </disciplineName>
+        <disciplineId> MC832 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> SlidesRoom </space>
+            <space> ComputerRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Nelson Luis Saldanha Da Fonseca </professor>
+        </professors>
+    </discipline>
+    
+    <discipline>
+        <disciplineName> Introdução à Administração para Computação </disciplineName>
+        <disciplineId> CE839 </disciplineId>
+        <credits> 2 </credits>
+        <requiredSpaces>
+            <space> BasicRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IE </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Miguel Juan Bacic </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Sistemas Distribuídos </disciplineName>
+        <disciplineId> MC714 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> SlidesRoom </space>
+            <space> ComputerRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Juliana Freitag Borin </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Programação de Redes de Computadores </disciplineName>
+        <disciplineId> MC833 </disciplineId>
+        <credits> 2 </credits>
+        <requiredSpaces>
+            <space> ComputerRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> IC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Edmundo Roberto Mauro Madeira </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Projeto e Construção de Compiladores </disciplineName>
+        <disciplineId> MC921 </disciplineId>
+        <credits> 6 </credits>
+        <requiredSpaces>
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+            <space> ComputerRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Guido Costa Souza De Araujo </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Economia para Engenharia </disciplineName>
+        <disciplineId> CE738 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> BasicRoom </space>
+            <space> BasicRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IE </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> José Bonifácio de Sousa Amaral Filho </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Direito </disciplineName>
+        <disciplineId> CE304 </disciplineId>
+        <credits> 2 </credits>
+        <requiredSpaces>
+            <space> BasicRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IE </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Luis Renato Vedovato </professor>
+        </professors>
+    </discipline>
+
     <discipline>
         <disciplineName> Alemão I </disciplineName>
         <disciplineId> LA114 </disciplineId>
         <credits> 4 </credits>
-        <requiredSpace> BasicRoom </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> PB </institute>
             <institute> CB </institute>
             <institute> IEL </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Norma Wucherpfennig </professor>
         </professors>
     </discipline>
+
      <discipline>
         <disciplineName> Futsal </disciplineName>
         <disciplineId> EF543 </disciplineId>
         <credits> 2 </credits>
-        <requiredSpace> Court </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> Court </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> FEF </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Julia Barreira Augusto </professor>
         </professors>
     </discipline>
+
     <discipline>
         <disciplineName> Projeto de Algoritmos III </disciplineName>
         <disciplineId> MC658 </disciplineId>
         <credits> 4 </credits>
-        <requiredSpace> SlidesRoom </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> IC </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Flavio Keidi Miyazawa </professor>
         </professors>
     </discipline>
+
     <discipline>
         <disciplineName> Teoria dos Jogos Algorítmica </disciplineName>
         <disciplineId> MC758 </disciplineId>
         <credits> 4 </credits>
-        <requiredSpace> SlidesRoom </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> IC </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Rafael Saliba Schouery </professor>
         </professors>
     </discipline>
+
     <discipline>
         <disciplineName> Introdução à Criptografia </disciplineName>
         <disciplineId> MC889 </disciplineId>
         <credits> 4 </credits>
-        <requiredSpace> SlidesRoom </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> IC </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Julio Cesar Lopez Hernandez </professor>
         </professors>
     </discipline>
+
     <discipline>
         <disciplineName> Geometria Computacional </disciplineName>
         <disciplineId> MC948 </disciplineId>
         <credits> 4 </credits>
-        <requiredSpace> ComputerRoom </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> IC </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Pedro Jussieu de Rezende </professor>
         </professors>
     </discipline>
+
     <discipline>
         <disciplineName> Latim I </disciplineName>
         <disciplineId> HL143 </disciplineId>
         <credits> 4 </credits>
-        <requiredSpace> BasicRoom </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> PB </institute>
             <institute> CB </institute>
             <institute> IEL </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Isabella Tardin Cardoso </professor>
         </professors>
     </discipline>
+
     <discipline>
         <disciplineName> Grego Clássico I </disciplineName>
         <disciplineId> HL144 </disciplineId>
         <credits> 4 </credits>
-        <requiredSpace> BasicRoom </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> CB </institute>
             <institute> PB </institute>
             <institute> IEL </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Flavio Ribeiro De Oliveira </professor>
         </professors>
     </discipline>
+
     <discipline>
         <disciplineName> Tênis de Mesa </disciplineName>
         <disciplineId> CP043 </disciplineId>
         <credits> 4 </credits>
-        <requiredSpace> Court </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> Court </space>
+            <space> Court </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> FEF </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Milton Shoiti Misuta </professor>
         </professors>
     </discipline>
+    
     <discipline>
         <disciplineName> Luta </disciplineName>
         <disciplineId> EF315 </disciplineId>
         <credits> 4 </credits>
-        <requiredSpace> Court </requiredSpace>
-        <requiredInstitute>
+        <requiredSpaces> 
+            <space> Court </space>
+            <space> Court </space>
+        </requiredSpaces>
+        <possibleInstitutes>
             <institute> FEF </institute>
-        </requiredInstitute>
+        </possibleInstitutes>
         <professors>
             <professor> Luiz Gustavo Bonatto Rufino </professor>
             <professor> Maria Luiza Tanure Alves </professor>
