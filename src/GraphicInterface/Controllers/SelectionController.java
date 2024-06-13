@@ -19,13 +19,26 @@ import src.System.LectureSelector;
 public class SelectionController {
 	
 	@FXML
+	private VBox coursesVBox;
+	
+	@FXML
 	private FlowPane spacesFlowPane;
 	
 	@FXML
-	private VBox coursesVBox;
+	private FlowPane electivesFlowPane;
+	
 	
 	private static List<String> removedCourses = new ArrayList<String>();
-	private static List<String> removedSpaces= new ArrayList<String>();
+	private static List<String> removedSpaces = new ArrayList<String>();
+	private static List<String> removedElectives = new ArrayList<String>();
+
+	
+	@FXML
+	public void initialize() {
+		initializeContainer(coursesVBox);
+		initializeContainer(spacesFlowPane);
+		initializeContainer(electivesFlowPane);
+	}
 	
 	public static List<String> getRemovedCourses() {
 		return removedCourses;
@@ -35,18 +48,20 @@ public class SelectionController {
 		return removedSpaces;
 	}
 	
-	@FXML
-	public void initialize() {
-		initializeContainer(coursesVBox);
-		initializeContainer(spacesFlowPane);
+	public static List<String> getRemovedElectives() {
+		return removedElectives;
+	}
+	
+	public void removeCourse(ActionEvent e) {
+		removedCourses = remove(e, removedCourses);
 	}
 	
 	public void removeSpace(ActionEvent e) {
 		removedSpaces = remove(e, removedSpaces);
 	}
 	
-	public void removeCourse(ActionEvent e) {
-		removedCourses = remove(e, removedCourses);
+	public void removeElective(ActionEvent e) {
+		removedElectives = remove(e, removedElectives);
 	}
 	
 	private List<String> remove(ActionEvent e, List<String> list) {
