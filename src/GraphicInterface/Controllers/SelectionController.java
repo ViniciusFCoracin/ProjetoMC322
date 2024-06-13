@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import src.GraphicInterface.Views.ScheduleView;
 import src.GraphicInterface.Views.SelectionView;
 import src.System.LectureSelector;
@@ -18,13 +19,26 @@ import src.System.LectureSelector;
 public class SelectionController {
 	
 	@FXML
+	private VBox coursesVBox;
+	
+	@FXML
 	private FlowPane spacesFlowPane;
 	
 	@FXML
-	private VBox coursesVBox;
+	private FlowPane electivesFlowPane;
+	
 	
 	private static List<String> removedCourses = new ArrayList<String>();
-	private static List<String> removedSpaces= new ArrayList<String>();
+	private static List<String> removedSpaces = new ArrayList<String>();
+	private static List<String> removedElectives = new ArrayList<String>();
+
+	
+	@FXML
+	public void initialize() {
+		initializeContainer(coursesVBox);
+		initializeContainer(spacesFlowPane);
+		initializeContainer(electivesFlowPane);
+	}
 	
 	public static List<String> getRemovedCourses() {
 		return removedCourses;
@@ -34,23 +48,24 @@ public class SelectionController {
 		return removedSpaces;
 	}
 	
-	@FXML
-	public void initialize() {
-		initializeContainer(coursesVBox);
-		initializeContainer(spacesFlowPane);
-	}
-	
-	public void removeSpace(ActionEvent e) {
-		removedSpaces = remove(e, removedSpaces);
+	public static List<String> getRemovedElectives() {
+		return removedElectives;
 	}
 	
 	public void removeCourse(ActionEvent e) {
 		removedCourses = remove(e, removedCourses);
 	}
 	
+	public void removeSpace(ActionEvent e) {
+		removedSpaces = remove(e, removedSpaces);
+	}
+	
+	public void removeElective(ActionEvent e) {
+		removedElectives = remove(e, removedElectives);
+	}
+	
 	private List<String> remove(ActionEvent e, List<String> list) {
 		Button button = (Button) e.getSource();
-		System.out.println(button.getText());
 		
 		if((Boolean)button.getUserData() == false) {
 			list.add(button.getText());
@@ -74,7 +89,9 @@ public class SelectionController {
 	
 	public void submit(ActionEvent e) throws IOException {
 		LectureSelector.getInstance().startDistribution();;
-		SelectionView.getInstance(null).closeStage();
-		ScheduleView.getInstance(SelectionView.getInstance(null).getStage()).openStage();;
+		SelectionView.getInstance(null).hideStage();;
+		
+		Stage stage =  new Stage();
+		ScheduleView.getInstance(stage).openStage("schedule");
 	}
 }

@@ -1,18 +1,12 @@
 package src.GraphicInterface.Views;
 
-import java.io.IOException;
-
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class ScheduleView {
-	private Stage stage;
+public class ScheduleView extends View {
 	private static ScheduleView instance;
 	
 	private ScheduleView(Stage stage){
-		this.stage = stage;
+		super(stage);
 	}
 	
 	public static ScheduleView getInstance(Stage stage){
@@ -21,15 +15,4 @@ public class ScheduleView {
         }
         return instance;
     }
-	
-	public void openStage() throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("/src/FXML/schedule.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-	}
-	
-	public void closeStage() {
-		stage.close();
-	}
 }
