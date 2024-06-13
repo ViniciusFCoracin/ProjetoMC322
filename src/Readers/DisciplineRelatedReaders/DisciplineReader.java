@@ -91,6 +91,8 @@ public class DisciplineReader implements XMLNodeReader {
                             institutes.add(InstituteAbbr.IEL);
                         else if (text.equals("FEF"))
                             institutes.add(InstituteAbbr.FEF);
+                        else if (text.equals("IE"))
+                            institutes.add(InstituteAbbr.IE);
                         else
                             throw new Error("Invalid institute");
                     }

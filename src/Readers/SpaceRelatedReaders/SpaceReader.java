@@ -64,6 +64,8 @@ public class SpaceReader implements XMLNodeReader {
                         institute = InstituteAbbr.IEL;
                     else if (text.equals("FEF"))
                         institute = InstituteAbbr.FEF;
+                    else if (text.equals("IE"))
+                        institute = InstituteAbbr.IE;
                     else
                         throw new Error("Invalid institute");
                 }
