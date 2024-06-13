@@ -172,6 +172,11 @@
         <id> LF10 </id>
     </space>
     <space>
+        <type> eletronicsLaboratory </type>
+        <institute> FEEC </institute>
+        <id> LE14 </id>
+    </space>
+    <space>
         <type> auditorium </type>
         <institute> IC </institute>
         <id> Auditório do IC </id>

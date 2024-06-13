@@ -740,25 +740,7 @@
     </discipline>
 
     <discipline>
-        <disciplineName> Análise de Sinais </disciplineName>
-        <disciplineId> EA614 </disciplineId>
-        <credits> 4 </credits>
-        <requiredSpaces>
-            <space> BasicRoom </space>
-            <space> SlidesRoom </space>
-        </requiredSpaces>
-        <possibleInstitutes>
-            <institute> PB </institute>
-            <institute> CB </institute>
-            <institute> FEEC </institute>
-        </possibleInstitutes>
-        <professors>
-            <professor> Levy Boccato </professor>
-        </professors>
-    </discipline>
-
-    <discipline>
-        <disciplineName>Eletrônica Básica I </disciplineName>
+        <disciplineName> Eletrônica Básica I </disciplineName>
         <disciplineId> EE533 </disciplineId>
         <credits> 4 </credits>
         <requiredSpaces>
@@ -800,8 +782,8 @@
         <disciplineId> EE534 </disciplineId>
         <credits> 2 </credits>
         <requiredSpaces>
-            <space> BasicRoom </space>
-            <space> SlidesRoom </space>
+            <space> EletronicsLaboratory </space>
+            <space> EletronicsLaboratory </space>
         </requiredSpaces>
         <possibleInstitutes>
             <institute> PB </institute>
