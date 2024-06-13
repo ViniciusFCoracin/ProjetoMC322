@@ -123,8 +123,9 @@ public class ScheduleAllocator {
         
         for (int i = 0; i < lecturesCopy.size(); i++){
             Lecture lecture = lecturesCopy.get(i);
-            if (lecture == null && i < lecturesCopy.size() - 1){
-                schedule = LectureSchedule.nextSchedule(schedule);
+            if (lecture == null){
+                if (i < lecturesCopy.size() - 1)
+                    schedule = LectureSchedule.nextSchedule(schedule);
                 continue;
             }
             lecture.setLectureSchedule(schedule);
