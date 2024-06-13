@@ -684,6 +684,189 @@
     </discipline>
 
     <discipline>
+        <disciplineName> Análise de Sinais </disciplineName>
+        <disciplineId> EA614 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> BasicRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> FEEC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Levy Boccato </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Circuitos Lógicos </disciplineName>
+        <disciplineId> EA772 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> BasicRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> FEEC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Denis Gustavo Fantinato </professor>
+            <professor> Ricardo Ribeiro Gudwin </professor>
+            <professor> Jose WIlson Magalhaes Bassani </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Física Geral IV </disciplineName>
+        <disciplineId> F 428 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> BasicRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IFGW </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Odilon Divino Damasceno Couto Junior </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Análise de Sinais </disciplineName>
+        <disciplineId> EA614 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> BasicRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> FEEC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Levy Boccato </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName>Eletrônica Básica I </disciplineName>
+        <disciplineId> EE533 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> BasicRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> FEEC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Pedro Xavier de Oliveira </professor>
+            <professor> Gilliard Nardel Malheiros Silveira </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Laboratório de Circuitos Digitais </disciplineName>
+        <disciplineId> MC613 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> BasicRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Sandro Rigo </professor>
+            <professor> Ricardo Pannain </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Laboratório de Eletrônica Aplicada </disciplineName>
+        <disciplineId> EE534 </disciplineId>
+        <credits> 2 </credits>
+        <requiredSpaces>
+            <space> BasicRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> FEEC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Fabiano Fruett </professor>
+            <professor> Bruno Sanches Masiero </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Resistência dos Materiais </disciplineName>
+        <disciplineId> EM423 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> BasicRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Freddy Armando Franco Grijalba </professor>
+            <professor> Euclides de Mesquita Neto </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Ciências do Ambiente </disciplineName>
+        <disciplineId> BE310 </disciplineId>
+        <credits> 2 </credits>
+        <requiredSpaces>
+            <space> BasicRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Mathias Mistretta Pires </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Contabilidade para Engenharia </disciplineName>
+        <disciplineId> CE838 </disciplineId>
+        <credits> 2 </credits>
+        <requiredSpaces>
+            <space> BasicRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IE </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Marcelo Pereira da Cunha </professor>
+            <professor> Rodrigo Lanna Franco da Silveira </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
         <disciplineName> Alemão I </disciplineName>
         <disciplineId> LA114 </disciplineId>
         <credits> 4 </credits>

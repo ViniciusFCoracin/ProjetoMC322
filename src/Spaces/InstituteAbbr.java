@@ -9,5 +9,5 @@ public enum InstituteAbbr {
     IFGW,
     FEF,
     IEL,
-    IE
+    IE,
 }

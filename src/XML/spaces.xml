@@ -83,6 +83,31 @@
     </space>
     <space>
         <type> slidesRoom </type>
+        <institute> PB </institute>
+        <id> PB1 </id>
+    </space>
+    <space>
+        <type> slidesRoom </type>
+        <institute> PB </institute>
+        <id> PB2 </id>
+    </space>
+    <space>
+        <type> slidesRoom </type>
+        <institute> PB </institute>
+        <id> PB3 </id>
+    </space>
+    <space>
+        <type> slidesRoom </type>
+        <institute> PB </institute>
+        <id> PB4 </id>
+    </space>
+    <space>
+        <type> slidesRoom </type>
+        <institute> PB </institute>
+        <id> PB5 </id>
+    </space>
+    <space>
+        <type> slidesRoom </type>
         <institute> IC </institute>
         <id> CC350 </id>
     </space>
@@ -102,9 +127,39 @@
         <id> CC353 </id>
     </space>
     <space>
+        <type> slidesRoom </type>
+        <institute> IC </institute>
+        <id> CC360 </id>
+    </space>
+    <space>
+        <type> slidesRoom </type>
+        <institute> IC </institute>
+        <id> CC361 </id>
+    </space>
+    <space>
+        <type> slidesRoom </type>
+        <institute> FEEC </institute>
+        <id> FE10 </id>
+    </space>
+    <space>
+        <type> slidesRoom </type>
+        <institute> FEEC </institute>
+        <id> FE11 </id>
+    </space>
+    <space>
+        <type> slidesRoom </type>
+        <institute> FEEC </institute>
+        <id> FE12 </id>
+    </space>
+    <space>
         <type> computerRoom </type>
         <institute> IC </institute>
         <id> CC300 </id>
+    </space>
+    <space>
+        <type> computerRoom </type>
+        <institute> IC </institute>
+        <id> CC301 </id>
     </space>
     <space>
         <type> computerRoom </type>

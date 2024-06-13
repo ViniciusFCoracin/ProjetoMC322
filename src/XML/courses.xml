@@ -90,6 +90,45 @@
                 <disciplineId> F 329 </disciplineId>
                 <disciplineId> MA311 </disciplineId>
             </semester>
+            <semester period="4">
+                <disciplineId> EA614 </disciplineId>
+                <disciplineId> EA772 </disciplineId>
+                <disciplineId> F 428 </disciplineId>
+                <disciplineId> MC358 </disciplineId>
+                <disciplineId> MC404 </disciplineId>
+            </semester>
+            <semester period="5">
+                <disciplineId> EE533 </disciplineId>
+                <disciplineId> MC458 </disciplineId>
+                <disciplineId> MC536 </disciplineId>
+                <disciplineId> MC613 </disciplineId>
+                <disciplineId> MC750 </disciplineId>
+                <disciplineId> ME323 </disciplineId>
+            </semester>
+            <semester period="6">
+                <disciplineId> EE534 </disciplineId>
+                <disciplineId> EM423 </disciplineId>
+                <disciplineId> MC558 </disciplineId>
+                <disciplineId> MC656 </disciplineId>
+                <disciplineId> MC732 </disciplineId>
+                <disciplineId> MS211 </disciplineId>
+            </semester>
+            <semester period="7">
+                <disciplineId> BE310 </disciplineId>
+                <disciplineId> CE304 </disciplineId>
+                <disciplineId> MC504 </disciplineId>
+            </semester>
+            <semester period="8">
+                <disciplineId> CE838 </disciplineId>
+                <disciplineId> CE839 </disciplineId>
+                <disciplineId> MC832 </disciplineId>
+            </semester>
+            <semester period="9">
+                <disciplineId> CE738 </disciplineId>
+                <disciplineId> MC714 </disciplineId>
+                <disciplineId> MC833 </disciplineId>
+                <disciplineId> MC921 </disciplineId>
+            </semester>
         </semesters>
     </course>
 </courses>
