@@ -1,17 +1,25 @@
 package src.GraphicInterface.Controllers;
 
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.animation.Animation;
+import javafx.animation.Interpolator;
+import javafx.animation.Transition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import src.GraphicInterface.Views.ScheduleView;
 import src.GraphicInterface.Views.SelectionView;
 import src.System.LectureSelector;
@@ -52,14 +60,17 @@ public class SelectionController {
 		return removedElectives;
 	}
 	
+	@FXML
 	public void removeCourse(ActionEvent e) {
 		removedCourses = remove(e, removedCourses);
 	}
 	
+	@FXML
 	public void removeSpace(ActionEvent e) {
 		removedSpaces = remove(e, removedSpaces);
 	}
 	
+	@FXML
 	public void removeElective(ActionEvent e) {
 		removedElectives = remove(e, removedElectives);
 	}
@@ -87,11 +98,20 @@ public class SelectionController {
 		}
 	}
 	
+	@FXML
 	public void submit(ActionEvent e) throws IOException {
-		LectureSelector.getInstance().startDistribution();;
-		SelectionView.getInstance(null).hideStage();;
+		Platform.runLater(() -> {
+	        Stage stage =  new Stage();
+			stage.setWidth(1100);
+			stage.setHeight(700);
+			SelectionView.getInstance(null).hideStage();
+			try {
+				ScheduleView.getInstance(stage).openStage("schedule");
+			} catch (IOException error) {
+				error.printStackTrace();
+			}
+	    });
 		
-		Stage stage =  new Stage();
-		ScheduleView.getInstance(stage).openStage("schedule");
+		LectureSelector.getInstance().startDistribution();
 	}
 }
