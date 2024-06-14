@@ -27,9 +27,8 @@ public class ElectivesController {
 	
 	public void loadSchedule() {
 		for(Lecture lecture : LectureSelector.getInstance().getAllLectures()) {
-			if(!lecture.getLectureDiscipline().getIsMandatory()) {
+			if(!lecture.getLectureDiscipline().getIsMandatory())
 				assignLectureToGrid(lecture);
-				String output = ("Lecture: " + lecture.getLectureDiscipline().getDisciplineId() + ", Professor " + lecture.getProfessor() + "\n" +
 		}
 	}
 	
