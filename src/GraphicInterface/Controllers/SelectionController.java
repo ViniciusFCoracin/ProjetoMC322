@@ -5,21 +5,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.animation.Animation;
-import javafx.animation.Interpolator;
-import javafx.animation.Transition;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import src.GraphicInterface.Views.ScheduleView;
 import src.GraphicInterface.Views.SelectionView;
 import src.System.LectureSelector;
@@ -34,7 +27,6 @@ public class SelectionController {
 	
 	@FXML
 	private FlowPane electivesFlowPane;
-	
 	
 	private static List<String> removedCourses = new ArrayList<String>();
 	private static List<String> removedSpaces = new ArrayList<String>();
@@ -100,18 +92,11 @@ public class SelectionController {
 	
 	@FXML
 	public void submit(ActionEvent e) throws IOException {
-		Platform.runLater(() -> {
-	        Stage stage =  new Stage();
-			stage.setWidth(1100);
-			stage.setHeight(700);
-			SelectionView.getInstance(null).hideStage();
-			try {
-				ScheduleView.getInstance(stage).openStage("schedule");
-			} catch (IOException error) {
-				error.printStackTrace();
-			}
-	    });
-		
 		LectureSelector.getInstance().startDistribution();
+		
+		Stage stage =  new Stage();
+		ScheduleView.getInstance(stage).openStage("schedule");
+		SelectionView.getInstance(null).closeStage();
+		
 	}
 }
