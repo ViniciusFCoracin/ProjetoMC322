@@ -8,5 +8,6 @@ public enum InstituteAbbr {
     IMECC,
     IFGW,
     FEF,
-    IEL
+    IEL,
+    IE,
 }

@@ -64,6 +64,8 @@ public class DisciplineReader implements XMLNodeReader {
                             types.add(SpaceType.PHYSICS_LABORATORY);
                         else if (text.equals("ChemistryLaboratory"))
                             types.add(SpaceType.CHEMISTRY_LABORATORY);
+                        else if (text.equals("EletronicsLaboratory"))
+                            types.add(SpaceType.ELETRONICS_LABORATORY);
                         else
                             throw new Error("Invalid space type");
                     }
@@ -91,6 +93,8 @@ public class DisciplineReader implements XMLNodeReader {
                             institutes.add(InstituteAbbr.IEL);
                         else if (text.equals("FEF"))
                             institutes.add(InstituteAbbr.FEF);
+                        else if (text.equals("IE"))
+                            institutes.add(InstituteAbbr.IE);
                         else
                             throw new Error("Invalid institute");
                     }

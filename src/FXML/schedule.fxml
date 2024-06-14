@@ -23,9 +23,19 @@
             <RowConstraints vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <ComboBox fx:id="coursesComboBox" minWidth="-Infinity" prefWidth="150.0" promptText="Course" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Button fx:id="i" minWidth="-Infinity" mnemonicParsing="false" onAction="#loadSchedule" prefHeight="26.0" prefWidth="150.0" text="Load Schedule" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-            <ComboBox fx:id="semesterComboBox" minWidth="-Infinity" prefHeight="26.0" prefWidth="150.0" promptText="Semester" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <children>
+                  <ComboBox fx:id="coursesComboBox" minWidth="-Infinity" prefWidth="150.0" promptText="Course" />
+                  <ComboBox fx:id="semesterComboBox" minWidth="-Infinity" prefHeight="26.0" prefWidth="150.0" promptText="Semester" />
+               </children>
+            </VBox>
+            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#viewElectives" prefHeight="26.0" prefWidth="150.0" text="Electives" />
+                  <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#loadSchedule" prefHeight="26.0" prefWidth="150.0" text="Load Schedule" />
+               </children>
+            </VBox>
+            <Button mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="150.0" text="Go Back" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
       <GridPane fx:id="scheduleGridPane" gridLinesVisible="true" prefHeight="546.0" prefWidth="901.0" HBox.hgrow="ALWAYS">

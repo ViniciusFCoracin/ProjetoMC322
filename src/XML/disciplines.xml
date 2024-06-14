@@ -295,7 +295,7 @@
     </discipline>
 
     <discipline>
-        <disciplineName> Inglês Experimental I </disciplineName>
+        <disciplineName> Inglês Instrumental I </disciplineName>
         <disciplineId> LA122 </disciplineId>
         <credits> 4 </credits>
         <requiredSpaces> 
@@ -376,6 +376,475 @@
         </possibleInstitutes>
         <professors>
             <professor> Andre Monteiro Paschoal</professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Projeto e Análise de Algoritmos I </disciplineName>
+        <disciplineId> MC458 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Orlando Lee </professor>
+        </professors>
+    </discipline>
+    
+    <discipline>
+        <disciplineName> Banco de Dados: Teoria e Prática </disciplineName>
+        <disciplineId> MC536 </disciplineId>
+        <credits> 6 </credits>
+        <requiredSpaces>
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+            <space> ComputerRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Célio Cardoso Guimarães </professor>
+            <professor> Claudia Maria Bauzer Medeiros </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Circuitos Lógicos e Organização de Computadores </disciplineName>
+        <disciplineId> MC602 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Rodolfo Jardim De Azevedo </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Organização Básica de Computadores e Linhagem de Montagem </disciplineName>
+        <disciplineId> MC404 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Rodolfo Jardim De Azevedo </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Projeto e Análise de Algoritmos II </disciplineName>
+        <disciplineId> MC558 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Christiane Neme Campos </professor>
+            <professor> Flávio Keidi Miyazawa </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Engenharia de Software </disciplineName>
+        <disciplineId> MC656 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> SlidesRoom </space>
+            <space> ComputerRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Bruno Barbieri De Pontes Cafeo </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Sistemas Operacionais </disciplineName>
+        <disciplineId> MC504 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Gerberth Adin Ramirez Rivera </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Construções de Interfaces Homem-Computador </disciplineName>
+        <disciplineId> MC750 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Julio Cesar Dos Reis </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Cálculo Númerico </disciplineName>
+        <disciplineId> MS211 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IMECC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Laecio Carvalho de Barros </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Projeto de Sistemas Computacionais </disciplineName>
+        <disciplineId> MC732 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> SlidesRoom </space>
+            <space> ComputerRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Lucas Francisco Wanner </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Redes de Computadores </disciplineName>
+        <disciplineId> MC832 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> SlidesRoom </space>
+            <space> ComputerRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Nelson Luis Saldanha Da Fonseca </professor>
+        </professors>
+    </discipline>
+    
+    <discipline>
+        <disciplineName> Introdução à Administração para Computação </disciplineName>
+        <disciplineId> CE839 </disciplineId>
+        <credits> 2 </credits>
+        <requiredSpaces>
+            <space> BasicRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IE </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Miguel Juan Bacic </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Sistemas Distribuídos </disciplineName>
+        <disciplineId> MC714 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> SlidesRoom </space>
+            <space> ComputerRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Juliana Freitag Borin </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Programação de Redes de Computadores </disciplineName>
+        <disciplineId> MC833 </disciplineId>
+        <credits> 2 </credits>
+        <requiredSpaces>
+            <space> ComputerRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> IC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Edmundo Roberto Mauro Madeira </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Projeto e Construção de Compiladores </disciplineName>
+        <disciplineId> MC921 </disciplineId>
+        <credits> 6 </credits>
+        <requiredSpaces>
+            <space> SlidesRoom </space>
+            <space> SlidesRoom </space>
+            <space> ComputerRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Guido Costa Souza De Araujo </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Economia para Engenharia </disciplineName>
+        <disciplineId> CE738 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> BasicRoom </space>
+            <space> BasicRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IE </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> José Bonifácio de Sousa Amaral Filho </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Direito </disciplineName>
+        <disciplineId> CE304 </disciplineId>
+        <credits> 2 </credits>
+        <requiredSpaces>
+            <space> BasicRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IE </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Luis Renato Vedovato </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Análise de Sinais </disciplineName>
+        <disciplineId> EA614 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> BasicRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> FEEC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Levy Boccato </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Circuitos Lógicos </disciplineName>
+        <disciplineId> EA772 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> BasicRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> FEEC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Denis Gustavo Fantinato </professor>
+            <professor> Ricardo Ribeiro Gudwin </professor>
+            <professor> Jose WIlson Magalhaes Bassani </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Física Geral IV </disciplineName>
+        <disciplineId> F 428 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> BasicRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IFGW </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Odilon Divino Damasceno Couto Junior </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Eletrônica Básica I </disciplineName>
+        <disciplineId> EE533 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> BasicRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> FEEC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Pedro Xavier de Oliveira </professor>
+            <professor> Gilliard Nardel Malheiros Silveira </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Laboratório de Circuitos Digitais </disciplineName>
+        <disciplineId> MC613 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> BasicRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Sandro Rigo </professor>
+            <professor> Ricardo Pannain </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Laboratório de Eletrônica Aplicada </disciplineName>
+        <disciplineId> EE534 </disciplineId>
+        <credits> 2 </credits>
+        <requiredSpaces>
+            <space> EletronicsLaboratory </space>
+            <space> EletronicsLaboratory </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> FEEC </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Fabiano Fruett </professor>
+            <professor> Bruno Sanches Masiero </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Resistência dos Materiais </disciplineName>
+        <disciplineId> EM423 </disciplineId>
+        <credits> 4 </credits>
+        <requiredSpaces>
+            <space> BasicRoom </space>
+            <space> SlidesRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Freddy Armando Franco Grijalba </professor>
+            <professor> Euclides de Mesquita Neto </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Ciências do Ambiente </disciplineName>
+        <disciplineId> BE310 </disciplineId>
+        <credits> 2 </credits>
+        <requiredSpaces>
+            <space> BasicRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Mathias Mistretta Pires </professor>
+        </professors>
+    </discipline>
+
+    <discipline>
+        <disciplineName> Contabilidade para Engenharia </disciplineName>
+        <disciplineId> CE838 </disciplineId>
+        <credits> 2 </credits>
+        <requiredSpaces>
+            <space> BasicRoom </space>
+        </requiredSpaces>
+        <possibleInstitutes>
+            <institute> PB </institute>
+            <institute> CB </institute>
+            <institute> IE </institute>
+        </possibleInstitutes>
+        <professors>
+            <professor> Marcelo Pereira da Cunha </professor>
+            <professor> Rodrigo Lanna Franco da Silveira </professor>
         </professors>
     </discipline>
 

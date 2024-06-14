@@ -44,14 +44,26 @@ public class LectureSelector {
 	    	allSpaces = SpacesFileReader.getInstance().readFile("src/XML/spaces.xml");
 	    	allDisciplines = DisciplinesFileReader.getInstance().readFile("src/XML/disciplines.xml");
 	    	
-	        allSpaces = removeSelectedSpaces(allSpaces, SelectionController.getRemovedSpaces());
-	        allCourses= removeSelectedCourses(allCourses, SelectionController.getRemovedCourses());
+	        allSpaces = removeSelectedSpaces(SelectionController.getRemovedSpaces());
+	        allCourses = removeSelectedCourses(SelectionController.getRemovedCourses());
+	        allDisciplines = removeSelectedElectives(SelectionController.getRemovedElectives());
 
 	        AllocatorSystem system = new AllocatorSystem(allCourses, allDisciplines, allSpaces);
 	        allLectures = system.allocateSchedulesAndSpaces();
 	    }
 
-    private static List<Space> removeSelectedSpaces(List<Space> allSpaces, List<String> selectedSpaces) {	
+	 
+	 private List<Course> removeSelectedCourses(List<String> selectedCourses) {
+		 Iterator<Course> iterator = allCourses.iterator();
+		 while (iterator.hasNext()) {
+			 Course course = iterator.next();
+			 if (selectedCourses.contains(course.getCourseName()))
+				 iterator.remove();
+		 }
+		 return allCourses;
+	 }
+	 
+    private List<Space> removeSelectedSpaces(List<String> selectedSpaces) {	
 		Iterator<Space> iterator = allSpaces.iterator();
 		while (iterator.hasNext()) {
             Space space = iterator.next();
@@ -59,15 +71,15 @@ public class LectureSelector {
                 iterator.remove();
         }
 	    return allSpaces;
-	}
-	    
-    private static List<Course> removeSelectedCourses(List<Course> allCourses, List<String> selectedCourses) {
-      	Iterator<Course> iterator = allCourses.iterator();
-        while (iterator.hasNext()) {
-            Course course = iterator.next();
-            if (selectedCourses.contains(course.getCourseName()))
+   	}
+    
+    private List<Discipline> removeSelectedElectives(List<String> selectedElectives) {	
+		Iterator<Discipline> iterator = allDisciplines.iterator();
+		while (iterator.hasNext()) {
+            Discipline discipline = iterator.next();
+            if (selectedElectives.contains(discipline.getDisciplineId())) 
                 iterator.remove();
         }
-        return allCourses;
+	    return allDisciplines;
    	}
 }
