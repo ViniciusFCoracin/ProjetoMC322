@@ -49,9 +49,16 @@ public class LectureSelector {
 	        allDisciplines = removeSelectedElectives(SelectionController.getRemovedElectives());
 
 	        AllocatorSystem system = new AllocatorSystem(allCourses, allDisciplines, allSpaces);
+	        
+	        long startTime = System.nanoTime();
 	        allLectures = system.allocateSchedulesAndSpaces();
-	    }
+	        long endTime = System.nanoTime();
+	        long duration = endTime - startTime; // Duration in nanoseconds
+	        double durationInSeconds = (double) duration / 1_000_000_000.0;
 
+	        System.out.println("System.Lecture Selector: allocateSchedulesAndSpaces()");
+	        System.out.println("Code execution time: " + durationInSeconds + " seconds");
+	    }
 	 
 	 private List<Course> removeSelectedCourses(List<String> selectedCourses) {
 		 Iterator<Course> iterator = allCourses.iterator();
