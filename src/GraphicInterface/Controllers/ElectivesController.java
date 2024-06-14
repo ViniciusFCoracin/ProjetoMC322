@@ -5,8 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -32,11 +30,6 @@ public class ElectivesController {
 			if(!lecture.getLectureDiscipline().getIsMandatory()) {
 				assignLectureToGrid(lecture);
 				String output = ("Lecture: " + lecture.getLectureDiscipline().getDisciplineId() + ", Professor " + lecture.getProfessor() + "\n" +
-                        "Day: " + lecture.getLectureSchedule().getDay() + ", " + lecture.getLectureSchedule().getHourOfClass() + "\n" +
-                        "Place: " + lecture.getLectureSpace() + "\n" + "Group: " 
-                        + lecture.getLectureGroup() +"\n");
-				//System.out.println(output);
-			} 
 		}
 	}
 	
