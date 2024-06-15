@@ -31,7 +31,6 @@ public class SelectionController {
 	private static List<String> removedCourses = new ArrayList<String>();
 	private static List<String> removedSpaces = new ArrayList<String>();
 	private static List<String> removedElectives = new ArrayList<String>();
-
 	
 	@FXML
 	public void initialize() {
@@ -97,6 +96,5 @@ public class SelectionController {
 		Stage stage =  new Stage();
 		ScheduleView.getInstance(stage).openStage("schedule");
 		SelectionView.getInstance(null).closeStage();
-		
 	}
 }

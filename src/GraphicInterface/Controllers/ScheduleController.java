@@ -93,8 +93,8 @@ public class ScheduleController {
 		WeekDay day = lecture.getLectureSchedule().getDay();
 		HourOfClass hourOfClass = lecture.getLectureSchedule().getHourOfClass();
 		
-		int column = GridController.getColumnFromWeekDay(day);
-		int row = GridController.getRowFromHourOfClass(hourOfClass);
+		int column = GridController.weekDayToInt(day);
+		int row = GridController.hourOfClassToInt(hourOfClass);
 		
 		Label labelDisciplineId = new Label(lecture.getLectureDiscipline().getDisciplineId());
 		Label labelProfessor = new Label(lecture.getProfessor());

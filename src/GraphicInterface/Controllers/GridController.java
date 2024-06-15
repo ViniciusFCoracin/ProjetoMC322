@@ -18,7 +18,7 @@ public class GridController {
 		return Integer.parseInt(currentSemester);
 	}
 	
-	public static int getColumnFromWeekDay(WeekDay day) {
+	public static int weekDayToInt(WeekDay day) {
         switch (day) {
             case MONDAY:
                 return 1;
@@ -35,7 +35,7 @@ public class GridController {
         }
     }
 	
-	public static int getRowFromHourOfClass(HourOfClass hourOfClass) {
+	public static int hourOfClassToInt(HourOfClass hourOfClass) {
         switch (hourOfClass) {
             case EigthAM_TenAM:
                 return 1;
