@@ -43,6 +43,8 @@ public class SpaceReader implements XMLNodeReader {
                         type = SpaceType.AUDITORIUM;
                     else if (text.equals("court"))
                         type = SpaceType.COURT;
+                    else if (text.equals("eletronicsLaboratory"))
+                        type = SpaceType.ELETRONICS_LABORATORY;
                     else
                         throw new Error("Invalid institute");
                 }
