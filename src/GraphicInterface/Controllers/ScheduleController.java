@@ -116,6 +116,7 @@ public class ScheduleController {
 	
 	@FXML
 	public void viewElectives() throws IOException {
+		ElectivesView.getInstance().closeStage();
 		ElectivesView.getInstance().openStage("electives");
 	}
 	
