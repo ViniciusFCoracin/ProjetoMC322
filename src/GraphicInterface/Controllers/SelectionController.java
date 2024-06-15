@@ -93,8 +93,7 @@ public class SelectionController {
 	public void submit(ActionEvent e) throws IOException {
 		LectureSelector.getInstance().startDistribution();
 		
-		Stage stage =  new Stage();
-		ScheduleView.getInstance(stage).openStage("schedule");
-		SelectionView.getInstance(null).closeStage();
+		SelectionView.getInstance().closeStage();
+		ScheduleView.getInstance().openStage("schedule");
 	}
 }
