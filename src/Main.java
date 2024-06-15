@@ -18,8 +18,6 @@ public class Main extends Application {
 
     @Override
 	public void start(Stage stage) throws Exception {
-		SelectionView.getInstance().openStage("selection");;
-		ScheduleView.getInstance();
-		ElectivesView.getInstance();
+		SelectionView.getInstance().openStage("selection");
 	}
 }
