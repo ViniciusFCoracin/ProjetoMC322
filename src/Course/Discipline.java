@@ -2,20 +2,22 @@ package src.Course;
 
 import java.util.List;
 
+import src.Spaces.InstituteAbbr;
 import src.Spaces.SpaceType;
 
 /**
  * Class that represents a university discipline
  */
 public class Discipline {
-    private int counterProfessors = 0;
-    private int counterGroups = 0;
     private String disciplineName;
     private String disciplineId;
     private int disciplineCredits;
-    private SpaceType requiredSpace;
+    private List<SpaceType> requiredSpaces;
+    private List<InstituteAbbr> possibleInstitutes;
     private List<String> professors;
-    private boolean isMandatory;
+    private boolean isMandatory = false;
+    private int counterGroups = 0;
+    private int counterProfessors = 0;
 
     /**
      * Public constructor for Discipline class
@@ -23,16 +25,18 @@ public class Discipline {
      * @param disciplineName: the name of the discipline
      * @param id: the id of the discipline
      * @param credits: the number of credits of the discipline
-     * @param requiredSpace: the required type of space
+     * @param requiredSpace: list of the required type of spaces
+     * @param institutes: list of the possible institutes for the discipline occur
      * @param professors: list of the discipline professors
      */
-    public Discipline(String disciplineName, String id, int credits, SpaceType requiredSpace, List<String> professors){
+    public Discipline(String disciplineName, String id, int credits, List<SpaceType> requiredSpaces,
+                      List<InstituteAbbr> institutes, List<String> professors){
         this.disciplineName = disciplineName;
         this.disciplineId = id;
         this.disciplineCredits = credits;
-        this.requiredSpace = requiredSpace;
+        this.requiredSpaces = requiredSpaces;
+        this.possibleInstitutes = institutes;
         this.professors = professors;
-        this.isMandatory = false;
     }
 
     public String getDisciplineName(){
@@ -47,12 +51,16 @@ public class Discipline {
         return this.disciplineCredits;
     }
 
-    public List<String> getProfessors(){
-        return this.professors;
+    public List<SpaceType> getRequiredSpaceType(){
+        return this.requiredSpaces;
     }
 
-    public SpaceType getRequiredSpaceType(){
-        return this.requiredSpace;
+    public List<InstituteAbbr> getPossibleInstitutes(){
+        return this.possibleInstitutes;
+    }
+
+    public List<String> getProfessors(){
+        return this.professors;
     }
 
     public boolean getIsMandatory(){
@@ -61,6 +69,17 @@ public class Discipline {
 
     public void setIsMandatory(boolean newObligation){
         this.isMandatory = newObligation;
+    }
+
+    /**
+     * Calculates the discipline number of lectures in a week. Here,
+     * we supose that every discipline has an even number of credits,
+     * and each lecture has 2 hours of duration.
+     * 
+     * @return: the number of lectures in a week
+     */
+    public int numberOfLectures(){
+        return this.disciplineCredits / 2;
     }
 
     /**
@@ -86,19 +105,11 @@ public class Discipline {
         return (char) ('A' + this.counterGroups++);
     }
 
+    /**
+     * Method that resets the counterGroups to zero
+     */
     public void resetGroup(){
         this.counterGroups = 0;
-    }
-
-    /**
-     * Calculates the discipline number of lectures in a week. Here,
-     * we supose that every discipline has an even number of credits,
-     * and each lecture has 2 hours of duration.
-     * 
-     * @return: the number of lectures in a week
-     */
-    public int numberOfLectures(){
-        return this.disciplineCredits / 2;
     }
 
     @Override

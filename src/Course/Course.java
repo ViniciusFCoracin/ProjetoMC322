@@ -1,6 +1,7 @@
 package src.Course;
 
 import java.util.List;
+import src.Schedule.Shift;
 
 /**
  * A class that represents an university course
