@@ -1,17 +1,15 @@
 package src.GraphicInterface.Views;
 
-import javafx.stage.Stage;
-
 public class SelectionView extends View{
 	private static SelectionView instance;
 	
-	private SelectionView(Stage stage){
-		super(stage);
+	private SelectionView() {
+		super();
 	}
 	
-	public static SelectionView getInstance(Stage stage){
+	public static SelectionView getInstance(){
         if(instance == null) {
-            instance= new SelectionView(stage);
+            instance= new SelectionView();
         }
         return instance;
     }

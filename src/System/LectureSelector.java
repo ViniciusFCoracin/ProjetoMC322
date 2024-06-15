@@ -49,9 +49,9 @@ public class LectureSelector {
 	        allDisciplines = removeSelectedElectives(SelectionController.getRemovedElectives());
 
 	        AllocatorSystem system = new AllocatorSystem(allCourses, allDisciplines, allSpaces);
+	        
 	        allLectures = system.allocateSchedulesAndSpaces();
 	    }
-
 	 
 	 private List<Course> removeSelectedCourses(List<String> selectedCourses) {
 		 Iterator<Course> iterator = allCourses.iterator();

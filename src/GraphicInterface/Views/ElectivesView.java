@@ -1,17 +1,15 @@
 package src.GraphicInterface.Views;
 
-import javafx.stage.Stage;
-
 public class ElectivesView extends View{
 	private static ElectivesView instance;
 	
-	private ElectivesView(Stage stage){
-		super(stage);
+	private ElectivesView() {
+
 	}
 	
-	public static ElectivesView getInstance(Stage stage){
+	public static ElectivesView getInstance(){
         if(instance == null) {
-            instance= new ElectivesView(stage);
+            instance= new ElectivesView();
         }
         return instance;
     }

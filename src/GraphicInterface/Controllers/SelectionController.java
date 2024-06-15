@@ -1,5 +1,6 @@
 package src.GraphicInterface.Controllers;
 
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,11 +28,9 @@ public class SelectionController {
 	@FXML
 	private FlowPane electivesFlowPane;
 	
-	
 	private static List<String> removedCourses = new ArrayList<String>();
 	private static List<String> removedSpaces = new ArrayList<String>();
 	private static List<String> removedElectives = new ArrayList<String>();
-
 	
 	@FXML
 	public void initialize() {
@@ -52,14 +51,17 @@ public class SelectionController {
 		return removedElectives;
 	}
 	
+	@FXML
 	public void removeCourse(ActionEvent e) {
 		removedCourses = remove(e, removedCourses);
 	}
 	
+	@FXML
 	public void removeSpace(ActionEvent e) {
 		removedSpaces = remove(e, removedSpaces);
 	}
 	
+	@FXML
 	public void removeElective(ActionEvent e) {
 		removedElectives = remove(e, removedElectives);
 	}
@@ -87,11 +89,11 @@ public class SelectionController {
 		}
 	}
 	
+	@FXML
 	public void submit(ActionEvent e) throws IOException {
-		LectureSelector.getInstance().startDistribution();;
-		SelectionView.getInstance(null).hideStage();;
+		LectureSelector.getInstance().startDistribution();
 		
-		Stage stage =  new Stage();
-		ScheduleView.getInstance(stage).openStage("schedule");
+		SelectionView.getInstance().closeStage();
+		ScheduleView.getInstance().openStage("schedule");
 	}
 }

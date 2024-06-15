@@ -13,17 +13,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="736.0" prefWidth="1048.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.GraphicInterface.Controllers.SelectionController">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.GraphicInterface.Controllers.SelectionController">
    <children>
-      <GridPane alignment="TOP_CENTER" gridLinesVisible="true" prefHeight="690.0" prefWidth="1034.0" VBox.vgrow="ALWAYS">
+      <GridPane alignment="TOP_CENTER" gridLinesVisible="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
         <columnConstraints>
             <ColumnConstraints hgrow="NEVER" maxWidth="238.0" minWidth="-Infinity" prefWidth="233.0" />
-          <ColumnConstraints hgrow="ALWAYS" maxWidth="576.0" minWidth="-Infinity" prefWidth="408.0" />
-          <ColumnConstraints hgrow="ALWAYS" maxWidth="421.0" prefWidth="417.0" />
+          <ColumnConstraints hgrow="ALWAYS" minWidth="-Infinity" prefWidth="408.0" />
+          <ColumnConstraints hgrow="ALWAYS" minWidth="-Infinity" prefWidth="408.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints prefHeight="67.0" />
-          <RowConstraints prefHeight="452.0" vgrow="ALWAYS" />
+          <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
         </rowConstraints>
          <children>
             <Label text="Spaces" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
@@ -31,7 +31,7 @@
                   <Font name="Liberation Serif" size="40.0" />
                </font>
             </Label>
-            <FlowPane fx:id="spacesFlowPane" hgap="10.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="623.0" prefWidth="556.0" vgap="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <FlowPane fx:id="spacesFlowPane" hgap="10.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="493.0" prefWidth="408.0" vgap="10.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
                <children>
                   <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB1" />
                   <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB3" />
@@ -95,7 +95,7 @@
                   <Font name="Liberation Serif" size="40.0" />
                </font>
             </Label>
-            <FlowPane fx:id="electivesFlowPane" hgap="10.0" prefHeight="623.0" prefWidth="326.0" vgap="10.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <FlowPane fx:id="electivesFlowPane" hgap="10.0" prefHeight="613.0" prefWidth="431.0" vgap="10.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <children>
                   <Button mnemonicParsing="false" onAction="#removeElective" prefHeight="57.0" prefWidth="122.0" text="LA114" />
                   <Button mnemonicParsing="false" onAction="#removeElective" prefHeight="57.0" prefWidth="122.0" text="EF543" />
@@ -114,9 +114,9 @@
             </FlowPane>
          </children>
       </GridPane>
-      <HBox alignment="TOP_CENTER" prefHeight="16.0" prefWidth="894.0">
+      <HBox alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="74.0" prefWidth="1004.0">
          <children>
-            <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#submit" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: yellow;" text="Submit">
+            <Button fx:id="submitButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#submit" prefHeight="47.0" prefWidth="119.0" style="-fx-background-color: yellow;" text="Submit">
                <cursor>
                   <Cursor fx:constant="N_RESIZE" />
                </cursor>

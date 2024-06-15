@@ -2,6 +2,8 @@ package src;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import src.GraphicInterface.Views.ElectivesView;
+import src.GraphicInterface.Views.ScheduleView;
 import src.GraphicInterface.Views.SelectionView;
 
 
@@ -16,6 +18,6 @@ public class Main extends Application {
 
     @Override
 	public void start(Stage stage) throws Exception {
-		SelectionView.getInstance(stage).openStage("selection");
+		SelectionView.getInstance().openStage("selection");
 	}
 }
