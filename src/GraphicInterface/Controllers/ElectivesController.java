@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 import src.Course.Lecture;
 import src.GraphicInterface.Views.ElectivesView;
+import src.Schedule.HourOfClass;
 import src.Schedule.WeekDay;
 import src.System.LectureSelector;
 
@@ -20,21 +21,26 @@ public class ElectivesController {
 	@FXML
 	private GridPane electivesGridPane;
 	
+	private List<Lecture> electivesLectures;
+	
 	@FXML
 	public void initialize() {
 		loadSchedule();
 	}
 	
 	public void loadSchedule() {
+		electivesLectures = new ArrayList<Lecture>();
 		for(Lecture lecture : LectureSelector.getInstance().getAllLectures()) {
 			if(!lecture.getLectureDiscipline().getIsMandatory())
-				assignLectureToGrid(lecture);
+				electivesLectures.add(lecture);
 		}
+		
+		sortLecturesByHourOfClass(electivesLectures);
 	}
 	
 	private void assignLectureToGrid(Lecture lecture) {
 		WeekDay day = lecture.getLectureSchedule().getDay();
-		int column = GridController.getColumnFromWeekDay(day) - 1;
+		int column = GridController.weekDayToInt(day) - 1;
 		
 		Label labelDisciplineId = new Label(lecture.getLectureDiscipline().getDisciplineId());
 		
@@ -74,4 +80,16 @@ public class ElectivesController {
 		
 		return new ArrayList<Label>(Arrays.asList(labelName, labelProfessor, labelSpace, labelCredits, labelGroup, labelHourOfClass));
 	}
+	
+	private void sortLecturesByHourOfClass(List<Lecture> electiveLectures) {
+		for(int i = 1; i <= 6; i++) {
+			for(Lecture lecture : electiveLectures) {
+				HourOfClass hourOfClass = lecture.getLectureSchedule().getHourOfClass();
+				int intHourOfClass = GridController.hourOfClassToInt(hourOfClass);
+				
+				if(intHourOfClass == i) 
+					assignLectureToGrid(lecture);
+			}
+		}
+	}	
 }
