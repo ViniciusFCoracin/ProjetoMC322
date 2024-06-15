@@ -12,8 +12,8 @@ public abstract class View {
 	private Stage stage;
 	private Scene scene;
 	
-	public View(Stage stage) {
-		this.stage = stage;
+	public View() {
+		stage = new Stage();
 	}
 	
 	public Stage getStage() {
@@ -24,15 +24,16 @@ public abstract class View {
 		Parent root = FXMLLoader.load(getClass().getResource("/src/FXML/"+path+".fxml"));
         scene = new Scene(root);
         stage.setScene(scene);
-       
+      
         showStage();
 	}
 	
 	public void showStage() {
 	    Platform.runLater(() -> {
 	        try {
-	        	stage.setMaximized(true);
 	            stage.show();
+	            stage.setMinHeight(stage.heightProperty().get());
+	            stage.setMinWidth(stage.widthProperty().get());
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	        }
