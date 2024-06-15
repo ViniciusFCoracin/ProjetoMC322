@@ -9,7 +9,7 @@ import org.w3c.dom.Node;
 import java.util.ArrayList;
 import java.util.List;
 
-import src.Course.Discipline;
+import src.CourseRelated.Disciplines.Discipline;
 import src.Readers.XMLFileReader;
 
 /**
