@@ -61,6 +61,7 @@ public class ScheduleController {
 		semesterComboBox.setItems(observableSemesterList);
 	}
 	
+	@FXML
 	public void loadSchedule() {
 		cleanSchedule();
 		currentCourse = coursesComboBox.getValue();
@@ -107,10 +108,18 @@ public class ScheduleController {
 	    }
 	}
 	
+	@FXML
+	public void rebuildSchedule() {
+		LectureSelector.getInstance().startDistribution();
+		loadSchedule();
+	}
+	
+	@FXML
 	public void viewElectives() throws IOException {
 		ElectivesView.getInstance().openStage("electives");
 	}
 	
+	@FXML
 	public void goBack() {
 		ScheduleView.getInstance().closeStage();;
 		SelectionView.getInstance().showStage();
