@@ -35,11 +35,16 @@
             </VBox>
             <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#viewElectives" prefHeight="26.0" prefWidth="150.0" text="Electives" />
                   <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#loadSchedule" prefHeight="26.0" prefWidth="150.0" text="Load Schedule" />
+                  <Button mnemonicParsing="false" onAction="#rebuildSchedule" prefHeight="26.0" prefWidth="150.0" text="Rebuild Schedule" />
                </children>
             </VBox>
-            <Button mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="150.0" text="Go Back" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#viewElectives" prefHeight="26.0" prefWidth="150.0" text="Electives" />
+                  <Button mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="150.0" text="Go Back" />
+               </children>
+            </VBox>
          </children>
       </GridPane>
       <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="NEVER" HBox.hgrow="ALWAYS">
