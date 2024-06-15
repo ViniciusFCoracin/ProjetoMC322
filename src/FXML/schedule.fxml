@@ -35,8 +35,8 @@
             </VBox>
             <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <children>
-                  <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#loadSchedule" prefHeight="26.0" prefWidth="150.0" text="Load Schedule" />
                   <Button mnemonicParsing="false" onAction="#rebuildSchedule" prefHeight="26.0" prefWidth="150.0" text="Rebuild Schedule" />
+                  <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#loadSchedule" prefHeight="26.0" prefWidth="150.0" text="Load Schedule" />
                </children>
             </VBox>
             <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
