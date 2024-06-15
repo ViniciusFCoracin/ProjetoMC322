@@ -59,7 +59,7 @@ public class ElectivesController {
         previewPopup.getContent().add(previewPane);
         
         labelDisciplineId.setOnMouseEntered(event -> {
-            previewPopup.show(ElectivesView.getInstance(null).getStage(), event.getScreenX(), event.getScreenY() + 10);
+            previewPopup.show(ElectivesView.getInstance().getStage(), event.getScreenX(), event.getScreenY() + 10);
         });
 
         labelDisciplineId.setOnMouseExited(event -> {
