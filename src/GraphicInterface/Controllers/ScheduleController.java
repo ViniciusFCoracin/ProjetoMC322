@@ -13,7 +13,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import src.Course.Course;
 import src.Course.Lecture;
 import src.GraphicInterface.Views.ElectivesView;
@@ -77,14 +76,8 @@ public class ScheduleController {
 		int currentSemesterInt = GridController.convertSemesterToNumber(currentSemester);
 		for(Lecture lecture : LectureSelector.getInstance().getAllLectures()) {
 			if(lecture.getLectureDiscipline().getIsMandatory()) {
-				if(lecture.getCourse().getCourseName().equals(currentCourse) && lecture.getCourse().getDisciplineSemester(lecture.getLectureDiscipline()) == currentSemesterInt) {
+				if(lecture.getCourse().getCourseName().equals(currentCourse) && lecture.getCourse().getDisciplineSemester(lecture.getLectureDiscipline()) == currentSemesterInt) 
 					assignLectureToGrid(lecture);
-					String output = ("Lecture: " + lecture.getLectureDiscipline().getDisciplineId() + ", Professor " + lecture.getProfessor() + "\n" +
-                            "Day: " + lecture.getLectureSchedule().getDay() + ", " + lecture.getLectureSchedule().getHourOfClass() + "\n" +
-                            "Place: " + lecture.getLectureSpace() + "\n" + "Group: " 
-                            + lecture.getLectureGroup() + "\n" + lecture.getCourse().getCourseName() + ", " + lecture.getCourse().getDisciplineSemester(lecture.getLectureDiscipline()) + " semester\n");
-					//System.out.println(output);
-				}
 			} 
 		}
 	}
@@ -115,12 +108,11 @@ public class ScheduleController {
 	}
 	
 	public void viewElectives() throws IOException {
-		Stage stage = new Stage();
-		ElectivesView.getInstance(stage).openStage("electives");
+		ElectivesView.getInstance().openStage("electives");
 	}
 	
 	public void goBack() {
-		ScheduleView.getInstance(null).closeStage();;
-		SelectionView.getInstance(null).showStage();
+		ScheduleView.getInstance().closeStage();;
+		SelectionView.getInstance().showStage();
 	}
 }
