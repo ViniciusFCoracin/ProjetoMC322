@@ -1,6 +1,7 @@
 package src.GraphicInterface.Controllers;
 
 
+import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +10,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Popup;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import src.GraphicInterface.Views.ElectivesView;
 import src.GraphicInterface.Views.ScheduleView;
 import src.GraphicInterface.Views.SelectionView;
 import src.System.LectureSelector;
@@ -72,16 +81,23 @@ public class SelectionController {
 		removedElectives = remove(e, removedElectives);
 	}
 	
+	@FXML
+	public void submit(ActionEvent e) throws IOException {
+		LectureSelector.getInstance().loadAndFilterResources();
+		SelectionView.getInstance().closeStage();
+		ScheduleView.getInstance().openStage("schedule");
+	}
+	
 	private List<String> remove(ActionEvent e, List<String> list) {
 		Button button = (Button) e.getSource();
 		
 		if((Boolean)button.getUserData() == false) {
 			list.add(button.getText());
-			button.setStyle("-fx-background-color: gray");
+			button.getStyleClass().add("removed");
 			button.setUserData(true);
 		} else {
 			list.remove(button.getText());
-			button.setStyle("-fx-background-color: white");
+			button.getStyleClass().remove("removed");
 			button.setUserData(false);
 		}
 		return list;
@@ -91,14 +107,6 @@ public class SelectionController {
 		for (Node node : container.getChildrenUnmodifiable()) {			
 			Button button = (Button) node;
 			button.setUserData(false);
-			button.setStyle("-fx-background-color: white");
 		}
-	}
-	
-	@FXML
-	public void submit(ActionEvent e) throws IOException {
-		LectureSelector.getInstance().loadAndFilterResources();
-		SelectionView.getInstance().closeStage();
-		ScheduleView.getInstance().openStage("schedule");
 	}
 }
