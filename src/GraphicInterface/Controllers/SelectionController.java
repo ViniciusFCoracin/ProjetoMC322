@@ -91,7 +91,7 @@ public class SelectionController {
 	
 	@FXML
 	public void submit(ActionEvent e) throws IOException {
-		LectureSelector.getInstance().startDistribution();
+		LectureSelector.getInstance().loadAndFilterResources();
 		
 		SelectionView.getInstance().closeStage();
 		ScheduleView.getInstance().openStage("schedule");

@@ -40,7 +40,7 @@ public class ElectivesController {
 	
 	private void assignLectureToGrid(Lecture lecture) {
 		WeekDay day = lecture.getLectureSchedule().getDay();
-		int column = GridController.weekDayToInt(day) - 1;
+		int column = WeekDay.getNumericValue(day) - 1;
 		
 		Label labelDisciplineId = new Label(lecture.getLectureDiscipline().getDisciplineId());
 		
@@ -66,7 +66,7 @@ public class ElectivesController {
             previewPopup.hide();
         });
 
-		VBox vBox = (VBox) GridController.getNodeByRowColumnIndex(electivesGridPane, 1, column);
+		VBox vBox = (VBox) ScheduleController.getNodeByRowColumnIndex(electivesGridPane, 1, column);
 		vBox.getChildren().addAll(labelDisciplineId);
 	}
 	
@@ -85,7 +85,7 @@ public class ElectivesController {
 		for(int i = 1; i <= 6; i++) {
 			for(Lecture lecture : electiveLectures) {
 				HourOfClass hourOfClass = lecture.getLectureSchedule().getHourOfClass();
-				int intHourOfClass = GridController.hourOfClassToInt(hourOfClass);
+				int intHourOfClass =  HourOfClass.getNumericValue(hourOfClass);
 				
 				if(intHourOfClass == i) 
 					assignLectureToGrid(lecture);
