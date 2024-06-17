@@ -2,23 +2,45 @@ package src.GraphicInterface.Views;
 
 import java.io.IOException;
 
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Abstract class that provides basic functionality for JavaFX views.
+ */
 public abstract class View {
 	private Stage stage;
+	private Scene scene;
 	
-	public View(Stage stage) {
-		this.stage = stage;
+	public View() {
+		stage = new Stage();
+	}
+	
+	public Stage getStage() {
+		return stage;
 	}
 	
 	public void openStage(String path) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("/src/FXML/"+path+".fxml"));
-        Scene scene = new Scene(root);
+        scene = new Scene(root);
         stage.setScene(scene);
-        stage.show();
+      
+        showStage();
+	}
+	
+	public void showStage() {
+	    Platform.runLater(() -> {
+	        try {
+	            stage.show();
+	            stage.setMinHeight(stage.heightProperty().get());
+	            stage.setMinWidth(stage.widthProperty().get());
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    });
 	}
 	
 	public void closeStage() {
@@ -27,9 +49,5 @@ public abstract class View {
 	
 	public void hideStage() {
 		stage.hide();
-	}
-	
-	public void showStage() {
-		stage.show();
 	}
 }

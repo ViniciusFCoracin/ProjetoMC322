@@ -13,17 +13,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="736.0" prefWidth="1048.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.GraphicInterface.Controllers.SelectionController">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.GraphicInterface.Controllers.SelectionController">
    <children>
-      <GridPane alignment="TOP_CENTER" gridLinesVisible="true" prefHeight="690.0" prefWidth="1034.0" VBox.vgrow="ALWAYS">
+      <GridPane alignment="TOP_CENTER" gridLinesVisible="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
         <columnConstraints>
-            <ColumnConstraints hgrow="NEVER" maxWidth="238.0" minWidth="-Infinity" prefWidth="233.0" />
-          <ColumnConstraints hgrow="ALWAYS" maxWidth="576.0" minWidth="-Infinity" prefWidth="408.0" />
-          <ColumnConstraints hgrow="ALWAYS" maxWidth="421.0" prefWidth="417.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" />
+          <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" />
+          <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints prefHeight="67.0" />
-          <RowConstraints prefHeight="452.0" vgrow="ALWAYS" />
+          <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
         </rowConstraints>
          <children>
             <Label text="Spaces" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
@@ -31,56 +31,69 @@
                   <Font name="Liberation Serif" size="40.0" />
                </font>
             </Label>
-            <FlowPane fx:id="spacesFlowPane" hgap="10.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="623.0" prefWidth="556.0" vgap="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB1" />
-                  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB3" />
-                  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB4" />
-                  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB5" />
-                  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB12" />
-                  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB16" />
-                  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="PB13" />
-                  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="PB15" />
-                  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CC300" />
-                  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="LF10" />
-                  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="Auditório do IC" />
-                  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="Quadra" />
-               </children>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
+            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="NEVER" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
-            </FlowPane>
+               <content>
+                  <FlowPane fx:id="spacesFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" prefHeight="493.0" prefWidth="407.0" prefWrapLength="1000.0" vgap="10.0">
+                     <children>
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB1" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB3" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB4" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB5" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB7" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB8" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB9" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB10" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB11" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB12" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB13" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB14" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB15" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CB16" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="PB1" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="PB2" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="PB3" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="PB4" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="PB5" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="PB13" />
+                      <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="PB15" />
+      			      <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CC300" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CC301" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CC304" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CC350" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CC351" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CC352" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CC353" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CC360" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="CC361" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="FE10" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="FE11" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="FE12" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="LF10" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="LE14" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="Auditório do IC" />
+      				  <Button mnemonicParsing="false" onAction="#removeSpace" prefHeight="57.0" prefWidth="122.0" text="Quadra" />
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </FlowPane>
+               </content>
+            </ScrollPane>
             <Label text="Courses" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font name="Liberation Serif" size="40.0" />
                </font>
             </Label>
-            <ScrollPane prefHeight="623.0" prefWidth="233.0" GridPane.rowIndex="1">
+            <ScrollPane hbarPolicy="NEVER" prefHeight="623.0" prefWidth="223.0" vbarPolicy="NEVER" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
                <content>
                   <VBox fx:id="coursesVBox" spacing="10.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#removeCourse" prefHeight="50.0" prefWidth="198.0" text="Engenharia da Computação" textAlignment="CENTER" />
-                        <Button mnemonicParsing="false" onAction="#removeCourse" prefHeight="51.0" prefWidth="198.0" text="Ciência da Computação" textAlignment="CENTER" />
-                        <Button mnemonicParsing="false" onAction="#removeCourse" prefHeight="50.0" prefWidth="198.0" text="Engenharia da Computação" textAlignment="CENTER" />
-                        <Button mnemonicParsing="false" onAction="#removeCourse" prefHeight="51.0" prefWidth="198.0" text="Ciência da Computação" textAlignment="CENTER" />
-                        <Button mnemonicParsing="false" onAction="#removeCourse" prefHeight="50.0" prefWidth="198.0" text="Engenharia da Computação" textAlignment="CENTER" />
-                        <Button mnemonicParsing="false" onAction="#removeCourse" prefHeight="51.0" prefWidth="198.0" text="Ciência da Computação" textAlignment="CENTER" />
-                        <Button mnemonicParsing="false" onAction="#removeCourse" prefHeight="50.0" prefWidth="198.0" text="Engenharia da Computação" textAlignment="CENTER" />
-                        <Button mnemonicParsing="false" onAction="#removeCourse" prefHeight="51.0" prefWidth="198.0" text="Ciência da Computação" textAlignment="CENTER" />
-                        <Button mnemonicParsing="false" onAction="#removeCourse" prefHeight="50.0" prefWidth="198.0" text="Engenharia da Computação" textAlignment="CENTER" />
-                        <Button mnemonicParsing="false" onAction="#removeCourse" prefHeight="51.0" prefWidth="198.0" text="Ciência da Computação" textAlignment="CENTER" />
-                        <Button mnemonicParsing="false" onAction="#removeCourse" prefHeight="50.0" prefWidth="198.0" text="Engenharia da Computação" textAlignment="CENTER" />
-                        <Button mnemonicParsing="false" onAction="#removeCourse" prefHeight="51.0" prefWidth="198.0" text="Ciência da Computação" textAlignment="CENTER" />
-                        <Button mnemonicParsing="false" onAction="#removeCourse" prefHeight="50.0" prefWidth="198.0" text="Engenharia da Computação" textAlignment="CENTER" />
-                        <Button mnemonicParsing="false" onAction="#removeCourse" prefHeight="51.0" prefWidth="198.0" text="Ciência da Computação" textAlignment="CENTER" />
-                        <Button mnemonicParsing="false" onAction="#removeCourse" prefHeight="50.0" prefWidth="198.0" text="Engenharia da Computação" textAlignment="CENTER" />
-                        <Button mnemonicParsing="false" onAction="#removeCourse" prefHeight="51.0" prefWidth="198.0" text="Ciência da Computação" textAlignment="CENTER" />
                         <Button mnemonicParsing="false" onAction="#removeCourse" prefHeight="50.0" prefWidth="198.0" text="Engenharia da Computação" textAlignment="CENTER" />
                         <Button mnemonicParsing="false" onAction="#removeCourse" prefHeight="51.0" prefWidth="198.0" text="Ciência da Computação" textAlignment="CENTER" />
                      </children>
@@ -95,7 +108,7 @@
                   <Font name="Liberation Serif" size="40.0" />
                </font>
             </Label>
-            <FlowPane fx:id="electivesFlowPane" hgap="10.0" prefHeight="623.0" prefWidth="326.0" vgap="10.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <FlowPane fx:id="electivesFlowPane" alignment="TOP_CENTER" columnHalignment="RIGHT" hgap="10.0" prefHeight="623.0" prefWidth="406.0" rowValignment="TOP" vgap="10.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <children>
                   <Button mnemonicParsing="false" onAction="#removeElective" prefHeight="57.0" prefWidth="122.0" text="LA114" />
                   <Button mnemonicParsing="false" onAction="#removeElective" prefHeight="57.0" prefWidth="122.0" text="EF543" />
@@ -114,11 +127,11 @@
             </FlowPane>
          </children>
       </GridPane>
-      <HBox alignment="TOP_CENTER" prefHeight="16.0" prefWidth="894.0">
+      <HBox alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="74.0" prefWidth="1004.0">
          <children>
-            <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#submit" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: yellow;" text="Submit">
+            <Button fx:id="submitButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#submit" prefHeight="47.0" prefWidth="119.0" style="-fx-background-color: yellow;" text="Submit">
                <cursor>
-                  <Cursor fx:constant="N_RESIZE" />
+                  <Cursor fx:constant="DEFAULT" />
                </cursor>
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

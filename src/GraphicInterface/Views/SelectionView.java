@@ -1,17 +1,18 @@
 package src.GraphicInterface.Views;
 
-import javafx.stage.Stage;
-
+/**
+ * Singleton class responsible for displaying selection stage
+ */
 public class SelectionView extends View{
 	private static SelectionView instance;
 	
-	private SelectionView(Stage stage){
-		super(stage);
+	private SelectionView() {
+		// does nothing, but we need this to be private
 	}
 	
-	public static SelectionView getInstance(Stage stage){
+	public static SelectionView getInstance(){
         if(instance == null) {
-            instance= new SelectionView(stage);
+            instance= new SelectionView();
         }
         return instance;
     }

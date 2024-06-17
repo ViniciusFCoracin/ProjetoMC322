@@ -1,6 +1,8 @@
-package src.Course;
+package src.CourseRelated;
 
 import java.util.List;
+
+import src.CourseRelated.Disciplines.Discipline;
 import src.Schedule.Shift;
 
 /**
@@ -11,7 +13,7 @@ public class Course {
     private int courseId;
     private Shift courseShift;
     private List<Semester> courseSemesters;
-
+    
     /**
      * Public constructor for Course class
      * 

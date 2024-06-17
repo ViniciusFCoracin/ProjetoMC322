@@ -2,26 +2,30 @@ package src.System;
 
 import java.util.Iterator;
 import java.util.List;
-import src.Course.Course;
-import src.Course.Discipline;
-import src.Course.Lecture;
+
+import src.CourseRelated.Course;
+import src.CourseRelated.Disciplines.Discipline;
+import src.CourseRelated.LectureRelated.Lecture;
 import src.GraphicInterface.Controllers.SelectionController;
 import src.Readers.CourseRelatedReaders.CoursesFileReader;
 import src.Readers.DisciplineRelatedReaders.DisciplinesFileReader;
 import src.Readers.SpaceRelatedReaders.SpacesFileReader;
 import src.Spaces.Space;
 
+/**
+ * Singleton class that serves as model in the MVC pattern. 
+ * The class is responsible for storing and updating a list of all lectures.
+ */
 public class LectureSelector {
+	private static LectureSelector instance;
 
     private List<Lecture> allLectures;
     private List<Course> allCourses;
 	private List<Space> allSpaces;
 	private List<Discipline> allDisciplines;
-
-	private static LectureSelector instance;
 	
 	private LectureSelector(){
-		
+		 // does nothing, but we need this to be private
 	}
 	
 	public static LectureSelector getInstance(){
@@ -39,19 +43,28 @@ public class LectureSelector {
 		return allCourses;
 	}
 	
-	 public void startDistribution() {
-	    	allCourses = CoursesFileReader.getInstance().readFile("src/XML/courses.xml");
-	    	allSpaces = SpacesFileReader.getInstance().readFile("src/XML/spaces.xml");
-	    	allDisciplines = DisciplinesFileReader.getInstance().readFile("src/XML/disciplines.xml");
-	    	
-	        allSpaces = removeSelectedSpaces(SelectionController.getRemovedSpaces());
-	        allCourses = removeSelectedCourses(SelectionController.getRemovedCourses());
-	        allDisciplines = removeSelectedElectives(SelectionController.getRemovedElectives());
+	/**
+     * Generates the lists of all available
+     * courses, spaces, disciplines and lectures. 
+     * 
+     * @param allCourses: list of all the course available
+     * @param allSpaces: list of all the spaces available
+     * @param allDisciplines: list of all the disciplines available
+     */
+	 public void loadAndFilterResources() {
+		 // reads all XML files
+    	 allCourses = CoursesFileReader.getInstance().readFile("src/XML/courses.xml");
+    	 allSpaces = SpacesFileReader.getInstance().readFile("src/XML/spaces.xml");
+    	 allDisciplines = DisciplinesFileReader.getInstance().readFile("src/XML/disciplines.xml");
+    	
+    	 // removes the resources chosen by the user
+         allSpaces = removeSelectedSpaces(SelectionController.getRemovedSpaces());
+         allCourses = removeSelectedCourses(SelectionController.getRemovedCourses());
+         allDisciplines = removeSelectedElectives(SelectionController.getRemovedElectives());
 
-	        AllocatorSystem system = new AllocatorSystem(allCourses, allDisciplines, allSpaces);
-	        allLectures = system.allocateSchedulesAndSpaces();
-	    }
-
+         AllocatorSystem system = new AllocatorSystem(allCourses, allDisciplines, allSpaces);
+         allLectures = system.allocateSchedulesAndSpaces();
+      }
 	 
 	 private List<Course> removeSelectedCourses(List<String> selectedCourses) {
 		 Iterator<Course> iterator = allCourses.iterator();

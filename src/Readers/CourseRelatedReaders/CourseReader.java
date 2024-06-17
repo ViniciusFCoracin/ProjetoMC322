@@ -5,11 +5,10 @@ import org.w3c.dom.Node;
 import java.util.List;
 import java.util.ArrayList;
 
-import src.Course.Course;
-import src.Course.Semester;
+import src.CourseRelated.Course;
+import src.CourseRelated.Semester;
 import src.Readers.XMLNodeReader;
 import src.Schedule.Shift;
-
 
 /**
  * Singleton class that reads a course node and returns a Course object

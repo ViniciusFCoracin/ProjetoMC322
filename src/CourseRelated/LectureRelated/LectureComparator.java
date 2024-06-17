@@ -1,6 +1,8 @@
-package src.Course;
+package src.CourseRelated.LectureRelated;
 
 import java.util.Comparator;
+
+import src.CourseRelated.Course;
 import src.Schedule.LectureSchedule;
 
 public class LectureComparator implements Comparator<Lecture> {

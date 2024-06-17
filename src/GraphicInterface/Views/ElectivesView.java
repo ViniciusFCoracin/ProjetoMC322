@@ -1,17 +1,18 @@
 package src.GraphicInterface.Views;
 
-import javafx.stage.Stage;
-
+/**
+ * Singleton class responsible for displaying electives stage
+ */
 public class ElectivesView extends View{
 	private static ElectivesView instance;
 	
-	private ElectivesView(Stage stage){
-		super(stage);
+	private ElectivesView() {
+		 // does nothing, but we need this to be private
 	}
 	
-	public static ElectivesView getInstance(Stage stage){
+	public static ElectivesView getInstance(){
         if(instance == null) {
-            instance= new ElectivesView(stage);
+            instance= new ElectivesView();
         }
         return instance;
     }

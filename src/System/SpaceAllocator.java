@@ -12,8 +12,8 @@ import org.jgrapht.alg.interfaces.VertexColoringAlgorithm.Coloring;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
 
-import src.Course.Discipline;
-import src.Course.Lecture;
+import src.CourseRelated.Disciplines.Discipline;
+import src.CourseRelated.LectureRelated.Lecture;
 import src.Errors.InsuficientSpacesError;
 import src.Errors.NoSpacesAvailableError;
 import src.Spaces.InstituteAbbr;

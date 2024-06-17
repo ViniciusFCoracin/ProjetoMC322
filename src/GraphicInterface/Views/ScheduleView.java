@@ -1,17 +1,18 @@
 package src.GraphicInterface.Views;
 
-import javafx.stage.Stage;
-
+/**
+ * Singleton class responsible for displaying schedule stage
+ */
 public class ScheduleView extends View {
 	private static ScheduleView instance;
 	
-	private ScheduleView(Stage stage){
-		super(stage);
+	private ScheduleView(){
+		// does nothing, but we need this to be private
 	}
 	
-	public static ScheduleView getInstance(Stage stage){
+	public static ScheduleView getInstance(){
         if(instance == null) {
-            instance= new ScheduleView(stage);
+            instance= new ScheduleView();
         }
         return instance;
     }
