@@ -1,6 +1,5 @@
 package src.GraphicInterface.Controllers;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,6 +22,9 @@ import src.Schedule.HourOfClass;
 import src.Schedule.WeekDay;
 import src.System.LectureSelector;
 
+/**
+ * Controller class for handling the schedule view in the GUI.
+ */
 public class ScheduleController {
 	
 	@FXML
