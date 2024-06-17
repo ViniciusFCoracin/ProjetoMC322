@@ -46,7 +46,7 @@ public class SpaceReader implements XMLNodeReader {
                     else if (text.equals("eletronicsLaboratory"))
                         type = SpaceType.ELETRONICS_LABORATORY;
                     else
-                        throw new Error("Invalid institute");
+                        throw new Error("Invalid space type");
                 }
                 else if ("institute".equals(node.getNodeName())){
                     String text = node.getTextContent().trim();

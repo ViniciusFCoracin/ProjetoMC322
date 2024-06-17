@@ -13,6 +13,12 @@ public class GridController {
         case "2°": currentSemester = "2"; break;
         case "3°": currentSemester = "3"; break;
         case "4°": currentSemester = "4"; break;
+        case "5°": currentSemester = "5"; break;
+        case "6°": currentSemester = "6"; break;
+        case "7°": currentSemester = "7"; break;
+        case "8°": currentSemester = "8"; break;
+        case "9°": currentSemester = "9"; break;
+        case "10°": currentSemester = "10"; break;
         default: break;
 		}
 		return Integer.parseInt(currentSemester);

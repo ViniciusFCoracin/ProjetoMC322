@@ -13,8 +13,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import src.Course.Course;
-import src.Course.Lecture;
+import src.CourseRelated.Course;
+import src.CourseRelated.LectureRelated.Lecture;
 import src.GraphicInterface.Views.ElectivesView;
 import src.GraphicInterface.Views.ScheduleView;
 import src.GraphicInterface.Views.SelectionView;
@@ -56,7 +56,7 @@ public class ScheduleController {
 	}
 
 	private void loadSemestersComboBox() {
-		allSemesters = new ArrayList<String>(Arrays.asList("1°", "2°", "3°", "4°"));
+		allSemesters = new ArrayList<String>(Arrays.asList("1°", "2°", "3°", "4°", "5°", "6°", "7°", "8°", "9°", "10°"));
 		observableSemesterList = FXCollections.observableArrayList(allSemesters);
 		semesterComboBox.setItems(observableSemesterList);
 	}

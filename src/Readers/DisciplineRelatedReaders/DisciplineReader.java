@@ -5,7 +5,7 @@ import org.w3c.dom.Node;
 import java.util.List;
 import java.util.ArrayList;
 
-import src.Course.Discipline;
+import src.CourseRelated.Disciplines.Discipline;
 import src.Readers.XMLNodeReader;
 import src.Spaces.SpaceType;
 import src.Spaces.InstituteAbbr;

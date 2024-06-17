@@ -2,8 +2,6 @@ package src;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import src.GraphicInterface.Views.ElectivesView;
-import src.GraphicInterface.Views.ScheduleView;
 import src.GraphicInterface.Views.SelectionView;
 
 

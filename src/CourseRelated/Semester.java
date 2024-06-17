@@ -1,4 +1,4 @@
-package src.Course;
+package src.CourseRelated;
 import java.util.List;
 
 

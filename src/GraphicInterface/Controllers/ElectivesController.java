@@ -10,7 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
-import src.Course.Lecture;
+import src.CourseRelated.LectureRelated.Lecture;
 import src.GraphicInterface.Views.ElectivesView;
 import src.Schedule.HourOfClass;
 import src.Schedule.WeekDay;
