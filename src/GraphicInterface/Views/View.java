@@ -8,6 +8,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Abstract class that provides basic functionality for JavaFX views.
+ */
 public abstract class View {
 	private Stage stage;
 	private Scene scene;
@@ -46,10 +49,5 @@ public abstract class View {
 	
 	public void hideStage() {
 		stage.hide();
-	}
-	
-	public void printStageSize() {
-		System.out.println(stage.heightProperty().get());
-		System.out.println(stage.widthProperty().get());
 	}
 }

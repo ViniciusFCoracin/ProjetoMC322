@@ -16,6 +16,9 @@ import src.Schedule.HourOfClass;
 import src.Schedule.WeekDay;
 import src.System.LectureSelector;
 
+/**
+ * Controller class for handling the electives view in the GUI.
+ */
 public class ElectivesController {
 	
 	@FXML

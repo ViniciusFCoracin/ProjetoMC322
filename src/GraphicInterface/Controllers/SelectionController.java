@@ -16,6 +16,9 @@ import src.GraphicInterface.Views.ScheduleView;
 import src.GraphicInterface.Views.SelectionView;
 import src.System.LectureSelector;
 
+/**
+ * Controller class for handling the selection of courses, spaces, and electives in the GUI.
+ */
 public class SelectionController {
 	
 	@FXML
@@ -27,15 +30,19 @@ public class SelectionController {
 	@FXML
 	private FlowPane electivesFlowPane;
 	
-	private static List<String> removedCourses = new ArrayList<String>();
-	private static List<String> removedSpaces = new ArrayList<String>();
-	private static List<String> removedElectives = new ArrayList<String>();
+	private static List<String> removedCourses;
+	private static List<String> removedSpaces;
+	private static List<String> removedElectives;
 	
 	@FXML
 	public void initialize() {
 		initializeContainer(coursesVBox);
 		initializeContainer(spacesFlowPane);
 		initializeContainer(electivesFlowPane);
+		
+		removedCourses = new ArrayList<String>();
+		removedSpaces = new ArrayList<String>();
+		removedElectives = new ArrayList<String>();
 	}
 	
 	public static List<String> getRemovedCourses() {
@@ -91,7 +98,6 @@ public class SelectionController {
 	@FXML
 	public void submit(ActionEvent e) throws IOException {
 		LectureSelector.getInstance().loadAndFilterResources();
-		
 		SelectionView.getInstance().closeStage();
 		ScheduleView.getInstance().openStage("schedule");
 	}
