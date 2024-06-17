@@ -17,7 +17,7 @@ public enum HourOfClass {
         return hour1Value - hour2value;        
     }
 
-    private static int getNumericValue(HourOfClass hour){
+    public static int getNumericValue(HourOfClass hour){
         switch (hour){
             case EigthAM_TenAM:
                 return 1;
