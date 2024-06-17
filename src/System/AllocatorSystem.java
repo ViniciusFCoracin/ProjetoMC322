@@ -6,11 +6,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import src.CourseRelated.Course;
+import src.CourseRelated.Disciplines.Discipline;
+import src.CourseRelated.LectureRelated.*;
 import src.Errors.*;
-import src.Course.Course;
-import src.Course.Discipline;
-import src.Course.Lecture;
-import src.Course.LectureComparator;
 import src.Spaces.Space;
 import src.Spaces.SpaceType;
 

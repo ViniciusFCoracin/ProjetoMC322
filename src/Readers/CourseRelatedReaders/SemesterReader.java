@@ -6,7 +6,7 @@ import org.w3c.dom.Node;
 import java.util.ArrayList;
 import java.util.List;
 
-import src.Course.Semester;
+import src.CourseRelated.Semester;
 import src.Readers.XMLNodeReader;
 
 

@@ -12,7 +12,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import src.GraphicInterface.Views.ScheduleView;
 import src.GraphicInterface.Views.SelectionView;
 import src.System.LectureSelector;

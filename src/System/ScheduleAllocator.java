@@ -5,10 +5,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-import src.Course.Course;
-import src.Course.Discipline;
-import src.Course.Lecture;
-import src.Course.Semester;
+import src.CourseRelated.Course;
+import src.CourseRelated.Semester;
+import src.CourseRelated.Disciplines.Discipline;
+import src.CourseRelated.LectureRelated.Lecture;
 import src.Schedule.*;
 import src.Spaces.Space;
 

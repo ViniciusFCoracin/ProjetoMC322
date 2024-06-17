@@ -103,12 +103,12 @@
                         <Font name="Liberation Serif" size="30.0" />
                      </font>
                   </Label>
-                  <Label text="12h-14h" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                  <Label text="14h-16h" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <font>
                         <Font name="Liberation Serif" size="30.0" />
                      </font>
                   </Label>
-                  <Label text="14h-16h" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                  <Label text="16h-18h" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                      <font>
                         <Font name="Liberation Serif" size="30.0" />
                      </font>
