@@ -16,7 +16,7 @@ public enum WeekDay {
         return day1Value - day2value;        
     }
 
-    private static int getNumericValue(WeekDay day){
+    public static int getNumericValue(WeekDay day){
         switch (day){
             case MONDAY:
                 return 1;

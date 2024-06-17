@@ -13,7 +13,7 @@ public class Course {
     private int courseId;
     private Shift courseShift;
     private List<Semester> courseSemesters;
-
+    
     /**
      * Public constructor for Course class
      * 
