@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox stylesheets="@../CSS/schedule.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.GraphicInterface.Controllers.ScheduleController">
+<HBox stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.GraphicInterface.Controllers.ScheduleController">
    <children>
       <GridPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="170.0">
          <columnConstraints>
@@ -34,7 +34,7 @@
                         <Font name="Liberation Serif" size="13.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="coursesComboBox" minWidth="-Infinity" prefWidth="150.0" promptText="Course">
+                  <ComboBox fx:id="coursesComboBox" minWidth="-Infinity" prefWidth="150.0" promptText="Course" styleClass="combo-box">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin></ComboBox>
@@ -43,7 +43,7 @@
                         <Font name="Liberation Serif" size="13.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="semesterComboBox" minWidth="-Infinity" prefHeight="26.0" prefWidth="150.0" promptText="Semester">
+                  <ComboBox fx:id="semesterComboBox" minWidth="-Infinity" prefHeight="26.0" prefWidth="150.0" promptText="Semester" styleClass="combo-box">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin></ComboBox>
