@@ -1,5 +1,6 @@
 package src.System;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -67,6 +68,17 @@ public class LectureSelector {
       }
 	 
 	 private List<Course> removeSelectedCourses(List<String> selectedCourses) {
+		 
+		 
+		 List<String> resultList = new ArrayList<String>();
+         for (String item : selectedCourses) {
+             String[] parts = item.split(" - ", 2);
+             if (parts.length > 1) {
+                 resultList.add(parts[1]);
+             }
+         }
+         selectedCourses = resultList;
+	        
 		 Iterator<Course> iterator = allCourses.iterator();
 		 while (iterator.hasNext()) {
 			 Course course = iterator.next();

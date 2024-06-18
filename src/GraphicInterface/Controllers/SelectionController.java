@@ -1,6 +1,5 @@
 package src.GraphicInterface.Controllers;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -72,16 +71,23 @@ public class SelectionController {
 		removedElectives = remove(e, removedElectives);
 	}
 	
+	@FXML
+	public void submit(ActionEvent e) throws IOException {
+		LectureSelector.getInstance().loadAndFilterResources();
+		SelectionView.getInstance().closeStage();
+		ScheduleView.getInstance().openStage("schedule");
+	}
+	
 	private List<String> remove(ActionEvent e, List<String> list) {
 		Button button = (Button) e.getSource();
 		
 		if((Boolean)button.getUserData() == false) {
 			list.add(button.getText());
-			button.setStyle("-fx-background-color: gray");
+			button.getStyleClass().add("removed");
 			button.setUserData(true);
 		} else {
 			list.remove(button.getText());
-			button.setStyle("-fx-background-color: white");
+			button.getStyleClass().remove("removed");
 			button.setUserData(false);
 		}
 		return list;
@@ -91,14 +97,6 @@ public class SelectionController {
 		for (Node node : container.getChildrenUnmodifiable()) {			
 			Button button = (Button) node;
 			button.setUserData(false);
-			button.setStyle("-fx-background-color: white");
 		}
-	}
-	
-	@FXML
-	public void submit(ActionEvent e) throws IOException {
-		LectureSelector.getInstance().loadAndFilterResources();
-		SelectionView.getInstance().closeStage();
-		ScheduleView.getInstance().openStage("schedule");
-	}
+	}	
 }

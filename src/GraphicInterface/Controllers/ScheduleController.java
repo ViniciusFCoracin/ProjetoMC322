@@ -13,6 +13,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import src.CourseRelated.Course;
 import src.CourseRelated.LectureRelated.Lecture;
 import src.GraphicInterface.Views.ElectivesView;
@@ -31,7 +32,7 @@ public class ScheduleController {
 	private ComboBox<String> coursesComboBox, semesterComboBox;
 	
 	@FXML
-	private Label course, semester;
+	private Label course, semester, invalidCourse, invalidSemester;
 	
 	@FXML
 	private GridPane scheduleGridPane;
@@ -54,12 +55,20 @@ public class ScheduleController {
 		cleanSchedule();
 		currentCourse = coursesComboBox.getValue();
 		currentSemester = semesterComboBox.getValue();
+		invalidCourse.setText("");
+		invalidSemester.setText("");
 		
-		if(currentCourse == null || currentSemester == null) {
-			return;
+		if (currentCourse == null || currentSemester == null) {
+		    if (currentCourse == null) 
+		        invalidCourse.setText("Please choose a course");
+
+		    if (currentSemester == null) 
+		        invalidSemester.setText("Please choose a semester");
+    
+		    return;
 		} else {
 			course.setText(currentCourse);
-			semester.setText(currentSemester);
+			semester.setText("Semester: " + currentSemester);
 		}
 		
 		int currentSemesterInt = convertSemesterToNumber(currentSemester);
@@ -106,19 +115,33 @@ public class ScheduleController {
 	
 	
 	private void assignLectureToGrid(Lecture lecture) {
-		WeekDay day = lecture.getLectureSchedule().getDay();
-		HourOfClass hourOfClass = lecture.getLectureSchedule().getHourOfClass();
-		
-		int column = WeekDay.getNumericValue(day);
-		int row = HourOfClass.getNumericValue(hourOfClass);
-		
-		Label labelDisciplineId = new Label(lecture.getLectureDiscipline().getDisciplineId());
-		Label labelProfessor = new Label(lecture.getProfessor());
-		Label labelSpace = new Label(lecture.getLectureSpace().getSpaceID());
-		Label labelGroup = new Label(Character.toString(lecture.getLectureGroup()));
-		
-		VBox vBox = (VBox) getNodeByRowColumnIndex(scheduleGridPane, row, column);
-		vBox.getChildren().addAll(labelDisciplineId, labelGroup, labelProfessor, labelSpace);
+	    WeekDay day = lecture.getLectureSchedule().getDay();
+	    HourOfClass hourOfClass = lecture.getLectureSchedule().getHourOfClass();
+
+	    int column = WeekDay.getNumericValue(day);
+	    int row = HourOfClass.getNumericValue(hourOfClass);
+
+	    Label labelDisciplineId = new Label(lecture.getLectureDiscipline().getDisciplineId());
+	    Label labelProfessor = new Label(lecture.getProfessor());
+	    Label labelSpace = new Label(lecture.getLectureSpace().getSpaceID());
+	    Label labelGroup = new Label(Character.toString(lecture.getLectureGroup())); 
+	    List<Label> labels = new ArrayList<Label>(Arrays.asList(labelDisciplineId, labelGroup, labelProfessor, labelSpace));
+	    
+	    Font initialFont = new Font("Liberation Serif", 15);
+	    updateFont(initialFont, labels);
+
+	    VBox vBox = (VBox) getNodeByRowColumnIndex(scheduleGridPane, row, column);
+	    vBox.getChildren().addAll(labels);
+
+	    vBox.heightProperty().addListener((obs, oldHeight, newHeight) -> {
+	        double newSize = newHeight.doubleValue() / 5;
+	        double minFontSize = 15.0;
+	        double maxFontSize = 20.0;
+	        double adjustedFontSize = Math.max(minFontSize, Math.min(maxFontSize, newSize));
+	        
+	        Font font = new Font("Liberation Serif", adjustedFontSize);
+	        updateFont(font, labels);
+	    });
 	}
 	
 	public  static Node getNodeByRowColumnIndex(GridPane gridPane, int row, int column) {
@@ -148,5 +171,11 @@ public class ScheduleController {
 		String numericString = currentSemester.replace("°", "");
 		
 		return Integer.parseInt(numericString);
+	}
+	
+	private void updateFont (Font font, List<Label> labels) {
+		for(Label label : labels) {
+			label.setFont(font);
+		}
 	}
 }
