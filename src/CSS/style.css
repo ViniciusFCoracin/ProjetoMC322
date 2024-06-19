@@ -18,13 +18,6 @@
 	-fx-alignment: center;
 }
 
-.preview-pane {
-	-fx-background-color: #ff8080;
-	-fx-border-color: black;
-	-fx-pref-height: 200;
-	-fx-pref-width: 120;
-}
-
 .preview-pane-vbox {
 	-fx-alignment: center;
 	-fx-padding: 10;
@@ -32,3 +25,19 @@
 	-fx-font-size: 10;
 
 }
+
+.electives-vbox{
+	-fx-font-family: "Liberation Serif";
+	-fx-font-size: 15;
+	
+}
+
+.elective {
+	-fx-pref-height: 20;
+}
+
+.option-gridpane {
+	-fx-background-color: #e6e6e6;
+}
+
+
