@@ -23,13 +23,11 @@
 	-fx-padding: 10;
 	-fx-font-family: "Liberation Serif";
 	-fx-font-size: 10;
-
 }
 
 .electives-vbox{
 	-fx-font-family: "Liberation Serif";
 	-fx-font-size: 15;
-	
 }
 
 .elective {
@@ -39,5 +37,3 @@
 .option-gridpane {
 	-fx-background-color: #e6e6e6;
 }
-
-
