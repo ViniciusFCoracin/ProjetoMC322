@@ -67,7 +67,12 @@ public class LectureSelector {
          allLectures = system.allocateSchedulesAndSpaces();
       }
 	 
-	 private List<Course> removeSelectedCourses(List<String> selectedCourses) {
+	/**
+	 * Remove the courses the user chose to remove
+	 * @param selectedCourses: list of the selected courses
+	 * @return: the courses that were not removed
+	 */
+	private List<Course> removeSelectedCourses(List<String> selectedCourses) {
 		 
 		 
 		 List<String> resultList = new ArrayList<String>();
@@ -87,7 +92,12 @@ public class LectureSelector {
 		 }
 		 return allCourses;
 	 }
-	 
+	
+	/**
+	 * Remove the spaces the user chose to remove
+	 * @param selectedSpaces: list of the selected spaces
+	 * @return: the spaces that were not removed
+	 */
     private List<Space> removeSelectedSpaces(List<String> selectedSpaces) {	
 		Iterator<Space> iterator = allSpaces.iterator();
 		while (iterator.hasNext()) {
@@ -98,6 +108,11 @@ public class LectureSelector {
 	    return allSpaces;
    	}
     
+	/**
+	 * Remove the electives the user chose to remove
+	 * @param selectedElectives: list of the selected disciplines
+	 * @return: the elective disciplines that were not removed
+	 */
     private List<Discipline> removeSelectedElectives(List<String> selectedElectives) {	
 		Iterator<Discipline> iterator = allDisciplines.iterator();
 		while (iterator.hasNext()) {
