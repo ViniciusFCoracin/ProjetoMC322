@@ -8,7 +8,9 @@ import java.util.Random;
 import src.CourseRelated.Course;
 import src.CourseRelated.Semester;
 import src.CourseRelated.Disciplines.Discipline;
+import src.CourseRelated.LectureRelated.ElectiveLecture;
 import src.CourseRelated.LectureRelated.Lecture;
+import src.CourseRelated.LectureRelated.MandatoryLecture;
 import src.Schedule.*;
 import src.Spaces.Space;
 
@@ -91,8 +93,7 @@ public class ScheduleAllocator {
         
         for (int i = 0; i < numberOfLectures; i++){
             Space space = new Space (null, discipline.getRequiredSpaceType().get(i), null);
-            Lecture lecture= new Lecture(space, discipline, null,
-                                         professor, group, course);
+            MandatoryLecture lecture= new MandatoryLecture(space, discipline, null, professor, group, course);
             disciplineLectures.add(lecture);
         }
         return disciplineLectures;
@@ -152,8 +153,8 @@ public class ScheduleAllocator {
             for (int i = 0; i < numberOfLectures; i++){
                 Space space = new Space(null, discipline.getRequiredSpaceType().get(i), null);
                 LectureSchedule schedule = generateElectiveSchedule(daysIndexes, hoursIndexes);
-                Lecture lecture= new Lecture(space, discipline, schedule,
-                                            professor, group, null);
+                ElectiveLecture lecture = new ElectiveLecture(space, discipline, schedule,
+                                            professor, group);
                 electiveLectures.add(lecture);
 
             }
