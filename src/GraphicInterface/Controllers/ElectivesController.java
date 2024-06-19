@@ -66,16 +66,15 @@ public class ElectivesController {
         VBox vBox = (VBox) ScheduleController.getNodeByRowColumnIndex(electivesGridPane, 1, column);
         vBox.getChildren().add(labelDisciplineId);
         
-        //previewPane.getStyleClass().add("preview"); 
+        labelDisciplineId.getStyleClass().add("elective");
+        vBox.getStyleClass().add("electives-vbox");
         previewPaneVBox.setStyle("-fx-font-family: 'Liberation Serif'; -fx-font-size: 15; -fx-alignment: center; -fx-padding: 10;");
         previewPane.setStyle("-fx-background-color: lightgrey; -fx-border-color: black;");
-        //previewPaneVBox.getStyleClass().add("preview-pane-vbox");
-
-        System.out.println(previewPopup.getContent().get(0).getStyleClass());
 	}
 	
 	private List<Label> createPreviwPaneLabels(Lecture lecture) {
 		Label labelName = new Label(lecture.getLectureDiscipline().getDisciplineName());
+		labelName.setStyle("-fx-font-weight: bold");
         Label labelProfessor = new Label(lecture.getProfessor());
 		Label labelSpace = new Label(lecture.getLectureSpace().getSpaceID());
 		Label labelCredits = new Label("Credits: " +  String.valueOf(lecture.getLectureDiscipline().getDisciplineCredits()));
