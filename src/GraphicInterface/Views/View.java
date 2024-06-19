@@ -23,6 +23,10 @@ public abstract class View {
 		return stage;
 	}
 	
+	public Scene getScene() {
+		return scene;
+	}
+	
 	public void openStage(String path) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("/src/FXML/"+path+".fxml"));
         scene = new Scene(root);
