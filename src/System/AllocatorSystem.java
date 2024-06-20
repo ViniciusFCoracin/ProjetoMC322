@@ -108,10 +108,11 @@ public class AllocatorSystem {
         Collections.sort(allLectures, new LectureComparator());
         for (Lecture lecture : allLectures) {
             if(lecture.getLectureDiscipline().getIsMandatory()){
-                String output = ("Lecture: " + lecture.getLectureDiscipline().getDisciplineId() + ", Professor " + lecture.getProfessor() + "\n" +
-                                 "Day: " + lecture.getLectureSchedule().getDay() + ", " + lecture.getLectureSchedule().getHourOfClass() + "\n" +
-                                 "Place: " + lecture.getLectureSpace() + "\n" + "Group: " 
-                                 + lecture.getLectureGroup() + "\n" + lecture.getCourse().getCourseName() + ", " + lecture.getCourse().getDisciplineSemester(lecture.getLectureDiscipline()) + " semester\n");
+                MandatoryLecture mandatoryLecture = (MandatoryLecture) lecture;
+                String output = ("Lecture: " + mandatoryLecture.getLectureDiscipline().getDisciplineId() + ", Professor " + mandatoryLecture.getProfessor() + "\n" +
+                                 "Day: " + mandatoryLecture.getLectureSchedule().getDay() + ", " + mandatoryLecture.getLectureSchedule().getHourOfClass() + "\n" +
+                                 "Place: " + mandatoryLecture.getLectureSpace() + "\n" + "Group: " 
+                                 + mandatoryLecture.getLectureGroup() + "\n" + mandatoryLecture.getLectureCourse().getCourseName() + ", " + mandatoryLecture.getLectureCourse().getDisciplineSemester(lecture.getLectureDiscipline()) + " semester\n");
                 System.out.println(output);
             } else {
                 String output = ("Lecture: " + lecture.getLectureDiscipline().getDisciplineId() + ", Professor " + lecture.getProfessor() + "\n" +

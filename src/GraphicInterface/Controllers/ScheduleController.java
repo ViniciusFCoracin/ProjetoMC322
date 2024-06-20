@@ -32,6 +32,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import src.CourseRelated.Course;
 import src.CourseRelated.LectureRelated.Lecture;
+import src.CourseRelated.LectureRelated.MandatoryLecture;
 import src.GraphicInterface.Views.ElectivesView;
 import src.GraphicInterface.Views.ScheduleView;
 import src.GraphicInterface.Views.SelectionView;
@@ -96,7 +97,8 @@ public class ScheduleController {
 		int currentSemesterInt = convertSemesterToNumber(currentSemester);
 		for(Lecture lecture : LectureSelector.getInstance().getAllLectures()) {
 			if(lecture.getLectureDiscipline().getIsMandatory()) {
-				if(lecture.getCourse().getCourseName().equals(currentCourse) && lecture.getCourse().getDisciplineSemester(lecture.getLectureDiscipline()) == currentSemesterInt) 
+				MandatoryLecture mandatoryLecture = (MandatoryLecture) lecture;
+				if(mandatoryLecture.getLectureCourse().getCourseName().equals(currentCourse) && mandatoryLecture.getLectureCourse().getDisciplineSemester(lecture.getLectureDiscipline()) == currentSemesterInt)
 					assignLectureToGrid(lecture);
 			} 
 		}
