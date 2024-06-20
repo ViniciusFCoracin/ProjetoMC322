@@ -145,8 +145,9 @@ public class ScheduleController {
 		if(currentSchedule == null || currentSchedule == "Current Schedule" ) {
 			int currentSemesterInt = convertSemesterToNumber(currentSemester);
 			for(Lecture lecture : LectureSelector.getInstance().getAllLectures()) {
-				if(lecture.getLectureDiscipline().getIsMandatory()) {
-					if(lecture.getCourse().getCourseName().equals(currentCourse) && lecture.getCourse().getDisciplineSemester(lecture.getLectureDiscipline()) == currentSemesterInt) 
+				if(lecture instanceof MandatoryLecture) {
+					MandatoryLecture mandatoryLecture = (MandatoryLecture) lecture;
+					if(mandatoryLecture.getLectureCourse().getCourseName().equals(currentCourse) && mandatoryLecture.getLectureCourse().getDisciplineSemester(lecture.getLectureDiscipline()) == currentSemesterInt) 
 						selectedLectures.add(lecture);
 				} 
 			}
@@ -277,11 +278,12 @@ public class ScheduleController {
 	}
 
 	private Element createLectureElement(Document document, Lecture lecture) {
+		MandatoryLecture mandatoryLecture = (MandatoryLecture) lecture;
 	    Element lectureElement = document.createElement("lecture");
 	    
-	    if(lecture.getCourse() != null) {
+	    if(lecture.getLectureDiscipline().getIsMandatory() == true) {
 	    	Element courseNameElement = document.createElement("courseName");
-	    	courseNameElement.appendChild(document.createTextNode(lecture.getCourse().getCourseName()));
+	    	courseNameElement.appendChild(document.createTextNode(mandatoryLecture.getLectureCourse().getCourseName()));
 	    	lectureElement.appendChild(courseNameElement);
 	    }
 	    
@@ -289,9 +291,9 @@ public class ScheduleController {
 	    disciplineIdElement.appendChild(document.createTextNode(lecture.getLectureDiscipline().getDisciplineId()));
 	    lectureElement.appendChild(disciplineIdElement);
 	    
-	    if(lecture.getCourse() != null) {
+	    if(lecture.getLectureDiscipline().getIsMandatory() == true) {
 	    	Element semesterElement = document.createElement("semester");
-		    semesterElement.appendChild(document.createTextNode(Integer.toString(lecture.getCourse().getDisciplineSemester(lecture.getLectureDiscipline()))));
+		    semesterElement.appendChild(document.createTextNode(Integer.toString(mandatoryLecture.getLectureCourse().getDisciplineSemester(lecture.getLectureDiscipline()))));
 		    lectureElement.appendChild(semesterElement);
 	    }
 	    
