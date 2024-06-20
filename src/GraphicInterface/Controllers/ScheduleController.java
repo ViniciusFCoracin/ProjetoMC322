@@ -30,6 +30,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
 import src.CourseRelated.Course;
 import src.CourseRelated.LectureRelated.Lecture;
 import src.CourseRelated.LectureRelated.MandatoryLecture;
@@ -112,13 +113,13 @@ public class ScheduleController {
 	
 	@FXML
 	public void viewElectives() throws IOException {
-		ElectivesView.getInstance().closeStage();
-		ElectivesView.getInstance().openStage("electives");
+		ElectivesView.getInstance().closeStage();	
+		ElectivesView.getInstance().setScene("electives");
+		ElectivesView.getInstance().showStage();
 	}
 	
 	@FXML
 	public void goBack() {
-		ScheduleView.getInstance().closeStage();;
 		SelectionView.getInstance().showStage();
 	}
 	

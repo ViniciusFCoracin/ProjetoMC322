@@ -44,18 +44,6 @@ public class SelectionController {
 		removedElectives = new ArrayList<String>();
 	}
 	
-	public static List<String> getRemovedCourses() {
-		return removedCourses;
-	}
-	
-	public static List<String> getRemovedSpaces() {
-		return removedSpaces;
-	}
-	
-	public static List<String> getRemovedElectives() {
-		return removedElectives;
-	}
-	
 	@FXML
 	public void removeCourse(ActionEvent e) {
 		removedCourses = remove(e, removedCourses);
@@ -74,9 +62,23 @@ public class SelectionController {
 	@FXML
 	public void submit(ActionEvent e) throws IOException {
 		LectureSelector.getInstance().loadAndFilterResources();
-		SelectionView.getInstance().closeStage();
-		ScheduleView.getInstance().openStage("schedule");
+		ScheduleView.getInstance().setStage(SelectionView.getInstance().getStage());
+		ScheduleView.getInstance().setScene("schedule");
+		ScheduleView.getInstance().showStage();
 	}
+	
+	public static List<String> getRemovedCourses() {
+		return removedCourses;
+	}
+	
+	public static List<String> getRemovedSpaces() {
+		return removedSpaces;
+	}
+	
+	public static List<String> getRemovedElectives() {
+		return removedElectives;
+	}
+	
 	
 	private List<String> remove(ActionEvent e, List<String> list) {
 		Button button = (Button) e.getSource();
