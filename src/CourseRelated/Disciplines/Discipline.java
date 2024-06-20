@@ -15,7 +15,7 @@ public class Discipline {
     private List<SpaceType> requiredSpaces;
     private List<InstituteAbbr> possibleInstitutes;
     private List<String> professors;
-    private boolean isMandatory = false;
+    boolean isMandatory;
     private int counterGroups = 0;
     private int counterProfessors = 0;
 

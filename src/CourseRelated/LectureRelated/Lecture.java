@@ -1,6 +1,5 @@
 package src.CourseRelated.LectureRelated;
 
-import src.CourseRelated.Course;
 import src.CourseRelated.Disciplines.Discipline;
 import src.Schedule.LectureSchedule;
 import src.Spaces.Space;
@@ -8,14 +7,13 @@ import src.Spaces.Space;
 /**
  * Class that represents a lecture
  */
-public class Lecture{
+public abstract class Lecture{
     private Space lectureSpace;
     private Discipline lectureDiscipline;
     private LectureSchedule lectureSchedule;
     private String professor;
     private char group;
-    private Course course;
-    
+
     /**
      * Public constructor for the Lecture class
      * 
@@ -25,13 +23,12 @@ public class Lecture{
      * @param professor: teacher of the lecture
      * @param group: lecture group
      */
-    public Lecture(Space space, Discipline discipline, LectureSchedule schedule, String professor, char group, Course course){
+    public Lecture(Space space, Discipline discipline, LectureSchedule schedule, String professor, char group){
         this.lectureSpace = space;
         this.lectureDiscipline = discipline;
         this.lectureSchedule = schedule;
         this.professor = professor;
         this.group = group;
-        this.course = course;
     }
 
     public Space getLectureSpace(){
@@ -60,9 +57,5 @@ public class Lecture{
 
     public char getLectureGroup(){
         return this.group;
-    }
-
-    public Course getCourse(){
-        return this.course;
     }
 }
