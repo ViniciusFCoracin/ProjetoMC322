@@ -1,0 +1,39 @@
+.selection-button {
+	-fx-background-radius: 16px;
+	-fx-border-radius: 15px;
+	-fx-border-color: #404040;
+	-fx-border-width: 2px;
+}
+
+.removed {
+	-fx-background-color: #ff8080;
+}
+
+.combo-box {
+	-fx-font-family: "Liberation Serif";
+	-fx-font-size: 17px;
+}
+
+.label {
+	-fx-alignment: center;
+}
+
+.preview-pane-vbox {
+	-fx-alignment: center;
+	-fx-padding: 10;
+	-fx-font-family: "Liberation Serif";
+	-fx-font-size: 10;
+}
+
+.electives-vbox{
+	-fx-font-family: "Liberation Serif";
+	-fx-font-size: 15;
+}
+
+.elective {
+	-fx-pref-height: 20;
+}
+
+.option-gridpane {
+	-fx-background-color: #e6e6e6;
+}

@@ -1,4 +1,4 @@
-package src.CourseRelated.Disciplines;
+package src.CourseRelated;
 
 import java.util.List;
 

@@ -43,38 +43,37 @@ public class ElectivesController {
 	
 	private void assignLectureToGrid(Lecture lecture) {
 		WeekDay day = lecture.getLectureSchedule().getDay();
-		int column = WeekDay.getNumericValue(day) - 1;
-		
-		Label labelDisciplineId = new Label(lecture.getLectureDiscipline().getDisciplineId());
-		
-		Pane previewPane = new Pane();
-        previewPane.setStyle("-fx-background-color: lightgrey; -fx-border-color: black;");
-        previewPane.setPrefSize(200, 120);
-        
+        int column = WeekDay.getNumericValue(day) - 1;
+
+        Pane previewPane = new Pane();
+        VBox previewPaneVBox = new VBox();
         List<Label> previewPaneLabels = createPreviwPaneLabels(lecture);
-		
-		VBox previewPaneVBox = new VBox();
-		previewPaneVBox.getChildren().addAll(previewPaneLabels);
-		
-		previewPane.getChildren().add(previewPaneVBox);
-		
-		Popup previewPopup = new Popup();
-        previewPopup.getContent().add(previewPane);
+        Popup previewPopup = new Popup();
         
+        previewPaneVBox.getChildren().addAll(previewPaneLabels);
+        previewPane.getChildren().add(previewPaneVBox);
+        previewPopup.getContent().add(previewPane);
+
+        Label labelDisciplineId = new Label(lecture.getLectureDiscipline().getDisciplineId());
         labelDisciplineId.setOnMouseEntered(event -> {
             previewPopup.show(ElectivesView.getInstance().getStage(), event.getScreenX(), event.getScreenY() + 10);
         });
-
         labelDisciplineId.setOnMouseExited(event -> {
             previewPopup.hide();
         });
 
-		VBox vBox = (VBox) ScheduleController.getNodeByRowColumnIndex(electivesGridPane, 1, column);
-		vBox.getChildren().addAll(labelDisciplineId);
+        VBox vBox = (VBox) ScheduleController.getNodeByRowColumnIndex(electivesGridPane, 1, column);
+        vBox.getChildren().add(labelDisciplineId);
+        
+        labelDisciplineId.getStyleClass().add("elective");
+        vBox.getStyleClass().add("electives-vbox");
+        previewPaneVBox.setStyle("-fx-font-family: 'Liberation Serif'; -fx-font-size: 15; -fx-alignment: center; -fx-padding: 10;");
+        previewPane.setStyle("-fx-background-color: lightgrey; -fx-border-color: black;");
 	}
 	
 	private List<Label> createPreviwPaneLabels(Lecture lecture) {
 		Label labelName = new Label(lecture.getLectureDiscipline().getDisciplineName());
+		labelName.setStyle("-fx-font-weight: bold");
         Label labelProfessor = new Label(lecture.getProfessor());
 		Label labelSpace = new Label(lecture.getLectureSpace().getSpaceID());
 		Label labelCredits = new Label("Credits: " +  String.valueOf(lecture.getLectureDiscipline().getDisciplineCredits()));

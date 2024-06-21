@@ -1,10 +1,11 @@
 package src.System;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import src.CourseRelated.Course;
-import src.CourseRelated.Disciplines.Discipline;
+import src.CourseRelated.Discipline;
 import src.CourseRelated.LectureRelated.Lecture;
 import src.GraphicInterface.Controllers.SelectionController;
 import src.Readers.CourseRelatedReaders.CoursesFileReader;
@@ -66,7 +67,23 @@ public class LectureSelector {
          allLectures = system.allocateSchedulesAndSpaces();
       }
 	 
-	 private List<Course> removeSelectedCourses(List<String> selectedCourses) {
+	/**
+	 * Remove the courses the user chose to remove
+	 * @param selectedCourses: list of the selected courses
+	 * @return: the courses that were not removed
+	 */
+	private List<Course> removeSelectedCourses(List<String> selectedCourses) {
+		 
+		 
+		 List<String> resultList = new ArrayList<String>();
+         for (String item : selectedCourses) {
+             String[] parts = item.split(" - ", 2);
+             if (parts.length > 1) {
+                 resultList.add(parts[1]);
+             }
+         }
+         selectedCourses = resultList;
+	        
 		 Iterator<Course> iterator = allCourses.iterator();
 		 while (iterator.hasNext()) {
 			 Course course = iterator.next();
@@ -75,7 +92,12 @@ public class LectureSelector {
 		 }
 		 return allCourses;
 	 }
-	 
+	
+	/**
+	 * Remove the spaces the user chose to remove
+	 * @param selectedSpaces: list of the selected spaces
+	 * @return: the spaces that were not removed
+	 */
     private List<Space> removeSelectedSpaces(List<String> selectedSpaces) {	
 		Iterator<Space> iterator = allSpaces.iterator();
 		while (iterator.hasNext()) {
@@ -86,6 +108,11 @@ public class LectureSelector {
 	    return allSpaces;
    	}
     
+	/**
+	 * Remove the electives the user chose to remove
+	 * @param selectedElectives: list of the selected disciplines
+	 * @return: the elective disciplines that were not removed
+	 */
     private List<Discipline> removeSelectedElectives(List<String> selectedElectives) {	
 		Iterator<Discipline> iterator = allDisciplines.iterator();
 		while (iterator.hasNext()) {

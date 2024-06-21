@@ -5,24 +5,28 @@ import java.util.Comparator;
 import src.CourseRelated.Course;
 import src.Schedule.LectureSchedule;
 
+/**
+ * Class responsible for compare Lecture objects
+ */
 public class LectureComparator implements Comparator<Lecture> {
     @Override
     public int compare(Lecture lecture1, Lecture lecture2){
         LectureSchedule schedule1 = lecture1.getLectureSchedule();
         LectureSchedule schedule2 = lecture2.getLectureSchedule();
-        Course course1 = lecture1.getCourse();
-        Course course2 = lecture2.getCourse();
         
-        if (course1 == null && course2 == null) {
+        if (lecture1 instanceof ElectiveLecture && lecture2 instanceof ElectiveLecture) {
             // If both courses are null, compare the schedules
             return LectureSchedule.compare(schedule1, schedule2);
-        } else if (course1 == null) {
+        } else if (lecture1 instanceof ElectiveLecture) {
             // If only course1 is null, put it in the end
             return 1;
-        } else if (course2 == null) {
+        } else if (lecture2 instanceof ElectiveLecture) {
             // If only course2 is null, put it in the end
             return -1;
         } else {
+
+            Course course1 = ((MandatoryLecture) lecture1).getLectureCourse();
+            Course course2 = ((MandatoryLecture) lecture2).getLectureCourse();
 
             int semester1 = course1.getDisciplineSemester(lecture1.getLectureDiscipline());
             int semester2 = course2.getDisciplineSemester(lecture2.getLectureDiscipline());
