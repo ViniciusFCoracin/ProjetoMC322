@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import src.CourseRelated.Course;
-import src.CourseRelated.Disciplines.Discipline;
+import src.CourseRelated.Discipline;
 import src.CourseRelated.LectureRelated.Lecture;
 import src.GraphicInterface.Controllers.SelectionController;
 import src.Readers.CourseRelatedReaders.CoursesFileReader;

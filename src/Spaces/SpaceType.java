@@ -1,5 +1,8 @@
 package src.Spaces;
 
+/**
+ * Enum of the types of space
+ */
 public enum SpaceType {
     COURT,
     AUDITORIUM,

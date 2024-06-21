@@ -11,6 +11,14 @@ public enum HourOfClass {
     SevenPM_NinePM,
     NinePM_ElevenPM;
 
+    /**
+     * Compare two hours. Return a negative value if hour1 comes before hour2,
+     * zero if the hours are equal or a positive value if hour1 comes after hour2
+     * 
+     * @param hour1
+     * @param hour2
+     * @return
+     */
     public static int compare(HourOfClass hour1, HourOfClass hour2){
         int hour1Value = getNumericValue(hour1);
         int hour2value = getNumericValue(hour2);

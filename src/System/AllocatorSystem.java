@@ -1,13 +1,12 @@
 package src.System;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import src.CourseRelated.Course;
-import src.CourseRelated.Disciplines.Discipline;
+import src.CourseRelated.Discipline;
 import src.CourseRelated.LectureRelated.*;
 import src.Errors.*;
 import src.Spaces.Space;
@@ -36,6 +35,7 @@ public class AllocatorSystem {
         this.allDisciplines = allDisciplines;
         this.allSpaces = allSpaces;
 
+        // Sets the errors for each space type equals to zero and stores in a map
         this.errorsPerType = new HashMap<>();
         for (Space space : allSpaces){
             SpaceType spaceType = space.getSpaceType();
@@ -74,7 +74,7 @@ public class AllocatorSystem {
                 }
             }
         }
-        showOutput(allLectures);
+
         return allLectures;
     }
 
@@ -94,33 +94,5 @@ public class AllocatorSystem {
             return false;
         else
             return true;
-    }
-
-    /**
-     * Prints the allocation of schedules and places defined by the system.
-     * 
-     * @param allLectures: list of lectures, with schedules and places assigned. 
-     */
-    private void showOutput(List<Lecture> allLectures){
-        if (allLectures == null)
-            return;
-
-        Collections.sort(allLectures, new LectureComparator());
-        for (Lecture lecture : allLectures) {
-            if(lecture.getLectureDiscipline().getIsMandatory()){
-                MandatoryLecture mandatoryLecture = (MandatoryLecture) lecture;
-                String output = ("Lecture: " + mandatoryLecture.getLectureDiscipline().getDisciplineId() + ", Professor " + mandatoryLecture.getProfessor() + "\n" +
-                                 "Day: " + mandatoryLecture.getLectureSchedule().getDay() + ", " + mandatoryLecture.getLectureSchedule().getHourOfClass() + "\n" +
-                                 "Place: " + mandatoryLecture.getLectureSpace() + "\n" + "Group: " 
-                                 + mandatoryLecture.getLectureGroup() + "\n" + mandatoryLecture.getLectureCourse().getCourseName() + ", " + mandatoryLecture.getLectureCourse().getDisciplineSemester(lecture.getLectureDiscipline()) + " semester\n");
-                System.out.println(output);
-            } else {
-                String output = ("Lecture: " + lecture.getLectureDiscipline().getDisciplineId() + ", Professor " + lecture.getProfessor() + "\n" +
-                             "Day: " + lecture.getLectureSchedule().getDay() + ", " + lecture.getLectureSchedule().getHourOfClass() + "\n" +
-                             "Place: " + lecture.getLectureSpace() + "\n" + "Group: " 
-                             + lecture.getLectureGroup() +"\n");
-                System.out.println(output);
-            }
-        }
     }
 }

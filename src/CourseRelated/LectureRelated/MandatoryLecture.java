@@ -1,12 +1,14 @@
 package src.CourseRelated.LectureRelated;
 
 import src.CourseRelated.Course;
-import src.CourseRelated.Disciplines.Discipline;
+import src.CourseRelated.Discipline;
 import src.Schedule.LectureSchedule;
 import src.Spaces.Space;
 
+/**
+ * Class that represents a lecture of a mandatory class.
+ */
 public class MandatoryLecture extends Lecture{
-
     private Course course;
 
     public MandatoryLecture(Space space, Discipline discipline, LectureSchedule schedule, String professor, char group, Course lectureCourse){
