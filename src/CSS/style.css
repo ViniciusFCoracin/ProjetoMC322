@@ -1,4 +1,28 @@
 .selection-button {
+	-fx-pref-width: 110;
+	-fx-font-family: "Liberation Serif";
+	-fx-font-size: 15px;
+	-fx-background-radius: 16px;
+	-fx-border-radius: 15px;
+	-fx-border-color: #404040;
+	-fx-border-width: 2px;
+}
+
+.course-button {
+	-fx-pref-width: 250;
+	-fx-font-family: "Liberation Serif";
+	-fx-font-size: 17px;
+	-fx-background-radius: 16px;
+	-fx-border-radius: 15px;
+	-fx-border-color: #404040;
+	-fx-border-width: 2px;
+}
+
+.add-button {
+	-fx-background-color: #eeee8c;
+	-fx-pref-width: 300px;
+	-fx-font-family: "Liberation Serif";
+	-fx-font-size: 15px;
 	-fx-background-radius: 16px;
 	-fx-border-radius: 15px;
 	-fx-border-color: #404040;
