@@ -56,13 +56,13 @@ public class ScheduleController {
 	private List<String> allCourses;
 	private List<String> allSemesters;
 	private List<String> schedules;
+	private List<Lecture> selectedLectures;
 	private ObservableList<String> observableCoursesList;
 	private ObservableList<String> observableSemesterList;
 	private ObservableList<String> observableSchedulesList;
 	private String currentCourse;
 	private String currentSemester;
 	private String currentSchedule;
-	private List<Lecture> selectedLectures;
 	Font font = new Font("Liberation Serif", 20);
 	
 	@FXML
@@ -75,19 +75,9 @@ public class ScheduleController {
 	@FXML
 	public void loadSchedule() {
 		cleanSchedule();
-		currentCourse = coursesComboBox.getValue();
-		currentSemester = semesterComboBox.getValue();
-		invalidCourse.setText("");
-		invalidSemester.setText("");
 		
-		if (currentCourse == null || currentSemester == null) {
-		    if (currentCourse == null) 
-		        invalidCourse.setText("Please choose a course");
-
-		    if (currentSemester == null) 
-		        invalidSemester.setText("Please choose a semester");
-    
-		    return;
+		if(invalidOption()) {
+			return;
 		} else {
 			course.setText(currentCourse);
 			semester.setText("Semester: " + currentSemester);
@@ -124,24 +114,11 @@ public class ScheduleController {
 	
 	@FXML
 	private void saveSchedule() {
-		selectedLectures = new ArrayList<Lecture>();
-		currentCourse = coursesComboBox.getValue();
-		currentSemester = semesterComboBox.getValue();
-		currentSchedule = scheduleComboBox.getValue();
-		invalidCourse.setText("");
-		invalidSemester.setText("");
-		invalidSchedule.setText("");
-		
-		if ((currentSchedule == null || currentSchedule == "Current Schedule") && (currentCourse == null || currentSemester == null)) {
-		    if (currentCourse == null) 
-		        invalidCourse.setText("Please choose a course");
-
-		    if (currentSemester == null) 
-		        invalidSemester.setText("Please choose a semester");
-    
-		    return;
+		if(invalidOption()) {
+			return;
 		}
 		
+		selectedLectures = new ArrayList<Lecture>();
 		if(currentSchedule == null || currentSchedule == "Current Schedule" ) {
 			int currentSemesterInt = convertSemesterToNumber(currentSemester);
 			for(Lecture lecture : LectureSelector.getInstance().getAllLectures()) {
@@ -247,6 +224,27 @@ public class ScheduleController {
 		for(Label label : labels) {
 			label.setFont(font);
 		}
+	}
+	
+	private boolean invalidOption() {
+		currentCourse = coursesComboBox.getValue();
+		currentSemester = semesterComboBox.getValue();
+		currentSchedule = scheduleComboBox.getValue();
+		invalidCourse.setText("");
+		invalidSemester.setText("");
+		invalidSchedule.setText("");
+		
+		if ((currentSchedule == null || currentSchedule == "Current Schedule") && (currentCourse == null || currentSemester == null)) {
+		    if (currentCourse == null) 
+		        invalidCourse.setText("Please choose a course");
+
+		    if (currentSemester == null) 
+		        invalidSemester.setText("Please choose a semester");
+    
+		    return true;
+		}
+		
+		return false;
 	}
 	
 	private void saveSelectedLecturesToXML(File file) {
