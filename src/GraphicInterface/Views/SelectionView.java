@@ -9,7 +9,7 @@ public class SelectionView extends View{
 	private static SelectionView instance;
 	
 	private SelectionView() throws IOException {
-		super.setPrefWidth(1290);
+		super.setPrefWidth(1300);
 		super.setPrefHeight(910);
 	}
 	

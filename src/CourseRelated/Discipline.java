@@ -73,7 +73,7 @@ public class Discipline {
 
     /**
      * Calculates the discipline number of lectures in a week. Here,
-     * we supose that every discipline has an even number of credits,
+     * we suppose that every discipline has an even number of credits,
      * and each lecture has 2 hours of duration.
      * 
      * @return: the number of lectures in a week
