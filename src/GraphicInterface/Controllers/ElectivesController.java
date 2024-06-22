@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -42,7 +41,7 @@ public class ElectivesController {
 		sortLecturesByHourOfClass(electivesLectures);
 	}
 	
-	private void assignLectureToGrid(Lecture lecture) {
+	private void assignLectureToGrid(Lecture lecture, int i) {
 		WeekDay day = lecture.getLectureSchedule().getDay();
         int column = WeekDay.getNumericValue(day) - 1;
 
@@ -66,8 +65,7 @@ public class ElectivesController {
         VBox vBox = (VBox) ScheduleController.getNodeByRowColumnIndex(electivesGridPane, 1, column);
         vBox.getChildren().add(labelDisciplineId);
         
-        labelDisciplineId.getStyleClass().add("elective");
-        vBox.getStyleClass().add("electives-vbox");
+        labelDisciplineId.getStyleClass().addAll("elective");
         previewPaneVBox.setStyle("-fx-font-family: 'Liberation Serif'; -fx-font-size: 15; -fx-alignment: center; -fx-padding: 10;");
         previewPane.setStyle("-fx-background-color: lightgrey; -fx-border-color: black;");
 	}
@@ -91,7 +89,7 @@ public class ElectivesController {
 				int intHourOfClass =  HourOfClass.getNumericValue(hourOfClass);
 				
 				if(intHourOfClass == i) 
-					assignLectureToGrid(lecture);
+					assignLectureToGrid(lecture, i);
 			}
 		}
 	}	
