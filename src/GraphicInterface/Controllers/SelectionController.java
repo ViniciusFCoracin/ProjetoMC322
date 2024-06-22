@@ -8,9 +8,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import src.GraphicInterface.Views.ScheduleView;
 import src.GraphicInterface.Views.SelectionView;
 import src.System.LectureSelector;
@@ -103,4 +106,22 @@ public class SelectionController {
 			button.setUserData(false);
 		}
 	}	
+	
+	public static void errorStage(String message) {
+		Label label = new Label(message);
+		
+		VBox vbox = new VBox(10);
+		vbox.getChildren().addAll(label);
+		vbox.setStyle("-fx-font-family: 'Liberation Serif'; -fx-font-size: 20; -fx-alignment: center; -fx-padding: 10;");
+	
+		Scene scene = new Scene(vbox);
+		
+		Stage stage = new Stage();
+		stage.setTitle("Error message");
+		stage.setScene(scene);
+		stage.setMinWidth(430);
+		stage.setMaxHeight(150);
+		stage.centerOnScreen();
+		stage.show();
+	}
 }
