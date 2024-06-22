@@ -5,6 +5,9 @@ import java.util.Comparator;
 import src.CourseRelated.Course;
 import src.Schedule.LectureSchedule;
 
+/**
+ * Class responsible for compare Lecture objects
+ */
 public class LectureComparator implements Comparator<Lecture> {
     @Override
     public int compare(Lecture lecture1, Lecture lecture2){

@@ -1,6 +1,6 @@
 package src.CourseRelated.LectureRelated;
 
-import src.CourseRelated.Disciplines.Discipline;
+import src.CourseRelated.Discipline;
 import src.Schedule.LectureSchedule;
 import src.Spaces.Space;
 
