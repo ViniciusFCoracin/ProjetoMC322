@@ -1,5 +1,8 @@
 package src.Spaces;
 
+/**
+ * Enum of the institutes 
+ */
 public enum InstituteAbbr {
     CB,
     PB,

@@ -2,7 +2,6 @@ package src.CourseRelated;
 
 import java.util.List;
 
-import src.CourseRelated.Disciplines.Discipline;
 import src.Schedule.Shift;
 
 /**

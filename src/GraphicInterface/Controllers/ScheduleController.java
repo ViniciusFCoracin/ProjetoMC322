@@ -145,9 +145,8 @@ public class ScheduleController {
 		if(currentSchedule == null || currentSchedule == "Current Schedule" ) {
 			int currentSemesterInt = convertSemesterToNumber(currentSemester);
 			for(Lecture lecture : LectureSelector.getInstance().getAllLectures()) {
-				if(lecture instanceof MandatoryLecture) {
-					MandatoryLecture mandatoryLecture = (MandatoryLecture) lecture;
-					if(mandatoryLecture.getLectureCourse().getCourseName().equals(currentCourse) && mandatoryLecture.getLectureCourse().getDisciplineSemester(lecture.getLectureDiscipline()) == currentSemesterInt) 
+				if(lecture.getLectureDiscipline().getIsMandatory()) {
+					if(((MandatoryLecture)lecture).getLectureCourse().getCourseName().equals(currentCourse) && ((MandatoryLecture) lecture).getLectureCourse().getDisciplineSemester(lecture.getLectureDiscipline()) == currentSemesterInt) 
 						selectedLectures.add(lecture);
 				} 
 			}
@@ -280,6 +279,7 @@ public class ScheduleController {
 	private Element createLectureElement(Document document, Lecture lecture) {
 	    Element lectureElement = document.createElement("lecture");
 
+	    
 	    if(lecture instanceof MandatoryLecture && ((MandatoryLecture) lecture).getLectureCourse() != null) {
 	    	Element courseNameElement = document.createElement("courseName");
 	    	courseNameElement.appendChild(document.createTextNode(((MandatoryLecture) lecture).getLectureCourse().getCourseName()));
@@ -290,6 +290,7 @@ public class ScheduleController {
 	    disciplineIdElement.appendChild(document.createTextNode(lecture.getLectureDiscipline().getDisciplineId()));
 	    lectureElement.appendChild(disciplineIdElement);
 
+	    
 	    if(lecture instanceof MandatoryLecture && ((MandatoryLecture) lecture).getLectureCourse() != null) {
 	    	Element semesterElement = document.createElement("semester");
 		    semesterElement.appendChild(document.createTextNode(Integer.toString(((MandatoryLecture) lecture).getLectureCourse().getDisciplineSemester(lecture.getLectureDiscipline()))));

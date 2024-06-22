@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Random;
 
 import src.CourseRelated.Course;
+import src.CourseRelated.Discipline;
 import src.CourseRelated.Semester;
-import src.CourseRelated.Disciplines.Discipline;
 import src.CourseRelated.LectureRelated.ElectiveLecture;
 import src.CourseRelated.LectureRelated.Lecture;
 import src.CourseRelated.LectureRelated.MandatoryLecture;

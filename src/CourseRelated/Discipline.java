@@ -1,4 +1,4 @@
-package src.CourseRelated.Disciplines;
+package src.CourseRelated;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class Discipline {
     private List<SpaceType> requiredSpaces;
     private List<InstituteAbbr> possibleInstitutes;
     private List<String> professors;
-    boolean isMandatory;
+    private boolean isMandatory = false;
     private int counterGroups = 0;
     private int counterProfessors = 0;
 

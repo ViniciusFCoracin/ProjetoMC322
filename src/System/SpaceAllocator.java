@@ -12,7 +12,7 @@ import org.jgrapht.alg.interfaces.VertexColoringAlgorithm.Coloring;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
 
-import src.CourseRelated.Disciplines.Discipline;
+import src.CourseRelated.Discipline;
 import src.CourseRelated.LectureRelated.Lecture;
 import src.Errors.InsuficientSpacesError;
 import src.Errors.NoSpacesAvailableError;
@@ -61,12 +61,26 @@ public class SpaceAllocator {
         }
     }
     
+    /**
+     * Assign the spaces for the filtered lectures
+     * 
+     * @param spacesOfType: a list of the spaces of the type
+     * @param filteredLectures: list of lectures that requires that type of space
+     * @param type: the type of the space
+     * @return: a list of lectures, with spaces assigned
+     */
     private static List<Lecture> assignPlacesPerType(List<Space> spacesOfType, List<Lecture> filteredLectures, SpaceType type) {
         Graph<Lecture, DefaultEdge> lecturesGraph = createLecturesGraph(filteredLectures);
         Coloring<Lecture> coloring = coloringLecturesGraph(lecturesGraph);
         return assignPlacesOfType(spacesOfType, coloring, type);
     }
 
+    /**
+     * Create a graph, which vertices are lectures and the edges bounds lectures with same schedule
+     * 
+     * @param filteredLectures: list of filtered lectures
+     * @return: the graph created
+     */
     private static Graph<Lecture, DefaultEdge> createLecturesGraph(List<Lecture> filteredLectures){
         Graph<Lecture, DefaultEdge> graph = new SimpleGraph<>(DefaultEdge.class);
 
@@ -83,11 +97,27 @@ public class SpaceAllocator {
         return graph;
     }
 
+    /**
+     * Colors the graph, giving different colors to lectures that can't be in the same place
+     * 
+     * @param lecturesGraph: the graph of lectures
+     * @return: the coloring of the graph
+     */
     private static Coloring<Lecture> coloringLecturesGraph(Graph<Lecture, DefaultEdge> lecturesGraph) {
         GreedyColoring<Lecture, DefaultEdge> coloring = new GreedyColoring<>(lecturesGraph);
         return coloring.getColoring();
     }
 
+
+    /**
+     * Assign places to the lectures. If the spaces are insufficient or if there are no
+     * spaces of a type, an error is thrown.
+     * 
+     * @param spacesOfType: a list of the spaces of a specific type
+     * @param coloring: the coloring created for the graph
+     * @param type: the type of the spaces
+     * @return: a list of lectures, with places assigned.
+     */
     private static List<Lecture> assignPlacesOfType(List<Space> spacesOfType, Coloring<Lecture> coloring, SpaceType type) {
         if (spacesOfType.isEmpty())
             throw new NoSpacesAvailableError("No spaces of type " + type);
@@ -113,6 +143,12 @@ public class SpaceAllocator {
         return allLectures;
     }
 
+    /**
+     * Separate the lectures by required spaceType an stores in a hash map
+     * 
+     * @param spaceList: the list of lectures
+     * @return: the map with the lectures separated by required space type
+     */
     private static Map<SpaceType, List<Lecture>> separateLecturesBySpaceRequirement(List<Lecture> allLectures) {
         Map<SpaceType, List<Lecture>> separatedLectures = new HashMap<>();
         for (Lecture lecture : allLectures) {
@@ -122,6 +158,12 @@ public class SpaceAllocator {
         return separatedLectures;
     }
 
+    /**
+     * Separate the spaces by required spaceType and stores in a hash map
+     * 
+     * @param spaceList: the list of available spaces
+     * @return: the map with the spaces separated by type
+     */
     private static Map<SpaceType, List<Space>> separateSpacesByType(List<Space> spaceList) {
         Map<SpaceType, List<Space>> separatedSpaces = new HashMap<>();
         for (Space space : spaceList) {
@@ -131,6 +173,12 @@ public class SpaceAllocator {
         return separatedSpaces;
     }
 
+    /**
+     * Separate the spaces by institute and stores in a hash map
+     * 
+     * @param spaceList: the list of available spaces
+     * @return: the map with the spaces separated by institutes
+     */
     private static Map<InstituteAbbr, List<Space>> separateSpacesByInstitute(List<Space> spaceList) {
         Map<InstituteAbbr, List<Space>> separatedSpaces = new HashMap<>();
         for (Space space : spaceList) {
