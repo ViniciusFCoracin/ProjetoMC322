@@ -30,12 +30,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
-import javafx.stage.Stage;
 import src.CourseRelated.Course;
 import src.CourseRelated.LectureRelated.Lecture;
 import src.CourseRelated.LectureRelated.MandatoryLecture;
 import src.GraphicInterface.Views.ElectivesView;
-import src.GraphicInterface.Views.ScheduleView;
 import src.GraphicInterface.Views.SelectionView;
 import src.Schedule.HourOfClass;
 import src.Schedule.WeekDay;
@@ -65,7 +63,7 @@ public class ScheduleController {
 	private String currentSemester;
 	private String currentSchedule;
 	private List<Lecture> selectedLectures;
-	Font font = new Font("Liberation Serif", 15);
+	Font font = new Font("Liberation Serif", 20);
 	
 	@FXML
 	public void initialize() {
@@ -113,13 +111,15 @@ public class ScheduleController {
 	
 	@FXML
 	public void viewElectives() throws IOException {
-		ElectivesView.getInstance().closeStage();	
-		ElectivesView.getInstance().setScene("electives");
-		ElectivesView.getInstance().showStage();
+		ElectivesView electivesView = ElectivesView.getInstance();
+		electivesView.closeStage();	
+		electivesView.stagePrefSize();
+		electivesView.loadScene("electives");
+		electivesView.showStage();
 	}
 	
 	@FXML
-	public void goBack() {
+	public void goBack() throws IOException {
 		SelectionView.getInstance().showStage();
 	}
 	
@@ -279,41 +279,40 @@ public class ScheduleController {
 	}
 
 	private Element createLectureElement(Document document, Lecture lecture) {
-		MandatoryLecture mandatoryLecture = (MandatoryLecture) lecture;
 	    Element lectureElement = document.createElement("lecture");
-	    
-	    if(lecture.getLectureDiscipline().getIsMandatory() == true) {
+
+	    if(lecture instanceof MandatoryLecture && ((MandatoryLecture) lecture).getLectureCourse() != null) {
 	    	Element courseNameElement = document.createElement("courseName");
-	    	courseNameElement.appendChild(document.createTextNode(mandatoryLecture.getLectureCourse().getCourseName()));
+	    	courseNameElement.appendChild(document.createTextNode(((MandatoryLecture) lecture).getLectureCourse().getCourseName()));
 	    	lectureElement.appendChild(courseNameElement);
 	    }
-	    
+
 	    Element disciplineIdElement = document.createElement("disciplineId");
 	    disciplineIdElement.appendChild(document.createTextNode(lecture.getLectureDiscipline().getDisciplineId()));
 	    lectureElement.appendChild(disciplineIdElement);
-	    
-	    if(lecture.getLectureDiscipline().getIsMandatory() == true) {
+
+	    if(lecture instanceof MandatoryLecture && ((MandatoryLecture) lecture).getLectureCourse() != null) {
 	    	Element semesterElement = document.createElement("semester");
-		    semesterElement.appendChild(document.createTextNode(Integer.toString(mandatoryLecture.getLectureCourse().getDisciplineSemester(lecture.getLectureDiscipline()))));
+		    semesterElement.appendChild(document.createTextNode(Integer.toString(((MandatoryLecture) lecture).getLectureCourse().getDisciplineSemester(lecture.getLectureDiscipline()))));
 		    lectureElement.appendChild(semesterElement);
 	    }
-	    
+
 	    Element professorElement = document.createElement("professor");
 	    professorElement.appendChild(document.createTextNode(lecture.getProfessor()));
 	    lectureElement.appendChild(professorElement);
-
+	    
 	    Element weekDayElement = document.createElement("weekDay");
 	    weekDayElement.appendChild(document.createTextNode(lecture.getLectureSchedule().getDay().name()));
 	    lectureElement.appendChild(weekDayElement);
-
+	    
 	    Element hourOfClassElement = document.createElement("hourOfClass");
 	    hourOfClassElement.appendChild(document.createTextNode(lecture.getLectureSchedule().getHourOfClass().name()));
 	    lectureElement.appendChild(hourOfClassElement);
-
+	    
 	    Element placeElement = document.createElement("place");
 	    placeElement.appendChild(document.createTextNode(lecture.getLectureSpace().getSpaceID()));
 	    lectureElement.appendChild(placeElement);
-
+	    
 	    Element groupElement = document.createElement("group");
 	    groupElement.appendChild(document.createTextNode(Character.toString(lecture.getLectureGroup())));
 	    lectureElement.appendChild(groupElement);
@@ -321,7 +320,7 @@ public class ScheduleController {
 	    Element creditsElement = document.createElement("credits");
 	    creditsElement.appendChild(document.createTextNode(Integer.toString(lecture.getLectureDiscipline().getDisciplineCredits())));
 	    lectureElement.appendChild(creditsElement);
-
+	    
 	    return lectureElement;
 	}
 }
