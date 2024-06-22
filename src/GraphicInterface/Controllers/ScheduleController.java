@@ -34,7 +34,6 @@ import src.CourseRelated.Course;
 import src.CourseRelated.LectureRelated.Lecture;
 import src.CourseRelated.LectureRelated.MandatoryLecture;
 import src.GraphicInterface.Views.ElectivesView;
-import src.GraphicInterface.Views.ScheduleView;
 import src.GraphicInterface.Views.SelectionView;
 import src.Schedule.HourOfClass;
 import src.Schedule.WeekDay;
@@ -57,14 +56,14 @@ public class ScheduleController {
 	private List<String> allCourses;
 	private List<String> allSemesters;
 	private List<String> schedules;
+	private List<Lecture> selectedLectures;
 	private ObservableList<String> observableCoursesList;
 	private ObservableList<String> observableSemesterList;
 	private ObservableList<String> observableSchedulesList;
 	private String currentCourse;
 	private String currentSemester;
 	private String currentSchedule;
-	private List<Lecture> selectedLectures;
-	Font font = new Font("Liberation Serif", 15);
+	Font font = new Font("Liberation Serif", 20);
 	
 	@FXML
 	public void initialize() {
@@ -76,19 +75,9 @@ public class ScheduleController {
 	@FXML
 	public void loadSchedule() {
 		cleanSchedule();
-		currentCourse = coursesComboBox.getValue();
-		currentSemester = semesterComboBox.getValue();
-		invalidCourse.setText("");
-		invalidSemester.setText("");
 		
-		if (currentCourse == null || currentSemester == null) {
-		    if (currentCourse == null) 
-		        invalidCourse.setText("Please choose a course");
-
-		    if (currentSemester == null) 
-		        invalidSemester.setText("Please choose a semester");
-    
-		    return;
+		if(invalidOption()) {
+			return;
 		} else {
 			course.setText(currentCourse);
 			semester.setText("Semester: " + currentSemester);
@@ -112,36 +101,24 @@ public class ScheduleController {
 	
 	@FXML
 	public void viewElectives() throws IOException {
-		ElectivesView.getInstance().closeStage();
-		ElectivesView.getInstance().openStage("electives");
+		ElectivesView electivesView = ElectivesView.getInstance();
+		electivesView.closeStage();	
+		electivesView.loadScene("electives");
+		electivesView.showStage();
 	}
 	
 	@FXML
-	public void goBack() {
-		ScheduleView.getInstance().closeStage();;
+	public void goBack() throws IOException {
 		SelectionView.getInstance().showStage();
 	}
 	
 	@FXML
 	private void saveSchedule() {
-		selectedLectures = new ArrayList<Lecture>();
-		currentCourse = coursesComboBox.getValue();
-		currentSemester = semesterComboBox.getValue();
-		currentSchedule = scheduleComboBox.getValue();
-		invalidCourse.setText("");
-		invalidSemester.setText("");
-		invalidSchedule.setText("");
-		
-		if ((currentSchedule == null || currentSchedule == "Current Schedule") && (currentCourse == null || currentSemester == null)) {
-		    if (currentCourse == null) 
-		        invalidCourse.setText("Please choose a course");
-
-		    if (currentSemester == null) 
-		        invalidSemester.setText("Please choose a semester");
-    
-		    return;
+		if(invalidOption()) {
+			return;
 		}
 		
+		selectedLectures = new ArrayList<Lecture>();
 		if(currentSchedule == null || currentSchedule == "Current Schedule" ) {
 			int currentSemesterInt = convertSemesterToNumber(currentSemester);
 			for(Lecture lecture : LectureSelector.getInstance().getAllLectures()) {
@@ -249,6 +226,27 @@ public class ScheduleController {
 		}
 	}
 	
+	private boolean invalidOption() {
+		currentCourse = coursesComboBox.getValue();
+		currentSemester = semesterComboBox.getValue();
+		currentSchedule = scheduleComboBox.getValue();
+		invalidCourse.setText("");
+		invalidSemester.setText("");
+		invalidSchedule.setText("");
+		
+		if ((currentSchedule == null || currentSchedule == "Current Schedule") && (currentCourse == null || currentSemester == null)) {
+		    if (currentCourse == null) 
+		        invalidCourse.setText("Please choose a course");
+
+		    if (currentSemester == null) 
+		        invalidSemester.setText("Please choose a semester");
+    
+		    return true;
+		}
+		
+		return false;
+	}
+	
 	private void saveSelectedLecturesToXML(File file) {
 		try {
 	        DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
@@ -278,39 +276,41 @@ public class ScheduleController {
 
 	private Element createLectureElement(Document document, Lecture lecture) {
 	    Element lectureElement = document.createElement("lecture");
+
 	    
 	    if(lecture instanceof MandatoryLecture && ((MandatoryLecture) lecture).getLectureCourse() != null) {
 	    	Element courseNameElement = document.createElement("courseName");
 	    	courseNameElement.appendChild(document.createTextNode(((MandatoryLecture) lecture).getLectureCourse().getCourseName()));
 	    	lectureElement.appendChild(courseNameElement);
 	    }
-	    
+
 	    Element disciplineIdElement = document.createElement("disciplineId");
 	    disciplineIdElement.appendChild(document.createTextNode(lecture.getLectureDiscipline().getDisciplineId()));
 	    lectureElement.appendChild(disciplineIdElement);
+
 	    
 	    if(lecture instanceof MandatoryLecture && ((MandatoryLecture) lecture).getLectureCourse() != null) {
 	    	Element semesterElement = document.createElement("semester");
 		    semesterElement.appendChild(document.createTextNode(Integer.toString(((MandatoryLecture) lecture).getLectureCourse().getDisciplineSemester(lecture.getLectureDiscipline()))));
 		    lectureElement.appendChild(semesterElement);
 	    }
-	    
+
 	    Element professorElement = document.createElement("professor");
 	    professorElement.appendChild(document.createTextNode(lecture.getProfessor()));
 	    lectureElement.appendChild(professorElement);
-
+	    
 	    Element weekDayElement = document.createElement("weekDay");
 	    weekDayElement.appendChild(document.createTextNode(lecture.getLectureSchedule().getDay().name()));
 	    lectureElement.appendChild(weekDayElement);
-
+	    
 	    Element hourOfClassElement = document.createElement("hourOfClass");
 	    hourOfClassElement.appendChild(document.createTextNode(lecture.getLectureSchedule().getHourOfClass().name()));
 	    lectureElement.appendChild(hourOfClassElement);
-
+	    
 	    Element placeElement = document.createElement("place");
 	    placeElement.appendChild(document.createTextNode(lecture.getLectureSpace().getSpaceID()));
 	    lectureElement.appendChild(placeElement);
-
+	    
 	    Element groupElement = document.createElement("group");
 	    groupElement.appendChild(document.createTextNode(Character.toString(lecture.getLectureGroup())));
 	    lectureElement.appendChild(groupElement);
@@ -318,7 +318,7 @@ public class ScheduleController {
 	    Element creditsElement = document.createElement("credits");
 	    creditsElement.appendChild(document.createTextNode(Integer.toString(lecture.getLectureDiscipline().getDisciplineCredits())));
 	    lectureElement.appendChild(creditsElement);
-
+	    
 	    return lectureElement;
 	}
 }

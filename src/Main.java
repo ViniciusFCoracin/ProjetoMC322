@@ -1,7 +1,10 @@
 package src;
 
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
+import src.GraphicInterface.Views.ScheduleView;
 import src.GraphicInterface.Views.SelectionView;
 
 
@@ -15,7 +18,10 @@ public class Main extends Application {
     }
 
     @Override
-	public void start(Stage stage) throws Exception {
-		SelectionView.getInstance().openStage("selection");
+	public void start(Stage stage) throws IOException {
+    	SelectionView selectionView = SelectionView.getInstance();
+    	selectionView.setStage(stage);
+    	selectionView.loadScene("selection");
+		selectionView.showStage();
 	}
 }

@@ -12,100 +12,115 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.GraphicInterface.Controllers.ScheduleController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.GraphicInterface.Controllers.ScheduleController">
    <children>
-      <GridPane maxHeight="1.7976931348623157E308" maxWidth="250.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="170.0" styleClass="option-gridpane" HBox.hgrow="ALWAYS">
-         <columnConstraints>
-            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="279.0" minHeight="135.0" prefHeight="253.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="256.0" minHeight="77.0" prefHeight="103.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="236.0" minHeight="141.0" prefHeight="143.0" valignment="CENTER" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="103.0" minHeight="64.0" prefHeight="101.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <VBox alignment="CENTER_LEFT" prefHeight="228.0" prefWidth="179.0">
+      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minWidth="200.0" prefHeight="888.0" prefWidth="320.0" vbarPolicy="NEVER" HBox.hgrow="ALWAYS">
+         <content>
+            <GridPane maxHeight="1.7976931348623157E308" prefHeight="888.0" prefWidth="320.0" styleClass="option-gridpane">
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="520.0" minHeight="440.0" prefHeight="440.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="209.0" minHeight="111.0" prefHeight="111.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="305.0" minHeight="219.0" prefHeight="305.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints vgrow="SOMETIMES" />
+               </rowConstraints>
                <children>
-                  <Label fx:id="invalidCourse" prefHeight="20.0" textFill="#dd0d0d">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                     <font>
-                        <Font name="Liberation Serif" size="15.0" />
-                     </font>
-                  </Label>
-                  <ComboBox fx:id="coursesComboBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="35.0" promptText="Course" styleClass="combo-box" />
-                  <Label fx:id="invalidSemester" contentDisplay="RIGHT" prefHeight="20.0" textFill="#dd0d0d">
-                     <font>
-                        <Font name="Liberation Serif" size="15.0" />
-                     </font>
-                  </Label>
-                  <ComboBox fx:id="semesterComboBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" prefHeight="35.0" promptText="Semester" styleClass="combo-box">
-                     <VBox.margin>
-                        <Insets bottom="20.0" />
-                     </VBox.margin></ComboBox>
-                  <Button maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" onAction="#loadSchedule" prefHeight="35.0" prefWidth="171.0" text="Load Schedule">
-                     <font>
-                        <Font name="Liberation Serif" size="17.0" />
-                     </font></Button>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#rebuildSchedule" prefHeight="35.0" prefWidth="171.0" text="Rebuild Schedule">
-                     <font>
-                        <Font name="Liberation Serif" size="17.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin></Button>
+                  <VBox alignment="CENTER_LEFT" prefHeight="382.0" prefWidth="345.0">
+                     <children>
+                        <Label fx:id="invalidCourse" prefHeight="20.0" textFill="#dd0d0d">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Liberation Serif" size="15.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="coursesComboBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="35.0" promptText="Course" styleClass="combo-box">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </ComboBox>
+                        <Label fx:id="invalidSemester" contentDisplay="RIGHT" prefHeight="20.0" textFill="#dd0d0d">
+                           <font>
+                              <Font name="Liberation Serif" size="15.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="semesterComboBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" prefHeight="35.0" promptText="Semester" styleClass="combo-box">
+                           <VBox.margin>
+                              <Insets bottom="40.0" />
+                           </VBox.margin>
+                        </ComboBox>
+                        <Button maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" onAction="#loadSchedule" prefHeight="35.0" prefWidth="171.0" text="Load Schedule">
+                           <font>
+                              <Font name="Liberation Serif" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#rebuildSchedule" prefHeight="35.0" prefWidth="171.0" text="Rebuild Schedule">
+                           <font>
+                              <Font name="Liberation Serif" size="17.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <VBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <children>
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#viewElectives" prefHeight="35.0" text="Electives">
+                           <font>
+                              <Font name="Liberation Serif" size="17.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <VBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <children>
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBack" prefHeight="40.0" prefWidth="174.0" text="Go Back">
+                           <font>
+                              <Font name="Liberation Serif" size="17.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <VBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <children>
+                        <Label fx:id="invalidSchedule" prefHeight="20.0" textFill="#dd0d0d">
+                           <font>
+                              <Font name="Liberation Serif" size="15.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="scheduleComboBox" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="35.0" prefWidth="179.0" promptText="Current Schedule" styleClass="combo-box">
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </ComboBox>
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#saveSchedule" prefHeight="35.0" prefWidth="177.0" text="Save ">
+                           <font>
+                              <Font name="Liberation Serif" size="17.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
                </children>
-            </VBox>
-            <VBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-               <children>
-                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#viewElectives" prefHeight="35.0" text="Electives">
-                     <font>
-                        <Font name="Liberation Serif" size="17.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Button>
-               </children>
-            </VBox>
-            <VBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-               <children>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBack" prefHeight="35.0" prefWidth="174.0" text="Go Back">
-                     <font>
-                        <Font name="Liberation Serif" size="17.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="20.0" />
-                     </VBox.margin></Button>
-               </children>
-            </VBox>
-            <VBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-               <children>
-                  <Label fx:id="invalidSchedule" prefHeight="20.0" textFill="#dd0d0d">
-                     <font>
-                        <Font name="Liberation Serif" size="15.0" />
-                     </font>
-                  </Label>
-                  <ComboBox fx:id="scheduleComboBox" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="35.0" prefWidth="179.0" promptText="Current Schedule" styleClass="combo-box">
-                     <VBox.margin>
-                        <Insets bottom="20.0" />
-                     </VBox.margin>
-                  </ComboBox>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#saveSchedule" prefHeight="35.0" prefWidth="177.0" text="Save ">
-                     <font>
-                        <Font name="Liberation Serif" size="17.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="20.0" />
-                     </VBox.margin>
-                  </Button>
-               </children>
-            </VBox>
-         </children>
-      </GridPane>
-      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="NEVER" HBox.hgrow="ALWAYS">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </GridPane>
+         </content>
+      </ScrollPane>
+      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="1080.0" prefWidth="1550.0" vbarPolicy="NEVER" HBox.hgrow="ALWAYS">
          <content>
             <GridPane fx:id="scheduleGridPane" gridLinesVisible="true" minHeight="-Infinity" minWidth="-Infinity">
               <columnConstraints>
