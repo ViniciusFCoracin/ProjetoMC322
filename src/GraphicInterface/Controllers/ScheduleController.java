@@ -113,7 +113,6 @@ public class ScheduleController {
 	public void viewElectives() throws IOException {
 		ElectivesView electivesView = ElectivesView.getInstance();
 		electivesView.closeStage();	
-		electivesView.stagePrefSize();
 		electivesView.loadScene("electives");
 		electivesView.showStage();
 	}

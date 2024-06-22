@@ -62,9 +62,11 @@ public class SelectionController {
 	@FXML
 	public void submit(ActionEvent e) throws IOException {
 		LectureSelector.getInstance().loadAndFilterResources();
-		ScheduleView.getInstance().setStage(SelectionView.getInstance().getStage());
-		ScheduleView.getInstance().setScene("schedule");
-		ScheduleView.getInstance().showStage();
+
+		ScheduleView scheduleView = ScheduleView.getInstance();
+		scheduleView.setStage(SelectionView.getInstance().getStage());
+		scheduleView.loadScene("schedule");
+		scheduleView.showStage();
 	}
 	
 	public static List<String> getRemovedCourses() {
