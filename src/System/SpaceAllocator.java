@@ -14,7 +14,7 @@ import org.jgrapht.graph.SimpleGraph;
 
 import src.CourseRelated.Discipline;
 import src.CourseRelated.LectureRelated.Lecture;
-import src.Errors.InsuficientSpacesError;
+import src.Errors.InsufficientSpacesError;
 import src.Errors.NoSpacesAvailableError;
 import src.Spaces.InstituteAbbr;
 import src.Spaces.Space;
@@ -132,7 +132,7 @@ public class SpaceAllocator {
             Integer color = entry.getValue();
 
             if (color >= spacesOfType.size())
-                throw new InsuficientSpacesError("Insufficent spaces of type " + spacesOfType.get(0).getSpaceType());
+                throw new InsufficientSpacesError("Insufficent spaces of type " + spacesOfType.get(0).getSpaceType());
 
             Space space = mapColorSpace.get(color);
             lecture.setLectureSpace(space);

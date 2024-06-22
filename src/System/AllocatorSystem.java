@@ -9,6 +9,7 @@ import src.CourseRelated.Course;
 import src.CourseRelated.Discipline;
 import src.CourseRelated.LectureRelated.*;
 import src.Errors.*;
+import src.GraphicInterface.Controllers.SelectionController;
 import src.Spaces.Space;
 import src.Spaces.SpaceType;
 
@@ -58,7 +59,7 @@ public class AllocatorSystem {
                 SpaceAllocator.assignPlaces(allSpaces, allLectures);
                 mustContinue = false;
             }
-            catch (InsuficientSpacesError e){
+            catch (InsufficientSpacesError e){
                 Pattern INSUFFICIENT_SPACES = Pattern.compile("Insufficent spaces of type (.+)");
                 Matcher matcher1 = INSUFFICIENT_SPACES.matcher(e.getMessage());
                 if (matcher1.find()){
@@ -89,9 +90,10 @@ public class AllocatorSystem {
     private boolean continueTheLoop(SpaceType spaceType){
         int errorsInThisType = this.errorsPerType.get(spaceType);
         errorsPerType.put(spaceType, ++errorsInThisType);
-
-        if (errorsInThisType >= this.MAX_NUMBER_OF_TRIES)
+        if (errorsInThisType >= this.MAX_NUMBER_OF_TRIES) {
+        	SelectionController.errorStage("Insufficient Spaces: please try to add more spaces");
             return false;
+        }
         else
             return true;
     }
