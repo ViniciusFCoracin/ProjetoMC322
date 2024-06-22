@@ -2,7 +2,8 @@
 	-fx-background-radius: 16px;
 	-fx-border-radius: 15px;
 	-fx-border-color: #404040;
-	-fx-border-width: 2px;
+	-fx-border-width: 1px;
+	-fx-background-color:  #f4f4f4
 }
 
 .removed {
@@ -31,9 +32,18 @@
 }
 
 .elective {
-	-fx-pref-height: 20;
+	-fx-font-size: 15;
+	-fx-pref-height: 30;
+	-fx-pref-width: 100;	
+	-fx-border-color: black;
+	-fx-font-family: "Liberation Serif";
+	-fx-border-color: #404040;
+    -fx-border-radius: 16px; 
+    -fx-background-radius: 15px;
+    -fx-border-width: 1px; 
 }
 
 .option-gridpane {
 	-fx-background-color: #e6e6e6;
 }
+
