@@ -24,7 +24,9 @@ public class LectureSelector {
     private List<Lecture> allLectures;
     private List<Course> allCourses;
     private List<Space> allSpaces;
+    private List<Space> addedSpaces = new ArrayList<>();
     private List<Discipline> allDisciplines;
+    private List<Discipline> addedDisciplines = new ArrayList<>();
 
     private LectureSelector() {
         // does nothing, but we need this to be private
@@ -52,18 +54,18 @@ public class LectureSelector {
     public void addSpace(Space space) {
         if (allSpaces == null)
             allSpaces = new ArrayList<>();
-        allSpaces.add(space);
+        addedSpaces.add(space);
     }
 
     public void addDiscipline(Discipline discipline) {
         if (allDisciplines == null)
             allDisciplines = new ArrayList<>();
-        allDisciplines.add(discipline);
+        addedDisciplines.add(discipline);
     }
 
     /**
      * Generates the lists of all available
-     * courses, spaces, disciplines and lectures. 
+     * courses, spaces, disciplines and lectures.
      */
     public void filterResourcesAndAllocate() {
         filterResources();
@@ -77,8 +79,12 @@ public class LectureSelector {
      */
     public void readAllResources() {
         allCourses = CoursesFileReader.getInstance().readFile("src/XML/courses.xml");
+
         allSpaces = SpacesFileReader.getInstance().readFile("src/XML/spaces.xml");
+        allSpaces.addAll(addedSpaces);
+
         allDisciplines = DisciplinesFileReader.getInstance().readFile("src/XML/disciplines.xml");
+        allDisciplines.addAll(addedDisciplines);
     }
 
     /**
@@ -96,7 +102,7 @@ public class LectureSelector {
      * @return: the courses that were not removed
      */
     private List<Course> removeSelectedCourses(List<String> selectedCourses) {
-        List<String> resultList = new ArrayList<String>();
+        List<String> resultList = new ArrayList<>();
         for (String item : selectedCourses) {
             String[] parts = item.split(" - ", 2);
             if (parts.length > 1) {
@@ -120,12 +126,7 @@ public class LectureSelector {
      * @return: the spaces that were not removed
      */
     private List<Space> removeSelectedSpaces(List<String> selectedSpaces) {
-        Iterator<Space> iterator = allSpaces.iterator();
-        while (iterator.hasNext()) {
-            Space space = iterator.next();
-            if (selectedSpaces.contains(space.getSpaceID()))
-                iterator.remove();
-        }
+        allSpaces.removeIf(space -> selectedSpaces.contains(space.getSpaceID()));
         return allSpaces;
     }
 
@@ -135,12 +136,7 @@ public class LectureSelector {
      * @return: the elective disciplines that were not removed
      */
     private List<Discipline> removeSelectedElectives(List<String> selectedElectives) {
-        Iterator<Discipline> iterator = allDisciplines.iterator();
-        while (iterator.hasNext()) {
-            Discipline discipline = iterator.next();
-            if (selectedElectives.contains(discipline.getDisciplineId()))
-                iterator.remove();
-        }
+        allDisciplines.removeIf(discipline -> selectedElectives.contains(discipline.getDisciplineId()));
         return allDisciplines;
     }
 }

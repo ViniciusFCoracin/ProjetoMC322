@@ -14,7 +14,7 @@ import src.Readers.XMLFileReader;
 
 
 /**
- * Singleton class that reads a XML file of courses
+ * Singleton class that reads an XML file of courses
  */
 public class CoursesFileReader implements XMLFileReader {
     private static CoursesFileReader instance;

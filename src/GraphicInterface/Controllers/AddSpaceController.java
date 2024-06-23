@@ -48,51 +48,31 @@ public class AddSpaceController {
     }
 
     private SpaceType parseSpaceType(String typeString){
-        SpaceType type = null;
-        if (typeString.equals("basicRoom"))
-            type = SpaceType.BASIC_ROOM;
-        else if (typeString.equals("slidesRoom"))
-            type = SpaceType.SLIDES_ROOM;
-        else if (typeString.equals("computerRoom"))
-            type = SpaceType.COMPUTER_ROOM;
-        else if (typeString.equals("physicsLaboratory"))
-            type = SpaceType.PHYSICS_LABORATORY;
-        else if (typeString.equals("chemistryLaboratory"))
-            type = SpaceType.CHEMISTRY_LABORATORY;
-        else if (typeString.equals("auditorium"))
-            type = SpaceType.AUDITORIUM;
-        else if (typeString.equals("court"))
-            type = SpaceType.COURT;
-        else if (typeString.equals("eletronicsLaboratory"))
-            type = SpaceType.ELETRONICS_LABORATORY;
-        else
-            throw new Error("Invalid space type");
-        return type;
+        return switch (typeString) {
+            case "basicRoom" -> SpaceType.BASIC_ROOM;
+            case "slidesRoom" -> SpaceType.SLIDES_ROOM;
+            case "computerRoom" -> SpaceType.COMPUTER_ROOM;
+            case "physicsLaboratory" -> SpaceType.PHYSICS_LABORATORY;
+            case "chemistryLaboratory" -> SpaceType.CHEMISTRY_LABORATORY;
+            case "auditorium" -> SpaceType.AUDITORIUM;
+            case "court" -> SpaceType.COURT;
+            case "eletronicsLaboratory" -> SpaceType.ELETRONICS_LABORATORY;
+            default -> throw new Error("Invalid space type");
+        };
     }
 
     private InstituteAbbr parseInstitute(String instituteString){
-        InstituteAbbr institute = null;
-        if (instituteString.equals("CB"))
-            institute = InstituteAbbr.CB;
-        else if (instituteString.equals("PB"))
-            institute = InstituteAbbr.PB;
-        else if (instituteString.equals("IC"))
-            institute = InstituteAbbr.IC;
-        else if (instituteString.equals("FEEC"))
-            institute = InstituteAbbr.FEEC;
-        else if (instituteString.equals("IMECC"))
-            institute = InstituteAbbr.IMECC;
-        else if (instituteString.equals("IFGW"))
-            institute = InstituteAbbr.IFGW;
-        else if (instituteString.equals("IEL"))
-            institute = InstituteAbbr.IEL;
-        else if (instituteString.equals("FEF"))
-            institute = InstituteAbbr.FEF;
-        else if (instituteString.equals("IE"))
-            institute = InstituteAbbr.IE;
-        else
-            throw new Error("Invalid institute");
-
-        return institute;
+        return switch (instituteString) {
+            case "CB" -> InstituteAbbr.CB;
+            case "PB" -> InstituteAbbr.PB;
+            case "IC" -> InstituteAbbr.IC;
+            case "FEEC" -> InstituteAbbr.FEEC;
+            case "IMECC" -> InstituteAbbr.IMECC;
+            case "IFGW" -> InstituteAbbr.IFGW;
+            case "IEL" -> InstituteAbbr.IEL;
+            case "FEF" -> InstituteAbbr.FEF;
+            case "IE" -> InstituteAbbr.IE;
+            default -> throw new Error("Invalid institute");
+        };
     }
 }

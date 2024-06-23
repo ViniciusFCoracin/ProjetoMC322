@@ -30,8 +30,7 @@
 	-fx-background-color:  #f3e95f
 }
 
-.selection-button:hover,
-.selection-button:focus {
+.selection-button:hover {
 	-fx-border-color: #666666;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 2, 0, 0, 0);
 }
@@ -47,8 +46,7 @@
     -fx-alignment: center;
 }
 
-.submit:hover,
-.submit:focus {
+.submit:hover {
 	-fx-background-color:  #d9d9d9;
 }
 
@@ -83,13 +81,13 @@
 .elective {
 	-fx-font-size: 15;
 	-fx-pref-height: 30;
-	-fx-pref-width: 100;	
+	-fx-pref-width: 100;
 	-fx-border-color: black;
 	-fx-font-family: "Liberation Serif";
 	-fx-border-color: #404040;
-    -fx-border-radius: 16px; 
+    -fx-border-radius: 16px;
     -fx-background-radius: 15px;
-    -fx-border-width: 1px; 
+    -fx-border-width: 1px;
 }
 
 .option-gridpane {
@@ -106,8 +104,7 @@
     -fx-font-family: "Liberation Serif";
 }
 
-.schedule-button:hover,
-.schedule-button:focus {
+.schedule-button:hover {
 	-fx-border-color: #666666;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 2, 0, 0, 0);
 }

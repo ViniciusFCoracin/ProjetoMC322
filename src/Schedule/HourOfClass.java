@@ -26,22 +26,15 @@ public enum HourOfClass {
     }
 
     public static int getNumericValue(HourOfClass hour){
-        switch (hour){
-            case EigthAM_TenAM:
-                return 1;
-            case TenAM_Midday:
-                return 2;
-            case TwoPM_FourPM:
-                return 3;
-            case FourPM_SixPM:
-                return 4;
-            case SevenPM_NinePM:
-                return 5;
-            case NinePM_ElevenPM:
-                return 6;
-            default:
-                throw new Error("Indefinite hour of class");
-        }
+        return switch (hour) {
+            case EigthAM_TenAM -> 1;
+            case TenAM_Midday -> 2;
+            case TwoPM_FourPM -> 3;
+            case FourPM_SixPM -> 4;
+            case SevenPM_NinePM -> 5;
+            case NinePM_ElevenPM -> 6;
+            default -> throw new Error("Indefinite hour of class");
+        };
     }
 
     public static HourOfClass get(int index) {

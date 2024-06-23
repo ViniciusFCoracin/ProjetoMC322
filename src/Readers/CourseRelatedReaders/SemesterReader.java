@@ -37,7 +37,7 @@ public class SemesterReader implements XMLNodeReader {
                     throw new Error("Atributo inválido");
                 }
             }
-            if (period != 0 && disciplineIds.size() != 0)
+            if (period != 0 && !disciplineIds.isEmpty())
                 semester = new Semester(period, disciplineIds);
             else
                 throw new Error("Atributo faltando");

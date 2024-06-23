@@ -12,14 +12,17 @@ import src.GraphicInterface.Views.SelectionView;
  */
 public class Main extends Application {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         Application.launch(args);
     }
 
     @Override
 	public void start(Stage stage) throws IOException {
     	SelectionView selectionView = SelectionView.getInstance();
-    	selectionView.setStage(stage);
+		selectionView.setStage(stage);
+		selectionView.stagePrefSize();
+		stage.centerOnScreen();
+		stage.setMaximized(true);
     	selectionView.loadScene("selection");
 		selectionView.showStage();
 	}

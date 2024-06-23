@@ -25,7 +25,7 @@ public class Discipline {
      * @param disciplineName: the name of the discipline
      * @param id: the id of the discipline
      * @param credits: the number of credits of the discipline
-     * @param requiredSpace: list of the required type of spaces
+     * @param requiredSpaces: list of the required type of spaces
      * @param institutes: list of the possible institutes for the discipline occur
      * @param professors: list of the discipline professors
      */

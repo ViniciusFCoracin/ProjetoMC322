@@ -146,7 +146,7 @@
         </GridPane>
         <HBox alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="74.0" prefWidth="1004.0">
             <children>
-                <Button fx:id="submitButton" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#submit" styleClass="submit" text="Submit" HBox.hgrow="ALWAYS">
+                <Button alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#submit" styleClass="submit" text="Submit" HBox.hgrow="ALWAYS">
                 <cursor>
                     <Cursor fx:constant="DEFAULT" />
                 </cursor>

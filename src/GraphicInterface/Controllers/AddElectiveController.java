@@ -1,6 +1,7 @@
 package src.GraphicInterface.Controllers;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import javafx.fxml.FXML;
@@ -46,9 +47,9 @@ public class AddElectiveController {
         String id = idField.getText();
         int credits = Integer.parseInt(creditsField.getText());
         SpaceType spaceType = parseSpaceType(locationTypeField.getText());
-        List<SpaceType> types = Arrays.asList(spaceType);
+        List<SpaceType> types = Collections.singletonList(spaceType);
         InstituteAbbr institute = parseInstitute(instituteField.getText());
-        List<InstituteAbbr> institutes = Arrays.asList(institute);
+        List<InstituteAbbr> institutes = Collections.singletonList(institute);
         List<String> professors = Arrays.asList(professorsField.getText().split(","));
 
         electiveDiscipline = new Discipline(name, id, credits, types, institutes, professors);
@@ -63,50 +64,31 @@ public class AddElectiveController {
     }
 
     private SpaceType parseSpaceType(String typeString){
-        switch (typeString) {
-            case "basicRoom":
-                return SpaceType.BASIC_ROOM;
-            case "slidesRoom":
-                return SpaceType.SLIDES_ROOM;
-            case "computerRoom":
-                return SpaceType.COMPUTER_ROOM;
-            case "physicsLaboratory":
-                return SpaceType.PHYSICS_LABORATORY;
-            case "chemistryLaboratory":
-                return SpaceType.CHEMISTRY_LABORATORY;
-            case "auditorium":
-                return SpaceType.AUDITORIUM;
-            case "court":
-                return SpaceType.COURT;
-            case "eletronicsLaboratory":
-                return SpaceType.ELETRONICS_LABORATORY;
-            default:
-                throw new IllegalArgumentException("Invalid space type");
-        }
+        return switch (typeString) {
+            case "basicRoom" -> SpaceType.BASIC_ROOM;
+            case "slidesRoom" -> SpaceType.SLIDES_ROOM;
+            case "computerRoom" -> SpaceType.COMPUTER_ROOM;
+            case "physicsLaboratory" -> SpaceType.PHYSICS_LABORATORY;
+            case "chemistryLaboratory" -> SpaceType.CHEMISTRY_LABORATORY;
+            case "auditorium" -> SpaceType.AUDITORIUM;
+            case "court" -> SpaceType.COURT;
+            case "eletronicsLaboratory" -> SpaceType.ELETRONICS_LABORATORY;
+            default -> throw new IllegalArgumentException("Invalid space type");
+        };
     }
 
     private InstituteAbbr parseInstitute(String instituteString){
-        switch (instituteString) {
-            case "CB":
-                return InstituteAbbr.CB;
-            case "PB":
-                return InstituteAbbr.PB;
-            case "IC":
-                return InstituteAbbr.IC;
-            case "FEEC":
-                return InstituteAbbr.FEEC;
-            case "IMECC":
-                return InstituteAbbr.IMECC;
-            case "IFGW":
-                return InstituteAbbr.IFGW;
-            case "IEL":
-                return InstituteAbbr.IEL;
-            case "FEF":
-                return InstituteAbbr.FEF;
-            case "IE":
-                return InstituteAbbr.IE;
-            default:
-                throw new IllegalArgumentException("Invalid institute");
-        }
+        return switch (instituteString) {
+            case "CB" -> InstituteAbbr.CB;
+            case "PB" -> InstituteAbbr.PB;
+            case "IC" -> InstituteAbbr.IC;
+            case "FEEC" -> InstituteAbbr.FEEC;
+            case "IMECC" -> InstituteAbbr.IMECC;
+            case "IFGW" -> InstituteAbbr.IFGW;
+            case "IEL" -> InstituteAbbr.IEL;
+            case "FEF" -> InstituteAbbr.FEF;
+            case "IE" -> InstituteAbbr.IE;
+            default -> throw new IllegalArgumentException("Invalid institute");
+        };
     }
 }

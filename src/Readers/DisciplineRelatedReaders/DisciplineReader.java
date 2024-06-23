@@ -50,24 +50,17 @@ public class DisciplineReader implements XMLNodeReader {
                         if (spaceNode.getNodeType() != Node.ELEMENT_NODE)
                             continue;
                         String text = spaceNode.getTextContent().trim();
-                        if (text.equals("BasicRoom"))
-                            types.add(SpaceType.BASIC_ROOM);
-                        else if (text.equals("SlidesRoom"))
-                            types.add(SpaceType.SLIDES_ROOM);
-                        else if (text.equals("ComputerRoom"))
-                            types.add(SpaceType.COMPUTER_ROOM);
-                        else if (text.equals("Auditorium"))
-                            types.add(SpaceType.AUDITORIUM);
-                        else if (text.equals("Court"))
-                            types.add(SpaceType.COURT);
-                        else if (text.equals("PhysicsLaboratory"))
-                            types.add(SpaceType.PHYSICS_LABORATORY);
-                        else if (text.equals("ChemistryLaboratory"))
-                            types.add(SpaceType.CHEMISTRY_LABORATORY);
-                        else if (text.equals("EletronicsLaboratory"))
-                            types.add(SpaceType.ELETRONICS_LABORATORY);
-                        else
-                            throw new Error("Invalid space type");
+                        switch (text) {
+                            case "BasicRoom" -> types.add(SpaceType.BASIC_ROOM);
+                            case "SlidesRoom" -> types.add(SpaceType.SLIDES_ROOM);
+                            case "ComputerRoom" -> types.add(SpaceType.COMPUTER_ROOM);
+                            case "Auditorium" -> types.add(SpaceType.AUDITORIUM);
+                            case "Court" -> types.add(SpaceType.COURT);
+                            case "PhysicsLaboratory" -> types.add(SpaceType.PHYSICS_LABORATORY);
+                            case "ChemistryLaboratory" -> types.add(SpaceType.CHEMISTRY_LABORATORY);
+                            case "EletronicsLaboratory" -> types.add(SpaceType.ELETRONICS_LABORATORY);
+                            default -> throw new Error("Invalid space type");
+                        }
                     }
                 }
                 else if ("possibleInstitutes".equals(node.getNodeName())){
@@ -77,26 +70,18 @@ public class DisciplineReader implements XMLNodeReader {
                         if (instituteNode.getNodeType() != Node.ELEMENT_NODE)
                             continue;
                         String text = instituteNode.getTextContent().trim();
-                        if (text.equals("CB"))
-                            institutes.add(InstituteAbbr.CB);
-                        else if (text.equals("PB"))
-                            institutes.add(InstituteAbbr.PB);
-                        else if (text.equals("IC"))
-                            institutes.add(InstituteAbbr.IC);
-                        else if (text.equals("FEEC"))
-                            institutes.add(InstituteAbbr.FEEC);
-                        else if (text.equals("IMECC"))
-                            institutes.add(InstituteAbbr.IMECC);
-                        else if (text.equals("IFGW"))
-                            institutes.add(InstituteAbbr.IFGW);
-                        else if (text.equals("IEL"))
-                            institutes.add(InstituteAbbr.IEL);
-                        else if (text.equals("FEF"))
-                            institutes.add(InstituteAbbr.FEF);
-                        else if (text.equals("IE"))
-                            institutes.add(InstituteAbbr.IE);
-                        else
-                            throw new Error("Invalid institute");
+                        switch (text) {
+                            case "CB" -> institutes.add(InstituteAbbr.CB);
+                            case "PB" -> institutes.add(InstituteAbbr.PB);
+                            case "IC" -> institutes.add(InstituteAbbr.IC);
+                            case "FEEC" -> institutes.add(InstituteAbbr.FEEC);
+                            case "IMECC" -> institutes.add(InstituteAbbr.IMECC);
+                            case "IFGW" -> institutes.add(InstituteAbbr.IFGW);
+                            case "IEL" -> institutes.add(InstituteAbbr.IEL);
+                            case "FEF" -> institutes.add(InstituteAbbr.FEF);
+                            case "IE" -> institutes.add(InstituteAbbr.IE);
+                            default -> throw new Error("Invalid institute");
+                        }
                     }
                 }
                 else if ("professors".equals(node.getNodeName())){
@@ -113,8 +98,8 @@ public class DisciplineReader implements XMLNodeReader {
                     throw new Error("Invalid atribute");
                 }
             }
-            if (disciplineName != null && disciplineId != null && credits != 0 && 
-                types.size() != 0 && institutes.size() != 0 && professors.size() != 0)
+            if (disciplineName != null && disciplineId != null && credits != 0 &&
+                    !types.isEmpty() && !institutes.isEmpty() && !professors.isEmpty())
                 discipline = new Discipline(disciplineName, disciplineId, credits, types, institutes, professors);
             else
                 throw new Error("Atribute missing");

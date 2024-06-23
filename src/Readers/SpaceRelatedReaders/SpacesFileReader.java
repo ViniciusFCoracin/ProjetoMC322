@@ -14,7 +14,7 @@ import src.Readers.XMLFileReader;
 
 
 /**
- * Singleton class that reads a XML file of spaces
+ * Singleton class that reads an XML file of spaces
  */
 public class SpacesFileReader implements XMLFileReader {
     private static SpacesFileReader instance;

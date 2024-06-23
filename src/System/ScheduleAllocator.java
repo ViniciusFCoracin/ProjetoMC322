@@ -197,7 +197,7 @@ public class ScheduleAllocator {
     }
 
     /**
-     * Generates a schedule for a elective class, without repetition
+     * Generates a schedule for an elective class, without repetition
      * 
      * @param dayIndexes: list of ints, representing the days you already have classes for this elective 
      * @param hourIndexes: list of ints, representing the hours you already have classes for this elective

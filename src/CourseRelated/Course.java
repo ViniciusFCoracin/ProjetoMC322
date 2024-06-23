@@ -5,7 +5,7 @@ import java.util.List;
 import src.Schedule.Shift;
 
 /**
- * A class that represents an university course
+ * A class that represents a university course
  */
 public class Course {
     private String courseName;
@@ -62,9 +62,9 @@ public class Course {
 
     @Override
     public String toString(){
-        String str = courseName + " (" + courseId + ")\n";
+        StringBuilder str = new StringBuilder(courseName + " (" + courseId + ")\n");
         for (Semester semester : this.courseSemesters)
-            str += semester.toString();
-        return str;
+            str.append(semester.toString());
+        return str.toString();
     }
 }
