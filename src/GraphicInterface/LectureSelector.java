@@ -26,7 +26,7 @@ public class LectureSelector {
     private List<Space> allSpaces;
     private List<Space> addedSpaces = new ArrayList<>();
     private List<Discipline> allDisciplines;
-    private List<Discipline> addedDisciplines;
+    private List<Discipline> addedDisciplines = new ArrayList<>();
 
     private LectureSelector() {
         // does nothing, but we need this to be private
@@ -84,6 +84,7 @@ public class LectureSelector {
         allSpaces.addAll(addedSpaces);
 
         allDisciplines = DisciplinesFileReader.getInstance().readFile("XML/disciplines.xml");
+        allDisciplines.addAll(addedDisciplines);
     }
 
     /**
