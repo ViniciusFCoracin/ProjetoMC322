@@ -1,7 +1,5 @@
 package src.GraphicInterface.Views;
 
-import java.io.IOException;
-
 /**
  * Singleton class responsible for displaying schedule stage
  */
