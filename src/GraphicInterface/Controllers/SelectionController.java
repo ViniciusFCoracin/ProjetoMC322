@@ -94,6 +94,7 @@ public class SelectionController {
         initializeContainer(coursesVBox);
         initializeContainer(spacesFlowPane);
         initializeContainer(electivesFlowPane);
+        LectureSelector.getInstance().readAllResources();
     }
 
     /**
