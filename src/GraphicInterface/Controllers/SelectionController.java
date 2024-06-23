@@ -27,14 +27,11 @@ import src.CourseRelated.Discipline;
  * Controller class for handling the selection of courses, spaces, and electives in the GUI.
  */
 public class SelectionController {
-    
     // FXML fields
     @FXML
     private VBox coursesVBox;
-
     @FXML
     private FlowPane spacesFlowPane;
-
     @FXML
     private FlowPane electivesFlowPane;
 
@@ -43,11 +40,16 @@ public class SelectionController {
     private static List<String> removedSpaces = new ArrayList<>();
     private static List<String> removedElectives = new ArrayList<>();
 
-    @FXML
-    public void initialize() {
-        initializeContainer(coursesVBox);
-        initializeContainer(spacesFlowPane);
-        initializeContainer(electivesFlowPane);
+    public static List<String> getRemovedCourses() {
+        return removedCourses;
+    }
+
+    public static List<String> getRemovedSpaces() {
+        return removedSpaces;
+    }
+
+    public static List<String> getRemovedElectives() {
+        return removedElectives;
     }
 
     /**
@@ -73,24 +75,6 @@ public class SelectionController {
     public void removeElective(ActionEvent e) {
         removedElectives = remove(e, removedElectives);
     }
-
-    /**
-     * Handles the removal or re-addition of an item.
-     */
-    private List<String> remove(ActionEvent e, List<String> list) {
-    	Button button = (Button) e.getSource();
-    	
-    	if ((Boolean) button.getUserData() == false) {
-    		list.add(button.getText());
-    		button.getStyleClass().add("removed");
-    		button.setUserData(true);
-    	} else {
-    		list.remove(button.getText());
-    		button.getStyleClass().remove("removed");
-    		button.setUserData(false);
-    	}
-    	return list;
-    }
     
     /**
      * Transition from selection view to schedule view.
@@ -105,17 +89,11 @@ public class SelectionController {
         scheduleView.showStage();
     }
 
-    /**
-     * Initializes a container by setting user data for each button to false.
-     * @param container: parent container
-     */
-    private void initializeContainer(Parent container) {
-        for (Node node : container.getChildrenUnmodifiable()) {
-            if (node instanceof Button) {
-                Button button = (Button) node;
-                button.setUserData(false);
-            }
-        }
+    @FXML
+    public void initialize() {
+        initializeContainer(coursesVBox);
+        initializeContainer(spacesFlowPane);
+        initializeContainer(electivesFlowPane);
     }
 
     /**
@@ -140,16 +118,35 @@ public class SelectionController {
         stage.show();
     }
 
-    public static List<String> getRemovedCourses() {
-        return removedCourses;
+    /**
+     * Initializes a container by setting user data for each button to false.
+     * @param container: parent container
+     */
+    private void initializeContainer(Parent container) {
+        for (Node node : container.getChildrenUnmodifiable()) {
+            if (node instanceof Button) {
+                Button button = (Button) node;
+                button.setUserData(false);
+            }
+        }
     }
 
-    public static List<String> getRemovedSpaces() {
-        return removedSpaces;
-    }
-
-    public static List<String> getRemovedElectives() {
-        return removedElectives;
+    /**
+     * Handles the removal or re-addition of an item.
+     */
+    private List<String> remove(ActionEvent e, List<String> list) {
+    	Button button = (Button) e.getSource();
+    	
+    	if ((Boolean) button.getUserData() == false) {
+    		list.add(button.getText());
+    		button.getStyleClass().add("removed");
+    		button.setUserData(true);
+    	} else {
+    		list.remove(button.getText());
+    		button.getStyleClass().remove("removed");
+    		button.setUserData(false);
+    	}
+    	return list;
     }
 
     @FXML
