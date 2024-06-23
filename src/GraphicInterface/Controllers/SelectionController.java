@@ -50,7 +50,7 @@ public class SelectionController {
      */
     @FXML
     public void removeCourse(ActionEvent e) {
-        removedCourses = remove(e, removedCourses);
+        remove(e, removedCourses);
     }
 
     /**
@@ -58,7 +58,7 @@ public class SelectionController {
      */
     @FXML
     public void removeSpace(ActionEvent e) {
-        removedSpaces = remove(e, removedSpaces);
+        remove(e, removedSpaces);
     }
 
     /**
@@ -66,7 +66,7 @@ public class SelectionController {
      */
     @FXML
     public void removeElective(ActionEvent e) {
-        removedElectives = remove(e, removedElectives);
+        remove(e, removedElectives);
     }
 
     /**
@@ -75,7 +75,7 @@ public class SelectionController {
     private List<String> remove(ActionEvent e, List<String> list) {
     	Button button = (Button) e.getSource();
     	
-    	if ((Boolean) button.getUserData() == false) {
+    	if (!((Boolean) button.getUserData())) {
     		list.add(button.getText());
     		button.getStyleClass().add("removed");
     		button.setUserData(true);
@@ -91,7 +91,7 @@ public class SelectionController {
      * Transition from selection view to schedule view.
      */
     @FXML
-    public void submit(ActionEvent e) throws IOException {
+    public void submit() throws IOException {
         LectureSelector.getInstance().loadAndFilterResources();
 
         ScheduleView scheduleView = ScheduleView.getInstance();
@@ -106,10 +106,8 @@ public class SelectionController {
      */
     private void initializeContainer(Parent container) {
         for (Node node : container.getChildrenUnmodifiable()) {
-            if (node instanceof Button) {
-                Button button = (Button) node;
+            if (node instanceof Button button)
                 button.setUserData(false);
-            }
         }
     }
 
