@@ -2,7 +2,6 @@ package src.GraphicInterface.Views;
 
 import java.io.IOException;
 
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,37 +13,34 @@ import javafx.stage.Stage;
 public abstract class View {
 	private Stage stage;
 	private Scene scene;
+	private int prefWidth;
+	private int prefHeight;
 	
 	public View() {
-		stage = new Stage();
+		
 	}
 	
 	public Stage getStage() {
 		return stage;
 	}
 	
+	public void setStage(Stage stage) {
+		this.stage = stage;
+	}
+	
 	public Scene getScene() {
 		return scene;
 	}
 	
-	public void openStage(String path) throws IOException {
+	public void loadScene(String path) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("/src/FXML/"+path+".fxml"));
-        scene = new Scene(root);
-        stage.setScene(scene);
-      
-        showStage();
+		this.scene = new Scene(root);
 	}
 	
 	public void showStage() {
-	    Platform.runLater(() -> {
-	        try {
-	            stage.show();
-	            stage.setMinHeight(stage.heightProperty().get());
-	            stage.setMinWidth(stage.widthProperty().get());
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
-	    });
+		stage.setScene(scene);
+		stage.centerOnScreen();
+	    stage.show();
 	}
 	
 	public void closeStage() {
@@ -53,5 +49,18 @@ public abstract class View {
 	
 	public void hideStage() {
 		stage.hide();
+	}
+	
+	public void stagePrefSize() {
+		stage.setWidth(prefWidth);
+		stage.setHeight(prefHeight);
+	}
+	
+	public void setPrefWidth(int prefWidth) {
+		this.prefWidth = prefWidth;
+	}
+	
+	public void setPrefHeight(int prefHeight) {
+		this.prefHeight = prefHeight;
 	}
 }

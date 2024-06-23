@@ -1,16 +1,19 @@
 package src.GraphicInterface.Views;
 
+import java.io.IOException;
+
 /**
  * Singleton class responsible for displaying selection stage
  */
 public class SelectionView extends View{
 	private static SelectionView instance;
 	
-	private SelectionView() {
-		// does nothing, but we need this to be private
+	private SelectionView() throws IOException {
+		super.setPrefWidth(1300);
+		super.setPrefHeight(910);
 	}
 	
-	public static SelectionView getInstance(){
+	public static SelectionView getInstance() throws IOException{
         if(instance == null) {
             instance= new SelectionView();
         }

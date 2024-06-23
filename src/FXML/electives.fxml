@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="electivesGridPane" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.GraphicInterface.Controllers.ElectivesController">
+<GridPane fx:id="electivesGridPane" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="562.0" prefWidth="704.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.GraphicInterface.Controllers.ElectivesController">
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="120.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="120.0" />

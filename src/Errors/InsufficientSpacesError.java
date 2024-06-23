@@ -1,18 +1,18 @@
 package src.Errors;
 
-public class InsuficientSpacesError extends Error {
+public class InsufficientSpacesError extends Error {
 
     /**
      * Parameterless constructor
      */
-    public InsuficientSpacesError(){}
+    public InsufficientSpacesError(){}
 
     /**
      * Constructor with error message
      * 
      * @param message: the error message
      */
-    public InsuficientSpacesError(String message){
+    public InsufficientSpacesError(String message){
         super(message);
     }
 }

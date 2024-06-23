@@ -26,7 +26,30 @@
 	-fx-background-radius: 16px;
 	-fx-border-radius: 15px;
 	-fx-border-color: #404040;
-	-fx-border-width: 2px;
+	-fx-border-width: 1px;
+	-fx-background-color:  #f2f2f2
+}
+
+.selection-button:hover,
+.selection-button:focus {
+	-fx-border-color: #666666;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 2, 0, 0, 0);
+}
+
+.submit {
+    -fx-background-color: #e6e6e6;
+    -fx-border-color: #000;
+    -fx-border-width: 1px;
+    -fx-text-fill: #000;
+    -fx-font-size: 35px;
+    -fx-font-weight: 600;
+    -fx-font-family: "Liberation Serif";
+    -fx-alignment: center;
+}
+
+.submit:hover,
+.submit:focus {
+	-fx-background-color:  #d9d9d9;
 }
 
 .removed {
@@ -35,7 +58,10 @@
 
 .combo-box {
 	-fx-font-family: "Liberation Serif";
-	-fx-font-size: 17px;
+	-fx-font-size: 20px;
+	-fx-background-color: #e6e6e6;
+	-fx-border-color: #000;
+	-fx-border-width: 1 0 1 0;
 }
 
 .label {
@@ -55,9 +81,35 @@
 }
 
 .elective {
-	-fx-pref-height: 20;
+	-fx-font-size: 15;
+	-fx-pref-height: 30;
+	-fx-pref-width: 100;	
+	-fx-border-color: black;
+	-fx-font-family: "Liberation Serif";
+	-fx-border-color: #404040;
+    -fx-border-radius: 16px; 
+    -fx-background-radius: 15px;
+    -fx-border-width: 1px; 
 }
 
 .option-gridpane {
 	-fx-background-color: #e6e6e6;
 }
+
+.schedule-button {
+    -fx-background-color: #e6e6e6;
+    -fx-border-color: #000;
+    -fx-border-width: 1 0 1 0;
+    -fx-text-fill: #000;
+    -fx-font-size: 20px;
+    -fx-font-weight: 600;
+    -fx-font-family: "Liberation Serif";
+}
+
+.schedule-button:hover,
+.schedule-button:focus {
+	-fx-border-color: #666666;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 2, 0, 0, 0);
+}
+
+

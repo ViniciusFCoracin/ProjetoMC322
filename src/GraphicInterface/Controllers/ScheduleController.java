@@ -35,7 +35,6 @@ import src.CourseRelated.LectureRelated.Lecture;
 import src.CourseRelated.LectureRelated.MandatoryLecture;
 import src.GraphicInterface.LectureSelector;
 import src.GraphicInterface.Views.ElectivesView;
-import src.GraphicInterface.Views.ScheduleView;
 import src.GraphicInterface.Views.SelectionView;
 import src.Schedule.HourOfClass;
 import src.Schedule.WeekDay;
@@ -44,282 +43,331 @@ import src.Schedule.WeekDay;
  * Controller class for handling the schedule view in the GUI.
  */
 public class ScheduleController {
-	
-	@FXML
-	private ComboBox<String> coursesComboBox, semesterComboBox, scheduleComboBox;
-	
-	@FXML
-	private Label course, semester, invalidCourse, invalidSemester, invalidSchedule;
-	
-	@FXML
-	private GridPane scheduleGridPane;
-	
-	private List<String> allCourses;
-	private List<String> allSemesters;
-	private List<String> schedules;
-	private ObservableList<String> observableCoursesList;
-	private ObservableList<String> observableSemesterList;
-	private ObservableList<String> observableSchedulesList;
-	private String currentCourse;
-	private String currentSemester;
-	private String currentSchedule;
-	private List<Lecture> selectedLectures;
-	Font font = new Font("Liberation Serif", 15);
-	
-	@FXML
-	public void initialize() {
-		loadCoursesComboBox();
-		loadSemestersComboBox();
-		loadSchedulesComboBox();
-	}
-	
-	@FXML
-	public void loadSchedule() {
-		cleanSchedule();
-		currentCourse = coursesComboBox.getValue();
-		currentSemester = semesterComboBox.getValue();
-		invalidCourse.setText("");
-		invalidSemester.setText("");
-		
-		if (currentCourse == null || currentSemester == null) {
-		    if (currentCourse == null) 
-		        invalidCourse.setText("Please choose a course");
 
-		    if (currentSemester == null) 
-		        invalidSemester.setText("Please choose a semester");
+    @FXML
+    private ComboBox<String> coursesComboBox, semesterComboBox, scheduleComboBox;
     
-		    return;
-		} else {
-			course.setText(currentCourse);
-			semester.setText("Semester: " + currentSemester);
-		}
-		
-		int currentSemesterInt = convertSemesterToNumber(currentSemester);
-		for(Lecture lecture : LectureSelector.getInstance().getAllLectures()) {
-			if(lecture.getLectureDiscipline().getIsMandatory()) {
-				MandatoryLecture mandatoryLecture = (MandatoryLecture) lecture;
-				if(mandatoryLecture.getLectureCourse().getCourseName().equals(currentCourse) && mandatoryLecture.getLectureCourse().getDisciplineSemester(lecture.getLectureDiscipline()) == currentSemesterInt)
-					assignLectureToGrid(lecture);
-			} 
-		}
-	}
-	
-	@FXML
-	public void rebuildSchedule() {
-		LectureSelector.getInstance().readAllResources();
+    @FXML
+    private Label course, semester, invalidCourse, invalidSemester, invalidSchedule;
+    
+    @FXML
+    private GridPane scheduleGridPane;
+    
+    private Font font = new Font("Liberation Serif", 20);
+
+    @FXML
+    public void initialize() {
+        loadCoursesComboBox();
+        loadSemestersComboBox();
+        loadSchedulesComboBox();
+    }
+
+    /**
+     * Loads the course names into the courses ComboBox.
+     */
+    private void loadCoursesComboBox() {
+    	List<String> allCourses = new ArrayList<>();
+        for (Course course : LectureSelector.getInstance().getAllCourses()) {
+            allCourses.add(course.getCourseName());
+        }
+        ObservableList<String> observableCoursesList;
+        observableCoursesList = FXCollections.observableArrayList(allCourses);
+        coursesComboBox.setItems(observableCoursesList);
+    }
+
+    /**
+     * Loads the semesters into the semesters ComboBox.
+     */
+    private void loadSemestersComboBox() {
+    	List<String> allSemesters = Arrays.asList("1°", "2°", "3°", "4°", "5°", "6°", "7°", "8°", "9°", "10°");
+    	ObservableList<String> observableSemesterList;
+        observableSemesterList = FXCollections.observableArrayList(allSemesters);
+        semesterComboBox.setItems(observableSemesterList);
+    }
+
+    /**
+     * Loads the schedule options into the schedules ComboBox.
+     */
+    private void loadSchedulesComboBox() {
+    	List<String> schedules = Arrays.asList("Current Schedule", "All Lectures");
+    	ObservableList<String> observableSchedulesList;
+        observableSchedulesList = FXCollections.observableArrayList(schedules);
+        scheduleComboBox.setItems(observableSchedulesList);
+    }
+
+    /**
+     * Loads the schedule based on the selected course and semester.
+     */
+    @FXML
+    public void loadSchedule() {
+        cleanSchedule();
+        if (invalidOption()) 
+            return;
+        
+        int currentSemesterInt = convertSemesterToNumber(semesterComboBox.getValue());
+        for (Lecture lecture : LectureSelector.getInstance().getAllLectures()) {
+            if (lecture.getLectureDiscipline().getIsMandatory()) {
+                MandatoryLecture mandatoryLecture = (MandatoryLecture) lecture;
+                if (mandatoryLecture.getLectureCourse().getCourseName().equals(coursesComboBox.getValue()) 
+                    && mandatoryLecture.getLectureCourse().getDisciplineSemester(lecture.getLectureDiscipline()) == currentSemesterInt) 
+                    assignLectureToGrid(lecture);
+            }
+        }
+    }
+
+    /**
+     * Rebuilds the schedule by redoing the distribution"
+     */
+    @FXML
+    public void rebuildSchedule() {
+        LectureSelector.getInstance().readAllResources();
 		LectureSelector.getInstance().filterResourcesAndAllocate();
-		loadSchedule();
-	}
-	
-	@FXML
-	public void viewElectives() throws IOException {
-		ElectivesView.getInstance().closeStage();
-		ElectivesView.getInstance().openStage("electives");
-	}
-	
-	@FXML
-	public void goBack() {
-		ScheduleView.getInstance().closeStage();;
-		SelectionView.getInstance().showStage();
-	}
-	
-	@FXML
-	private void saveSchedule() {
-		selectedLectures = new ArrayList<Lecture>();
-		currentCourse = coursesComboBox.getValue();
-		currentSemester = semesterComboBox.getValue();
-		currentSchedule = scheduleComboBox.getValue();
-		invalidCourse.setText("");
-		invalidSemester.setText("");
-		invalidSchedule.setText("");
-		
-		if ((currentSchedule == null || currentSchedule == "Current Schedule") && (currentCourse == null || currentSemester == null)) {
-		    if (currentCourse == null) 
-		        invalidCourse.setText("Please choose a course");
+        loadSchedule();
+    }
 
-		    if (currentSemester == null) 
-		        invalidSemester.setText("Please choose a semester");
-    
-		    return;
-		}
-		
-		if(currentSchedule == null || currentSchedule == "Current Schedule" ) {
-			int currentSemesterInt = convertSemesterToNumber(currentSemester);
-			for(Lecture lecture : LectureSelector.getInstance().getAllLectures()) {
-				if(lecture.getLectureDiscipline().getIsMandatory()) {
-					if(((MandatoryLecture)lecture).getLectureCourse().getCourseName().equals(currentCourse) && ((MandatoryLecture) lecture).getLectureCourse().getDisciplineSemester(lecture.getLectureDiscipline()) == currentSemesterInt) 
-						selectedLectures.add(lecture);
-				} 
-			}
-		} else {
-			selectedLectures = LectureSelector.getInstance().getAllLectures();
-		}
-		
-		FileChooser fileChooser = new FileChooser();
+    /**
+     * Opens the electives view.
+     * @throws IOException if there is an error loading the electives view.
+     */
+    @FXML
+    public void viewElectives() throws IOException {
+        ElectivesView electivesView = ElectivesView.getInstance();
+        electivesView.closeStage();
+        electivesView.loadScene("electives");
+        electivesView.showStage();
+    }
+
+    /**
+     * Goes back to the selection view.
+     * @throws IOException if there is an error loading the selection view.
+     */
+    @FXML
+    public void goBack() throws IOException {
+        SelectionView.getInstance().showStage();
+    }
+
+    /**
+     * Saves the current schedule to an XML file.
+     */
+    @FXML
+    private void saveSchedule() {
+        if (invalidOption()) {
+            return;
+        }
+        
+        List<Lecture> selectedLectures = new ArrayList<>();
+        if (scheduleComboBox.getValue() == null || "Current Schedule".equals(scheduleComboBox.getValue())) {
+            int currentSemesterInt = convertSemesterToNumber(semesterComboBox.getValue());
+            for (Lecture lecture : LectureSelector.getInstance().getAllLectures()) {
+                if (lecture.getLectureDiscipline().getIsMandatory()) {
+                    if (((MandatoryLecture) lecture).getLectureCourse().getCourseName().equals(coursesComboBox.getValue()) 
+                        && ((MandatoryLecture) lecture).getLectureCourse().getDisciplineSemester(lecture.getLectureDiscipline()) == currentSemesterInt) 
+                        selectedLectures.add(lecture);
+                }
+            }
+        } else 
+            selectedLectures = LectureSelector.getInstance().getAllLectures();
+
+        FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save XML File");
         fileChooser.getExtensionFilters().add(new ExtensionFilter("XML files (*.xml)", "*.xml"));
         File file = fileChooser.showSaveDialog(null);
+        
+        if (file != null) 
+            saveSelectedLecturesToXML(file, selectedLectures);
+    }
 
-        if (file != null) {
-            saveSelectedLecturesToXML(file);
+    /**
+     * Assigns a lecture to the appropriate cell in the schedule grid.
+     * @param lecture: the lecture to be assigned to the grid.
+     */
+    private void assignLectureToGrid(Lecture lecture) {
+        WeekDay day = lecture.getLectureSchedule().getDay();
+        HourOfClass hourOfClass = lecture.getLectureSchedule().getHourOfClass();
+        int column = WeekDay.getNumericValue(day);
+        int row = HourOfClass.getNumericValue(hourOfClass);
+
+        // Create the content of each cell
+        Label labelDisciplineId = new Label(lecture.getLectureDiscipline().getDisciplineId());
+        Label labelProfessor = new Label(lecture.getProfessor());
+        Label labelSpace = new Label(lecture.getLectureSpace().getSpaceID());
+        Label labelGroup = new Label(Character.toString(lecture.getLectureGroup()));
+        List<Label> labels = Arrays.asList(labelDisciplineId, labelGroup, labelProfessor, labelSpace);
+        updateFont(font, labels);
+
+        VBox vBox = (VBox) getNodeByRowColumnIndex(scheduleGridPane, row, column);
+        vBox.getChildren().addAll(labels);
+        vBox.heightProperty().addListener((obs, oldHeight, newHeight) -> {
+            double newSize = newHeight.doubleValue() / 5;
+            double minFontSize = 15.0;
+            double maxFontSize = 20.0;
+            double adjustedFontSize = Math.max(minFontSize, Math.min(maxFontSize, newSize));
+            font = new Font("Liberation Serif", adjustedFontSize);
+            updateFont(font, labels);
+        });
+    }
+
+    /**
+     * Retrieves a node in the GridPane by its row and column index.
+     * @param gridPane: the GridPane to search.
+     * @param row: the row index.
+     * @param column: the column index.
+     * @return the node at the specified row and column, or null if not found.
+     */
+    public static Node getNodeByRowColumnIndex(GridPane gridPane, int row, int column) {
+        for (Node node : gridPane.getChildren()) {
+            Integer rowIndex = GridPane.getRowIndex(node);
+            rowIndex = rowIndex == null ? 0 : rowIndex;
+            Integer colIndex = GridPane.getColumnIndex(node);
+            colIndex = colIndex == null ? 0 : colIndex;
+            if (rowIndex.equals(row) && colIndex.equals(column)) {
+                return node;
+            }
         }
-	}
+        return null;
+    }
 
-	private void loadCoursesComboBox() {
-		allCourses = new ArrayList<String>();
-		for(Course course : LectureSelector.getInstance().getAllCourses()) 
-			allCourses.add(course.getCourseName());
-		
-		observableCoursesList = FXCollections.observableArrayList(allCourses);
-		coursesComboBox.setItems(observableCoursesList);
-	}
-	
-	private void loadSemestersComboBox() {
-		allSemesters = new ArrayList<String>(Arrays.asList("1°", "2°", "3°", "4°", "5°", "6°", "7°", "8°", "9°", "10°"));
-		observableSemesterList = FXCollections.observableArrayList(allSemesters);
-		semesterComboBox.setItems(observableSemesterList);
-	}
-	
-	private void loadSchedulesComboBox() {
-		schedules = new ArrayList<String>(Arrays.asList("Current Schedule", "All Lectures"));
-		observableSchedulesList = FXCollections.observableArrayList(schedules);
-		scheduleComboBox.setItems(observableSchedulesList);
-	}
-	
-	private void assignLectureToGrid(Lecture lecture) {
-	    WeekDay day = lecture.getLectureSchedule().getDay();
-	    HourOfClass hourOfClass = lecture.getLectureSchedule().getHourOfClass();
+    /**
+     * Clears the schedule grid by removing all lectures.
+     */
+    private void cleanSchedule() {
+        for (int row = 1; row <= 6; row++) {
+            for (int column = 1; column <= 5; column++) {
+                VBox vBox = (VBox) getNodeByRowColumnIndex(scheduleGridPane, row, column);
+                vBox.getChildren().clear();
+            }
+        }
+    }
 
-	    int column = WeekDay.getNumericValue(day);
-	    int row = HourOfClass.getNumericValue(hourOfClass);
+    /**
+     * Converts the semester from a string representation to an integer.
+     * @param currentSemester: the semester in string format.
+     * @return the semester in integer format.
+     */
+    private int convertSemesterToNumber(String currentSemester) {
+        String numericString = currentSemester.replace("°", "");
+        return Integer.parseInt(numericString);
+    }
 
-	    Label labelDisciplineId = new Label(lecture.getLectureDiscipline().getDisciplineId());
-	    Label labelProfessor = new Label(lecture.getProfessor());
-	    Label labelSpace = new Label(lecture.getLectureSpace().getSpaceID());
-	    Label labelGroup = new Label(Character.toString(lecture.getLectureGroup())); 
-	    List<Label> labels = new ArrayList<Label>(Arrays.asList(labelDisciplineId, labelGroup, labelProfessor, labelSpace));
-	    
-	    updateFont(font, labels);
+    /**
+     * Updates the font for a list of labels.
+     * @param font: the new font.
+     * @param labels: the labels to be updated.
+     */
+    private void updateFont(Font font, List<Label> labels) {
+        for (Label label : labels) {
+            label.setFont(font);
+        }
+    }
 
-	    VBox vBox = (VBox) getNodeByRowColumnIndex(scheduleGridPane, row, column);
-	    vBox.getChildren().addAll(labels);
+    /**
+     * Checks if the current options are invalid.
+     * @return true if the options are invalid, false otherwise.
+     */
+    private boolean invalidOption() {
+        String currentCourse = coursesComboBox.getValue();
+        String currentSemester = semesterComboBox.getValue();
+        String currentSchedule = scheduleComboBox.getValue();
+        invalidCourse.setText("");
+        invalidSemester.setText("");
+        invalidSchedule.setText("");
 
-	    vBox.heightProperty().addListener((obs, oldHeight, newHeight) -> {
-	        double newSize = newHeight.doubleValue() / 5;
-	        double minFontSize = 15.0;
-	        double maxFontSize = 20.0;
-	        double adjustedFontSize = Math.max(minFontSize, Math.min(maxFontSize, newSize));
-	        
-	        font = new Font("Liberation Serif", adjustedFontSize);
-	        updateFont(font, labels);
-	    });
-	}
-	
-	public  static Node getNodeByRowColumnIndex(GridPane gridPane, int row, int column) {
-		for(Node node : gridPane.getChildren()) {
-	        Integer rowIndex = GridPane.getRowIndex(node);
-	        rowIndex = rowIndex == null ? 0 : rowIndex;
-	        Integer colIndex = GridPane.getColumnIndex(node);
-	        colIndex = colIndex == null ? 0 : colIndex;
-	        
-	        if (rowIndex.equals(row) && colIndex.equals(column)) {
-	            return node;
-	        }
-	    }
-	    return null;
-	}
-	
-	private void cleanSchedule() {
-	    for (int row = 1; row <= 6; row++) {
-	        for (int column = 1; column <= 5; column++) {
-	            VBox vBox = (VBox) getNodeByRowColumnIndex(scheduleGridPane, row, column);
-	            vBox.getChildren().clear();
-	        }
-	    }
-	}
-	
-	private int convertSemesterToNumber(String currentSemester) {
-		String numericString = currentSemester.replace("°", "");
-		
-		return Integer.parseInt(numericString);
-	}
-	
-	private void updateFont (Font font, List<Label> labels) {
-		for(Label label : labels) {
-			label.setFont(font);
-		}
-	}
-	
-	private void saveSelectedLecturesToXML(File file) {
-		try {
-	        DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
-	        DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
-	        Document document = documentBuilder.newDocument();
-	        Element root = document.createElement("lectures");
-	        document.appendChild(root);
+        if ((currentSchedule == null || "Current Schedule".equals(currentSchedule)) 
+            && (currentCourse == null || currentSemester == null)) {
+            if (currentCourse == null) {
+                invalidCourse.setText("Please choose a course");
+            }
+            if (currentSemester == null) {
+                invalidSemester.setText("Please choose a semester");
+            }
+            return true;
+        }
+        
+        course.setText(currentCourse);
+        semester.setText("Semester: " + currentSemester);
+        
+        return false;
+    }
 
-	        for (Lecture lecture : selectedLectures) {
-	            root.appendChild(createLectureElement(document, lecture));
-	        }
+    /**
+     * Saves the selected lectures to an XML file.
+     * @param file the file to save the lectures to.
+     */
+    private void saveSelectedLecturesToXML(File file, List<Lecture> selectedLectures) {
+        try {
+            DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
+            Document document = documentBuilder.newDocument();
+            Element root = document.createElement("lectures");
+            document.appendChild(root);
 
-	        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-	        Transformer transformer = transformerFactory.newTransformer();
+            for (Lecture lecture : selectedLectures) {
+                root.appendChild(createLectureElement(document, lecture));
+            }
 
-	        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-	        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
 
-	        DOMSource domSource = new DOMSource(document);
-	        StreamResult streamResult = new StreamResult(file);
-	        transformer.transform(domSource, streamResult);
+            DOMSource domSource = new DOMSource(document);
+            StreamResult streamResult = new StreamResult(file);
+            transformer.transform(domSource, streamResult);
 
-	    } catch (ParserConfigurationException | TransformerException pce) {
-	        pce.printStackTrace();
-	    }
-	}
+        } catch (ParserConfigurationException | TransformerException pce) {
+            pce.printStackTrace();
+        }
+    }
 
-	private Element createLectureElement(Document document, Lecture lecture) {
-	    Element lectureElement = document.createElement("lecture");
-	    
-	    if(lecture instanceof MandatoryLecture && ((MandatoryLecture) lecture).getLectureCourse() != null) {
-	    	Element courseNameElement = document.createElement("courseName");
-	    	courseNameElement.appendChild(document.createTextNode(((MandatoryLecture) lecture).getLectureCourse().getCourseName()));
-	    	lectureElement.appendChild(courseNameElement);
-	    }
-	    
-	    Element disciplineIdElement = document.createElement("disciplineId");
-	    disciplineIdElement.appendChild(document.createTextNode(lecture.getLectureDiscipline().getDisciplineId()));
-	    lectureElement.appendChild(disciplineIdElement);
-	    
-	    if(lecture instanceof MandatoryLecture && ((MandatoryLecture) lecture).getLectureCourse() != null) {
-	    	Element semesterElement = document.createElement("semester");
-		    semesterElement.appendChild(document.createTextNode(Integer.toString(((MandatoryLecture) lecture).getLectureCourse().getDisciplineSemester(lecture.getLectureDiscipline()))));
-		    lectureElement.appendChild(semesterElement);
-	    }
-	    
-	    Element professorElement = document.createElement("professor");
-	    professorElement.appendChild(document.createTextNode(lecture.getProfessor()));
-	    lectureElement.appendChild(professorElement);
+    /**
+     * Creates an XML element for a lecture.
+     * @param document: the XML document.
+     * @param lecture: the lecture to create an element for.
+     * @return the created XML element.
+     */
+    private Element createLectureElement(Document document, Lecture lecture) {
+        Element lectureElement = document.createElement("lecture");
 
-	    Element weekDayElement = document.createElement("weekDay");
-	    weekDayElement.appendChild(document.createTextNode(lecture.getLectureSchedule().getDay().name()));
-	    lectureElement.appendChild(weekDayElement);
+        if (lecture instanceof MandatoryLecture && ((MandatoryLecture) lecture).getLectureCourse() != null) {
+            Element courseNameElement = document.createElement("courseName");
+            courseNameElement.appendChild(document.createTextNode(((MandatoryLecture) lecture).getLectureCourse().getCourseName()));
+            lectureElement.appendChild(courseNameElement);
+        }
 
-	    Element hourOfClassElement = document.createElement("hourOfClass");
-	    hourOfClassElement.appendChild(document.createTextNode(lecture.getLectureSchedule().getHourOfClass().name()));
-	    lectureElement.appendChild(hourOfClassElement);
+        Element disciplineIdElement = document.createElement("disciplineId");
+        disciplineIdElement.appendChild(document.createTextNode(lecture.getLectureDiscipline().getDisciplineId()));
+        lectureElement.appendChild(disciplineIdElement);
 
-	    Element placeElement = document.createElement("place");
-	    placeElement.appendChild(document.createTextNode(lecture.getLectureSpace().getSpaceID()));
-	    lectureElement.appendChild(placeElement);
+        if (lecture instanceof MandatoryLecture && ((MandatoryLecture) lecture).getLectureCourse() != null) {
+            Element semesterElement = document.createElement("semester");
+            semesterElement.appendChild(document.createTextNode(Integer.toString(((MandatoryLecture) lecture).getLectureCourse().getDisciplineSemester(lecture.getLectureDiscipline()))));
+            lectureElement.appendChild(semesterElement);
+        }
 
-	    Element groupElement = document.createElement("group");
-	    groupElement.appendChild(document.createTextNode(Character.toString(lecture.getLectureGroup())));
-	    lectureElement.appendChild(groupElement);
-	    
-	    Element creditsElement = document.createElement("credits");
-	    creditsElement.appendChild(document.createTextNode(Integer.toString(lecture.getLectureDiscipline().getDisciplineCredits())));
-	    lectureElement.appendChild(creditsElement);
+        Element professorElement = document.createElement("professor");
+        professorElement.appendChild(document.createTextNode(lecture.getProfessor()));
+        lectureElement.appendChild(professorElement);
+        
+        Element weekDayElement = document.createElement("weekDay");
+        weekDayElement.appendChild(document.createTextNode(lecture.getLectureSchedule().getDay().name()));
+        lectureElement.appendChild(weekDayElement);
+        
+        Element hourOfClassElement = document.createElement("hourOfClass");
+        hourOfClassElement.appendChild(document.createTextNode(lecture.getLectureSchedule().getHourOfClass().name()));
+        lectureElement.appendChild(hourOfClassElement);
+        
+        Element placeElement = document.createElement("place");
+        placeElement.appendChild(document.createTextNode(lecture.getLectureSpace().getSpaceID()));
+        lectureElement.appendChild(placeElement);
+        
+        Element groupElement = document.createElement("group");
+        groupElement.appendChild(document.createTextNode(Character.toString(lecture.getLectureGroup())));
+        lectureElement.appendChild(groupElement);
+        
+        Element creditsElement = document.createElement("credits");
+        creditsElement.appendChild(document.createTextNode(Integer.toString(lecture.getLectureDiscipline().getDisciplineCredits())));
+        lectureElement.appendChild(creditsElement);
 
-	    return lectureElement;
-	}
+        return lectureElement;
+    }
 }
