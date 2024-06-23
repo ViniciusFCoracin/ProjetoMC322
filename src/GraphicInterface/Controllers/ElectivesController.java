@@ -32,9 +32,8 @@ public class ElectivesController {
     public void loadSchedule() {
     	List<Lecture> electivesLectures = new ArrayList<>();
         for (Lecture lecture : LectureSelector.getInstance().getAllLectures()) {
-            if (!lecture.getLectureDiscipline().getIsMandatory()) {
+            if (!lecture.getLectureDiscipline().getIsMandatory())
                 electivesLectures.add(lecture);
-            }
         }
         
         sortLecturesByHourOfClass(electivesLectures);
