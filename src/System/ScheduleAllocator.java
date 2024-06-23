@@ -11,6 +11,7 @@ import src.CourseRelated.Semester;
 import src.CourseRelated.LectureRelated.ElectiveLecture;
 import src.CourseRelated.LectureRelated.Lecture;
 import src.CourseRelated.LectureRelated.MandatoryLecture;
+import src.Readers.CourseRelatedReaders.CoursesFileReader;
 import src.Schedule.*;
 import src.Spaces.Space;
 
@@ -27,18 +28,18 @@ public class ScheduleAllocator {
      * @return: a list of lectures with schedules allocated, but spaces not defined yet
      */
     public static List<Lecture> createLecturesWithSchedules(List<Course> allCourses, List<Discipline> allDisciplines){
-        return createLectures(allCourses, allDisciplines);
+        return createLectures(allDisciplines);
     }
 
     /**
      * Method responsible for create lectures with schedules, but no places yet
-     * 
-     * @param allCourses: a list of all courses
+     *
      * @param allDisciplines: a list of all disciplines
      * @return: a list of lectures with schedule assigned, but place set to null  
      */
-    private static List<Lecture> createLectures(List<Course> allCourses, List<Discipline> allDisciplines){
+    private static List<Lecture> createLectures(List<Discipline> allDisciplines){
         List<Lecture> allLectures = new ArrayList<>();
+        List<Course> allCourses = CoursesFileReader.getInstance().readFile("src/XML/courses.xml");
         for (Course course : allCourses){
             for (Semester semester : course.getCourseSemesters()){
                 List<Lecture> semesterLectures = createSemesterMandatoryLectures(semester, course, allDisciplines);
