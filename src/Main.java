@@ -20,10 +20,9 @@ public class Main extends Application {
 	public void start(Stage stage) throws IOException {
     	SelectionView selectionView = SelectionView.getInstance();
 		selectionView.setStage(stage);
-		selectionView.stagePrefSize();
-		stage.centerOnScreen();
 		stage.setMaximized(true);
     	selectionView.loadScene("selection");
 		selectionView.showStage();
+		stage.centerOnScreen();
 	}
 }

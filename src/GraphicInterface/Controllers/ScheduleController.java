@@ -143,6 +143,7 @@ public class ScheduleController {
     @FXML
     public void goBack() {
         SelectionView.getInstance().showStage();
+        SelectionView.getInstance().getStage().setMaximized(true);
     }
 
     /**
