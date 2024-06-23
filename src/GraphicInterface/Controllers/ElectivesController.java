@@ -11,10 +11,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 import src.CourseRelated.LectureRelated.Lecture;
+import src.GraphicInterface.LectureSelector;
 import src.GraphicInterface.Views.ElectivesView;
 import src.Schedule.HourOfClass;
 import src.Schedule.WeekDay;
-import src.System.LectureSelector;
 
 public class ElectivesController {
     
