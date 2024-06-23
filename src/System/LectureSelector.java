@@ -46,17 +46,13 @@ public class LectureSelector {
 	
 	/**
      * Generates the lists of all available
-     * courses, spaces, disciplines and lectures. 
-     * 
-     * @param allCourses: list of all the course available
-     * @param allSpaces: list of all the spaces available
-     * @param allDisciplines: list of all the disciplines available
+     * courses, spaces, disciplines and lectures.
      */
 	 public void loadAndFilterResources() {
 		 // reads all XML files
-    	 allCourses = CoursesFileReader.getInstance().readFile("src/XML/courses.xml");
-    	 allSpaces = SpacesFileReader.getInstance().readFile("src/XML/spaces.xml");
-    	 allDisciplines = DisciplinesFileReader.getInstance().readFile("src/XML/disciplines.xml");
+    	 allCourses = CoursesFileReader.getInstance().readFile("XML/courses.xml");
+    	 allSpaces = SpacesFileReader.getInstance().readFile("XML/spaces.xml");
+    	 allDisciplines = DisciplinesFileReader.getInstance().readFile("XML/disciplines.xml");
     	
     	 // removes the resources chosen by the user
          allSpaces = removeSelectedSpaces(SelectionController.getRemovedSpaces());
@@ -73,9 +69,7 @@ public class LectureSelector {
 	 * @return: the courses that were not removed
 	 */
 	private List<Course> removeSelectedCourses(List<String> selectedCourses) {
-		 
-		 
-		 List<String> resultList = new ArrayList<String>();
+		 List<String> resultList = new ArrayList<>();
          for (String item : selectedCourses) {
              String[] parts = item.split(" - ", 2);
              if (parts.length > 1) {
@@ -98,13 +92,8 @@ public class LectureSelector {
 	 * @param selectedSpaces: list of the selected spaces
 	 * @return: the spaces that were not removed
 	 */
-    private List<Space> removeSelectedSpaces(List<String> selectedSpaces) {	
-		Iterator<Space> iterator = allSpaces.iterator();
-		while (iterator.hasNext()) {
-            Space space = iterator.next();
-            if (selectedSpaces.contains(space.getSpaceID()))
-                iterator.remove();
-        }
+    private List<Space> removeSelectedSpaces(List<String> selectedSpaces) {
+        allSpaces.removeIf(space -> selectedSpaces.contains(space.getSpaceID()));
 	    return allSpaces;
    	}
     
@@ -113,13 +102,8 @@ public class LectureSelector {
 	 * @param selectedElectives: list of the selected disciplines
 	 * @return: the elective disciplines that were not removed
 	 */
-    private List<Discipline> removeSelectedElectives(List<String> selectedElectives) {	
-		Iterator<Discipline> iterator = allDisciplines.iterator();
-		while (iterator.hasNext()) {
-            Discipline discipline = iterator.next();
-            if (selectedElectives.contains(discipline.getDisciplineId())) 
-                iterator.remove();
-        }
+    private List<Discipline> removeSelectedElectives(List<String> selectedElectives) {
+        allDisciplines.removeIf(discipline -> selectedElectives.contains(discipline.getDisciplineId()));
 	    return allDisciplines;
    	}
 }

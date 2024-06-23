@@ -31,7 +31,6 @@ public class SpaceAllocator {
      * 
      * @param allSpaces: list of all spaces available
      * @param allLectures: list of all lectures created, without places assigned
-     * @param allDisciplines: list of all disciplines
      */
     public static void assignPlaces(List<Space> allSpaces, List<Lecture> allLectures) {
         Map<SpaceType, List<Lecture>> separatedLectures = separateLecturesBySpaceRequirement(allLectures);
@@ -146,7 +145,7 @@ public class SpaceAllocator {
     /**
      * Separate the lectures by required spaceType an stores in a hash map
      * 
-     * @param spaceList: the list of lectures
+     * @param allLectures: the list of lectures
      * @return: the map with the lectures separated by required space type
      */
     private static Map<SpaceType, List<Lecture>> separateLecturesBySpaceRequirement(List<Lecture> allLectures) {
