@@ -114,6 +114,11 @@
     <space>
         <type> slidesRoom </type>
         <institute> IC </institute>
+        <id> CC350 </id>
+    </space>
+    <space>
+        <type> slidesRoom </type>
+        <institute> IC </institute>
         <id> CC351 </id>
     </space>
     <space>

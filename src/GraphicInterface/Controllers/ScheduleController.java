@@ -33,11 +33,11 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import src.CourseRelated.Course;
 import src.CourseRelated.LectureRelated.Lecture;
 import src.CourseRelated.LectureRelated.MandatoryLecture;
+import src.GraphicInterface.LectureSelector;
 import src.GraphicInterface.Views.ElectivesView;
 import src.GraphicInterface.Views.SelectionView;
 import src.Schedule.HourOfClass;
 import src.Schedule.WeekDay;
-import src.System.LectureSelector;
 
 /**
  * Controller class for handling the schedule view in the GUI.
@@ -120,7 +120,8 @@ public class ScheduleController {
      */
     @FXML
     public void rebuildSchedule() {
-        LectureSelector.getInstance().loadAndFilterResources();
+        LectureSelector.getInstance().readAllResources();
+		LectureSelector.getInstance().filterResourcesAndAllocate();
         loadSchedule();
     }
 
