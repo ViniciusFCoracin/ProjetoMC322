@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-    <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="764.0" prefWidth="1033.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.GraphicInterface.Controllers.SelectionController">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="764.0" prefWidth="1033.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.GraphicInterface.Controllers.SelectionController">
     <children>
         <GridPane alignment="TOP_CENTER" gridLinesVisible="true" prefHeight="690.0" prefWidth="993.0" VBox.vgrow="ALWAYS">
             <columnConstraints>
@@ -80,7 +80,7 @@
                             <padding>
                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                             </padding>
-                            <Button mnemonicParsing="false" onAction="#handleAddSpace" prefWidth="110.0" styleClass="add-button" text="Adicionar Local" textAlignment="CENTER"/>
+                            <Button mnemonicParsing="false" alignment="BOTTOM_CENTER" onAction="#handleAddSpace" prefWidth="110.0" styleClass="add-button" text="Adicionar Local" textAlignment="CENTER"/>
                         </FlowPane>
                     </content>
                 </ScrollPane>
@@ -127,7 +127,7 @@
                         <Button mnemonicParsing="false" onAction="#removeElective" prefWidth="110.0" styleClass="selection-button" text="HL144"></Button>
                         <Button mnemonicParsing="false" onAction="#removeElective" prefWidth="110.0" styleClass="selection-button" text="CP043"></Button>
                         <Button mnemonicParsing="false" onAction="#removeElective" prefWidth="110.0" styleClass="selection-button" text="EF315"></Button>
-                        <Button mnemonicParsing="false" onAction="#handleAddElective" prefWidth="110.0" styleClass="add-button" text="Adicionar Disciplina" textAlignment="CENTER"/>
+                        <Button mnemonicParsing="false" onAction="#handleAddElective" alignment="BOTTOM_CENTER" styleClass="add-button" text="Adicionar Disciplina" textAlignment="CENTER"/>
                     </children>
                     <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
