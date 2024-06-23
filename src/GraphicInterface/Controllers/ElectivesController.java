@@ -63,7 +63,7 @@ public class ElectivesController {
     	Pane previewPane = new Pane();
         VBox previewPaneVBox = new VBox();
         Popup previewPopup = new Popup();
-        List<Label> previewPaneLabels = createPreviwPaneLabels(lecture);
+        List<Label> previewPaneLabels = createPreviewPaneLabels(lecture);
         
         previewPaneVBox.getChildren().addAll(previewPaneLabels);
         previewPane.getChildren().add(previewPaneVBox);
@@ -90,7 +90,7 @@ public class ElectivesController {
      * @param lecture: the lecture for which labels are created.
      * @return a list of labels containing lecture details.
      */
-    private List<Label> createPreviwPaneLabels(Lecture lecture) {
+    private List<Label> createPreviewPaneLabels(Lecture lecture) {
         Label labelName = new Label(lecture.getLectureDiscipline().getDisciplineName());
         labelName.setStyle("-fx-font-weight: bold");
         Label labelProfessor = new Label(lecture.getProfessor());
