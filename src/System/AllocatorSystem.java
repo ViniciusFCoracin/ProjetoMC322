@@ -94,10 +94,7 @@ public class AllocatorSystem {
         	SelectionController.errorStage("Insufficient Spaces: please try to add more spaces");
             return false;
         }
-        else {
-            System.out.println(errorsInThisType);
+        else
             return true;
-        }
-
     }
 }

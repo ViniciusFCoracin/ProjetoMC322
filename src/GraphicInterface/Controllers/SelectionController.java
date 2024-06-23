@@ -89,6 +89,7 @@ public class SelectionController {
         scheduleView.setStage(SelectionView.getInstance().getStage());
         scheduleView.loadScene("schedule");
         scheduleView.showStage();
+        scheduleView.getStage().setMaximized(true);
     }
 
     @FXML
