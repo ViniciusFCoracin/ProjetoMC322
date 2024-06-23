@@ -139,10 +139,9 @@ public class ScheduleController {
 
     /**
      * Goes back to the selection view.
-     * @throws IOException if there is an error loading the selection view.
      */
     @FXML
-    public void goBack() throws IOException {
+    public void goBack() {
         SelectionView.getInstance().showStage();
     }
 
@@ -197,7 +196,7 @@ public class ScheduleController {
 
         VBox vBox = (VBox) getNodeByRowColumnIndex(scheduleGridPane, row, column);
         vBox.getChildren().addAll(labels);
-        vBox.heightProperty().addListener((obs, oldHeight, newHeight) -> {
+        vBox.heightProperty().addListener((_, _, newHeight) -> {
             double newSize = newHeight.doubleValue() / 5;
             double minFontSize = 15.0;
             double maxFontSize = 20.0;
