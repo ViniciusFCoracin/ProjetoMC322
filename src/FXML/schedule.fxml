@@ -14,20 +14,20 @@
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" styleClass="no-border" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.GraphicInterface.Controllers.ScheduleController">
    <children>
-      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minWidth="200.0" prefHeight="1076.0" prefWidth="269.0" vbarPolicy="NEVER" HBox.hgrow="ALWAYS">
+      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minWidth="250.0" prefHeight="1076.0" prefWidth="350.0" vbarPolicy="NEVER">
          <content>
-            <GridPane maxHeight="1.7976931348623157E308" prefHeight="1278.0" prefWidth="317.0" styleClass="option-gridpane">
+            <GridPane maxHeight="1.7976931348623157E308" minWidth="150.0" prefHeight="1278.0" prefWidth="317.0" styleClass="option-gridpane">
                <columnConstraints>
                   <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints maxHeight="1.7976931348623157E308" minHeight="90.0" prefHeight="484.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="564.0" minHeight="111.0" prefHeight="173.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="305.0" minHeight="189.0" prefHeight="216.0" valignment="CENTER" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="192.0" minHeight="88.0" prefHeight="192.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="1.7976931348623157E308" prefHeight="484.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="564.0" prefHeight="173.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="305.0" prefHeight="216.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="192.0" prefHeight="192.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <VBox alignment="CENTER_LEFT">
+                  <VBox alignment="CENTER_LEFT" minWidth="150.0" prefHeight="489.0" prefWidth="328.0">
                      <children>
                         <Label fx:id="invalidCourse" prefHeight="20.0" textFill="#dd0d0d">
                            <VBox.margin>
@@ -52,7 +52,7 @@
                               <Insets bottom="40.0" />
                            </VBox.margin>
                         </ComboBox>
-                        <Button maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" onAction="#loadSchedule" prefHeight="35.0" prefWidth="306.0" styleClass="schedule-button" text="Load Schedule">
+                        <Button maxWidth="1.7976931348623157E308" minWidth="300.0" mnemonicParsing="false" onAction="#loadSchedule" prefHeight="35.0" prefWidth="306.0" styleClass="schedule-button" text="Load Schedule">
                            <font>
                               <Font name="Liberation Serif" size="20.0" />
                            </font>
@@ -74,7 +74,7 @@
                               <Font name="Liberation Serif" size="20.0" />
                            </font>
                            <VBox.margin>
-                              <Insets />
+                              <Insets top="20.0" />
                            </VBox.margin>
                         </Button>
                      </children>
