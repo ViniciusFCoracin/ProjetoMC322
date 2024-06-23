@@ -196,7 +196,7 @@ public class ScheduleController {
 
         VBox vBox = (VBox) getNodeByRowColumnIndex(scheduleGridPane, row, column);
         vBox.getChildren().addAll(labels);
-        vBox.heightProperty().addListener((_, _, newHeight) -> {
+        vBox.heightProperty().addListener((obs, oldHeight, newHeight) -> {
             double newSize = newHeight.doubleValue() / 5;
             double minFontSize = 15.0;
             double maxFontSize = 20.0;
