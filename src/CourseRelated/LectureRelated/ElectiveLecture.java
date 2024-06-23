@@ -5,7 +5,7 @@ import src.Schedule.LectureSchedule;
 import src.Spaces.Space;
 
 /**
- * Class that represents a lecture of a elective discipline
+ * Class that represents a lecture of an elective discipline
  */
 public class ElectiveLecture extends Lecture{
     public ElectiveLecture(Space space, Discipline discipline, LectureSchedule schedule, String professor, char group){

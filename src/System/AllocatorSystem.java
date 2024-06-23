@@ -66,7 +66,7 @@ public class AllocatorSystem {
                     String spaceTypeString = matcher1.group(1);
                     SpaceType spaceType = SpaceType.valueOf(spaceTypeString);
                     mustContinue = continueTheLoop(spaceType);
-                    if (mustContinue == false)
+                    if (!mustContinue)
                         throw e;
                     
                     allLectures = null;
@@ -94,7 +94,10 @@ public class AllocatorSystem {
         	SelectionController.errorStage("Insufficient Spaces: please try to add more spaces");
             return false;
         }
-        else
+        else {
+            System.out.println(errorsInThisType);
             return true;
+        }
+
     }
 }

@@ -62,16 +62,15 @@ public class SpaceAllocator {
     
     /**
      * Assign the spaces for the filtered lectures
-     * 
-     * @param spacesOfType: a list of the spaces of the type
+     *
+     * @param spacesOfType:     a list of the spaces of the type
      * @param filteredLectures: list of lectures that requires that type of space
-     * @param type: the type of the space
-     * @return: a list of lectures, with spaces assigned
+     * @param type:             the type of the space
      */
-    private static List<Lecture> assignPlacesPerType(List<Space> spacesOfType, List<Lecture> filteredLectures, SpaceType type) {
+    private static void assignPlacesPerType(List<Space> spacesOfType, List<Lecture> filteredLectures, SpaceType type) {
         Graph<Lecture, DefaultEdge> lecturesGraph = createLecturesGraph(filteredLectures);
         Coloring<Lecture> coloring = coloringLecturesGraph(lecturesGraph);
-        return assignPlacesOfType(spacesOfType, coloring, type);
+        assignPlacesOfType(spacesOfType, coloring, type);
     }
 
     /**
@@ -111,13 +110,12 @@ public class SpaceAllocator {
     /**
      * Assign places to the lectures. If the spaces are insufficient or if there are no
      * spaces of a type, an error is thrown.
-     * 
+     *
      * @param spacesOfType: a list of the spaces of a specific type
-     * @param coloring: the coloring created for the graph
-     * @param type: the type of the spaces
-     * @return: a list of lectures, with places assigned.
+     * @param coloring:     the coloring created for the graph
+     * @param type:         the type of the spaces
      */
-    private static List<Lecture> assignPlacesOfType(List<Space> spacesOfType, Coloring<Lecture> coloring, SpaceType type) {
+    private static void assignPlacesOfType(List<Space> spacesOfType, Coloring<Lecture> coloring, SpaceType type) {
         if (spacesOfType.isEmpty())
             throw new NoSpacesAvailableError("No spaces of type " + type);
 
@@ -131,19 +129,16 @@ public class SpaceAllocator {
             Integer color = entry.getValue();
 
             if (color >= spacesOfType.size())
-                throw new InsufficientSpacesError("Insufficent spaces of type " + spacesOfType.get(0).getSpaceType());
+                throw new InsufficientSpacesError("Insufficent spaces of type " + spacesOfType.getFirst().getSpaceType());
 
             Space space = mapColorSpace.get(color);
             lecture.setLectureSpace(space);
             mapLectureColor.put(lecture, space.getSpaceID());
         }
-
-        List<Lecture> allLectures = new ArrayList<>(mapLectureColor.keySet());
-        return allLectures;
     }
 
     /**
-     * Separate the lectures by required spaceType an stores in a hash map
+     * Separate the lectures by required spaceType and stores in a hash map
      * 
      * @param allLectures: the list of lectures
      * @return: the map with the lectures separated by required space type
@@ -186,5 +181,4 @@ public class SpaceAllocator {
         }
         return separatedSpaces;
     }
-
 }

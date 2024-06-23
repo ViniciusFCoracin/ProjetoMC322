@@ -3,7 +3,7 @@ import java.util.List;
 
 
 /**
- * Class that represents a semester of an university course
+ * Class that represents a semester of a university course
  */
 public class Semester {
     private int semesterPeriod;

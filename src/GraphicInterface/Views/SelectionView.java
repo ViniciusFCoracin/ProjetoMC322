@@ -8,12 +8,12 @@ import java.io.IOException;
 public class SelectionView extends View{
 	private static SelectionView instance;
 	
-	private SelectionView() throws IOException {
+	private SelectionView() {
 		super.setPrefWidth(1300);
 		super.setPrefHeight(910);
 	}
 	
-	public static SelectionView getInstance() throws IOException{
+	public static SelectionView getInstance() {
         if(instance == null) {
             instance= new SelectionView();
         }

@@ -56,7 +56,7 @@ public class CourseReader implements XMLNodeReader {
                     throw new Error("Invalid atribute");
                 }
             }
-            if (courseId != 0 && courseName != null && semesters.size() != 0 && courseShift != null)
+            if (courseId != 0 && courseName != null && !semesters.isEmpty() && courseShift != null)
                 course = new Course(courseName, courseId, courseShift, semesters);
             else
                 throw new Error("Atribute missing");

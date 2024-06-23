@@ -29,47 +29,32 @@ public class SpaceReader implements XMLNodeReader {
                     continue;
                 else if ("type".equals(node.getNodeName())){
                     String text = node.getTextContent().trim();
-                    if (text.equals("basicRoom"))
-                        type = SpaceType.BASIC_ROOM;
-                    else if (text.equals("slidesRoom"))
-                        type = SpaceType.SLIDES_ROOM;
-                    else if (text.equals("computerRoom"))
-                        type = SpaceType.COMPUTER_ROOM;
-                    else if (text.equals("physicsLaboratory"))
-                        type = SpaceType.PHYSICS_LABORATORY;
-                    else if (text.equals("chemistryLaboratory"))
-                        type = SpaceType.CHEMISTRY_LABORATORY;
-                    else if (text.equals("auditorium"))
-                        type = SpaceType.AUDITORIUM;
-                    else if (text.equals("court"))
-                        type = SpaceType.COURT;
-                    else if (text.equals("eletronicsLaboratory"))
-                        type = SpaceType.ELETRONICS_LABORATORY;
-                    else
-                        throw new Error("Invalid space type");
+                    type = switch (text) {
+                        case "basicRoom" -> SpaceType.BASIC_ROOM;
+                        case "slidesRoom" -> SpaceType.SLIDES_ROOM;
+                        case "computerRoom" -> SpaceType.COMPUTER_ROOM;
+                        case "physicsLaboratory" -> SpaceType.PHYSICS_LABORATORY;
+                        case "chemistryLaboratory" -> SpaceType.CHEMISTRY_LABORATORY;
+                        case "auditorium" -> SpaceType.AUDITORIUM;
+                        case "court" -> SpaceType.COURT;
+                        case "eletronicsLaboratory" -> SpaceType.ELETRONICS_LABORATORY;
+                        default -> throw new Error("Invalid space type");
+                    };
                 }
                 else if ("institute".equals(node.getNodeName())){
                     String text = node.getTextContent().trim();
-                    if (text.equals("CB"))
-                        institute = InstituteAbbr.CB;
-                    else if (text.equals("PB"))
-                        institute = InstituteAbbr.PB;
-                    else if (text.equals("IC"))
-                        institute = InstituteAbbr.IC;
-                    else if (text.equals("FEEC"))
-                        institute = InstituteAbbr.FEEC;
-                    else if (text.equals("IMECC"))
-                        institute = InstituteAbbr.IMECC;
-                    else if (text.equals("IFGW"))
-                        institute = InstituteAbbr.IFGW;
-                    else if (text.equals("IEL"))
-                        institute = InstituteAbbr.IEL;
-                    else if (text.equals("FEF"))
-                        institute = InstituteAbbr.FEF;
-                    else if (text.equals("IE"))
-                        institute = InstituteAbbr.IE;
-                    else
-                        throw new Error("Invalid institute");
+                    institute = switch (text) {
+                        case "CB" -> InstituteAbbr.CB;
+                        case "PB" -> InstituteAbbr.PB;
+                        case "IC" -> InstituteAbbr.IC;
+                        case "FEEC" -> InstituteAbbr.FEEC;
+                        case "IMECC" -> InstituteAbbr.IMECC;
+                        case "IFGW" -> InstituteAbbr.IFGW;
+                        case "IEL" -> InstituteAbbr.IEL;
+                        case "FEF" -> InstituteAbbr.FEF;
+                        case "IE" -> InstituteAbbr.IE;
+                        default -> throw new Error("Invalid institute");
+                    };
                 }
                 else if ("id".equals(node.getNodeName())){
                     id = node.getTextContent().trim();

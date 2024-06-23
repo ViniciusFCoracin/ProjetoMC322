@@ -12,7 +12,7 @@ import src.GraphicInterface.Views.SelectionView;
  */
 public class Main extends Application {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         Application.launch(args);
     }
 

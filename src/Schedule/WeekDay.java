@@ -31,20 +31,14 @@ public enum WeekDay {
      * @return: the numeric value
      */
     public static int getNumericValue(WeekDay day){
-        switch (day){
-            case MONDAY:
-                return 1;
-            case TUESDAY:
-                return 2;
-            case WEDNESDAY:
-                return 3;
-            case THURSDAY:
-                return 4;
-            case FRIDAY:
-                return 5;
-            default:
-                throw new Error("Indefinite week day");
-        }
+        return switch (day) {
+            case MONDAY -> 1;
+            case TUESDAY -> 2;
+            case WEDNESDAY -> 3;
+            case THURSDAY -> 4;
+            case FRIDAY -> 5;
+            default -> throw new Error("Indefinite week day");
+        };
     }
 
     public static WeekDay get(int index) {

@@ -95,8 +95,8 @@ public class ElectivesController {
         labelName.setStyle("-fx-font-weight: bold");
         Label labelProfessor = new Label(lecture.getProfessor());
         Label labelSpace = new Label(lecture.getLectureSpace().getSpaceID());
-        Label labelCredits = new Label("Credits: " + String.valueOf(lecture.getLectureDiscipline().getDisciplineCredits()));
-        Label labelGroup = new Label("Group: " + Character.toString(lecture.getLectureGroup()));
+        Label labelCredits = new Label("Credits: " + lecture.getLectureDiscipline().getDisciplineCredits());
+        Label labelGroup = new Label("Group: " + lecture.getLectureGroup());
         Label labelHourOfClass = new Label(lecture.getLectureSchedule().getHourOfClass().toString());
         
         return new ArrayList<>(Arrays.asList(labelName, labelProfessor, labelSpace, labelCredits, labelGroup, labelHourOfClass));

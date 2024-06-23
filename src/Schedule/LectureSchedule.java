@@ -31,10 +31,10 @@ public class LectureSchedule {
 
     /**
      * Method that gives the first schedule of a week. If it's a fulltime course,
-     * the first schedule is Monday, eight to ten AM. If it's a night time course,
+     * the first schedule is Monday, eight to ten AM. If it's a nighttime course,
      * the first is Monday, seven to nine PM.
      * 
-     * @param course: the course that will receive the schedule
+     * @param courseShift: the course that will receive the schedule
      * @return: the first schedule of the week
      */
     public static LectureSchedule firstSchedule(Shift courseShift){

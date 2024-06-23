@@ -116,7 +116,7 @@ public class ScheduleController {
     }
 
     /**
-     * Rebuilds the schedule by redoing the distribution"
+     * Rebuilds the schedule by redoing the distribution
      */
     @FXML
     public void rebuildSchedule() {
@@ -308,7 +308,7 @@ public class ScheduleController {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+            transformer.setOutputProperty("{https://xml.apache.org/xslt}indent-amount", "4");
 
             DOMSource domSource = new DOMSource(document);
             StreamResult streamResult = new StreamResult(file);
