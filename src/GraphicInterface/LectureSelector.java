@@ -78,12 +78,12 @@ public class LectureSelector {
      * Reads all XML files to load courses, spaces, and disciplines.
      */
     public void readAllResources() {
-        allCourses = CoursesFileReader.getInstance().readFile("XML/courses.xml");
+        allCourses = CoursesFileReader.getInstance().readFile("src/XML/courses.xml");
 
-        allSpaces = SpacesFileReader.getInstance().readFile("XML/spaces.xml");
+        allSpaces = SpacesFileReader.getInstance().readFile("src/XML/spaces.xml");
         allSpaces.addAll(addedSpaces);
 
-        allDisciplines = DisciplinesFileReader.getInstance().readFile("XML/disciplines.xml");
+        allDisciplines = DisciplinesFileReader.getInstance().readFile("src/XML/disciplines.xml");
         allDisciplines.addAll(addedDisciplines);
     }
 
