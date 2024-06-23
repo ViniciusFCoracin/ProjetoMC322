@@ -1,6 +1,7 @@
 package src.GraphicInterface.Views;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -33,7 +34,7 @@ public abstract class View {
 	}
 	
 	public void loadScene(String path) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("/src/FXML/"+path+".fxml"));
+		Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/src/FXML/" + path + ".fxml")));
 		this.scene = new Scene(root);
 	}
 	
