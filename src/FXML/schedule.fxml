@@ -36,7 +36,7 @@
                                   <Font name="Liberation Serif" size="15.0" />
                               </font>
                           </Label>
-                          <ComboBox fx:id="coursesComboBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="35.0" promptText="Course" styleClass="combo-box">
+                          <ComboBox fx:id="coursesComboBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="35.0" promptText="Course" styleClass="schedule-combo-box">
                               <VBox.margin>
                                   <Insets />
                               </VBox.margin>
@@ -46,12 +46,12 @@
                                   <Font name="Liberation Serif" size="15.0" />
                               </font>
                           </Label>
-                          <ComboBox fx:id="semesterComboBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" prefHeight="35.0" promptText="Semester" styleClass="combo-box">
+                          <ComboBox fx:id="semesterComboBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" prefHeight="35.0" promptText="Semester" styleClass="schedule-combo-box">
                               <VBox.margin>
                                   <Insets bottom="40.0" />
                               </VBox.margin>
                           </ComboBox>
-                          <Button maxWidth="1.7976931348623157E308" minWidth="300.0" mnemonicParsing="false" onAction="#loadSchedule" prefHeight="35.0" prefWidth="306.0" styleClass="schedule-button" text="Load Schedule">
+                          <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadSchedule" prefHeight="35.0" styleClass="schedule-button" text="Load Schedule">
                               <font>
                                   <Font name="Liberation Serif" size="20.0" />
                               </font>
@@ -97,7 +97,7 @@
                                   <Font name="Liberation Serif" size="15.0" />
                               </font>
                           </Label>
-                          <ComboBox fx:id="scheduleComboBox" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="35.0" prefWidth="179.0" promptText="Current Schedule" styleClass="combo-box">
+                          <ComboBox fx:id="scheduleComboBox" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="35.0" prefWidth="179.0" promptText="Current Schedule" styleClass="schedule-combo-box">
                               <VBox.margin>
                                   <Insets bottom="20.0" />
                               </VBox.margin>
