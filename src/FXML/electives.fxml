@@ -21,35 +21,35 @@
     <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="349.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label text="Monday" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <Label text="Segunda" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <font>
             <Font name="Liberation Serif" size="23.0" />
          </font>
          <GridPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </GridPane.margin></Label>
-      <Label text="Tuesday" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <Label text="Terça" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <font>
             <Font name="Liberation Serif" size="23.0" />
          </font>
          <GridPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </GridPane.margin></Label>
-      <Label text="Wednesday" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <Label text="Quarta" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <font>
             <Font name="Liberation Serif" size="23.0" />
          </font>
          <GridPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </GridPane.margin></Label>
- 	  <Label text="Thursday" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+ 	  <Label text="Quinta" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <font>
             <Font name="Liberation Serif" size="23.0" />
          </font>
          <GridPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </GridPane.margin></Label>
-      <Label text="Friday" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <Label text="Sexta" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <font>
             <Font name="Liberation Serif" size="23.0" />
          </font>
