@@ -89,7 +89,7 @@ public class ScheduleController {
      * Loads the schedule options into the schedules ComboBox.
      */
     private void loadSchedulesComboBox() {
-    	List<String> schedules = Arrays.asList("Current Schedule", "All Lectures");
+    	List<String> schedules = Arrays.asList("Cronograma atual", "Todas as aulas");
     	ObservableList<String> observableSchedulesList;
         observableSchedulesList = FXCollections.observableArrayList(schedules);
         scheduleComboBox.setItems(observableSchedulesList);
@@ -275,10 +275,10 @@ public class ScheduleController {
         if ((currentSchedule == null || "Current Schedule".equals(currentSchedule)) 
             && (currentCourse == null || currentSemester == null)) {
             if (currentCourse == null) {
-                invalidCourse.setText("Please choose a course");
+                invalidCourse.setText("Por favor escolha um curso");
             }
             if (currentSemester == null) {
-                invalidSemester.setText("Please choose a semester");
+                invalidSemester.setText("Por favor escolha um semestre");
             }
             return true;
         }

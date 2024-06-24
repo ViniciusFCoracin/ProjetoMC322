@@ -36,7 +36,7 @@
                                   <Font name="Liberation Serif" size="15.0" />
                               </font>
                           </Label>
-                          <ComboBox fx:id="coursesComboBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="35.0" promptText="Course" styleClass="schedule-combo-box">
+                          <ComboBox fx:id="coursesComboBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="35.0" promptText="Curso" styleClass="schedule-combo-box">
                               <VBox.margin>
                                   <Insets />
                               </VBox.margin>
@@ -46,17 +46,17 @@
                                   <Font name="Liberation Serif" size="15.0" />
                               </font>
                           </Label>
-                          <ComboBox fx:id="semesterComboBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" prefHeight="35.0" promptText="Semester" styleClass="schedule-combo-box">
+                          <ComboBox fx:id="semesterComboBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" prefHeight="35.0" promptText="Semestre" styleClass="schedule-combo-box">
                               <VBox.margin>
                                   <Insets bottom="40.0" />
                               </VBox.margin>
                           </ComboBox>
-                          <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadSchedule" prefHeight="35.0" styleClass="schedule-button" text="Load Schedule">
+                          <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadSchedule" prefHeight="35.0" styleClass="schedule-button" text="Carregar Cronograma">
                               <font>
                                   <Font name="Liberation Serif" size="20.0" />
                               </font>
                           </Button>
-                          <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#rebuildSchedule" prefHeight="35.0" prefWidth="171.0" styleClass="schedule-button" text="Rebuild Schedule">
+                          <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#rebuildSchedule" prefHeight="35.0" prefWidth="171.0" styleClass="schedule-button" text="Reconstruir Cronograma">
                               <font>
                                   <Font name="Liberation Serif" size="20.0" />
                               </font>
@@ -68,7 +68,7 @@
                   </VBox>
                   <VBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                       <children>
-                          <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#viewElectives" prefHeight="35.0" styleClass="schedule-button" text="Electives">
+                          <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#viewElectives" prefHeight="35.0" styleClass="schedule-button" text="Eletivas">
                               <font>
                                   <Font name="Liberation Serif" size="20.0" />
                               </font>
@@ -80,7 +80,7 @@
                   </VBox>
                   <VBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                       <children>
-                          <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBack" prefHeight="40.0" prefWidth="174.0" styleClass="schedule-button" text="Go Back">
+                          <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBack" prefHeight="40.0" prefWidth="174.0" styleClass="schedule-button" text="Voltar">
                               <font>
                                   <Font name="Liberation Serif" size="20.0" />
                               </font>
@@ -97,12 +97,12 @@
                                   <Font name="Liberation Serif" size="15.0" />
                               </font>
                           </Label>
-                          <ComboBox fx:id="scheduleComboBox" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="35.0" prefWidth="179.0" promptText="Current Schedule" styleClass="schedule-combo-box">
+                          <ComboBox fx:id="scheduleComboBox" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="35.0" prefWidth="179.0" promptText="Cronograma Atual" styleClass="schedule-combo-box">
                               <VBox.margin>
                                   <Insets bottom="20.0" />
                               </VBox.margin>
                           </ComboBox>
-                          <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#saveSchedule" prefHeight="35.0" prefWidth="177.0" styleClass="schedule-button" text="Save ">
+                          <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#saveSchedule" prefHeight="35.0" prefWidth="177.0" styleClass="schedule-button" text="Salvar">
                               <font>
                                   <Font name="Liberation Serif" size="20.0" />
                               </font>
@@ -137,27 +137,27 @@
                   <RowConstraints prefHeight="85.0" vgrow="ALWAYS" />
               </rowConstraints>
               <children>
-                  <Label text="Monday" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Label text="Segunda" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                       <font>
                           <Font name="Liberation Serif" size="30.0" />
                       </font>
                   </Label>
-                  <Label text="Tuesday" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Label text="Terça" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                       <font>
                           <Font name="Liberation Serif" size="30.0" />
                       </font>
                   </Label>
-                  <Label text="Wednesday" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Label text="Quarta" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                       <font>
                           <Font name="Liberation Serif" size="30.0" />
                       </font>
                   </Label>
-                  <Label text="Thursday" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Label text="Quinta" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                       <font>
                           <Font name="Liberation Serif" size="30.0" />
                       </font>
                   </Label>
-                  <Label text="Friday" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Label text="Sexta" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                       <font>
                           <Font name="Liberation Serif" size="30.0" />
                       </font>
