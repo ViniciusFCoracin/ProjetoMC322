@@ -1,5 +1,6 @@
 package src.Errors;
 
+import javafx.application.Platform;
 import src.GraphicInterface.Controllers.SelectionController;
 
 public class NoSpacesAvailableError extends Error {
@@ -8,6 +9,6 @@ public class NoSpacesAvailableError extends Error {
 
     public NoSpacesAvailableError(String message) {
         super(message);
-        SelectionController.errorStage(message);
+        Platform.runLater(() -> SelectionController.errorStage(message));
     }
 }
