@@ -22,11 +22,12 @@ import src.GraphicInterface.Views.ScheduleView;
 import src.GraphicInterface.Views.SelectionView;
 import src.Spaces.Space;
 import src.CourseRelated.Discipline;
+import src.System.ScheduleAllocator;
 
 /**
  * Controller class for handling the selection of courses, spaces, and electives in the GUI.
  */
-public class SelectionController {
+public class SelectionController extends ScheduleAllocator {
     // FXML fields
     @FXML
     private VBox coursesVBox;
@@ -168,6 +169,8 @@ public class SelectionController {
             AddSpaceController controller = loader.getController();
             controller.setDialogStage(dialogStage);
 
+            dialogStage.setMinWidth(400);
+            dialogStage.setMinHeight(200);
             dialogStage.showAndWait();
 
             if (controller.isOkClicked()) {
@@ -198,14 +201,16 @@ public class SelectionController {
 
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Adicionar Eletiva");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(((Node) event.getSource()).getScene().getWindow());
+            //dialogStage.initModality(Modality.WINDOW_MODAL);
+            //dialogStage.initOwner(((Node) event.getSource()).getScene().getWindow());
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
 
             AddElectiveController controller = loader.getController();
             controller.setDialogStage(dialogStage);
 
+            dialogStage.setMinWidth(450);
+            dialogStage.setMinHeight(400);
             dialogStage.showAndWait();
 
             if (controller.isOkClicked()) {
