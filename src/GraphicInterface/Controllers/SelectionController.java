@@ -18,7 +18,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import src.GraphicInterface.LectureSelector;
 import src.GraphicInterface.Views.ScheduleView;
@@ -190,8 +189,9 @@ public class SelectionController extends ScheduleAllocator {
 
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Adicionar Local");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(((Node) event.getSource()).getScene().getWindow());
+            //dialogStage.initModality(Modality.WINDOW_MODAL);
+            //dialogStage.initOwner(((Node) event.getSource()).getScene().getWindow());
+            dialogStage.centerOnScreen();
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
 
