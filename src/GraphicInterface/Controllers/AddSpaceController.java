@@ -11,9 +11,6 @@ import src.Spaces.InstituteAbbr;
 import src.Spaces.Space;
 import src.Spaces.SpaceType;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class AddSpaceController {
     @FXML
     private TextField spaceNameField;
