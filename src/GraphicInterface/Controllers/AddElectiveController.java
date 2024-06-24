@@ -1,5 +1,6 @@
 package src.GraphicInterface.Controllers;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -23,9 +24,9 @@ public class AddElectiveController {
     @FXML
     private TextField creditsField;
     @FXML
-    private ComboBox institutesComboBox;
+    private ComboBox<InstituteAbbr> institutesComboBox;
     @FXML
-    private ComboBox typesComboBox;
+    private ComboBox<SpaceType> typesComboBox;
     @FXML
     private TextField professorsField;
 
@@ -70,13 +71,19 @@ public class AddElectiveController {
         InstituteAbbr institute = (InstituteAbbr) institutesComboBox.getValue();
         List<InstituteAbbr> institutes = Collections.singletonList(institute);
         SpaceType type = (SpaceType) typesComboBox.getValue();
-        List<SpaceType> types = Collections.singletonList(type);
+        List<SpaceType> types = new ArrayList<>();
+        types.add(type);
         List<String> professors = Arrays.asList(professorsField.getText().split(","));
 
         if(Objects.equals(name, "") || Objects.equals(id, "") || Objects.equals(credits, "") || institute == null || type == null)
             return;
 
         int creditsInt = Integer.parseInt(credits);
+        int necessaryTypes = creditsInt / 2;
+        for(int i = 0; i < necessaryTypes - 1; i++){
+            types.add(type);
+        }
+
         electiveDiscipline = new Discipline(name, id, creditsInt, types, institutes, professors);
         okClicked = true;
 
