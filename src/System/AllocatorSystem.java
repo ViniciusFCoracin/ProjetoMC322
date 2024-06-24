@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javafx.application.Platform;
 import src.CourseRelated.Course;
 import src.CourseRelated.Discipline;
 import src.CourseRelated.LectureRelated.*;
@@ -91,10 +92,12 @@ public class AllocatorSystem {
         int errorsInThisType = this.errorsPerType.get(spaceType);
         errorsPerType.put(spaceType, ++errorsInThisType);
         if (errorsInThisType >= this.MAX_NUMBER_OF_TRIES) {
-        	SelectionController.errorStage("Insufficient Spaces: please try to add more spaces");
+            Platform.runLater(() -> SelectionController.errorStage("Insufficient spaces of type " + spaceType));
             return false;
         }
-        else
+        else {
+            Platform.runLater(() -> SelectionController.increaseAttempts());
             return true;
+        }
     }
 }

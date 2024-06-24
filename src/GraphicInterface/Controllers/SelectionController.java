@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.application.Platform;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,11 +38,15 @@ public class SelectionController extends ScheduleAllocator {
     private FlowPane spacesFlowPane;
     @FXML
     private FlowPane electivesFlowPane;
+    @FXML
+    private Label attemptsLabel;
 
     // Lists for removed items chosen by the user 
     private static List<String> removedCourses = new ArrayList<>();
     private static List<String> removedSpaces = new ArrayList<>();
     private static List<String> removedElectives = new ArrayList<>();
+
+    private static IntegerProperty attempts = new SimpleIntegerProperty(0);
 
     public static List<String> getRemovedCourses() {
         return removedCourses;
@@ -82,15 +89,26 @@ public class SelectionController extends ScheduleAllocator {
      */
     @FXML
     public void submit(ActionEvent e) throws IOException {
-        LectureSelector lectureSelector = LectureSelector.getInstance();
-        lectureSelector.readAllResources();
-        lectureSelector.filterResourcesAndAllocate();
+        attempts.set(0);
 
-        ScheduleView scheduleView = ScheduleView.getInstance();
-        scheduleView.setStage(SelectionView.getInstance().getStage());
-        scheduleView.loadScene("schedule");
-        scheduleView.showStage();
-        scheduleView.getStage().setMaximized(true);
+        new Thread(() -> {
+            LectureSelector lectureSelector = LectureSelector.getInstance();
+            lectureSelector.readAllResources();
+            lectureSelector.filterResourcesAndAllocate();
+
+            Platform.runLater(() -> {
+                ScheduleView scheduleView = ScheduleView.getInstance();
+                scheduleView.setStage(SelectionView.getInstance().getStage());
+                try {
+                    scheduleView.loadScene("schedule");
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                attemptsLabel.setText("");
+                scheduleView.showStage();
+                scheduleView.getStage().setMaximized(true);
+            });
+        }).start();
     }
 
     @FXML
@@ -99,6 +117,13 @@ public class SelectionController extends ScheduleAllocator {
         initializeContainer(spacesFlowPane);
         initializeContainer(electivesFlowPane);
         LectureSelector.getInstance().readAllResources();
+
+        attempts.addListener((observable, oldValue, newValue) -> {
+            Platform.runLater(() -> {
+                if(newValue.intValue() >= 100)
+                    attemptsLabel.setText("Tentativas: " + newValue);
+            });
+        });
     }
 
     /**
@@ -150,6 +175,10 @@ public class SelectionController extends ScheduleAllocator {
     		button.setUserData(false);
     	}
     	return list;
+    }
+
+    public static void increaseAttempts() {
+        attempts.set(attempts.get() + 1);
     }
 
     @FXML
