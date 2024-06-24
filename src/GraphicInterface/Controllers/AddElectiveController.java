@@ -3,8 +3,12 @@ package src.GraphicInterface.Controllers;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import src.CourseRelated.Discipline;
@@ -19,15 +23,32 @@ public class AddElectiveController {
     @FXML
     private TextField creditsField;
     @FXML
-    private TextField locationTypeField;
+    private ComboBox institutesComboBox;
     @FXML
-    private TextField instituteField;
+    private ComboBox typesComboBox;
     @FXML
     private TextField professorsField;
 
     private Stage dialogStage;
     private boolean okClicked = false;
     private Discipline electiveDiscipline;
+
+    @FXML
+    public void initialize() {
+        loadInstitutesComboBox();
+        loadTypesComboBox();
+    }
+
+    private void loadInstitutesComboBox() {
+        ObservableList<InstituteAbbr> observableInstitutesList = FXCollections.observableArrayList(InstituteAbbr.values());
+        institutesComboBox.setItems(observableInstitutesList);
+    }
+
+    private void loadTypesComboBox() {
+        ObservableList<SpaceType> observableTypesList = FXCollections.observableArrayList(SpaceType.values());
+        typesComboBox.setItems(observableTypesList);
+    }
+
 
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
@@ -45,14 +66,18 @@ public class AddElectiveController {
     private void handleOk() {
         String name = nameField.getText();
         String id = idField.getText();
-        int credits = Integer.parseInt(creditsField.getText());
-        SpaceType spaceType = parseSpaceType(locationTypeField.getText());
-        List<SpaceType> types = Collections.singletonList(spaceType);
-        InstituteAbbr institute = parseInstitute(instituteField.getText());
+        String credits = creditsField.getText();
+        InstituteAbbr institute = (InstituteAbbr) institutesComboBox.getValue();
         List<InstituteAbbr> institutes = Collections.singletonList(institute);
+        SpaceType type = (SpaceType) typesComboBox.getValue();
+        List<SpaceType> types = Collections.singletonList(type);
         List<String> professors = Arrays.asList(professorsField.getText().split(","));
 
-        electiveDiscipline = new Discipline(name, id, credits, types, institutes, professors);
+        if(Objects.equals(name, "") || Objects.equals(id, "") || Objects.equals(credits, "") || institute == null || type == null)
+            return;
+
+        int creditsInt = Integer.parseInt(credits);
+        electiveDiscipline = new Discipline(name, id, creditsInt, types, institutes, professors);
         okClicked = true;
 
         dialogStage.close();
@@ -61,34 +86,5 @@ public class AddElectiveController {
     @FXML
     private void handleCancel() {
         dialogStage.close();
-    }
-
-    private SpaceType parseSpaceType(String typeString){
-        return switch (typeString) {
-            case "basicRoom" -> SpaceType.BASIC_ROOM;
-            case "slidesRoom" -> SpaceType.SLIDES_ROOM;
-            case "computerRoom" -> SpaceType.COMPUTER_ROOM;
-            case "physicsLaboratory" -> SpaceType.PHYSICS_LABORATORY;
-            case "chemistryLaboratory" -> SpaceType.CHEMISTRY_LABORATORY;
-            case "auditorium" -> SpaceType.AUDITORIUM;
-            case "court" -> SpaceType.COURT;
-            case "eletronicsLaboratory" -> SpaceType.ELETRONICS_LABORATORY;
-            default -> throw new IllegalArgumentException("Invalid space type");
-        };
-    }
-
-    private InstituteAbbr parseInstitute(String instituteString){
-        return switch (instituteString) {
-            case "CB" -> InstituteAbbr.CB;
-            case "PB" -> InstituteAbbr.PB;
-            case "IC" -> InstituteAbbr.IC;
-            case "FEEC" -> InstituteAbbr.FEEC;
-            case "IMECC" -> InstituteAbbr.IMECC;
-            case "IFGW" -> InstituteAbbr.IFGW;
-            case "IEL" -> InstituteAbbr.IEL;
-            case "FEF" -> InstituteAbbr.FEF;
-            case "IE" -> InstituteAbbr.IE;
-            default -> throw new IllegalArgumentException("Invalid institute");
-        };
     }
 }
