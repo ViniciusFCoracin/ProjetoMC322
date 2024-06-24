@@ -63,7 +63,7 @@ public class SpaceAllocator {
     /**
      * Assign the spaces for the filtered lectures
      *
-     * @param spacesOfType:     a list of the spaces of the type
+     * @param spacesOfType: a list of the spaces of the type
      * @param filteredLectures: list of lectures that requires that type of space
      * @param type:             the type of the space
      */

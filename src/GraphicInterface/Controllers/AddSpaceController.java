@@ -1,23 +1,45 @@
 package src.GraphicInterface.Controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import src.Spaces.InstituteAbbr;
 import src.Spaces.Space;
 import src.Spaces.SpaceType;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class AddSpaceController {
     @FXML
     private TextField spaceNameField;
     @FXML
-    private TextField instituteField;
+    private ComboBox institutesComboBox;
     @FXML
-    private TextField typeField;
+    private ComboBox typesComboBox;
     
     private Stage dialogStage;
     private boolean okClicked = false;
     private Space space;
+
+    @FXML
+    public void initialize() {
+        loadInstitutesComboBox();
+        loadTypesComboBox();
+    }
+
+    private void loadInstitutesComboBox() {
+        ObservableList<InstituteAbbr> observableInstitutesList = FXCollections.observableArrayList(InstituteAbbr.values());
+        institutesComboBox.setItems(observableInstitutesList);
+    }
+
+    private void loadTypesComboBox() {
+        ObservableList<SpaceType> observableTypesList = FXCollections.observableArrayList(SpaceType.values());
+        typesComboBox.setItems(observableTypesList);
+    }
     
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
@@ -34,8 +56,12 @@ public class AddSpaceController {
     @FXML
     private void handleOk() {
         String spaceID = spaceNameField.getText();
-        SpaceType type = parseSpaceType(typeField.getText());
-        InstituteAbbr institute = parseInstitute(instituteField.getText());
+        if(spaceID == null)
+            return;
+        InstituteAbbr institute = (InstituteAbbr) institutesComboBox.getValue();
+        SpaceType type = (SpaceType) typesComboBox.getValue();
+        if (type == null)
+            return;
 
         space = new Space(spaceID, type, institute);
         okClicked = true;
@@ -45,34 +71,5 @@ public class AddSpaceController {
     @FXML
     private void handleCancel() {
         dialogStage.close();
-    }
-
-    private SpaceType parseSpaceType(String typeString){
-        return switch (typeString) {
-            case "basicRoom" -> SpaceType.BASIC_ROOM;
-            case "slidesRoom" -> SpaceType.SLIDES_ROOM;
-            case "computerRoom" -> SpaceType.COMPUTER_ROOM;
-            case "physicsLaboratory" -> SpaceType.PHYSICS_LABORATORY;
-            case "chemistryLaboratory" -> SpaceType.CHEMISTRY_LABORATORY;
-            case "auditorium" -> SpaceType.AUDITORIUM;
-            case "court" -> SpaceType.COURT;
-            case "eletronicsLaboratory" -> SpaceType.ELETRONICS_LABORATORY;
-            default -> throw new Error("Invalid space type");
-        };
-    }
-
-    private InstituteAbbr parseInstitute(String instituteString){
-        return switch (instituteString) {
-            case "CB" -> InstituteAbbr.CB;
-            case "PB" -> InstituteAbbr.PB;
-            case "IC" -> InstituteAbbr.IC;
-            case "FEEC" -> InstituteAbbr.FEEC;
-            case "IMECC" -> InstituteAbbr.IMECC;
-            case "IFGW" -> InstituteAbbr.IFGW;
-            case "IEL" -> InstituteAbbr.IEL;
-            case "FEF" -> InstituteAbbr.FEF;
-            case "IE" -> InstituteAbbr.IE;
-            default -> throw new Error("Invalid institute");
-        };
     }
 }
