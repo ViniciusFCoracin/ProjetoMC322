@@ -24,9 +24,9 @@ public class AddElectiveController {
     @FXML
     private TextField creditsField;
     @FXML
-    private ComboBox institutesComboBox;
+    private ComboBox<InstituteAbbr> institutesComboBox;
     @FXML
-    private ComboBox typesComboBox;
+    private ComboBox<SpaceType> typesComboBox;
     @FXML
     private TextField professorsField;
 

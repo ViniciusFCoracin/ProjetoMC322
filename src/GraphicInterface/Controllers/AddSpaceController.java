@@ -10,16 +10,13 @@ import src.Spaces.InstituteAbbr;
 import src.Spaces.Space;
 import src.Spaces.SpaceType;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class AddSpaceController {
     @FXML
     private TextField spaceNameField;
     @FXML
-    private ComboBox institutesComboBox;
+    private ComboBox<InstituteAbbr> institutesComboBox;
     @FXML
-    private ComboBox typesComboBox;
+    private ComboBox<SpaceType> typesComboBox;
     
     private Stage dialogStage;
     private boolean okClicked = false;
