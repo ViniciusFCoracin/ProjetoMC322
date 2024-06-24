@@ -117,7 +117,7 @@ public class SelectionController extends ScheduleAllocator {
         Stage stage = new Stage();
         stage.setTitle("Error message");
         stage.setScene(scene);
-        stage.setMinWidth(430);
+        stage.setMinWidth(550);
         stage.setMaxHeight(150);
         stage.centerOnScreen();
         stage.show();
