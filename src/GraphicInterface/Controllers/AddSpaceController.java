@@ -3,6 +3,7 @@ package src.GraphicInterface.Controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -17,9 +18,9 @@ public class AddSpaceController {
     @FXML
     private TextField spaceNameField;
     @FXML
-    private ComboBox institutesComboBox;
+    private ComboBox<InstituteAbbr> institutesComboBox;
     @FXML
-    private ComboBox typesComboBox;
+    private ComboBox<SpaceType> typesComboBox;
     
     private Stage dialogStage;
     private boolean okClicked = false;
