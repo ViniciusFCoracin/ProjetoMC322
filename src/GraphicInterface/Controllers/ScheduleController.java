@@ -278,7 +278,7 @@ public class ScheduleController {
                 invalidCourse.setText("Por favor escolha um curso");
             }
             if (currentSemester == null) {
-                invalidSemester.setText("Por gfavor escolha um semestre");
+                invalidSemester.setText("Por favor escolha um semestre");
             }
             return true;
         }
