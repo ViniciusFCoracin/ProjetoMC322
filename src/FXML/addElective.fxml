@@ -57,11 +57,11 @@
          <Font name="Liberation Serif" size="17.0" />
       </font></TextField>
 
-   <Button alignment="CENTER" onAction="#handleCancel" text="Cancelar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+   <Button alignment="CENTER" onAction="#handleCancel" text="Cancelar" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
       <font>
          <Font name="Liberation Serif" size="17.0" />
       </font></Button>
-   <Button alignment="CENTER" onAction="#handleOk" text="Confirmar" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+   <Button alignment="CENTER" onAction="#handleOk" text="Confirmar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
       <font>
          <Font name="Liberation Serif" size="17.0" />
       </font></Button>
